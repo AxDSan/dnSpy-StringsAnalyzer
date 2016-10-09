@@ -31,22 +31,16 @@ namespace Plugin.StringAnalyzer {
                     i++;
                     if (mdInfo.HasBody)
                     {
-                        //var dict = new Dictionary<keytype, valuetype>()
-                        //label.Content = string.Format("[{0}] Available Methods:", i);
+                        //var dict = new Dictionary<keytype, valuetype>();
                         var instr = mdInfo.Body.Instructions;
-
-                        // Allocate in a new `ListViewBox` each method and add it to the current listbox with their
-                        // ... respective Tag and Content information... // Many Thanks Kao :D
-                        //items = new ListViewItem<User>();
-                        //items.Content = mdInfo.Name;
-                        //items.Tag = string.Join("\r\n", instr);
-
-                        //method.Add(mdInfo);
-                        //listBox.Items.Add(items);
 
                         foreach (var iInstr in instr)
                         {
                             MDToken token = mdInfo.MDToken;
+
+                            /* 
+                             * Many thanks to Mr.Exodia for helping me out on this part below \(^o^)/~ 
+                             */
 
                             if (iInstr.OpCode.Equals(OpCodes.Ldstr))
                             {
