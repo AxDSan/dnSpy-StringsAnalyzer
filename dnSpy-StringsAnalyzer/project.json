@@ -1,0 +1,11 @@
+{
+	"dependencies": {
+		"Microsoft.VisualStudio.Text.UI.Wpf": "15.0.25604-Preview4"
+	},
+	"frameworks": {
+		"net46": { }
+	},
+	"runtimes": {
+		"win": { }
+	}
+}
