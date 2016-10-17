@@ -13,7 +13,9 @@ on the respective parts of the other plugins, or, unless someone helps me finish
 ---
 
 >[√] Fix scrolling bars not working properly...
+
 [-] Add ContextMenu to each individual ListViewItem...
+
 [-] Add Double Click & Goto Method Function...
 
 ---
