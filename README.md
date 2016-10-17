@@ -19,6 +19,4 @@ on the respective parts of the other plugins, or, unless someone helps me finish
 [-] Add Double Click & Goto Method Function...
 ---
 
----
-#### [√] = Done / [-] = Not Done
----
+[√] = Done / [-] = Not Done
