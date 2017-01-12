@@ -20,4 +20,4 @@ on the respective parts of the other plugins, or, unless someone helps me finish
 
 ---
 
-### [√] = Done / [-] = Not Done
+### [√] = Done / [-] = Missing
