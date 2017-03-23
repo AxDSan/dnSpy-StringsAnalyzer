@@ -3,69 +3,63 @@ using System.Windows.Controls;
 using dnlib.DotNet;
 using dnlib.DotNet.Emit;
 
-using static Plugin.StringAnalyzer.ToolWindowVM;
-using System;
-using System.Windows;
+using static Plugin.StringAnalyzer.ToolWindowVm;
 
-namespace Plugin.StringAnalyzer {
-	public partial class ToolWindowControl : UserControl {
+namespace Plugin.StringAnalyzer
+{
+    public partial class ToolWindowControl : UserControl {
 		public ToolWindowControl() {
 			InitializeComponent();
     }
-        public static List<MethodDef> method = new List<MethodDef>();
-        public static List<stringAnalyzerData> items = new List<stringAnalyzerData>();
-        public static string filename = "dnSpy.StringsAnalyzer.x.dll"; // Demonstration purposes only
+        public static List<MethodDef> Method = new List<MethodDef>();
+        public static List<StringAnalyzerData> Items = new List<StringAnalyzerData>();
+        public static string Filename = "dnSpy.StringsAnalyzer.x.dll"; // Demonstration purposes only
         // as I'm going to later use the currently inspected assembly from the navigation and not 
         // loading it individually.
-        public static int i;
+        public static int I;
         public static ContextMenu ContextMenu1;
 
         private void button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            items.Clear();
-            ModuleDefMD md = ModuleDefMD.Load(filename);
-            foreach (TypeDef types in md.Types)
+            Items.Clear();
+            var md = ModuleDefMD.Load(Filename);
+            foreach (var types in md.Types)
             {
-                foreach (MethodDef mdInfo in types.Methods)
+                foreach (var mdInfo in types.Methods)
                 {
-                    i++;
-                    if (mdInfo.HasBody)
+                    I++;
+                    if (!mdInfo.HasBody) continue;
+                    //var dict = new Dictionary<keytype, valuetype>();
+                    var instructions = mdInfo.Body.Instructions;
+
+                    foreach (var instr in instructions)
                     {
-                        //var dict = new Dictionary<keytype, valuetype>();
-                        var instr = mdInfo.Body.Instructions;
+                        var token = mdInfo.MDToken;
 
-                        foreach (var iInstr in instr)
-                        {
-                            MDToken token = mdInfo.MDToken;
-
-                            /* 
-                             * Many thanks to Mr.Exodia for helping me out on this part below \(^o^)/~ 
+                            /*
+                             * Many thanks to Mr.Exodia for helping me out on this part below \(^o^)/~
                              */
 
-                            if (iInstr.OpCode.Equals(OpCodes.Ldstr))
-                            {
-                                string formattedOffset = string.Format("IL_{0:X4}", iInstr.GetOffset());
+                        if (!instr.OpCode.Equals(OpCodes.Ldstr)) continue;
+                        var formattedOffset = $"IL_{instr.GetOffset():X4}";
 
-                                items.Add(new stringAnalyzerData()
-                                {
-                                    stringValue = iInstr.GetOperand().ToString(),
-                                    ilOffset = formattedOffset,
-                                    mdToken = string.Format("0x{0:x}", token.ToString().Remove(0, 1)),
-                                    mdName = mdInfo.Name,
-                                    fullmdName = mdInfo.FullName,
-                                });
-                            }
-                        }
+                        Items.Add(new StringAnalyzerData()
+                        {
+                            StringValue = instr.GetOperand().ToString(),
+                            IlOffset = formattedOffset,
+                            MdToken = $"0x{token.ToString().Remove(0, 1):x}",
+                            MdName = mdInfo.Name,
+                            FullmdName = mdInfo.FullName,
+                        });
                     }
-                    
                 }
             }
-            lvStringsAnalyzer.ItemsSource = items;
+            lvStringsAnalyzer.ItemsSource = Items;
         }
 
         private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            items.Clear();
+            Items.Clear();
         }
     }
 }
