@@ -842,7 +842,15 @@
         <member name="M:dnlib.DotNet.Extensions.IsCorLib(dnlib.DotNet.IAssembly)">
             <summary>
             Checks whether <paramref name="asm"/> appears to be the core library (eg.
-            mscorlib, System.Runtime or corefx)
+            mscorlib, System.Runtime or corefx).
+            
+            If <paramref name="asm"/> is a reference to a private corlib (eg. System.Private.CoreLib),
+            this method returns false unless <paramref name="asm"/> is an <see cref="T:dnlib.DotNet.AssemblyDef"/>
+            whose manifest (first) module defines <c>System.Object</c>. This check is performed in
+            the constructor and the result can be found in <see cref="P:dnlib.DotNet.ModuleDef.IsCoreLibraryModule"/>.
+            
+            Note that this method also returns true if it appears to be a 'public' corlib,
+            eg. mscorlib, etc, even if it internally possibly references a private corlib.
             </summary>
             <param name="asm">The assembly</param>
         </member>
@@ -5031,48 +5039,6 @@
             <inheritdoc/>
         </member>
         <member name="M:dnlib.DotNet.Emit.LocalList.GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.IndexOf_NoLock(dnlib.DotNet.Emit.Local)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Insert_NoLock(System.Int32,dnlib.DotNet.Emit.Local)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.RemoveAt_NoLock(System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Get_NoLock(System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Set_NoLock(System.Int32,dnlib.DotNet.Emit.Local)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Add_NoLock(dnlib.DotNet.Emit.Local)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Clear_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Contains_NoLock(dnlib.DotNet.Emit.Local)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.CopyTo_NoLock(dnlib.DotNet.Emit.Local[],System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.DotNet.Emit.LocalList.Count_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.DotNet.Emit.LocalList.IsReadOnly_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.Remove_NoLock(dnlib.DotNet.Emit.Local)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.GetEnumerator_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.DotNet.Emit.LocalList.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{dnlib.DotNet.Emit.Local,``0,``1})">
             <inheritdoc/>
         </member>
         <member name="T:dnlib.DotNet.Emit.Local">
@@ -10554,6 +10520,9 @@
         <member name="F:dnlib.DotNet.MD.CodedToken.TypeOrMethodDef">
             <summary>TypeOrMethodDef coded token</summary>
         </member>
+        <member name="F:dnlib.DotNet.MD.CodedToken.HasCustomDebugInformation">
+            <summary>HasCustomDebugInformation coded token</summary>
+        </member>
         <member name="P:dnlib.DotNet.MD.CodedToken.TableTypes">
             <summary>
             Returns all types of tables
@@ -10837,6 +10806,30 @@
         <member name="F:dnlib.DotNet.MD.ColumnSize.GenericParamConstraint">
             <summary>RID into GenericParamConstraint table</summary>
         </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.Document">
+            <summary>RID into Document table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.MethodDebugInformation">
+            <summary>RID into MethodDebugInformation table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.LocalScope">
+            <summary>RID into LocalScope table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.LocalVariable">
+            <summary>RID into LocalVariable table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.LocalConstant">
+            <summary>RID into LocalConstant table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.ImportScope">
+            <summary>RID into ImportScope table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.StateMachineMethod">
+            <summary>RID into StateMachineMethod table</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.CustomDebugInformation">
+            <summary>RID into CustomDebugInformation table</summary>
+        </member>
         <member name="F:dnlib.DotNet.MD.ColumnSize.Byte">
             <summary>8-bit byte</summary>
         </member>
@@ -10899,6 +10892,9 @@
         </member>
         <member name="F:dnlib.DotNet.MD.ColumnSize.TypeOrMethodDef">
             <summary>TypeOrMethodDef encoded token</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.ColumnSize.HasCustomDebugInformation">
+            <summary>HasCustomDebugInformation encoded token</summary>
         </member>
         <member name="T:dnlib.DotNet.MD.ComImageFlags">
             <summary>
@@ -14110,6 +14106,30 @@
         <member name="F:dnlib.DotNet.MD.Table.GenericParamConstraint">
             <summary>GenericParamConstraint table (2Ch)</summary>
         </member>
+        <member name="F:dnlib.DotNet.MD.Table.Document">
+            <summary>(Portable PDB) Document table (30h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.MethodDebugInformation">
+            <summary>(Portable PDB) MethodDebugInformation table (31h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.LocalScope">
+            <summary>(Portable PDB) LocalScope table (32h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.LocalVariable">
+            <summary>(Portable PDB) LocalVariable table (33h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.LocalConstant">
+            <summary>(Portable PDB) LocalConstant table (34h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.ImportScope">
+            <summary>(Portable PDB) ImportScope table (35h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.StateMachineMethod">
+            <summary>(Portable PDB) StateMachineMethod table (36h)</summary>
+        </member>
+        <member name="F:dnlib.DotNet.MD.Table.CustomDebugInformation">
+            <summary>(Portable PDB) CustomDebugInformation table (37h)</summary>
+        </member>
         <member name="T:dnlib.DotNet.MD.TableInfo">
             <summary>
             Info about one MD table
@@ -17210,6 +17230,12 @@
         <member name="P:dnlib.DotNet.ModuleDef.GlobalType">
             <summary>
             Gets the global (aka. &lt;Module&gt;) type or <c>null</c> if there are no types
+            </summary>
+        </member>
+        <member name="P:dnlib.DotNet.ModuleDef.IsCoreLibraryModule">
+            <summary>
+            true if it's the core library module, false if it's not the core library module,
+            and null if it's not known.
             </summary>
         </member>
         <member name="P:dnlib.DotNet.ModuleDef.Win32Resources">
@@ -25742,7 +25768,7 @@
             that are property or event handlers get updated.
             </summary>
         </member>
-        <member name="M:dnlib.DotNet.TypeDefMD.InitializeProperty(dnlib.DotNet.PropertyDefMD,dnlib.Threading.Collections.IList{dnlib.DotNet.MethodDef}@,dnlib.Threading.Collections.IList{dnlib.DotNet.MethodDef}@,dnlib.Threading.Collections.IList{dnlib.DotNet.MethodDef}@)">
+        <member name="M:dnlib.DotNet.TypeDefMD.InitializeProperty(dnlib.DotNet.PropertyDefMD,System.Collections.Generic.IList{dnlib.DotNet.MethodDef}@,System.Collections.Generic.IList{dnlib.DotNet.MethodDef}@,System.Collections.Generic.IList{dnlib.DotNet.MethodDef}@)">
             <summary>
             Initializes a property's special methods
             </summary>
@@ -25751,7 +25777,7 @@
             <param name="setMethods">Updated with a list of all set methods</param>
             <param name="otherMethods">Updated with a list of all other methods</param>
         </member>
-        <member name="M:dnlib.DotNet.TypeDefMD.InitializeEvent(dnlib.DotNet.EventDefMD,dnlib.DotNet.MethodDef@,dnlib.DotNet.MethodDef@,dnlib.DotNet.MethodDef@,dnlib.Threading.Collections.IList{dnlib.DotNet.MethodDef}@)">
+        <member name="M:dnlib.DotNet.TypeDefMD.InitializeEvent(dnlib.DotNet.EventDefMD,dnlib.DotNet.MethodDef@,dnlib.DotNet.MethodDef@,dnlib.DotNet.MethodDef@,System.Collections.Generic.IList{dnlib.DotNet.MethodDef}@)">
             <summary>
             Initializes an event's special methods
             </summary>
@@ -36644,7 +36670,7 @@
             Extension methods
             </summary>
         </member>
-        <member name="M:dnlib.Threading.Extensions.ExecuteLocked``3(dnlib.Threading.Collections.IList{``0},``1,dnlib.Threading.ExecuteLockedDelegate{``0,``1,``2})">
+        <member name="M:dnlib.Threading.Extensions.ExecuteLocked``3(System.Collections.Generic.IList{``0},``1,dnlib.Threading.ExecuteLockedDelegate{``0,``1,``2})">
             <summary>
             Locks the list and then calls <paramref name="handler"/>. <paramref name="handler"/>
             must only call <c>*_NoLock()</c> methods. The list is unlocked once this method returns.
@@ -36657,55 +36683,10 @@
             <param name="handler">Handler that should execute when the lock is held</param>
             <returns>The value <paramref name="handler"/> returns</returns>
         </member>
-        <member name="M:dnlib.Threading.Extensions.Iterate``1(dnlib.Threading.Collections.IList{``0},System.Int32,System.Int32,System.Boolean,dnlib.Threading.IterateDelegate{``0})">
-            <summary>
-            Iterates over elements in <paramref name="tsList"/> and calls <paramref name="handler"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="handler">Called for each element</param>
-            <param name="startIndex">Start index</param>
-            <param name="endIndex">End index. <c>-1</c> means <see cref="P:dnlib.Threading.Collections.IList`1.Count_NoLock"/></param>
-            <param name="reverseOrder"><c>true</c> if we should iterate in the reverse order</param>
-        </member>
-        <member name="M:dnlib.Threading.Extensions.Iterate``1(dnlib.Threading.Collections.IList{``0},dnlib.Threading.IterateDelegate{``0})">
-            <summary>
-            Iterates over all elements in <paramref name="tsList"/> and calls <paramref name="handler"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="handler">Called for each element</param>
-        </member>
-        <member name="M:dnlib.Threading.Extensions.IterateAll``1(dnlib.Threading.Collections.IList{``0},dnlib.Threading.IterateAllDelegate{``0})">
-            <summary>
-            Iterates over all elements in <paramref name="tsList"/> and calls <paramref name="handler"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="handler">Called for each element</param>
-        </member>
-        <member name="M:dnlib.Threading.Extensions.IterateReverse``1(dnlib.Threading.Collections.IList{``0},dnlib.Threading.IterateDelegate{``0})">
-            <summary>
-            Iterates over all elements in <paramref name="tsList"/> in the reverse order and calls
-            <paramref name="handler"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="handler">Called for each element</param>
-        </member>
-        <member name="M:dnlib.Threading.Extensions.IterateAllReverse``1(dnlib.Threading.Collections.IList{``0},dnlib.Threading.IterateAllDelegate{``0})">
-            <summary>
-            Iterates over all elements in <paramref name="tsList"/> in the reverse order and calls
-            <paramref name="handler"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="handler">Called for each element</param>
-        </member>
         <member name="M:dnlib.Threading.Extensions.Iterate``1(System.Collections.Generic.IList{``0},System.Int32,System.Int32,System.Boolean,dnlib.Threading.ListIterateDelegate{``0})">
             <summary>
             Iterates over elements in <paramref name="list"/> and calls <paramref name="handler"/>.
-            If <paramref name="list"/> implements <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe
+            If <paramref name="list"/> implements <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe
             methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
@@ -36719,7 +36700,7 @@
             <summary>
             Iterates over all elements in <paramref name="list"/> and calls
             <paramref name="handler"/>. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36729,7 +36710,7 @@
             <summary>
             Iterates over all elements in <paramref name="list"/> and calls
             <paramref name="handler"/>. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36739,7 +36720,7 @@
             <summary>
             Iterates over all elements in <paramref name="list"/> in the reverse order and calls
             <paramref name="handler"/>. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36749,7 +36730,7 @@
             <summary>
             Iterates over all elements in <paramref name="list"/> in the reverse order and calls
             <paramref name="handler"/>. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36759,7 +36740,7 @@
             <summary>
             Iterates over all elements in <paramref name="list"/> and calls
             <paramref name="handler"/>. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36769,7 +36750,7 @@
             <summary>
             Iterates over all elements in <paramref name="list"/> and calls
             <paramref name="handler"/>. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36778,7 +36759,7 @@
         <member name="M:dnlib.Threading.Extensions.Get``1(System.Collections.Generic.IList{``0},System.Int32,``0@)">
             <summary>
             Reads an element from the list. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36790,7 +36771,7 @@
         <member name="M:dnlib.Threading.Extensions.Get``1(System.Collections.Generic.IList{``0},System.Int32,``0)">
             <summary>
             Reads an element from the list. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36802,7 +36783,7 @@
         <member name="M:dnlib.Threading.Extensions.Set``1(System.Collections.Generic.IList{``0},System.Int32,``0)">
             <summary>
             Writes an element to the list. If <paramref name="list"/> implements
-            <see cref="T:dnlib.Threading.Collections.IList`1"/>, only thread safe methods are called.
+            <see cref="T:System.Collections.Generic.IList`1"/>, only thread safe methods are called.
             </summary>
             <typeparam name="T">Type to store in list</typeparam>
             <param name="list">A list</param>
@@ -36810,21 +36791,6 @@
             <param name="value">Value</param>
             <returns><c>true</c> if <paramref name="value"/> was written to the list or <c>false</c>
             if <paramref name="index"/> was invalid.</returns>
-        </member>
-        <member name="M:dnlib.Threading.Extensions.Count_NoLock``1(dnlib.Threading.Collections.IList{``0})">
-            <summary>
-            Calls <see cref="P:dnlib.Threading.Collections.IList`1.Count_NoLock"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <returns>Number of elements in the list</returns>
-        </member>
-        <member name="M:dnlib.Threading.Extensions.IsReadOnly_NoLock``1(dnlib.Threading.Collections.IList{``0})">
-            <summary>
-            Calls <see cref="P:dnlib.Threading.Collections.IList`1.IsReadOnly_NoLock"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
         </member>
         <member name="M:dnlib.Threading.Extensions.IndexOf_NoLock``1(System.Collections.Generic.IList{``0},``0)">
             <summary>
@@ -36986,138 +36952,6 @@
             Throws a <see cref="T:System.OperationCanceledException"/> if the operation should be canceled
             </summary>
         </member>
-        <member name="T:dnlib.Threading.Collections.IList`1">
-            <summary>
-            Thread-safe <see cref="T:System.Collections.Generic.IList`1"/> interface
-            </summary>
-            <typeparam name="T">List type</typeparam>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.IndexOf_NoLock(`0)">
-            <summary>
-            Must only be called when the list lock is held. Gets the index of <paramref name="item"/>
-            </summary>
-            <param name="item">Item</param>
-            <returns>Index of <paramref name="item"/> or <c>-1</c> if it's not present in the list</returns>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Insert_NoLock(System.Int32,`0)">
-            <summary>
-            Must only be called when the list lock is held. Inserts <paramref name="item"/> at index
-            <paramref name="index"/>
-            </summary>
-            <param name="index">Index</param>
-            <param name="item">Item to insert</param>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.RemoveAt_NoLock(System.Int32)">
-            <summary>
-            Must only be called when the list lock is held. Removes the item at index
-            <paramref name="index"/>
-            </summary>
-            <param name="index"></param>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Get_NoLock(System.Int32)">
-            <summary>
-            Must only be called when the list lock is held. Returns the value at a specified index.
-            </summary>
-            <param name="index">Index</param>
-            <returns>Value</returns>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Set_NoLock(System.Int32,`0)">
-            <summary>
-            Must only be called when the list lock is held. Writes to the list at a specified index.
-            </summary>
-            <param name="index">Index</param>
-            <param name="value">Value</param>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Add_NoLock(`0)">
-            <summary>
-            Must only be called when the list lock is held. Adds a new element to the end of the
-            list.
-            </summary>
-            <param name="item">Item</param>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Clear_NoLock">
-            <summary>
-            Must only be called when the list lock is held. Clears the list.
-            </summary>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Contains_NoLock(`0)">
-            <summary>
-            Must only be called when the list lock is held. Checks whether <paramref name="item"/>
-            exists in the list.
-            </summary>
-            <param name="item">Item</param>
-            <returns><c>true</c> if <paramref name="item"/> exists in the list, else <c>false</c></returns>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.CopyTo_NoLock(`0[],System.Int32)">
-            <summary>
-            Must only be called when the list lock is held. Copies the list to an array.
-            </summary>
-            <param name="array">Destination array</param>
-            <param name="arrayIndex">Destination array index</param>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="P:dnlib.Threading.Collections.IList`1.Count_NoLock">
-            <summary>
-            Must only be called when the list lock is held. Returns the size of the list.
-            </summary>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="P:dnlib.Threading.Collections.IList`1.IsReadOnly_NoLock">
-            <summary>
-            Must only be called when the list lock is held. Returns <c>true</c> if the list is
-            read-only, <c>false</c> if it's writable.
-            </summary>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.Remove_NoLock(`0)">
-            <summary>
-            Must only be called when the list lock is held. Removes <paramref name="item"/> from the
-            list.
-            </summary>
-            <param name="item">Item</param>
-            <returns><c>true</c> if <paramref name="item"/> was removed, <c>false</c> if
-            <paramref name="item"/> was never inserted in the list.</returns>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.GetEnumerator_NoLock">
-            <summary>
-            Must only be called when the list lock is held. Gets the enumerator.
-            </summary>
-            <returns>A new enumerator instance</returns>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})"/>
-        </member>
-        <member name="M:dnlib.Threading.Collections.IList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})">
-            <summary>
-            Locks the list and then calls <paramref name="handler"/>. <paramref name="handler"/>
-            must only call <c>*_NoLock()</c> methods. The list is unlocked once this method returns.
-            </summary>
-            <typeparam name="TArgType">Argument type</typeparam>
-            <typeparam name="TRetType">Return type</typeparam>
-            <param name="arg">Passed to <paramref name="handler"/></param>
-            <param name="handler">Handler that should execute when the lock is held</param>
-            <returns>The value <paramref name="handler"/> returns</returns>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.IndexOf_NoLock(`0)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Insert_NoLock(System.Int32,`0)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.RemoveAt_NoLock(System.Int32)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Get_NoLock(System.Int32)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Set_NoLock(System.Int32,`0)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Add_NoLock(`0)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Clear_NoLock"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Contains_NoLock(`0)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.CopyTo_NoLock(`0[],System.Int32)"/>
-            <seealso cref="P:dnlib.Threading.Collections.IList`1.Count_NoLock"/>
-            <seealso cref="P:dnlib.Threading.Collections.IList`1.IsReadOnly_NoLock"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.Remove_NoLock(`0)"/>
-            <seealso cref="M:dnlib.Threading.Collections.IList`1.GetEnumerator_NoLock"/>
-        </member>
         <member name="T:dnlib.Threading.ExecuteLockedDelegate`3">
             <summary>
             Passed to <c>ExecuteLocked()</c>
@@ -37128,26 +36962,6 @@
             <param name="tsList">A thread-safe list</param>
             <param name="arg">The argument</param>
             <returns>Any value the user wants to return</returns>
-        </member>
-        <member name="T:dnlib.Threading.IterateDelegate`1">
-            <summary>
-            Called by <see cref="M:dnlib.Threading.Extensions.Iterate``1(dnlib.Threading.Collections.IList{``0},System.Int32,System.Int32,System.Boolean,dnlib.Threading.IterateDelegate{``0})"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="index">Index of <paramref name="value"/></param>
-            <param name="value">Value at <paramref name="index"/> in the list</param>
-            <returns><c>false</c> to break out of the iterator loop and return</returns>
-        </member>
-        <member name="T:dnlib.Threading.IterateAllDelegate`1">
-            <summary>
-            Called by <see cref="M:dnlib.Threading.Extensions.IterateAll``1(dnlib.Threading.Collections.IList{``0},dnlib.Threading.IterateAllDelegate{``0})"/>
-            and <see cref="M:dnlib.Threading.Extensions.IterateAllReverse``1(dnlib.Threading.Collections.IList{``0},dnlib.Threading.IterateAllDelegate{``0})"/>
-            </summary>
-            <typeparam name="T">Type to store in list</typeparam>
-            <param name="tsList">A thread-safe list</param>
-            <param name="index">Index of <paramref name="value"/></param>
-            <param name="value">Value at <paramref name="index"/> in the list</param>
         </member>
         <member name="T:dnlib.Threading.ListIterateDelegate`1">
             <summary>
@@ -37187,44 +37001,6 @@
             <param name="index">Index of <paramref name="value"/></param>
             <param name="value">Value at <paramref name="index"/> in the collection</param>
             <returns><c>false</c> to break out of the iterator loop and return</returns>
-        </member>
-        <member name="T:dnlib.Threading.Lock">
-            <summary>
-            Simple class using <see cref="M:System.Threading.Monitor.Enter(System.Object)"/> and <see cref="M:System.Threading.Monitor.Exit(System.Object)"/>
-            and just like <c>ReaderWriterLockSlim</c> it prevents recursive locks. It doesn't support
-            multiple readers. A reader lock is the same as a writer lock.
-            </summary>
-        </member>
-        <member name="M:dnlib.Threading.Lock.Create">
-            <summary>
-            Creates a new instance of this class
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:dnlib.Threading.Lock.#ctor">
-            <summary>
-            Constructor
-            </summary>
-        </member>
-        <member name="M:dnlib.Threading.Lock.EnterReadLock">
-            <summary>
-            Enter read mode
-            </summary>
-        </member>
-        <member name="M:dnlib.Threading.Lock.ExitReadLock">
-            <summary>
-            Exit read mode
-            </summary>
-        </member>
-        <member name="M:dnlib.Threading.Lock.EnterWriteLock">
-            <summary>
-            Enter write mode
-            </summary>
-        </member>
-        <member name="M:dnlib.Threading.Lock.ExitWriteLock">
-            <summary>
-            Exit write mode
-            </summary>
         </member>
         <member name="T:dnlib.Threading.ThreadSafeListCreator">
             <summary>
@@ -37296,96 +37072,6 @@
             <typeparam name="T">List type</typeparam>
             <param name="list">The list that should be made thread-safe</param>
             <returns>A thread-safe list using <paramref name="list"/> as the underlying list</returns>
-        </member>
-        <member name="T:dnlib.Threading.ThreadSafeListWrapper`1">
-            <summary>
-            Protects an <see cref="T:System.Collections.Generic.IList`1"/> from being accessed by multiple threads at the same time
-            </summary>
-            <typeparam name="T">List type</typeparam>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.#ctor(System.Collections.Generic.IList{`0})">
-            <summary>
-            Constructor
-            </summary>
-            <param name="list">A list</param>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.IndexOf(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Insert(System.Int32,`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.RemoveAt(System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.Threading.ThreadSafeListWrapper`1.Item(System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Add(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Clear">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Contains(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.CopyTo(`0[],System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.Threading.ThreadSafeListWrapper`1.Count">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.Threading.ThreadSafeListWrapper`1.IsReadOnly">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Remove(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.GetEnumerator">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.Threading.ThreadSafeListWrapper`1.Count_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="P:dnlib.Threading.ThreadSafeListWrapper`1.IsReadOnly_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.IndexOf_NoLock(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Insert_NoLock(System.Int32,`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.RemoveAt_NoLock(System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Get_NoLock(System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Set_NoLock(System.Int32,`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Add_NoLock(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Clear_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Contains_NoLock(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.CopyTo_NoLock(`0[],System.Int32)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.Remove_NoLock(`0)">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.GetEnumerator_NoLock">
-            <inheritdoc/>
-        </member>
-        <member name="M:dnlib.Threading.ThreadSafeListWrapper`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})">
-            <inheritdoc/>
         </member>
         <member name="T:dnlib.Utils.Extensions">
             <summary>
@@ -37660,9 +37346,6 @@
         <member name="M:dnlib.Utils.LazyList`1.System#Collections#IEnumerable#GetEnumerator">
             <inheritdoc/>
         </member>
-        <member name="M:dnlib.Utils.LazyList`1.ExecuteLocked``2(``0,dnlib.Threading.ExecuteLockedDelegate{`0,``0,``1})">
-            <inheritdoc/>
-        </member>
         <member name="T:dnlib.Utils.MFunc`3">
             <summary>
             Same as Func delegate
@@ -37733,11 +37416,6 @@
             Lazily returns the original value if the user hasn't overwritten the value
             </summary>
             <typeparam name="TValue">Value type</typeparam>
-        </member>
-        <member name="P:dnlib.Utils.UserValue`1.Lock">
-            <summary>
-            Sets the lock that protects the data
-            </summary>
         </member>
         <member name="P:dnlib.Utils.UserValue`1.ReadOriginalValue">
             <summary>
