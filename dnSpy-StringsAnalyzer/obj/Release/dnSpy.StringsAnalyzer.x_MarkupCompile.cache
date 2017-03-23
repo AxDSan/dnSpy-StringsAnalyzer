@@ -4,7 +4,7 @@
 library
 C#
 .cs
-c:\Users\0x90\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\
 Plugin.StringAnalyzer
 none
 false
@@ -12,9 +12,9 @@ TRACE
 
 278683897
 
-10-1662701303
-22724367186
+11-1611166834
+221491450704
 Themes\resourcedict.xaml;ToolWindowControl.xaml;
 
-False
+True
 
