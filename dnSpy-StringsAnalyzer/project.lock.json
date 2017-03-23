@@ -1,10 +1,9 @@
 {
   "locked": false,
-  "version": 2,
+  "version": 1,
   "targets": {
     ".NETFramework,Version=v4.6": {
       "Microsoft.VisualStudio.CoreUtility/15.0.25604-preview4": {
-        "type": "package",
         "compile": {
           "lib/net45/Microsoft.VisualStudio.CoreUtility.dll": {}
         },
@@ -13,9 +12,8 @@
         }
       },
       "Microsoft.VisualStudio.Text.Data/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Data.dll": {}
@@ -25,10 +23,9 @@
         }
       },
       "Microsoft.VisualStudio.Text.Logic/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Logic.dll": {}
@@ -38,11 +35,10 @@
         }
       },
       "Microsoft.VisualStudio.Text.UI/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Logic": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.dll": {}
@@ -52,12 +48,11 @@
         }
       },
       "Microsoft.VisualStudio.Text.UI.Wpf/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Logic": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.UI": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.UI": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.Wpf.dll": {}
@@ -69,7 +64,6 @@
     },
     ".NETFramework,Version=v4.6/win": {
       "Microsoft.VisualStudio.CoreUtility/15.0.25604-preview4": {
-        "type": "package",
         "compile": {
           "lib/net45/Microsoft.VisualStudio.CoreUtility.dll": {}
         },
@@ -78,9 +72,8 @@
         }
       },
       "Microsoft.VisualStudio.Text.Data/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Data.dll": {}
@@ -90,10 +83,9 @@
         }
       },
       "Microsoft.VisualStudio.Text.Logic/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Logic.dll": {}
@@ -103,11 +95,10 @@
         }
       },
       "Microsoft.VisualStudio.Text.UI/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Logic": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.dll": {}
@@ -117,12 +108,11 @@
         }
       },
       "Microsoft.VisualStudio.Text.UI.Wpf/15.0.25604-preview4": {
-        "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Data": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.Logic": "15.0.25604-Preview4",
-          "Microsoft.VisualStudio.Text.UI": "15.0.25604-Preview4"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )",
+          "Microsoft.VisualStudio.Text.UI": "[15.0.25604-Preview4, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.Wpf.dll": {}
@@ -138,50 +128,50 @@
       "sha512": "NLEVjxhfUJ0nBEujNkiElcbvSdOunemtx6Kg6bdqg1w33EqgTbE+oMAUSLB5qh23BDE6uVuuymQQA983hQWWdw==",
       "type": "package",
       "files": [
-        "Microsoft.VisualStudio.CoreUtility.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.CoreUtility.nuspec",
         "lib/net45/Microsoft.VisualStudio.CoreUtility.dll",
-        "lib/net45/microsoft.visualstudio.coreutility.xml"
+        "lib/net45/microsoft.visualstudio.coreutility.xml",
+        "Microsoft.VisualStudio.CoreUtility.15.0.25604-preview4.nupkg.sha512",
+        "Microsoft.VisualStudio.CoreUtility.nuspec"
       ]
     },
     "Microsoft.VisualStudio.Text.Data/15.0.25604-preview4": {
       "sha512": "umfxgw/tm119Skumytof3k01pr/RmsPDB7HR2/mcTDAuLb41d7BHh1PFvtoX6fG2wmAjuLrnPF4CfKJs3UuCfw==",
       "type": "package",
       "files": [
-        "Microsoft.VisualStudio.Text.Data.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.Data.nuspec",
         "lib/net45/Microsoft.VisualStudio.Text.Data.dll",
-        "lib/net45/microsoft.visualstudio.text.data.xml"
+        "lib/net45/microsoft.visualstudio.text.data.xml",
+        "Microsoft.VisualStudio.Text.Data.15.0.25604-preview4.nupkg.sha512",
+        "Microsoft.VisualStudio.Text.Data.nuspec"
       ]
     },
     "Microsoft.VisualStudio.Text.Logic/15.0.25604-preview4": {
       "sha512": "KS3pwiDC2YrIxul7wZI+LVCX8qQ0rHblDxcDi9EnFNRYrRTseYZWjcy4iwCtNdctb6Pkq5qUn6C4Xrq8SUXFLg==",
       "type": "package",
       "files": [
-        "Microsoft.VisualStudio.Text.Logic.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.Logic.nuspec",
         "lib/net45/Microsoft.VisualStudio.Text.Logic.dll",
-        "lib/net45/microsoft.visualstudio.text.logic.xml"
+        "lib/net45/microsoft.visualstudio.text.logic.xml",
+        "Microsoft.VisualStudio.Text.Logic.15.0.25604-preview4.nupkg.sha512",
+        "Microsoft.VisualStudio.Text.Logic.nuspec"
       ]
     },
     "Microsoft.VisualStudio.Text.UI/15.0.25604-preview4": {
       "sha512": "hUeRk+ewc3/5CpsrImwkKiUKxatmdXiMyd3tRFpFiCNNRiobULI1V1UZqFbBq/R/MVFTW8auAJYdtyYHEYxRSQ==",
       "type": "package",
       "files": [
-        "Microsoft.VisualStudio.Text.UI.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.UI.nuspec",
         "lib/net45/Microsoft.VisualStudio.Text.UI.dll",
-        "lib/net45/microsoft.visualstudio.text.ui.xml"
+        "lib/net45/microsoft.visualstudio.text.ui.xml",
+        "Microsoft.VisualStudio.Text.UI.15.0.25604-preview4.nupkg.sha512",
+        "Microsoft.VisualStudio.Text.UI.nuspec"
       ]
     },
     "Microsoft.VisualStudio.Text.UI.Wpf/15.0.25604-preview4": {
       "sha512": "MaxzU/FcktcFM2xxi7UzebOJpUuJmStI8a5jvLi7EWg0aRnpnfC5QGEDLmJPi1LvrFu/kUAznOsdMwKFLlIc4w==",
       "type": "package",
       "files": [
-        "Microsoft.VisualStudio.Text.UI.Wpf.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.UI.Wpf.nuspec",
         "lib/net45/Microsoft.VisualStudio.Text.UI.Wpf.dll",
-        "lib/net45/microsoft.visualstudio.text.ui.wpf.xml"
+        "lib/net45/microsoft.visualstudio.text.ui.wpf.xml",
+        "Microsoft.VisualStudio.Text.UI.Wpf.15.0.25604-preview4.nupkg.sha512",
+        "Microsoft.VisualStudio.Text.UI.Wpf.nuspec"
       ]
     }
   },
