@@ -80,7 +80,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyChildNodeTabContent.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="DocumentViewerToolTipProvider.cs" />
     <Compile Include="MainToolWindowContentProvider.cs" />

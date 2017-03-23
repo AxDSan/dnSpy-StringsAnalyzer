@@ -22,8 +22,24 @@ c:\Users\0x90\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\dnSpy-
 c:\Users\0x90\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy.StringsAnalyzer.x.pdb
 C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy-StringsAnalyzer.csprojResolveAssemblyReference.cache
 C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\ToolWindowControl.g.cs
-C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\GeneratedInternalTypeHelper.g.cs
 C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy.StringsAnalyzer.x_MarkupCompile.cache
 C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy.StringsAnalyzer.x_MarkupCompile.lref
 C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy.StringsAnalyzer.x.dll
 C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy.StringsAnalyzer.x.pdb
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnSpy.StringsAnalyzer.x.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnSpy.StringsAnalyzer.x.pdb
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\Microsoft.VisualStudio.CoreUtility.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\Microsoft.VisualStudio.Text.Data.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\Microsoft.VisualStudio.Text.Logic.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\Microsoft.VisualStudio.Text.UI.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\Microsoft.VisualStudio.Text.UI.Wpf.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnlib.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnSpy.Contracts.DnSpy.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnSpy.Contracts.Logic.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\System.ComponentModel.Composition.dll
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnlib.pdb
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\dnlib.xml
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Release\System.ComponentModel.Composition.xml
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\Themes\resourcedict.baml
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\ToolWindowControl.baml
+C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\dnSpy.StringsAnalyzer.x.g.resources
