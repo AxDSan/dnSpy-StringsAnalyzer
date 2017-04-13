@@ -9,7 +9,7 @@ using dnSpy.Contracts.Text;
 // Creates an Output window text pane where our log messages will go.
 // Adds context menu commands.
 
-namespace Plugin.StringAnalyzer {
+namespace dnSpy.StringsAnalyzer {
 	// Holds an instance of our logger text pane
 	static class MyLogger {
 		//TODO: Use your own GUID
@@ -46,7 +46,7 @@ namespace Plugin.StringAnalyzer {
 		public readonly IOutputTextPane TextPane;
 
 		public LogEditorCtxMenuContext(IOutputTextPane pane) {
-			this.TextPane = pane;
+			TextPane = pane;
 		}
 	}
 

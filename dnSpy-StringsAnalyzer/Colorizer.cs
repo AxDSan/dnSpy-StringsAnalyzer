@@ -15,12 +15,12 @@ using Microsoft.VisualStudio.Utilities;
 // All 3 letter words use a white foreground and a red background
 // All 4 letter words use the Error color (default: no background, red foreground color)
 
-namespace Plugin.Extension {
+namespace Example2.Extension {
 	// Define our classification types. A classification type is converted to a color
 	static class Constants {
 		// Use unique names
-		public const string Color1_ClassificationTypeName = "Plugin.Extension.Color1";
-		public const string Color2_ClassificationTypeName = "Plugin.Extension.Color2";
+		public const string Color1_ClassificationTypeName = "Example2.Extension.Color1";
+		public const string Color2_ClassificationTypeName = "Example2.Extension.Color2";
 
 		// Disable compiler warnings. The fields aren't referenced, just exported so
 		// the metadata can be added to some table. The fields will always be null.
@@ -101,11 +101,11 @@ namespace Plugin.Extension {
 
 		public TextTagger(IClassificationTypeRegistryService classificationTypeRegistryService) {
 			// Get the classification types we need
-			this.color1 = classificationTypeRegistryService.GetClassificationType(Constants.Color1_ClassificationTypeName);
-			this.color2 = classificationTypeRegistryService.GetClassificationType(Constants.Color2_ClassificationTypeName);
+			color1 = classificationTypeRegistryService.GetClassificationType(Constants.Color1_ClassificationTypeName);
+			color2 = classificationTypeRegistryService.GetClassificationType(Constants.Color2_ClassificationTypeName);
 			// Get some classification types created by some other code
-			this.color3 = classificationTypeRegistryService.GetClassificationType(ThemeClassificationTypeNames.Yellow);
-			this.color4 = classificationTypeRegistryService.GetClassificationType(ThemeClassificationTypeNames.Error);
+			color3 = classificationTypeRegistryService.GetClassificationType(ThemeClassificationTypeNames.Yellow);
+			color4 = classificationTypeRegistryService.GetClassificationType(ThemeClassificationTypeNames.Error);
 		}
 
 		// Gets called to colorize a range of the file. It's typically called once per visible line

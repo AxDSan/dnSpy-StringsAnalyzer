@@ -4,16 +4,16 @@
 library
 C#
 .cs
-c:\Users\0x90\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\
-Plugin.StringAnalyzer
+C:\Users\AxD\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Release\
+dnSpy.StringsAnalyzer
 none
 false
 TRACE
 
 278683897
 
-14538540195
-22724367186
+16-1386019268
+17-2023655836
 Themes\resourcedict.xaml;ToolWindowControl.xaml;
 
 False

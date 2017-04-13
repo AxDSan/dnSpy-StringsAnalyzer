@@ -8,10 +8,10 @@ using dnSpy.Contracts.Documents.TreeView;
 using dnSpy.Contracts.Images;
 using dnSpy.Contracts.Text;
 
-// Adds a new IDsDocument that can be loaded into the document treeview. It gets its own IDsDocumentNode.
+// Adds a new IDsDocument that can be loaded into the document treeview. It gets its own DsDocumentNode.
 // Open a .txt/.xml/.cs/.vb (see supportedExtensions) file to trigger this code.
 
-namespace Plugin.StringAnalyzer {
+namespace dnSpy.StringsAnalyzer {
 	// All root nodes in the document treeview contain a IDsDocument instance. They don't need to be
 	// .NET files or even PE files, they can be any file or even non-file (eg. in-memory data).
 	sealed class MyDsDocument : DsDocument {
@@ -47,7 +47,7 @@ namespace Plugin.StringAnalyzer {
 		}
 
 		MyDsDocument(string filename) {
-			this.Filename = filename;
+			Filename = filename;
 		}
 	}
 
@@ -87,10 +87,10 @@ namespace Plugin.StringAnalyzer {
 		};
 	}
 
-	// Gets called by dnSpy to create a IDsDocumentNode
+	// Gets called by dnSpy to create a DsDocumentNode
 	[ExportDsDocumentNodeProvider]
 	sealed class MyDsDocumentNodeProvider : IDsDocumentNodeProvider {
-		public IDsDocumentNode Create(IDocumentTreeView documentTreeView, IDsDocumentNode owner, IDsDocument document) {
+		public DsDocumentNode Create(IDocumentTreeView documentTreeView, DsDocumentNode owner, IDsDocument document) {
 			var myDocument = document as MyDsDocument;
 			if (myDocument != null)
 				return new MyDsDocumentNode(myDocument);
@@ -100,23 +100,22 @@ namespace Plugin.StringAnalyzer {
 
 	// Our MyDsDocument tree node class. It implements IDecompileSelf to "decompile" itself. You could
 	// also export a IDecompileNode instance to do it, see TreeNodeDataProvider.cs for an example.
-	// Or you could create a completely new IDocumentTabContent for these nodes, see AssemblyChildNodeTabContent.cs
-	sealed class MyDsDocumentNode : DocumentTreeNodeData, IDsDocumentNode, IDecompileSelf {
+	// Or you could create a completely new DocumentTabContent for these nodes, see AssemblyChildNodeTabContent.cs
+	sealed class MyDsDocumentNode : DsDocumentNode, IDecompileSelf {
 		//TODO: Use your own guid
 		public static readonly Guid THE_GUID = new Guid("4174A21D-D746-4658-9A44-DB8235EE5186");
 
-		public IDsDocument Document => document;
 		readonly MyDsDocument document;
 
 		public override Guid Guid => THE_GUID;
-		public override NodePathName NodePathName => new NodePathName(Guid, document.Filename.ToUpperInvariant());
 
-		public MyDsDocumentNode(MyDsDocument document) {
+		public MyDsDocumentNode(MyDsDocument document)
+			: base(document) {
 			this.document = document;
 		}
 
 		protected override ImageReference GetIcon(IDotNetImageService dnImgMgr) => DsImages.TextFile;
-		protected override void Write(ITextColorWriter output, IDecompiler decompiler) =>
+		protected override void WriteCore(ITextColorWriter output, IDecompiler decompiler, DocumentNodeWriteOptions options) =>
 			output.WriteFilename(Path.GetFileName(document.Filename));
 
 		public bool Decompile(IDecompileNodeContext context) {
