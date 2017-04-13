@@ -3,7 +3,7 @@
   "version": 1,
   "targets": {
     ".NETFramework,Version=v4.6": {
-      "Microsoft.VisualStudio.CoreUtility/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.CoreUtility/15.0.26105-rc3": {
         "compile": {
           "lib/net45/Microsoft.VisualStudio.CoreUtility.dll": {}
         },
@@ -11,9 +11,9 @@
           "lib/net45/Microsoft.VisualStudio.CoreUtility.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.Data/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.Data/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Data.dll": {}
@@ -22,10 +22,10 @@
           "lib/net45/Microsoft.VisualStudio.Text.Data.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.Logic/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.Logic/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Logic.dll": {}
@@ -34,11 +34,11 @@
           "lib/net45/Microsoft.VisualStudio.Text.Logic.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.UI/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.UI/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.dll": {}
@@ -47,12 +47,12 @@
           "lib/net45/Microsoft.VisualStudio.Text.UI.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.UI.Wpf/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.UI.Wpf/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.UI": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.UI": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.Wpf.dll": {}
@@ -63,7 +63,7 @@
       }
     },
     ".NETFramework,Version=v4.6/win": {
-      "Microsoft.VisualStudio.CoreUtility/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.CoreUtility/15.0.26105-rc3": {
         "compile": {
           "lib/net45/Microsoft.VisualStudio.CoreUtility.dll": {}
         },
@@ -71,9 +71,9 @@
           "lib/net45/Microsoft.VisualStudio.CoreUtility.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.Data/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.Data/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Data.dll": {}
@@ -82,10 +82,10 @@
           "lib/net45/Microsoft.VisualStudio.Text.Data.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.Logic/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.Logic/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.Logic.dll": {}
@@ -94,11 +94,11 @@
           "lib/net45/Microsoft.VisualStudio.Text.Logic.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.UI/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.UI/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.dll": {}
@@ -107,12 +107,12 @@
           "lib/net45/Microsoft.VisualStudio.Text.UI.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Text.UI.Wpf/15.0.25604-preview4": {
+      "Microsoft.VisualStudio.Text.UI.Wpf/15.0.26105-rc3": {
         "dependencies": {
-          "Microsoft.VisualStudio.CoreUtility": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Data": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.Logic": "[15.0.25604-Preview4, )",
-          "Microsoft.VisualStudio.Text.UI": "[15.0.25604-Preview4, )"
+          "Microsoft.VisualStudio.CoreUtility": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Data": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.Logic": "[15.0.26105-RC3, )",
+          "Microsoft.VisualStudio.Text.UI": "[15.0.26105-RC3, )"
         },
         "compile": {
           "lib/net45/Microsoft.VisualStudio.Text.UI.Wpf.dll": {}
@@ -124,60 +124,70 @@
     }
   },
   "libraries": {
-    "Microsoft.VisualStudio.CoreUtility/15.0.25604-preview4": {
-      "sha512": "NLEVjxhfUJ0nBEujNkiElcbvSdOunemtx6Kg6bdqg1w33EqgTbE+oMAUSLB5qh23BDE6uVuuymQQA983hQWWdw==",
-      "type": "package",
+    "Microsoft.VisualStudio.CoreUtility/15.0.26105-rc3": {
+      "sha512": "FK+9kXNm9iHazspyxG9u9kU76sIJyvLQOO9CupArlw9mkxDyzV9geotTmjDVFjXy7ZDOmmEhfqL/98pbm7KQfw==",
+      "type": "Package",
       "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
         "lib/net45/Microsoft.VisualStudio.CoreUtility.dll",
         "lib/net45/microsoft.visualstudio.coreutility.xml",
-        "Microsoft.VisualStudio.CoreUtility.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.CoreUtility.nuspec"
+        "Microsoft.VisualStudio.CoreUtility.nuspec",
+        "package/services/metadata/core-properties/71bbbecdb002458ea470d5b7b31c8449.psmdcp"
       ]
     },
-    "Microsoft.VisualStudio.Text.Data/15.0.25604-preview4": {
-      "sha512": "umfxgw/tm119Skumytof3k01pr/RmsPDB7HR2/mcTDAuLb41d7BHh1PFvtoX6fG2wmAjuLrnPF4CfKJs3UuCfw==",
-      "type": "package",
+    "Microsoft.VisualStudio.Text.Data/15.0.26105-rc3": {
+      "sha512": "rwxiXX5cDeM3H3eAB1yXc6IXHsL6ArY6EDPPweEwLPL7ax81bsZfS8gZHB3eLbxcnvpgSxo6qIHdPRRjgZbXSQ==",
+      "type": "Package",
       "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
         "lib/net45/Microsoft.VisualStudio.Text.Data.dll",
         "lib/net45/microsoft.visualstudio.text.data.xml",
-        "Microsoft.VisualStudio.Text.Data.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.Data.nuspec"
+        "Microsoft.VisualStudio.Text.Data.nuspec",
+        "package/services/metadata/core-properties/807c20980a33427e995e2e7ed4771a71.psmdcp"
       ]
     },
-    "Microsoft.VisualStudio.Text.Logic/15.0.25604-preview4": {
-      "sha512": "KS3pwiDC2YrIxul7wZI+LVCX8qQ0rHblDxcDi9EnFNRYrRTseYZWjcy4iwCtNdctb6Pkq5qUn6C4Xrq8SUXFLg==",
-      "type": "package",
+    "Microsoft.VisualStudio.Text.Logic/15.0.26105-rc3": {
+      "sha512": "R8uHPqxi3APC44v37R8hKVthCMcFxvf8PoWS+zfyx5Nipot8rk/+vG9BtIH1DNsWYNZ0t4Kkkiv69LlmxGWV/A==",
+      "type": "Package",
       "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
         "lib/net45/Microsoft.VisualStudio.Text.Logic.dll",
         "lib/net45/microsoft.visualstudio.text.logic.xml",
-        "Microsoft.VisualStudio.Text.Logic.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.Logic.nuspec"
+        "Microsoft.VisualStudio.Text.Logic.nuspec",
+        "package/services/metadata/core-properties/566a935cd18146caa2e4d3154ac7f56f.psmdcp"
       ]
     },
-    "Microsoft.VisualStudio.Text.UI/15.0.25604-preview4": {
-      "sha512": "hUeRk+ewc3/5CpsrImwkKiUKxatmdXiMyd3tRFpFiCNNRiobULI1V1UZqFbBq/R/MVFTW8auAJYdtyYHEYxRSQ==",
-      "type": "package",
+    "Microsoft.VisualStudio.Text.UI/15.0.26105-rc3": {
+      "sha512": "sl87f05a0Gx8H6RVjXGOme2acUE11PnJjhpOez/SVwKMVgFPlv4OOodVoicU92UVgt/VYZz2jopghNNGIS9dgQ==",
+      "type": "Package",
       "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
         "lib/net45/Microsoft.VisualStudio.Text.UI.dll",
         "lib/net45/microsoft.visualstudio.text.ui.xml",
-        "Microsoft.VisualStudio.Text.UI.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.UI.nuspec"
+        "Microsoft.VisualStudio.Text.UI.nuspec",
+        "package/services/metadata/core-properties/8cdbbbed309c430d84e762e9e268bfba.psmdcp"
       ]
     },
-    "Microsoft.VisualStudio.Text.UI.Wpf/15.0.25604-preview4": {
-      "sha512": "MaxzU/FcktcFM2xxi7UzebOJpUuJmStI8a5jvLi7EWg0aRnpnfC5QGEDLmJPi1LvrFu/kUAznOsdMwKFLlIc4w==",
-      "type": "package",
+    "Microsoft.VisualStudio.Text.UI.Wpf/15.0.26105-rc3": {
+      "sha512": "7tnk+XH4CFOjGioZkHEzNvDwdufFLA8JNs9VJegzuf6yk2I07pFtMr4Mllj2/Am2U6pG0xc1QQup2Bze0y2u5Q==",
+      "type": "Package",
       "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
         "lib/net45/Microsoft.VisualStudio.Text.UI.Wpf.dll",
         "lib/net45/microsoft.visualstudio.text.ui.wpf.xml",
-        "Microsoft.VisualStudio.Text.UI.Wpf.15.0.25604-preview4.nupkg.sha512",
-        "Microsoft.VisualStudio.Text.UI.Wpf.nuspec"
+        "Microsoft.VisualStudio.Text.UI.Wpf.nuspec",
+        "package/services/metadata/core-properties/be8685daadac4daab1fe3f956a20e7e4.psmdcp"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.VisualStudio.Text.UI.Wpf >= 15.0.25604-Preview4"
+      "Microsoft.VisualStudio.Text.UI.Wpf >= 15.0.26105-RC3"
     ],
     ".NETFramework,Version=v4.6": []
   }

@@ -10,12 +10,11 @@ using dnSpy.Contracts.TreeView;
 
 // This file contains classes that create new child nodes of IAssemblyFileNode and IModuleFileNode
 
-namespace Plugin.StringAnalyzer
-{
+namespace Example2.Extension {
 	// This class adds a new child node to all assembly nodes
 	[ExportTreeNodeDataProvider(Guid = DocumentTreeViewConstants.ASSEMBLY_NODE_GUID)]
 	sealed class AssemblyTreeNodeDataProvider : ITreeNodeDataProvider {
-		public IEnumerable<ITreeNodeData> Create(TreeNodeDataProviderContext context) {
+		public IEnumerable<TreeNodeData> Create(TreeNodeDataProviderContext context) {
 			yield return new AssemblyChildNode();
 		}
 	}
@@ -23,12 +22,12 @@ namespace Plugin.StringAnalyzer
 	// This class adds a new child node to all module nodes
 	[ExportTreeNodeDataProvider(Guid = DocumentTreeViewConstants.MODULE_NODE_GUID)]
 	sealed class ModuleTreeNodeDataProvider : ITreeNodeDataProvider {
-		public IEnumerable<ITreeNodeData> Create(TreeNodeDataProviderContext context) {
+		public IEnumerable<TreeNodeData> Create(TreeNodeDataProviderContext context) {
 			yield return new ModuleChildNode();
 		}
 	}
 
-	sealed class AssemblyChildNode : DocumentTreeNodeData { // All file tree nodes should implement IDocumentTreeNodeData or derive from DocumentTreeNodeData
+	sealed class AssemblyChildNode : DocumentTreeNodeData { // All file tree nodes should implement DocumentTreeNodeData or derive from DocumentTreeNodeData
 		//TODO: Use your own guid
 		public static readonly Guid THE_GUID = new Guid("6CF91674-16CE-44EA-B9E8-80B68C327D30");
 
@@ -38,22 +37,22 @@ namespace Plugin.StringAnalyzer
 		// The image must be in an Images folder (in the resources) and have a .png extension
 		protected override ImageReference GetIcon(IDotNetImageService dnImgMgr) => DsImages.EntryPoint;
 
-		protected override void Write(ITextColorWriter output, IDecompiler decompiler) =>
-			output.Write(BoxedTextColor.Text, "Assembly Child");
+        protected override void WriteCore(ITextColorWriter output, IDecompiler decompiler, DocumentNodeWriteOptions options) =>
+            output.Write(BoxedTextColor.Text, "Assembly Child");
 
-		// If you don't want the node to be appended to the children, override this
-		public override ITreeNodeGroup TreeNodeGroup => TreeNodeGroupImpl.Instance;
+        // If you don't want the node to be appended to the children, override this
+        public override ITreeNodeGroup TreeNodeGroup => TreeNodeGroupImpl.Instance;
 
 		sealed class TreeNodeGroupImpl : ITreeNodeGroup {
 			public static readonly TreeNodeGroupImpl Instance = new TreeNodeGroupImpl(1);
 
 			public TreeNodeGroupImpl(double order) {
-				this.Order = order;
+				Order = order;
 			}
 
 			public double Order { get; }
 
-			public int Compare(ITreeNodeData x, ITreeNodeData y) {
+			public int Compare(TreeNodeData x, TreeNodeData y) {
 				if (x == y)
 					return 0;
 				var a = x as AssemblyChildNode;
@@ -67,7 +66,7 @@ namespace Plugin.StringAnalyzer
 	}
 
 	// This class can decompile its own output and implements IDecompileSelf
-	sealed class ModuleChildNode : DocumentTreeNodeData, IDecompileSelf { // All file tree nodes should implement IDocumentTreeNodeData or derive from DocumentTreeNodeData
+	sealed class ModuleChildNode : DocumentTreeNodeData, IDecompileSelf { // All file tree nodes should implement DocumentTreeNodeData or derive from DocumentTreeNodeData
 		//TODO: Use your own guid
 		public static readonly Guid THE_GUID = new Guid("C8892F6C-6A49-4537-AAA0-D0DEF1E87277");
 
@@ -83,7 +82,7 @@ namespace Plugin.StringAnalyzer
 
 		// If TreeNode.LazyLoading is false, CreateChildren() is called after Initialize(), else it's
 		// called when this node gets expanded.
-		public override IEnumerable<ITreeNodeData> CreateChildren() {
+		public override IEnumerable<TreeNodeData> CreateChildren() {
 			// Add some children in random order. They will be sorted because SomeMessageNode
 			// overrides the TreeNodeGroup prop.
 			yield return new SomeMessageNode("ZZZZZZZZZZZZZ");
@@ -94,7 +93,7 @@ namespace Plugin.StringAnalyzer
 		// The image must be in an Images folder (in the resources) and have a .png extension
 		protected override ImageReference GetIcon(IDotNetImageService dnImgMgr) => DsImages.String;
 
-		protected override void Write(ITextColorWriter output, IDecompiler decompiler) {
+		protected override void WriteCore(ITextColorWriter output, IDecompiler decompiler, DocumentNodeWriteOptions options) {
 			output.Write(BoxedTextColor.Text, "Module Child");
 		}
 
@@ -135,12 +134,12 @@ namespace Plugin.StringAnalyzer
 			public static readonly TreeNodeGroupImpl Instance = new TreeNodeGroupImpl(1);
 
 			public TreeNodeGroupImpl(double order) {
-				this.Order = order;
+				Order = order;
 			}
 
 			public double Order { get; }
 
-			public int Compare(ITreeNodeData x, ITreeNodeData y) {
+			public int Compare(TreeNodeData x, TreeNodeData y) {
 				if (x == y)
 					return 0;
 				var a = x as ModuleChildNode;
@@ -160,14 +159,14 @@ namespace Plugin.StringAnalyzer
 		public string Message { get; }
 
 		public SomeMessageNode(string msg) {
-			this.Message = msg;
+			Message = msg;
 		}
 
 		public override Guid Guid => THE_GUID;
 		public override NodePathName NodePathName => new NodePathName(THE_GUID, Message);
 		protected override ImageReference GetIcon(IDotNetImageService dnImgMgr) => DsImages.String;
 
-		protected override void Write(ITextColorWriter output, IDecompiler decompiler) =>
+		protected override void WriteCore(ITextColorWriter output, IDecompiler decompiler, DocumentNodeWriteOptions options) =>
 			output.Write(BoxedTextColor.Comment, Message);
 
 		public override ITreeNodeGroup TreeNodeGroup => TreeNodeGroupImpl.Instance;
@@ -176,12 +175,12 @@ namespace Plugin.StringAnalyzer
 			public static readonly TreeNodeGroupImpl Instance = new TreeNodeGroupImpl(0);
 
 			public TreeNodeGroupImpl(double order) {
-				this.Order = order;
+				Order = order;
 			}
 
 			public double Order { get; }
 
-			public int Compare(ITreeNodeData x, ITreeNodeData y) {
+			public int Compare(TreeNodeData x, TreeNodeData y) {
 				if (x == y)
 					return 0;
 				var a = x as SomeMessageNode;
@@ -197,7 +196,7 @@ namespace Plugin.StringAnalyzer
 	// those nodes.
 	[ExportDecompileNode]
 	sealed class SomeMessageNodeDecompiler : IDecompileNode {
-		public bool Decompile(IDecompileNodeContext context, IDocumentTreeNodeData node) {
+		public bool Decompile(IDecompileNodeContext context, DocumentTreeNodeData node) {
 			var msgNode = node as SomeMessageNode;
 			if (msgNode == null)
 				return false;

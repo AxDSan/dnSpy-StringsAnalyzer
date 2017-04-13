@@ -1,28 +1,42 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using dnlib.DotNet;
 using dnlib.DotNet.Emit;
 
-using static Plugin.StringAnalyzer.ToolWindowVm;
+using static dnSpy.StringsAnalyzer.ToolWindowVm;
+using System.IO;
 
-namespace Plugin.StringAnalyzer
+namespace dnSpy.StringsAnalyzer
 {
-    public partial class ToolWindowControl : UserControl {
-		public ToolWindowControl() {
-			InitializeComponent();
-    }
+    public partial class ToolWindowControl : UserControl
+    {
+        public ToolWindowControl()
+        {
+            InitializeComponent();
+        }
         public static List<MethodDef> Method = new List<MethodDef>();
         public static List<StringAnalyzerData> Items = new List<StringAnalyzerData>();
-        public static string Filename = "dnSpy.StringsAnalyzer.x.dll"; // Demonstration purposes only
+        public static string Assembly = @"DemoAssembly.exe"; // Demo purposes only!
+        public static ListView stringAnalyzer = new ListView();
         // as I'm going to later use the currently inspected assembly from the navigation and not 
         // loading it individually.
         public static int I;
         public static ContextMenu ContextMenu1;
+        internal IInputElement option1TextBox;
 
-        private void button_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
             Items.Clear();
-            var md = ModuleDefMD.Load(Filename);
+            try
+            {
+
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            var md = ModuleDefMD.Load(Assembly);
             foreach (var types in md.Types)
             {
                 foreach (var mdInfo in types.Methods)
@@ -36,9 +50,9 @@ namespace Plugin.StringAnalyzer
                     {
                         var token = mdInfo.MDToken;
 
-                            /*
-                             * Many thanks to Mr.Exodia for helping me out on this part below \(^o^)/~
-                             */
+                        /*
+                         * Many thanks to Mr.Exodia for helping me out on this part below \(^o^)/~
+                         */
 
                         if (!instr.OpCode.Equals(OpCodes.Ldstr)) continue;
                         var formattedOffset = $"IL_{instr.GetOffset():X4}";
@@ -54,10 +68,11 @@ namespace Plugin.StringAnalyzer
                     }
                 }
             }
-            lvStringsAnalyzer.ItemsSource = Items;
+            stringAnalyzer = lvStringsAnalyzer;
+            stringAnalyzer.ItemsSource = Items;
         }
 
-        private void button1_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void button1_Click(object sender, RoutedEventArgs e)
         {
             Items.Clear();
         }

@@ -1,18 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--EXTERNAL_PROPERTIES: MSBuildToolsVersion-->
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B983DE6-DAD6-4426-BFF3-8E1FC1E1FF94}</ProjectGuid>
+    <ProjectGuid>{4613C8A1-28DC-4586-9F9B-D201864CFE1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Plugin.StringAnalyzer</RootNamespace>
+    <RootNamespace>dnSpy.StringsAnalyzer</RootNamespace>
     <AssemblyName>dnSpy.StringsAnalyzer.x</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <Features>strict</Features>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <NoWarn>1685</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,65 +30,49 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
+    <NoWarn>1685</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dnlib, Version=1.6.0.0, Culture=neutral, PublicKeyToken=50e96378b6e77999">
-      <HintPath>D:\DevStuff\Development Projects\dnlib\dnlib\Release\bin\dnlib.dll</HintPath>
+    <Reference Include="dndbg">
+      <HintPath>D:\DevStuff\Development Projects\dnSpy\Extensions\dnSpy.Debugger\dndbg\bin\Release\dndbg.dll</HintPath>
     </Reference>
-    <Reference Include="dnSpy.Contracts.DnSpy">
-      <HintPath>.\dnSpy.Contracts.DnSpy.dll</HintPath>
+    <Reference Include="dnlib, Version=1.6.0.0, Culture=neutral, PublicKeyToken=50e96378b6e77999, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\DevStuff\Development Projects\dnSpy\dnSpy\dnSpy\bin\Release\dnlib.dll</HintPath>
     </Reference>
-    <Reference Include="dnSpy.Contracts.Logic">
-      <HintPath>.\dnSpy.Contracts.Logic.dll</HintPath>
+    <Reference Include="dnSpy.Contracts.DnSpy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9813e10cffb0cdd6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\DevStuff\Development Projects\dnSpy\dnSpy\dnSpy.Contracts.DnSpy\bin\Release\dnSpy.Contracts.DnSpy.dll</HintPath>
+    </Reference>
+    <Reference Include="dnSpy.Contracts.Logic, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9813e10cffb0cdd6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\DevStuff\Development Projects\dnSpy\dnSpy\dnSpy.Contracts.Logic\bin\Release\dnSpy.Contracts.Logic.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.ComponentModel.Composition.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands.cs" />
+    <Compile Include="ContextUtils.cs" />
     <Compile Include="DocumentViewerToolTipProvider.cs" />
-    <Compile Include="MainToolWindowContentProvider.cs" />
+    <Compile Include="ModuleLoader.cs" />
     <Compile Include="NewDsDocument.cs" />
     <Compile Include="OutputTextPane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringAnalyzerContent.cs" />
+    <Compile Include="StringsAnalyzerRoutedCommands.cs" />
     <Compile Include="StringAnalyzer.cs" />
     <Compile Include="ToolWindowContent.cs" />
-    <Compile Include="ToolWindowControl.xaml.cs" />
-    <Compile Include="TreeNodeDataProvider.cs" />
+    <Compile Include="ToolWindowControl.xaml.cs">
+      <DependentUpon>ToolWindowControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\resourcedict.xaml">
@@ -101,12 +84,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,13 +1,13 @@
 ﻿using dnSpy.Contracts.Documents.Tabs.DocViewer.ToolTips;
 using dnSpy.Contracts.Text;
 
-namespace Plugin.StringAnalyzer {
+namespace dnSpy.StringsAnalyzer {
 	// This reference is added to the "decompiled" code by ModuleChildNode.Decompile()
 	sealed class StringInfoReference {
 		public string Message { get; }
 
 		public StringInfoReference(string msg) {
-			this.Message = msg;
+			Message = msg;
 		}
 	}
 
