@@ -21,3 +21,9 @@ on the respective parts of the other plugins, or, unless someone helps me finish
 ---
 
 ### [√] = Done / [-] = Missing
+
+A lot of things have changed, if you want to keep up with the changes or want to see where I'm stuck, what I'm doing, please go check out my Trello: https://trello.com/b/Q2tutu97/dnspy-stringsanalyzer
+
+StringsAnalyzer now display found strings inside a ToolWindow, not the same layout as before, but that layout (the previous one) is the intended one to be used.
+
+More coming soon... stay tuned...
