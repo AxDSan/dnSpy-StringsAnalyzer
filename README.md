@@ -21,6 +21,7 @@ on the respective parts of the other plugins, or, unless someone helps me finish
 ---
 
 ### [√] = Done / [-] = Missing
+---
 
 A lot of things have changed, if you want to keep up with the changes or want to see where I'm stuck, what I'm doing, please go check out my Trello: https://trello.com/b/Q2tutu97/dnspy-stringsanalyzer
 
