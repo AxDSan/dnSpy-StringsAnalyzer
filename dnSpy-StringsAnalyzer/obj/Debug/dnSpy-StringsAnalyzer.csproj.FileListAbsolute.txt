@@ -34,3 +34,24 @@ C:\Users\AxD\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\Example
 C:\Users\AxD\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\Example2.Extension\obj\Debug\dnSpy.StringsAnalyzer.x.g.resources
 C:\Users\AxD\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\Example2.Extension\obj\Debug\dnSpy.StringsAnalyzer.x.dll
 C:\Users\AxD\Documents\Visual Studio 2015\Projects\dnSpy-StringsAnalyzer\Example2.Extension\obj\Debug\dnSpy.StringsAnalyzer.x.pdb
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy-StringsAnalyzer.csproj.AssemblyReference.cache
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy-StringsAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy.StringsAnalyzer.x.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy.StringsAnalyzer.x.pdb
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\dnSpy.StringsAnalyzer.x.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\dnSpy.StringsAnalyzer.x.pdb
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\Microsoft.VisualStudio.CoreUtility.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\Microsoft.VisualStudio.Text.Data.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\Microsoft.VisualStudio.Text.Logic.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\Microsoft.VisualStudio.Text.UI.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\Microsoft.VisualStudio.Text.UI.Wpf.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\dnlib.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\dnSpy.Contracts.DnSpy.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\bin\Debug\dnSpy.Contracts.Logic.dll
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\ToolWindowControl.g.cs
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy.StringsAnalyzer.x_MarkupCompile.cache
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy.StringsAnalyzer.x_MarkupCompile.lref
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\Themes\resourcedict.baml
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\ToolWindowControl.baml
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy.StringsAnalyzer.x.g.resources
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\Debug\dnSpy-StringsAnalyzer.csproj.CopyComplete

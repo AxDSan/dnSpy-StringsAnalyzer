@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj",
+        "projectName": "dnSpy-StringsAnalyzer",
+        "projectPath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj",
+        "projectJsonPath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\project.json",
+        "packagesPath": "C:\\Users\\0x90\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\obj\\",
+        "projectStyle": "ProjectJson",
+        "configFilePaths": [
+          "C:\\Users\\0x90\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        }
+      },
+      "dependencies": {
+        "Microsoft.VisualStudio.Text.UI.Wpf": "[17.10.191, )"
+      },
+      "frameworks": {
+        "net48": {}
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

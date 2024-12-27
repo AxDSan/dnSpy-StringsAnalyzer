@@ -17,7 +17,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListView Name="lvStringsAnalyzer" Margin="118,7,5,5" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Width="Auto" Background="#FF252525" BorderBrush="#FF395D9E" Foreground="White">
+        <ListView x:Name="lvStringsAnalyzer" Margin="118,7,5,5" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Width="Auto" Background="#FF252525" BorderBrush="#FF395D9E" Foreground="White">
             <ListView.Resources>
                 <ContextMenu x:Key="ItemContextMenu">
                     <MenuItem Header="More Info" Command="{Binding Path=DataContext.MoreInfo, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}}" Background="WhiteSmoke" Icon="{DynamicResource {x:Static SystemParameters.HighContrastKey}}" />

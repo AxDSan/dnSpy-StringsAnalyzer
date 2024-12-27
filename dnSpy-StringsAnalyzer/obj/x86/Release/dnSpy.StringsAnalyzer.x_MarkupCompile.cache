@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\AxD\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\x86\Release\
-Plugin.StringAnalyzer
+C:\Users\0x90\Documents\GitHub\dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer\obj\x86\Release\
+dnSpy.StringsAnalyzer
 none
 false
-TRACE
 
-278683897
 
-92132980803
-22-174718361
+2-218807235
+
+13304501774
+31-101959368
 Themes\resourcedict.xaml;ToolWindowControl.xaml;
 
-False
+True
 
