@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dnSpy.StringsAnalyzer</RootNamespace>
     <AssemblyName>dnSpy.StringsAnalyzer.x</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Features>strict</Features>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,21 +33,21 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>1685</NoWarn>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="dndbg">
-      <HintPath>D:\DevStuff\Development Projects\dnSpy\Extensions\dnSpy.Debugger\dndbg\bin\Release\dndbg.dll</HintPath>
-    </Reference>
     <Reference Include="dnlib, Version=1.6.0.0, Culture=neutral, PublicKeyToken=50e96378b6e77999, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DevStuff\Development Projects\dnSpy\dnSpy\dnSpy\bin\Release\dnlib.dll</HintPath>
+      <HintPath>..\dnlib.dll</HintPath>
     </Reference>
     <Reference Include="dnSpy.Contracts.DnSpy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9813e10cffb0cdd6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DevStuff\Development Projects\dnSpy\dnSpy\dnSpy.Contracts.DnSpy\bin\Release\dnSpy.Contracts.DnSpy.dll</HintPath>
+      <HintPath>..\dnSpy.Contracts.DnSpy.dll</HintPath>
     </Reference>
     <Reference Include="dnSpy.Contracts.Logic, Version=3.0.1.0, Culture=neutral, PublicKeyToken=9813e10cffb0cdd6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DevStuff\Development Projects\dnSpy\dnSpy\dnSpy.Contracts.Logic\bin\Release\dnSpy.Contracts.Logic.dll</HintPath>
+      <HintPath>..\dnSpy.Contracts.Logic.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -72,6 +73,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

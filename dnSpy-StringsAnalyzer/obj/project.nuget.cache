@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "dgSpecHash": "G1xnDEyRVYmdrRCzMNCExa8qBHC/tBHmO3nd7yFkP1WxTu7cIJ21I0detfZl05k52qSt5NbZ6IUpEx8rCJCzHg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\project.json",
+  "expectedPackageFiles": [
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.coreutility\\17.10.191\\microsoft.visualstudio.coreutility.17.10.191.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.imaging.interop.14.0.designtime\\17.10.40152\\microsoft.visualstudio.imaging.interop.14.0.designtime.17.10.40152.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.text.data\\17.10.191\\microsoft.visualstudio.text.data.17.10.191.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.text.logic\\17.10.191\\microsoft.visualstudio.text.logic.17.10.191.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.text.ui\\17.10.191\\microsoft.visualstudio.text.ui.17.10.191.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.text.ui.wpf\\17.10.191\\microsoft.visualstudio.text.ui.wpf.17.10.191.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.threading\\17.10.41\\microsoft.visualstudio.threading.17.10.41.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.threading.analyzers\\17.10.41\\microsoft.visualstudio.threading.analyzers.17.10.41.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.validation\\17.8.8\\microsoft.visualstudio.validation.17.8.8.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.componentmodel.composition\\8.0.0\\system.componentmodel.composition.8.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj",
+      "message": "Microsoft.VisualStudio.Text.UI.Wpf 17.10.191 depends on Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime (>= 17.10.39546) but Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime 17.10.39546 was not found. An approximate best match of Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime 17.10.40152 was resolved.",
+      "libraryId": "Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime",
+      "targetGraphs": [
+        ".NETFramework,Version=v4.8",
+        ".NETFramework,Version=v4.8/win"
+      ]
+    }
+  ]
+}
