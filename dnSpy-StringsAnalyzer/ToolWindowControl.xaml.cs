@@ -40,22 +40,21 @@ namespace dnSpy.StringsAnalyzer
             Items.Clear();
             try
             {
+                // Get all loaded documents from dnSpy
                 var documents = documentService.GetDocuments();
                 if (documents.Length == 0)
                 {
-                    MessageBox.Show("No documents loaded.");
+                    MessageBox.Show("No assemblies loaded. Please open an assembly first.");
                     return;
                 }
 
-                // Assuming the first document is the active one, or you might need to implement logic to determine the active document
-                var document = documents[0];
-                if (document?.ModuleDef == null)
+                // Process each loaded document
+                foreach (var document in documents)
                 {
-                    MessageBox.Show("No module loaded in the document.");
-                    return;
-                }
+                    if (document?.ModuleDef == null)
+                        continue;
 
-                var md = document.ModuleDef;
+                    var md = document.ModuleDef;
                 foreach (var types in md.Types)
                 {
                     foreach (var mdInfo in types.Methods)
@@ -82,7 +81,15 @@ namespace dnSpy.StringsAnalyzer
                         }
                     }
                 }
-                stringAnalyzer.ItemsSource = Items;
+                
+                if (Items.Count == 0)
+                {
+                    MessageBox.Show("No strings found in loaded assemblies.");
+                }
+                else
+                {
+                    stringAnalyzer.ItemsSource = Items;
+                }
             }
             catch (System.Exception ex)
             {
