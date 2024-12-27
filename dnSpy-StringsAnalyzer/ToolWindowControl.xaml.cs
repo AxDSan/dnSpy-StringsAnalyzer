@@ -55,29 +55,30 @@ namespace dnSpy.StringsAnalyzer
                         continue;
 
                     var md = document.ModuleDef;
-                foreach (var types in md.Types)
-                {
-                    foreach (var mdInfo in types.Methods)
+                    foreach (var types in md.Types)
                     {
-                        I++;
-                        if (!mdInfo.HasBody) continue;
-                        var instructions = mdInfo.Body.Instructions;
-
-                        foreach (var instr in instructions)
+                        foreach (var mdInfo in types.Methods)
                         {
-                            var token = mdInfo.MDToken;
+                            I++;
+                            if (!mdInfo.HasBody) continue;
+                            var instructions = mdInfo.Body.Instructions;
 
-                            if (!instr.OpCode.Equals(OpCodes.Ldstr)) continue;
-                            var formattedOffset = $"IL_{instr.GetOffset():X4}";
-
-                            Items.Add(new StringAnalyzerData()
+                            foreach (var instr in instructions)
                             {
-                                StringValue = instr.GetOperand().ToString(),
-                                IlOffset = formattedOffset,
-                                MdToken = $"0x{token.ToString().Remove(0, 1):x}",
-                                MdName = mdInfo.Name,
-                                FullmdName = mdInfo.FullName,
-                            });
+                                var token = mdInfo.MDToken;
+
+                                if (!instr.OpCode.Equals(OpCodes.Ldstr)) continue;
+                                var formattedOffset = $"IL_{instr.GetOffset():X4}";
+
+                                Items.Add(new StringAnalyzerData()
+                                {
+                                    StringValue = instr.GetOperand().ToString(),
+                                    IlOffset = formattedOffset,
+                                    MdToken = $"0x{token.ToString().Remove(0, 1):x}",
+                                    MdName = mdInfo.Name,
+                                    FullmdName = mdInfo.FullName,
+                                });
+                            }
                         }
                     }
                 }
