@@ -1,30 +1,48 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dnSpy-StringsAnalyzer", "dnSpy-StringsAnalyzer\dnSpy-StringsAnalyzer.csproj", "{4613C8A1-28DC-4586-9F9B-D201864CFE1A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{90721A47-53D1-49A1-9E6F-05022EA58849} = {90721A47-53D1-49A1-9E6F-05022EA58849}
+		{D5FEE476-AFC3-4CB8-B004-DB40A4746551} = {D5FEE476-AFC3-4CB8-B004-DB40A4746551}
+		{FF00A83F-226C-471A-AB8C-167A987F4FC6} = {FF00A83F-226C-471A-AB8C-167A987F4FC6}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnSpy.Contracts.Debugger", "dnSpy\dnSpy\dnSpy.Contracts.Debugger\dnSpy.Contracts.Debugger.csproj", "{FF00A83F-226C-471A-AB8C-167A987F4FC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnSpy.Contracts.DnSpy", "dnSpy\dnSpy\dnSpy.Contracts.DnSpy\dnSpy.Contracts.DnSpy.csproj", "{90721A47-53D1-49A1-9E6F-05022EA58849}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dnSpy.Decompiler", "dnSpy\dnSpy\dnSpy.Decompiler\dnSpy.Decompiler.csproj", "{D5FEE476-AFC3-4CB8-B004-DB40A4746551}"
 EndProject
 Global
-GlobalSection(SolutionConfigurationPlatforms) = preSolution
-Debug|Any CPU = Debug|Any CPU
-Debug|x86 = Debug|x86
-Release|Any CPU = Release|Any CPU
-Release|x86 = Release|x86
-EndGlobalSection
-GlobalSection(ProjectConfigurationPlatforms) = postSolution
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Debug|x86.ActiveCfg = Debug|x86
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Debug|x86.Build.0 = Debug|x86
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Release|Any CPU.Build.0 = Release|Any CPU
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Release|x86.ActiveCfg = Release|x86
-{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Release|x86.Build.0 = Release|x86
-EndGlobalSection
-GlobalSection(SolutionProperties) = preSolution
-HideSolutionNode = FALSE
-EndGlobalSection
-GlobalSection(ExtensibilityGlobals) = postSolution
-SolutionGuid = {BEE478D1-C9A4-4B97-866B-AF130D78F5A5}
-EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4613C8A1-28DC-4586-9F9B-D201864CFE1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF00A83F-226C-471A-AB8C-167A987F4FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF00A83F-226C-471A-AB8C-167A987F4FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF00A83F-226C-471A-AB8C-167A987F4FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF00A83F-226C-471A-AB8C-167A987F4FC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90721A47-53D1-49A1-9E6F-05022EA58849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90721A47-53D1-49A1-9E6F-05022EA58849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90721A47-53D1-49A1-9E6F-05022EA58849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90721A47-53D1-49A1-9E6F-05022EA58849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FEE476-AFC3-4CB8-B004-DB40A4746551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FEE476-AFC3-4CB8-B004-DB40A4746551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FEE476-AFC3-4CB8-B004-DB40A4746551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FEE476-AFC3-4CB8-B004-DB40A4746551}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02D1C631-D300-4C8D-942F-3981ECF00925}
+	EndGlobalSection
 EndGlobal
