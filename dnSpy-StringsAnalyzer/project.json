@@ -1,11 +1,12 @@
 ﻿{
   "dependencies": {
-    "Microsoft.VisualStudio.Text.UI.Wpf": "17.10.191"
+    "Microsoft.VisualStudio.Text.UI.Wpf": "15.0.26201"
   },
   "frameworks": {
     "net48": {}
   },
   "runtimes": {
-    "win": {}
+    "win": {},
+    "win-x86": {}
   }
 }
