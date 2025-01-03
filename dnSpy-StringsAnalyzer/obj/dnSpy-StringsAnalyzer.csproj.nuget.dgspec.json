@@ -13,6 +13,7 @@
         "packagesPath": "C:\\Users\\0x90\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\obj\\",
         "projectStyle": "ProjectJson",
+        "validateRuntimeAssets": true,
         "configFilePaths": [
           "C:\\Users\\0x90\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -20,16 +21,24 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
         }
       },
       "dependencies": {
-        "Microsoft.VisualStudio.Text.UI.Wpf": "[17.10.191, )"
+        "Microsoft.VisualStudio.Text.UI.Wpf": "[15.0.26201, )"
       },
       "frameworks": {
         "net48": {}
       },
       "runtimes": {
         "win": {
+          "#import": []
+        },
+        "win-x86": {
           "#import": []
         }
       }
