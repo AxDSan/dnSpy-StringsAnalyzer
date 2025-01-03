@@ -1,0 +1,353 @@
+<!--
+    Copyright (C) 2014-2019 de4dot@gmail.com
+
+    This file is part of dnSpy
+
+    dnSpy is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    dnSpy is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with dnSpy.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<UserControl x:Class="dnSpy.Text.Editor.Search.SearchControl"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             KeyboardNavigation.TabNavigation="Cycle"
+             Name="searchControl"
+             Cursor="Arrow">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Style TargetType="{x:Type ToggleButton}" x:Key="ToggleReplaceStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid SnapsToDevicePixels="False" Background="Transparent">
+                            <Path Name="arrow" Data="M1,1.5 L4.5,5 L8,1.5" Stroke="{DynamicResource EnvironmentDropDownGlyph}" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" SnapsToDevicePixels="False" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="arrow" Property="Data" Value="M1,4.5L4.5,1 8,4.5" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="arrow" Value="{DynamicResource SearchControlMouseOverDropDownButtonGlyph}" Property="Stroke" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter TargetName="arrow" Value="{DynamicResource SearchControlMouseOverDropDownButtonGlyph}" Property="Stroke" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CloseButtonStyle"
+           TargetType="{x:Type ButtonBase}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource EnvironmentDropDownGlyph}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ButtonBase}">
+                        <Border
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter
+                                RecognizesAccessKey="True"
+                                Margin="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource EnvironmentDropDownMouseOverGlyph}" />
+                    <Setter Property="Background" Value="{DynamicResource EnvironmentCommandBarMouseOverBackground}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource EnvironmentDropDownMouseDownGlyph}" />
+                    <Setter Property="Background" Value="{DynamicResource EnvironmentCommandBarMouseDownBackground}" />
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource EnvironmentCommandBarMouseOverBackground}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource EnvironmentComboBoxDisabledBackground}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SearchTextBoxStyle"
+               TargetType="{x:Type TextBoxBase}"
+               BasedOn="{x:Null}">
+            <Setter Property="Background" Value="{DynamicResource CommonControlsTextBoxBackground}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxBorder}" />
+            <Setter Property="Foreground" Value="{DynamicResource CommonControlsTextBoxText}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true" />
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="TextBox.TextWrapping" Value="NoWrap" />
+            <Setter Property="CaretBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=Foreground}" />
+            <Setter Property="SelectionBrush" Value="{DynamicResource CommonControlsTextBoxSelection}" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border
+                            Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                            <ScrollViewer
+                                Name="PART_ContentHost"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="{DynamicResource CommonControlsTextBoxBackgroundDisabled}" />
+                                <Setter Property="Foreground" Value="{DynamicResource CommonControlsTextBoxTextDisabled}" />
+                                <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxBorderDisabled}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Value="{DynamicResource CommonControlsTextBoxMouseOverBorder}" Property="BorderBrush" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource CommonControlsTextBoxBackgroundFocused}" />
+                                <Setter Property="Foreground" Value="{DynamicResource CommonControlsTextBoxTextFocused}" />
+                                <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxBorderFocused}" />
+                            </Trigger>
+                            <DataTrigger Binding="{Binding Path=FoundMatch}" Value="False">
+                                <Setter Property="Background" Value="{DynamicResource CommonControlsTextBoxErrorBackground}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource CommonControlsTextBoxErrorForeground}"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource CommonControlsTextBoxErrorBackground}" />
+                                <Setter TargetName="border" Value="{DynamicResource CommonControlsTextBoxBorderError}" Property="BorderBrush" />
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource EnvironmentCommandBar}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ToggleButton Grid.Row="0" Grid.Column="0" Margin="4 4 0 0" Width="21" Height="21" Command="{Binding ToggleFindReplaceCommand}" IsChecked="{Binding IsReplaceMode, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" ToolTip="{Binding ToggleReplaceModeToolTip}" Focusable="True" FocusVisualStyle="{x:Null}" Style="{StaticResource ToggleReplaceStyle}" />
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="4 4 0 0" Orientation="Horizontal">
+            <TextBox Width="200" Margin="0 0 4 0" Name="searchStringTextBox" Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource SearchTextBoxStyle}" />
+            <Button Margin="0 0 4 0" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Command="{Binding FindPreviousCommand}" ToolTip="{Binding FindPreviousToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M 14.000,3.000 L 9.000,3.000 L 12.000,0.000 L 5.000,0.000 L 0.000,5.000 L 5.000,10.000 L 12.000,10.000 L 9.000,7.000 L 14.000,7.000 L 14.000,3.000 Z" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M 13.000,4.000 L 6.000,4.000 L 9.000,1.000 L 6.000,1.000 L 2.000,5.000 L 6.000,9.000 L 9.000,9.000 L 6.000,6.000 L 13.000,6.000 L 13.000,4.000 Z" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button Margin="0 0 4 0" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Command="{Binding FindNextCommand}" ToolTip="{Binding FindNextToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M 0.000,7.000 L 5.000,7.000 L 2.000,10.000 L 9.000,10.000 L 14.000,5.000 L 9.000,0.000 L 2.000,0.000 L 5.000,3.000 L 0.000,3.000 L 0.000,7.000 Z" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M 1.000,6.000 L 8.000,6.000 L 5.000,9.000 L 8.000,9.000 L 12.000,5.000 L 8.000,1.000 L 5.000,1.000 L 8.000,4.000 L 1.000,4.000 L 1.000,6.000 Z" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button Margin="0 0 4 0" Width="18" Height="18" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Center" Command="{Binding CloseSearchUICommand}" ToolTip="{Binding CloseToolTip}" Focusable="False" SnapsToDevicePixels="True" FocusVisualStyle="{x:Null}" Style="{StaticResource CloseButtonStyle}">
+                <Path Width="10" Height="8" Stretch="Uniform" Data="F1 M0,0 L2,0 L5,3 L8,0 L10,0 L6,4 L10,8 L8,8 L5,5 L2,8 L0,8 L4,4 L0,0" Fill="{Binding Path=(TextElement.Foreground),RelativeSource={RelativeSource Self}}"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="4 4 0 0" Orientation="Horizontal" Visibility="{Binding ShowReplaceRow, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBox Width="200" Margin="0 0 4 0" Name="replaceStringTextBox" Text="{Binding ReplaceString, ValidatesOnDataErrors=True, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding CanReplace}" VerticalAlignment="Stretch" />
+            <Button Margin="0 0 4 0" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Command="{Binding ReplaceNextCommand}" ToolTip="{Binding ReplaceNextToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M6,5 L6,4 L8,4 L8,8 L4.91,8 L6,6.91 L6,5 M11,2 L11,0 L8,0 L8,1 L4.47,1 C3.1,1 1.97,2.12 1.97,3.5 L1.97,3.56 L1,2.58 L1,6.91 L2.08,8 L0,8 L0,16 L9,16 L9,8 L14,8 L14,2 L11,2" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M12,6 L10,6 L10,4 L12,4 L12,6 M10,3 L10,1 L9,1 L9,6 L9,7 L10,7 L12,7 L13,7 L13,4 L13,3 L10,3" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M3,10 L6,10 L6,11 L4,11 L4,13 L6,13 L6,14 L3,14 L3,10 M1,15 L8,15 L8,9 L1,9 L1,15" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconActionFill}" Geometry="F1 M2.97,3.5 L3,6 L2,5 L2,6.5 L3.5,8 L5,6.5 L5,5 L4,6 L3.97,3.5 C3.97,3.22 4.2,3 4.47,3 L8,3 L8,2 L4.47,2 C3.65,2 2.97,2.67 2.97,3.5" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </Button>
+            <Button Margin="0 0 4 0" Focusable="False" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Command="{Binding ReplaceAllCommand}" ToolTip="{Binding ReplaceAllToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M6.97,4 L6.97,6 L5,6 L5,4 L6.97,4 M15.97,1 L13.97,1 L13.97,0 L10.97,0 L10.97,1 L8,1 L6.97,1 L3.5,1 C2.12,1 1,2.12 1,3.5 L1,3.58 L0,2.58 L0,6.91 L1.08,8 L0,8 L0,16 L12,16 L12,14 L13.97,14 L13.97,7 L15.97,7 L15.97,1" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M13.97,5 L12.97,5 L12.97,3 L13.97,3 L13.97,5 M12.97,2 L12.97,1 L11.97,1 L11.97,6 L14.97,6 L14.97,2 L12.97,2" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M10.97,2 L7.97,2 L7.97,3 L8.97,3 L8.97,4 L9.97,4 L9.97,5 L8.97,5 L8.97,4 L7.97,4 L7.97,6 L10.97,6 L10.97,2" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M4.97,8 L11.97,8 L11.97,13 L12.97,13 L12.97,8 L12.97,7 L4.97,7 L4.97,8" />
+                                                <DrawingGroup>
+                                                    <DrawingGroup.Children>
+                                                        <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M3.97,13 L3.97,12 L2.97,12 L2.97,13 L3.97,13" />
+                                                        <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M9.97,11 L7.97,11 L7.97,13 L9.97,13 L9.97,14 L6.97,14 L6.97,10 L9.97,10 L9.97,11 M4.97,14 L1.97,14 L1.97,12 L2.97,12 L2.97,11 L1.97,11 L1.97,10 L4.97,10 L4.97,14 M1,9 L1,15 L11,15 L11,9 L1,9" />
+                                                    </DrawingGroup.Children>
+                                                </DrawingGroup>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconActionFill}" Geometry="F1 M4,6.5 L4,5 L3,6 L3,3.5 C3,3.22 3.22,3 3.5,3 L7,3 L7,2 L3.5,2 C2.67,2 2,2.67 2,3.5 L2,6 L1,5 L1,6.5 L2.5,8 L4,6.5" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="4 4 0 0" Orientation="Horizontal" Visibility="{Binding ShowOptionsRow, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <CheckBox Margin="0 0 4 0" Focusable="True" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" FocusVisualStyle="{x:Null}" IsChecked="{Binding MatchCase}" ToolTip="{Binding MatchCaseToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M15.8,5.97 C15.66,5.55 15.44,5.19 15.15,4.88 C14.85,4.58 14.48,4.35 14.05,4.2 C13.66,4.07 13.2,4 12.69,4 C12.44,4 12.18,4.02 11.91,4.06 C11.67,4.1 11.43,4.15 11.21,4.2 C10.98,4.26 10.77,4.33 10.57,4.4 C10.35,4.49 10.17,4.58 10.04,4.66 L9.58,4.95 L9.58,7.53 C9.4,7.75 9.26,8.01 9.16,8.29 C9.16,8.29 9.16,8.3 9.15,8.31 L6.38,0 L3.61,0 L0,10.83 L0,12 L3.22,12 L3.88,10 L6.11,10 L6.77,12 L10.38,12 L10.24,11.58 C10.4,11.67 10.57,11.75 10.75,11.81 C11.09,11.93 11.47,12 11.89,12 C12.16,12 12.42,11.97 12.67,11.91 L12.67,12 L16,12 L16,7.23 C16,6.76 15.93,6.34 15.8,5.97" />
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M3.66,7.5 L5,3.5 L6.33,7.5 L3.66,7.5 M4.33,1 L1,11 L2.5,11 L3.16,9 L6.83,9 L7.5,11 L9,11 L5.66,1 L4.33,1" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M13.68,8.59 C13.68,8.78 13.65,8.96 13.58,9.13 C13.52,9.3 13.42,9.44 13.3,9.57 C13.18,9.69 13.04,9.79 12.87,9.86 C12.7,9.94 12.51,9.97 12.3,9.97 C12.15,9.97 12.02,9.95 11.89,9.91 C11.77,9.87 11.67,9.81 11.58,9.74 C11.5,9.67 11.43,9.59 11.39,9.49 C11.34,9.39 11.32,9.28 11.32,9.16 C11.32,9.03 11.33,8.92 11.36,8.82 C11.39,8.72 11.45,8.63 11.53,8.55 C11.61,8.47 11.72,8.41 11.85,8.35 C12,8.3 12.18,8.26 12.4,8.24 L13.68,8.07 L13.68,8.59 M14.85,6.29 C14.76,6.01 14.62,5.78 14.43,5.59 C14.25,5.39 14.01,5.25 13.72,5.15 C13.43,5.05 13.09,5 12.69,5 C12.49,5 12.28,5.01 12.07,5.05 C11.86,5.08 11.65,5.12 11.46,5.17 C11.27,5.22 11.09,5.28 10.94,5.34 C10.78,5.4 10.66,5.45 10.58,5.5 L10.58,6.64 C10.85,6.45 11.15,6.3 11.5,6.18 C11.84,6.06 12.19,6.01 12.55,6.01 C12.91,6.01 13.19,6.1 13.39,6.28 C13.58,6.47 13.68,6.77 13.68,7.17 L11.94,7.4 C11.6,7.44 11.3,7.52 11.06,7.63 C10.81,7.74 10.61,7.88 10.45,8.04 C10.29,8.21 10.18,8.4 10.1,8.61 C10.03,8.82 10,9.05 10,9.3 C10,9.55 10.04,9.78 10.12,9.98 C10.2,10.19 10.33,10.37 10.48,10.52 C10.64,10.67 10.84,10.79 11.08,10.87 C11.31,10.95 11.58,11 11.89,11 C12.27,11 12.61,10.92 12.91,10.76 C13.2,10.6 13.45,10.37 13.65,10.07 L13.67,10.07 L13.67,11 L15,11 L15,7.23 C15,6.88 14.95,6.56 14.85,6.29" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </CheckBox>
+            <CheckBox Margin="0 0 4 0" Focusable="True" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" FocusVisualStyle="{x:Null}" IsChecked="{Binding MatchWholeWords}" ToolTip="{Binding MatchWholeWordToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M12.03,5 L10,5 L10,3 L12.04,3 L12.03,5 M7,6.83 L5.72,3 L7,3 L7,6.83 M3.05,10 L3.38,9 L4.61,9 L4.94,10 L3.05,10 M15,0.01 L0,0 L0,3 L2.28,3 L0,9.83 L0,11 L0,12 L0,13 L15,12.98 L15,0.01" />
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M11,7 L11,9 L9,9 L9,7 L11,7 M8,3 L8,10 L12,10 L12,6 L9,6 L9,3 L8,3" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M13,10 L14,10 L14,3 L13.04,3 L13,10" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M4,4 L5,7 L3,7 L4,4 M5.33,8 L6,10 L7,10 L4.66,3 L3.33,3 L1,10 L2,10 L2.66,8 L5.33,8" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M1,1 L1,2 L14,2 L14,1 L1,1" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M1,12 L14,12 L14,11 L1,11 L1,12" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </CheckBox>
+            <CheckBox Margin="0 0 4 0" Focusable="True" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" FocusVisualStyle="{x:Null}" IsChecked="{Binding UseRegularExpressions}" ToolTip="{Binding UseRegularExpressionsToolTip}">
+                <Image Width="17" Height="17" Stretch="None">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralStroke}" Geometry="F1 M14.34,5.7 L12.94,1.79 L10.81,2.68 L11.09,0 L6.9,0 L7.18,2.68 L5.05,1.79 L3.65,5.7 L6.06,6.11 L5.33,6.99 L0,6.99 L0,12.99 L6,12.99 L6,9.22 L7.78,10.45 L9,8.22 L10.24,10.45 L13.58,8.11 L11.95,6.11 L14.34,5.7" />
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M13,4.91 L12.35,3.11 L9.64,4.25 L9.98,1 L8.01,1 L8.35,4.25 L5.64,3.11 L5,4.91 L7.93,5.41 L5.86,7.91 L7.44,9 L8.99,6.16 L10.58,9 L12.13,7.91 L10.09,5.41 L13,4.91" />
+                                                <GeometryDrawing Brush="{DynamicResource EnvironmentIconGeneralFill}" Geometry="F1 M1,11.99 L5,11.99 L5,7.99 L1,7.99 L1,11.99" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+            </CheckBox>
+        </StackPanel>
+        <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Height="4" Margin="0 4 0 0">
+            <Rectangle.Style>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Style.Setters>
+                        <Setter Property="Fill" Value="{DynamicResource EnvironmentFileTabSelectedBorder}" />
+                    </Style.Setters>
+                    <Style.Triggers>
+                        <DataTrigger Value="False" Binding="{Binding Path=IsKeyboardFocusWithin, ElementName=searchControl}">
+                            <Setter Property="Fill" Value="{DynamicResource EnvironmentFileTabInactiveBorder}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Rectangle.Style>
+        </Rectangle>
+    </Grid>
+</UserControl>

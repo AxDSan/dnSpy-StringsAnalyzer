@@ -1,0 +1,22 @@
+<Project>
+	<UsingTask AssemblyFile="$(MSBuildThisFileDirectory)..\compiled\ConvertToNetstandardReferences.dll" TaskName="ConvertToNetstandardReferences.ConvertToNetstandardReferences" />
+	<Target Name="ConvertToNetstandardReferences" AfterTargets="ResolveAssemblyReferences">
+		<ConvertToNetstandardReferences ReferencePath="@(ReferencePath)" DestinationDirectory="$(IntermediateOutputPath)ConvertToNetstandardReferences">
+			<Output ItemName="_ConvertToNetstandardReferences_OutputReferencePath" TaskParameter="OutputReferencePath" />
+		</ConvertToNetstandardReferences>
+		<ItemGroup>
+			<ReferencePath Remove="@(ReferencePath)" />
+			<ReferencePath Include="@(_ConvertToNetstandardReferences_OutputReferencePath)" />
+		</ItemGroup>
+	</Target>
+	<!-- https://github.com/dotnet/project-system/blob/master/docs/design-time-builds.md#targets-that-run-during-design-time-builds -->
+	<Target Name="ConvertToNetstandardReferencesDesignTime" AfterTargets="ResolveAssemblyReferencesDesignTime">
+		<ConvertToNetstandardReferences ReferencePath="@(ReferencePath)" DestinationDirectory="$(IntermediateOutputPath)ConvertToNetstandardReferences">
+			<Output ItemName="_ConvertToNetstandardReferences_OutputReferencePathDesignTime" TaskParameter="OutputReferencePath" />
+		</ConvertToNetstandardReferences>
+		<ItemGroup>
+			<ReferencePath Remove="@(ReferencePath)" />
+			<ReferencePath Include="@(_ConvertToNetstandardReferences_OutputReferencePathDesignTime)" />
+		</ItemGroup>
+	</Target>
+</Project>

@@ -1,0 +1,105 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <Import Project="..\..\DnSpyCommon.props" />
+
+  <PropertyGroup>
+    <Copyright>$(DnSpyAssemblyCopyright)</Copyright>
+    <Version>$(DnSpyAssemblyVersion)</Version>
+    <InformationalVersion>$(DnSpyAssemblyInformationalVersion)</InformationalVersion>
+
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\dnSpy.snk</AssemblyOriginatorKeyFile>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+
+    <RuntimeIdentifiers>$(DnSpyRuntimeIdentifiers)</RuntimeIdentifiers>
+    <OutputType>WinExe</OutputType>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ApplicationIcon>Images\dnSpy.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MainApp\DevBuildWarning.cs" />
+    <None Include="MainApp\DevBuildWarning.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dnSpy.Contracts.Debugger.DotNet\dnSpy.Contracts.Debugger.DotNet.csproj" />
+    <ProjectReference Include="..\dnSpy.Contracts.Debugger\dnSpy.Contracts.Debugger.csproj" />
+    <ProjectReference Include="..\dnSpy.Contracts.DnSpy\dnSpy.Contracts.DnSpy.csproj" />
+    <ProjectReference Include="..\dnSpy.Contracts.Logic\dnSpy.Contracts.Logic.csproj" />
+    <ProjectReference Include="..\dnSpy.Images\dnSpy.Images.csproj" />
+    <ProjectReference Include="..\Roslyn\dnSpy.Roslyn.CSharp.EditorFeatures\dnSpy.Roslyn.CSharp.EditorFeatures.csproj" />
+    <ProjectReference Include="..\Roslyn\dnSpy.Roslyn.EditorFeatures\dnSpy.Roslyn.EditorFeatures.csproj" />
+    <ProjectReference Include="..\Roslyn\dnSpy.Roslyn\dnSpy.Roslyn.csproj" />
+    <ProjectReference Include="..\dnSpy.Decompiler\dnSpy.Decompiler.csproj" />
+    <ProjectReference Include="..\..\Libraries\ICSharpCode.TreeView\ICSharpCode.TreeView.csproj" />
+    <ProjectReference Include="..\Roslyn\dnSpy.Roslyn.VisualBasic.EditorFeatures\dnSpy.Roslyn.VisualBasic.EditorFeatures.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\dnSpy.ico" />
+    <EmbeddedResource Include="LicenseInfo\CREDITS.txt" />
+    <None Remove="app.config" Condition=" '$(IsDotNetFramework)' != 'true' " />
+    <None Include="app.manifest" />
+    <None Include="Themes\*.dntheme">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="FileLists\*.FileList.xml;LicenseInfo\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\dnSpy.Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dnSpy.Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\dnSpy.Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>dnSpy.Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(HasCOMReference)' == 'true' ">
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(IsDotNetFramework)' == 'true' ">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Iced" Version="$(IcedVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Composition" Version="$(MSVSCompositionVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Language.Intellisense" Version="$(MSVSIntellisenseVersion)" />
+    <!-- Self contained .NET apps already ship with this DLL (not necessarily the same version, though) -->
+    <PackageReference Include="Microsoft.DiaSymReader.Native" Version="$(DiaSymReaderVersion)" Condition=" '$(IsSelfContainedDotNet)' != 'true' " />
+    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="$(MSVSTextVersion)" />
+    <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJsonVersion)" />
+  </ItemGroup>
+
+</Project>

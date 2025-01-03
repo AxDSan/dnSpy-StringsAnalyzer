@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\DnSpyRoslyn.props" />
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator</AssemblyName>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\..\..\dnSpy.snk</AssemblyOriginatorKeyFile>
+    <MakeEverythingPublicAssemblies>Microsoft.CodeAnalysis;Microsoft.CodeAnalysis.CSharp</MakeEverythingPublicAssemblies>
+    <MakeEverythingPublicIVTString>$(AssemblyName)</MakeEverythingPublicIVTString>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\..\Build\MakeEverythingPublic\MakeEverythingPublic.tasks" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ExpressionCompiler\ExpressionCompiler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="CSharpLanguageInstructionDecoder.cs" />
+    <None Include="CSharpLanguageInstructionDecoder.cs" />
+    <Compile Remove="CSharpExpressionCompiler.cs" />
+    <None Include="CSharpExpressionCompiler.cs" />
+    <Compile Remove="CSharpFrameDecoder.cs" />
+    <None Include="CSharpFrameDecoder.cs" />
+    <Compile Remove="CSharpInstructionDecoder.cs" />
+    <None Include="CSharpInstructionDecoder.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="$(RoslynVersion)" />
+  </ItemGroup>
+
+</Project>

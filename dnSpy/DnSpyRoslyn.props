@@ -1,0 +1,9 @@
+<Project>
+
+  <Import Project="DnSpyCommon.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net6.0-windows</TargetFrameworks>
+  </PropertyGroup>
+
+</Project>

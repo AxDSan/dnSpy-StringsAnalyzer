@@ -1,0 +1,35 @@
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:System="clr-namespace:System;assembly=mscorlib"
+         Width="16 " Height="16">
+  <Rectangle Width="16 " Height="16">
+    <FrameworkElement.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0"/>
+      <SolidColorBrush x:Key="light-red-10" Color="#c50b17" Opacity="0.1"/>
+      <SolidColorBrush x:Key="light-red" Color="#c50b17" Opacity="1"/>
+      <SolidColorBrush x:Key="light-yellow" Color="#996f00" Opacity="1"/>
+      <SolidColorBrush x:Key="white" Color="#ffffff" Opacity="1"/>
+    </FrameworkElement.Resources>
+    <Shape.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1 M 16,16 L 0,16 0,0 16,0 Z"/>
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-red-10}"
+                               Geometry="F1 M 6.726,13.8 L 0.929,8 8,0.929 15.071,8 13.788,9.283 12.53,7 10.47,7 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-red}"
+                               Geometry="F1 M 6.474,14.253 L 0.574,8.353 0.574,7.646 7.646,0.575 8.354,0.575 15.425,7.646 15.425,8.354 14.039,9.739 13.539,8.827 14.364,8 8,1.636 1.636,8 6.977,13.341 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-yellow}"
+                               Geometry="F1 M 15.5,16 L 7.5,16 7.061,15.261 11.061,8 11.939,8 15.939,15.261 Z"/>
+              <GeometryDrawing Brush="{DynamicResource white}"
+                               Geometry="F1 M 12,13 L 11,13 11,10 12,10 M 12.25,14.5 A 0.75,0.75 0 1 1 11.5,13.75 0.75,0.75 0 0 1 12.25,14.5 Z"/>
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Shape.Fill>
+  </Rectangle>
+</Viewbox>

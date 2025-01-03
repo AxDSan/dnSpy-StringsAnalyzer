@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\DnSpyRoslyn.props" />
+
+  <PropertyGroup>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\dnSpy.snk</AssemblyOriginatorKeyFile>
+    <MakeEverythingPublicAssemblies>Microsoft.CodeAnalysis.Features;Microsoft.CodeAnalysis.Workspaces</MakeEverythingPublicAssemblies>
+    <MakeEverythingPublicIVTString>$(AssemblyName)</MakeEverythingPublicIVTString>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\Build\MakeEverythingPublic\MakeEverythingPublic.tasks" />
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Composition" Version="$(SCCompositionVersion)" Condition=" '$(IsDotNetFramework)' == 'true' " />
+    <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="$(RoslynVersion)" />
+  </ItemGroup>
+
+</Project>

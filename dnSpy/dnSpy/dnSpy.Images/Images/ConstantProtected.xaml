@@ -1,0 +1,35 @@
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:System="clr-namespace:System;assembly=mscorlib"
+         Width="16 " Height="16">
+  <Rectangle Width="16 " Height="16">
+    <FrameworkElement.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0"/>
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1"/>
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1"/>
+      <SolidColorBrush x:Key="light-blue" Color="#005dba" Opacity="1"/>
+    </FrameworkElement.Resources>
+    <Shape.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1 M 16,16 L 0,16 0,0 16,0 Z"/>
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}"
+                               Geometry="F1 M 7,11.5 L 2.5,11.5 2.5,3.5 11.5,3.5 11.5,7.459 10.971,7.459 9.922,9.573 7.588,9.913 7.073,11.5 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}"
+                               Geometry="F1 M 6.981,12 L 2.5,12 2,11.5 2,3.5 2.5,3 11.5,3 12,3.5 12,7.459 11,7.459 11,4 3,4 3,11 7.236,11 6.929,11.949 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-blue}" Geometry="F1 M 9,7 L 5,7 5,6 9,6 M 9,8 L 5,8 5,9 9,9 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}"
+                               Geometry="F1 M 13.844,13.07 L 14.27,15.558 12.036,14.383 9.8,15.558 10.227,13.07 8.42,11.308 10.92,10.945 12.038,8.681 13.155,10.945 15.655,11.308 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}"
+                               Geometry="F1 M 16,11.666 L 15.724,10.813 13.485,10.487 12.485,8.459 11.585,8.459 10.585,10.487 8.347,10.813 8.07,11.666 9.69,13.244 9.308,15.473 10.033,16 12.033,14.947 14.033,16 14.759,15.473 14.376,13.244 M 13.606,14.644 L 12.269,13.944 11.8,13.944 10.461,14.644 10.717,13.154 10.572,12.711 9.494,11.656 10.994,11.439 11.37,11.166 12.04,9.81 12.709,11.166 13.085,11.439 14.585,11.656 13.5,12.711 13.356,13.154 Z"/>
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Shape.Fill>
+  </Rectangle>
+</Viewbox>

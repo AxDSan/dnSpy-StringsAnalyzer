@@ -1,0 +1,7 @@
+.vs/
+bin/
+obj/
+*.user
+_ReSharper*/
+*.ReSharper
+*_wpftmp.csproj
