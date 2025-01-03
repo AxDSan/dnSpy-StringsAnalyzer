@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <Import Project="..\..\..\DnSpyCommon.props" />
+
+  <PropertyGroup>
+    <Copyright>$(DnSpyAssemblyCopyright)</Copyright>
+    <Version>$(DnSpyAssemblyVersion)</Version>
+    <InformationalVersion>$(DnSpyAssemblyInformationalVersion)</InformationalVersion>
+
+    <AssemblyName>dnSpy.Debugger.DotNet.CorDebug.x</AssemblyName>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\dnSpy.snk</AssemblyOriginatorKeyFile>
+    <OutputPath>..\..\..\dnSpy\dnSpy\bin\$(Configuration)\</OutputPath>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\dnSpy.Debugger.DotNet\Metadata\KnownMemberNames.cs" Link="Metadata\KnownMemberNames.cs" />
+    <Compile Include="..\dnSpy.Debugger\Shared\Dispatcher.cs" Link="Shared\Dispatcher.cs" />
+    <Compile Include="..\dnSpy.Debugger\Shared\FileUtilities.cs" Link="Shared\FileUtilities.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\dnSpy.Debugger.DotNet.CorDebug.Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dnSpy.Debugger.DotNet.CorDebug.Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\dnSpy.Debugger.DotNet.CorDebug.Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>dnSpy.Debugger.DotNet.CorDebug.Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\dnSpy\dnSpy.Contracts.Debugger.DotNet.CorDebug\dnSpy.Contracts.Debugger.DotNet.CorDebug.csproj" />
+    <ProjectReference Include="..\..\..\dnSpy\dnSpy.Contracts.Debugger.DotNet\dnSpy.Contracts.Debugger.DotNet.csproj" />
+    <ProjectReference Include="..\..\..\dnSpy\dnSpy.Contracts.Debugger\dnSpy.Contracts.Debugger.csproj" />
+    <ProjectReference Include="..\..\..\dnSpy\dnSpy.Contracts.DnSpy\dnSpy.Contracts.DnSpy.csproj" />
+    <ProjectReference Include="..\..\..\dnSpy\dnSpy.Contracts.Logic\dnSpy.Contracts.Logic.csproj" />
+    <ProjectReference Include="..\dnSpy.Debugger.DotNet.Metadata\dnSpy.Debugger.DotNet.Metadata.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetDebugFilesX86 Include="..\netcorefiles\x86\**" />
+    <DotNetDebugFilesX64 Include="..\netcorefiles\x64\**" />
+  </ItemGroup>
+
+  <Target Name="CopyDotNetDebugFiles_AfterBuild" AfterTargets="AfterBuild" Condition=" '$(IsDotNetFramework)' == 'true' ">
+    <Copy SourceFiles="@(DotNetDebugFilesX86)" DestinationFolder="$(TargetDir)debug\core\x86" />
+    <Copy SourceFiles="@(DotNetDebugFilesX64)" DestinationFolder="$(TargetDir)debug\core\x64" />
+  </Target>
+
+  <Target Name="CopyDotNetDebugFiles_Publish" AfterTargets="Publish" Condition=" '$(IsDotNetFramework)' == 'true' ">
+    <Copy SourceFiles="@(DotNetDebugFilesX86)" DestinationFolder="$(PublishDir)debug\core\x86" />
+    <Copy SourceFiles="@(DotNetDebugFilesX64)" DestinationFolder="$(PublishDir)debug\core\x64" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Iced" Version="$(IcedVersion)" />
+    <PackageReference Include="Microsoft.Diagnostics.Runtime" Version="$(MSDiagRuntimeVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="$(MSVSTextVersion)" />
+  </ItemGroup>
+
+</Project>

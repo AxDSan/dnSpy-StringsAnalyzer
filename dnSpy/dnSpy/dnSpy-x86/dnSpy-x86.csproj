@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\DnSpyCommon.props" />
+
+  <PropertyGroup>
+    <Copyright>$(DnSpyAssemblyCopyright)</Copyright>
+    <Version>$(DnSpyAssemblyVersion)</Version>
+    <InformationalVersion>$(DnSpyAssemblyInformationalVersion)</InformationalVersion>
+
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\dnSpy.snk</AssemblyOriginatorKeyFile>
+    <Nullable>enable</Nullable>
+    <OutputPath Condition=" '$(IsDotNetFramework)' == 'true' ">..\dnSpy\bin\$(Configuration)\</OutputPath>
+
+    <RuntimeIdentifiers>$(DnSpyRuntimeIdentifiers)</RuntimeIdentifiers>
+    <OutputType>WinExe</OutputType>
+    <Prefer32Bit>true</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ApplicationIcon>..\dnSpy\Images\dnSpy-x86.ico</ApplicationIcon>
+    <ApplicationManifest>..\dnSpy\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\dnSpy\app.config" Condition=" '$(IsDotNetFramework)' == 'true' " >
+      <Link>app.config</Link>
+    </None>
+    <None Include="..\dnSpy\app.manifest">
+      <Link>app.manifest</Link>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dnSpy\dnSpy.csproj" />
+  </ItemGroup>
+
+</Project>

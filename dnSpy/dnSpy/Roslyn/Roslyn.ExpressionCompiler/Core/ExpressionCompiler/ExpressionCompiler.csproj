@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\DnSpyRoslyn.props" />
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.CodeAnalysis.ExpressionEvaluator</AssemblyName>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\..\..\dnSpy.snk</AssemblyOriginatorKeyFile>
+    <MakeEverythingPublicAssemblies>Microsoft.CodeAnalysis</MakeEverythingPublicAssemblies>
+    <MakeEverythingPublicIVTString>$(AssemblyName)</MakeEverythingPublicIVTString>
+    <DefineConstants>$(DefineConstants);EXPRESSIONCOMPILER</DefineConstants>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\..\Build\MakeEverythingPublic\MakeEverythingPublic.tasks" />
+
+  <ItemGroup Label="Linked Files">
+    <Compile Include="..\..\Test\PdbUtilities\Shared\DateTimeUtilities.cs" Link="Shared\DateTimeUtilities.cs" />
+    <Compile Remove="FrameDecoder.cs" />
+    <None Include="FrameDecoder.cs" />
+    <Compile Remove="InstructionDecoder.cs" />
+    <None Include="InstructionDecoder.cs" />
+    <Compile Remove="LanguageInstructionDecoder.cs" />
+    <None Include="LanguageInstructionDecoder.cs" />
+    <Compile Remove="PDB\PdbHelpers.cs" />
+    <None Include="PDB\PdbHelpers.cs" />
+    <Compile Remove="ExpressionEvaluatorFatalError.cs" />
+    <None Include="ExpressionEvaluatorFatalError.cs" />
+    <Compile Remove="ExpressionCompiler.cs" />
+    <None Include="ExpressionCompiler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\WindowsProxy.winmd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="$(RoslynVersion)" />
+  </ItemGroup>
+
+</Project>

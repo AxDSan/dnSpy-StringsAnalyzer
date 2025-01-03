@@ -1,0 +1,44 @@
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:System="clr-namespace:System;assembly=mscorlib"
+         Width="16 " Height="16">
+  <Rectangle Width="16 " Height="16">
+    <FrameworkElement.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0"/>
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1"/>
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1"/>
+      <SolidColorBrush x:Key="white" Color="#ffffff" Opacity="1"/>
+      <System:Double x:Key="cls-1135a6d1e-d95b-5d43-b900-351aaf2edb93">0.75</System:Double>
+      <SolidColorBrush x:Key="cls-2135a6d1e-d95b-5d43-b900-351aaf2edb93" Opacity="1"/>
+    </FrameworkElement.Resources>
+    <Shape.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1 M 16,16 L 0,16 0,0 16,0 Z"/>
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <DrawingGroup Opacity="{DynamicResource cls-1135a6d1e-d95b-5d43-b900-351aaf2edb93}">
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}"
+                                 Geometry="F1 M 14.5,5.5 L 14.5,13.5 1.5,13.5 1.5,8 6.914,8 8,6.914 8,5.5 Z"/>
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey}"
+                                 Geometry="F1 M 15,5.5 L 15,13.5 14.5,14 1.5,14 1,13.5 1,8 2,8 2,13 14,13 14,6 8,6 8,5 14.5,5 Z"/>
+              </DrawingGroup>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1 M 14.5,2.5 L 14.5,5.5 8,5.5 8,2.5 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}"
+                               Geometry="F1 M 15,2.5 L 15,5.5 14.5,6 8,6 8,5 14,5 14,3 8,3 8,2 14.5,2 Z"/>
+              <GeometryDrawing Brush="{DynamicResource cls-2135a6d1e-d95b-5d43-b900-351aaf2edb93}"
+                               Geometry="F1 M 16,16 L 0,16 0,0 16,0 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1 M 6.5,6.5 L 0.5,6.5 0.5,0.5 6.5,0.5 Z"/>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}"
+                               Geometry="F1 M 6.5,7 L 0.5,7 0,6.5 0,0.5 0.5,0 6.5,0 7,0.5 7,6.5 Z"/>
+              <GeometryDrawing Brush="{DynamicResource white}"
+                               Geometry="F1 M 4.561,5.268 L 3.5,4.207 2.439,5.268 1.732,4.561 2.793,3.5 1.732,2.439 2.439,1.732 3.5,2.793 4.561,1.732 5.268,2.439 4.207,3.5 5.268,4.561 Z"/>
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Shape.Fill>
+  </Rectangle>
+</Viewbox>

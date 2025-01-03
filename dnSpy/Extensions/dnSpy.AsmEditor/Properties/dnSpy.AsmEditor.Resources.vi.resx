@@ -1,0 +1,2315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppendObject" xml:space="preserve">
+    <value>Nối Object</value>
+  </data>
+  <data name="AppendType" xml:space="preserve">
+    <value>Nối loại</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_DisableJITCompileOpt" xml:space="preserve">
+    <value>_Tắt trình biên dịch tối ưu hóa JIT</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_EnableJITCompTrck" xml:space="preserve">
+    <value>Bật theo dõi quá trình đóng gói _JIT</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_ProcessArchSpec" xml:space="preserve">
+    <value>Chỉ rõ Chip Type</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_PublicKey" xml:space="preserve">
+    <value>Public Key</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_Retargetable" xml:space="preserve">
+    <value>_Retargetable</value>
+  </data>
+  <data name="AssemblyDlg_Main_ContentType" xml:space="preserve">
+    <value>Content _Type</value>
+  </data>
+  <data name="AssemblyDlg_Main_Culture" xml:space="preserve">
+    <value>C_ulture</value>
+  </data>
+  <data name="AssemblyDlg_Main_DotNetVersion" xml:space="preserve">
+    <value>.NET _Version</value>
+  </data>
+  <data name="AssemblyDlg_Main_HashAlgorithm" xml:space="preserve">
+    <value>_Hash Algorithm</value>
+  </data>
+  <data name="AssemblyDlg_Main_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="AssemblyDlg_Main_ProcessorArch" xml:space="preserve">
+    <value>Proce_ssor Arch</value>
+  </data>
+  <data name="AssemblyDlg_Main_PublicKey" xml:space="preserve">
+    <value>_Public Key</value>
+  </data>
+  <data name="AssemblyDlg_Main_Version" xml:space="preserve">
+    <value>_Phiên bản</value>
+  </data>
+  <data name="Button_Add" xml:space="preserve">
+    <value>_Thêm</value>
+  </data>
+  <data name="Button_Add2" xml:space="preserve">
+    <value>_Thêm...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>_Hủy bỏ</value>
+  </data>
+  <data name="Button_Delete" xml:space="preserve">
+    <value>_Delete</value>
+  </data>
+  <data name="Button_Edit" xml:space="preserve">
+    <value>_Chỉnh sửa...</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>_Đồng ý</value>
+  </data>
+  <data name="Button_Remove" xml:space="preserve">
+    <value>_Loại bỏ</value>
+  </data>
+  <data name="Button_RestoreSettings" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="CA_NA_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="CA_NA_PropertyFieldTypeToolTip" xml:space="preserve">
+    <value>Property/Field Type</value>
+  </data>
+  <data name="ClearCharacter" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="ClearCharacter_ToolTip" xml:space="preserve">
+    <value>Clear Objects</value>
+  </data>
+  <data name="ClearTypesCharacter" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="ClearTypesCharacter_ToolTip" xml:space="preserve">
+    <value>Xóa các Type</value>
+  </data>
+  <data name="ConstantDlg_Constant" xml:space="preserve">
+    <value>Constant</value>
+  </data>
+  <data name="ConstructorArguments" xml:space="preserve">
+    <value>Constructor Arguments</value>
+  </data>
+  <data name="CopyAsTextCommand" xml:space="preserve">
+    <value>Sao chép như Te_xt</value>
+  </data>
+  <data name="CopyCommand" xml:space="preserve">
+    <value>Cop_y</value>
+  </data>
+  <data name="CopyILBytesCommand" xml:space="preserve">
+    <value>Copy byte IL</value>
+  </data>
+  <data name="CopyILBytesKey" xml:space="preserve">
+    <value>Ctrl+B</value>
+  </data>
+  <data name="CouldNotResolveType" xml:space="preserve">
+    <value>Không thể tìm Type. Hãy chắc chắn rằng Assembly đã được tải.</value>
+  </data>
+  <data name="CreateAssemblyCommand" xml:space="preserve">
+    <value>Tạo Assembly...</value>
+  </data>
+  <data name="CreateAssemblyCommand2" xml:space="preserve">
+    <value>Tạo Assembly</value>
+  </data>
+  <data name="CreateConstant_Title" xml:space="preserve">
+    <value>Tạo Constant</value>
+  </data>
+  <data name="CreateCustomAttribute" xml:space="preserve">
+    <value>Tạo Attribute tùy chỉnh</value>
+  </data>
+  <data name="CreateEventCommand" xml:space="preserve">
+    <value>Tạo Event...</value>
+  </data>
+  <data name="CreateEventCommand2" xml:space="preserve">
+    <value>Tạo Event</value>
+  </data>
+  <data name="CreateFieldCommand" xml:space="preserve">
+    <value>Tạo Field...</value>
+  </data>
+  <data name="CreateFieldCommand2" xml:space="preserve">
+    <value>Tạo Field</value>
+  </data>
+  <data name="CreateFieldTypeSig" xml:space="preserve">
+    <value>Tạo Field TypeSig</value>
+  </data>
+  <data name="CreateFnPtrMethodSignature" xml:space="preserve">
+    <value>Tạo chữ ký Method FnPtr</value>
+  </data>
+  <data name="CreateGenericInstanceTypeArguments" xml:space="preserve">
+    <value>Tạo đối số Generic Instance Type</value>
+  </data>
+  <data name="CreateGenericParameter" xml:space="preserve">
+    <value>Tạo Generic Parameter</value>
+  </data>
+  <data name="CreateGenericParameterConstraint" xml:space="preserve">
+    <value>Tạo Generic Parameter Constraint</value>
+  </data>
+  <data name="CreateMethodOverride" xml:space="preserve">
+    <value>Tạo Method Override</value>
+  </data>
+  <data name="CreateMethodSignature" xml:space="preserve">
+    <value>Tạo Method Signature</value>
+  </data>
+  <data name="CreateParameter" xml:space="preserve">
+    <value>Tạo Parameter</value>
+  </data>
+  <data name="CreatePropertySignature" xml:space="preserve">
+    <value>Tạo Property Signature</value>
+  </data>
+  <data name="CreateReturnType" xml:space="preserve">
+    <value>Tạo Return Type</value>
+  </data>
+  <data name="CreateSecurityAttribute" xml:space="preserve">
+    <value>Tạo thuộc tính Security</value>
+  </data>
+  <data name="CreateSecurityDeclaration" xml:space="preserve">
+    <value>Tạo khai báo Security</value>
+  </data>
+  <data name="CreateType" xml:space="preserve">
+    <value>Tạo một Type</value>
+  </data>
+  <data name="CreateTypeSig" xml:space="preserve">
+    <value>Tạo TypeSig</value>
+  </data>
+  <data name="CreateTypeSpec" xml:space="preserve">
+    <value>Tạo TypeSpec</value>
+  </data>
+  <data name="Create_N_TypeSigs" xml:space="preserve">
+    <value>Tạo {0} TypeSigs</value>
+  </data>
+  <data name="Create_TypeSig" xml:space="preserve">
+    <value>Tạo một TypeSig</value>
+  </data>
+  <data name="Create_TypeSigs" xml:space="preserve">
+    <value>Tạo các TypeSigs</value>
+  </data>
+  <data name="Create_TypeSigs_N_Left" xml:space="preserve">
+    <value>còn {0} TypeSigs</value>
+  </data>
+  <data name="Create_TypeSigs_OneLeft" xml:space="preserve">
+    <value>Còn một TypeSig</value>
+  </data>
+  <data name="CustomAttributesTab" xml:space="preserve">
+    <value>Tuỳ chỉnh Attrs</value>
+  </data>
+  <data name="CutCommand" xml:space="preserve">
+    <value>Cu_t</value>
+  </data>
+  <data name="DeleteCommandKey" xml:space="preserve">
+    <value>Del</value>
+    <comment>The delete key</comment>
+  </data>
+  <data name="DeleteEventCommand" xml:space="preserve">
+    <value>Xóa Event</value>
+  </data>
+  <data name="DeleteEvents" xml:space="preserve">
+    <value>Đã xóa {0} events</value>
+  </data>
+  <data name="DeleteFieldCommand" xml:space="preserve">
+    <value>Xóa Field</value>
+  </data>
+  <data name="DeleteFieldsCommand" xml:space="preserve">
+    <value>Đã xóa {0} fields</value>
+  </data>
+  <data name="DeleteX" xml:space="preserve">
+    <value>Xóa {0}</value>
+  </data>
+  <data name="DisableMMapIOCommand" xml:space="preserve">
+    <value>Vô hiệu hóa Memory Mapped I/O</value>
+  </data>
+  <data name="EditAssemblyCommand" xml:space="preserve">
+    <value>Chỉnh sửa Assembly...</value>
+  </data>
+  <data name="EditAssemblyCommand2" xml:space="preserve">
+    <value>Chỉnh sửa Assembly</value>
+  </data>
+  <data name="EditCustomAttribute" xml:space="preserve">
+    <value>Sửa thuộc tính tùy chỉnh</value>
+  </data>
+  <data name="EditEventCommand" xml:space="preserve">
+    <value>Chỉnh sửa Event...</value>
+  </data>
+  <data name="EditEventCommand2" xml:space="preserve">
+    <value>Chỉnh sửa Event</value>
+  </data>
+  <data name="EditFieldCommand" xml:space="preserve">
+    <value>Chỉnh sửa Field...</value>
+  </data>
+  <data name="EditFieldCommand2" xml:space="preserve">
+    <value>Chỉnh sửa Field</value>
+  </data>
+  <data name="EditGenericParameter" xml:space="preserve">
+    <value>Chỉnh sửa Generic Parameter</value>
+  </data>
+  <data name="EditGenericParameterConstraint" xml:space="preserve">
+    <value>Chỉnh sửa Generic Parameter Constraint</value>
+  </data>
+  <data name="EditMemberRef" xml:space="preserve">
+    <value>Chỉnh sửa MemberRef</value>
+  </data>
+  <data name="EditMethodOverride" xml:space="preserve">
+    <value>Chỉnh sửa Method Override</value>
+  </data>
+  <data name="EditMethodSpec" xml:space="preserve">
+    <value>Chỉnh sửa MethodSpec</value>
+  </data>
+  <data name="EditParamDef" xml:space="preserve">
+    <value>Chỉnh sửa ParamDef</value>
+  </data>
+  <data name="EditParameter" xml:space="preserve">
+    <value>Chỉnh sửa Parameter</value>
+  </data>
+  <data name="EditSecurityAttribute" xml:space="preserve">
+    <value>Chỉnh sửa thuộc tính bảo mật</value>
+  </data>
+  <data name="EditSecurityDeclaration" xml:space="preserve">
+    <value>Chỉnh sửa bảo mật Declaration</value>
+  </data>
+  <data name="EnumType" xml:space="preserve">
+    <value>Enum: {0}</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>&lt; Lỗi &gt;</value>
+  </data>
+  <data name="EventType" xml:space="preserve">
+    <value>Loại sự kiện: {0}</value>
+  </data>
+  <data name="Event_ClearCharacter" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="Event_ClearCharacter_ToolTip" xml:space="preserve">
+    <value>Sửa thành Null</value>
+  </data>
+  <data name="Event_InvokeMethod" xml:space="preserve">
+    <value>_Invoke...</value>
+  </data>
+  <data name="Event_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="Event_RemoveMethod" xml:space="preserve">
+    <value>_Loại bỏ...</value>
+  </data>
+  <data name="FieldType" xml:space="preserve">
+    <value>Loại Field: {0}</value>
+  </data>
+  <data name="Field_Access" xml:space="preserve">
+    <value>_Access</value>
+  </data>
+  <data name="Field_DefaultValueInfo" xml:space="preserve">
+    <value>Giá trị mặc định cho Field này</value>
+  </data>
+  <data name="Field_Flags" xml:space="preserve">
+    <value>Flags</value>
+  </data>
+  <data name="Field_InitialValue" xml:space="preserve">
+    <value>Giá trị ban đầu</value>
+  </data>
+  <data name="Field_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="Field_Offset" xml:space="preserve">
+    <value>O_ffset</value>
+  </data>
+  <data name="Field_RVA" xml:space="preserve">
+    <value>_RVA</value>
+  </data>
+  <data name="GenericParameterNumber" xml:space="preserve">
+    <value>gparam({0})</value>
+  </data>
+  <data name="GP_Class" xml:space="preserve">
+    <value>C_lass</value>
+  </data>
+  <data name="GP_Constraints" xml:space="preserve">
+    <value>Constraints</value>
+  </data>
+  <data name="GP_DefaultConstructor" xml:space="preserve">
+    <value>Ctor mặc định</value>
+  </data>
+  <data name="GP_Kind" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="GP_Kind_ToolTip" xml:space="preserve">
+    <value>Chỉ được sử dụng nếu phiên bản tiêu đề MD là 1.1 (0x0101). Không phải là 1.1 nên bỏ qua loại</value>
+  </data>
+  <data name="GP_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="GP_Number" xml:space="preserve">
+    <value>S_ố</value>
+  </data>
+  <data name="GP_Struct" xml:space="preserve">
+    <value>_Cấu trúc</value>
+  </data>
+  <data name="GP_Variance" xml:space="preserve">
+    <value>_Variance</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_32BitPref" xml:space="preserve">
+    <value>Ưu tiên 32-bit</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_32BitReqd" xml:space="preserve">
+    <value>Yêu cầu 32-bit</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_ILLibrary" xml:space="preserve">
+    <value>Thư viện IL</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_IL_Only" xml:space="preserve">
+    <value>Chỉ IL</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_NativeEntryPoint" xml:space="preserve">
+    <value>Native EntryPoint</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_StrongNameSigned" xml:space="preserve">
+    <value>Chữ ký định danh</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_TrackDebugData" xml:space="preserve">
+    <value>Theo dõi dữ liệu gỡ rối</value>
+  </data>
+  <data name="HexNode_Cor20_Header" xml:space="preserve">
+    <value>Tiêu đề Cor20</value>
+  </data>
+  <data name="HexNode_DOSHeader" xml:space="preserve">
+    <value>Tiêu đề DOS</value>
+  </data>
+  <data name="HexNode_FileHeader" xml:space="preserve">
+    <value>Tiêu đề tệp tin</value>
+  </data>
+  <data name="HexNode_OptHeader32" xml:space="preserve">
+    <value>Optional Header (32-bit)</value>
+  </data>
+  <data name="HexNode_OptHeader64" xml:space="preserve">
+    <value>Optional Header (32-bit)</value>
+  </data>
+  <data name="ImplMapTab" xml:space="preserve">
+    <value>ImplMap</value>
+  </data>
+  <data name="ImplMap_Enable" xml:space="preserve">
+    <value>_Cho phép</value>
+  </data>
+  <data name="ImplMap_Module" xml:space="preserve">
+    <value>Mo_dule</value>
+  </data>
+  <data name="ImplMap_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="MainTab" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="MarshalType" xml:space="preserve">
+    <value>Marshal Type: {0}</value>
+  </data>
+  <data name="MarshalTypeTab" xml:space="preserve">
+    <value>Marshal Type</value>
+  </data>
+  <data name="MarshalType_Array" xml:space="preserve">
+    <value>_Array</value>
+  </data>
+  <data name="MarshalType_ByRef" xml:space="preserve">
+    <value>_ByRef</value>
+  </data>
+  <data name="MarshalType_Cookie" xml:space="preserve">
+    <value>Coo_kie</value>
+  </data>
+  <data name="MarshalType_Data" xml:space="preserve">
+    <value>_Dữ liệu</value>
+  </data>
+  <data name="MarshalType_ElemType" xml:space="preserve">
+    <value>Elem_Type</value>
+  </data>
+  <data name="MarshalType_Enable" xml:space="preserve">
+    <value>_Enable</value>
+  </data>
+  <data name="MarshalType_EnumNotInitialized" xml:space="preserve">
+    <value>&lt;Không khởi tạo&gt;</value>
+  </data>
+  <data name="MarshalType_Flags" xml:space="preserve">
+    <value>_Flags</value>
+  </data>
+  <data name="MarshalType_GUID" xml:space="preserve">
+    <value>_GUID</value>
+  </data>
+  <data name="MarshalType_NativeType" xml:space="preserve">
+    <value>_NativeType</value>
+  </data>
+  <data name="MarshalType_Nothing" xml:space="preserve">
+    <value>không có gì</value>
+  </data>
+  <data name="MarshalType_NumElems" xml:space="preserve">
+    <value>_NumElems</value>
+  </data>
+  <data name="MarshalType_ParamIndex" xml:space="preserve">
+    <value>ParamIndex</value>
+  </data>
+  <data name="MarshalType_ParamIndex2" xml:space="preserve">
+    <value>_ParamIndex</value>
+  </data>
+  <data name="MarshalType_ParamNum" xml:space="preserve">
+    <value>_ParamNum</value>
+  </data>
+  <data name="MarshalType_Reserved" xml:space="preserve">
+    <value>Reverse</value>
+  </data>
+  <data name="MarshalType_Size" xml:space="preserve">
+    <value>_Kích thước</value>
+  </data>
+  <data name="MarshalType_Vector" xml:space="preserve">
+    <value>Vec_tor</value>
+  </data>
+  <data name="MarshalType_VT" xml:space="preserve">
+    <value>_VT</value>
+  </data>
+  <data name="MemberRef_Class" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="MemberRef_ClassTab" xml:space="preserve">
+    <value>Class</value>
+  </data>
+  <data name="MemberRef_FieldSigTab" xml:space="preserve">
+    <value>FieldSig</value>
+  </data>
+  <data name="MemberRef_InitFromField" xml:space="preserve">
+    <value>Khởi tạo từ Field...</value>
+  </data>
+  <data name="MemberRef_InitFromMethod" xml:space="preserve">
+    <value>Khởi tạo từ Method...</value>
+  </data>
+  <data name="MemberRef_MethodDef" xml:space="preserve">
+    <value>_MethodDef</value>
+  </data>
+  <data name="MemberRef_MethodDef_ToolTip" xml:space="preserve">
+    <value>Khởi tạo Class từ MethodDef</value>
+  </data>
+  <data name="MemberRef_MethodSigTab" xml:space="preserve">
+    <value>MethodSig</value>
+  </data>
+  <data name="MemberRef_ModuleRef" xml:space="preserve">
+    <value>Mo_duleRef</value>
+  </data>
+  <data name="MemberRef_ModuleRef_ToolTip" xml:space="preserve">
+    <value>Khởi tạo Class từ ModuleRef</value>
+  </data>
+  <data name="MemberRef_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="MemberRef_Type" xml:space="preserve">
+    <value>_Type</value>
+  </data>
+  <data name="MemberRef_TypeSpec" xml:space="preserve">
+    <value>Type_Spec</value>
+  </data>
+  <data name="MemberRef_TypeSpec_ToolTip" xml:space="preserve">
+    <value>Khởi tạo lớp từ TypeSpec</value>
+  </data>
+  <data name="MemberRef_Type_ToolTip" xml:space="preserve">
+    <value>Khởi tạo Class từ Type</value>
+  </data>
+  <data name="MethodCantBeNull" xml:space="preserve">
+    <value>Method không thể Null</value>
+  </data>
+  <data name="MethodInstantiationTypesTab" xml:space="preserve">
+    <value>Các Method Types cụ thể</value>
+  </data>
+  <data name="MethodSig_CallingConv" xml:space="preserve">
+    <value>Ca_lling Conv</value>
+  </data>
+  <data name="MethodSig_MethodParameterTypes" xml:space="preserve">
+    <value>Các Method Parameter Types</value>
+  </data>
+  <data name="MethodSig_MethodVarArgParameterTypes" xml:space="preserve">
+    <value>Các Method VarArg Parameter Types</value>
+  </data>
+  <data name="MethodSig_NumGenerics" xml:space="preserve">
+    <value># Generic_s</value>
+  </data>
+  <data name="MethodSig_ReturnType" xml:space="preserve">
+    <value>Kiể_u trả về...</value>
+  </data>
+  <data name="MethodSpec_Method" xml:space="preserve">
+    <value>_Method</value>
+  </data>
+  <data name="MethodsTab" xml:space="preserve">
+    <value>Các Methods</value>
+  </data>
+  <data name="MoveDownCommand" xml:space="preserve">
+    <value>Di chuyển _xuống</value>
+  </data>
+  <data name="MoveDown_ToolTip" xml:space="preserve">
+    <value>Di chuyển xuống</value>
+  </data>
+  <data name="MoveUpCommand" xml:space="preserve">
+    <value>Di chuyển _lên</value>
+  </data>
+  <data name="MoveUp_ToolTip" xml:space="preserve">
+    <value>Di chuyển lên</value>
+  </data>
+  <data name="NamedArguments" xml:space="preserve">
+    <value>Tên các Arguments</value>
+  </data>
+  <data name="NoName" xml:space="preserve">
+    <value>&lt;&lt;no-name&gt;&gt;</value>
+  </data>
+  <data name="NotGenericType" xml:space="preserve">
+    <value>{0} không phải là Generic Type</value>
+  </data>
+  <data name="OtherMethodsTab" xml:space="preserve">
+    <value>Các Methods khác</value>
+  </data>
+  <data name="ParamDef_Flags" xml:space="preserve">
+    <value>Flags</value>
+  </data>
+  <data name="ParamDef_Flags_In" xml:space="preserve">
+    <value>_In</value>
+  </data>
+  <data name="ParamDef_Flags_Optional" xml:space="preserve">
+    <value>T_ùy chọn</value>
+  </data>
+  <data name="ParamDef_Flags_Out" xml:space="preserve">
+    <value>O_ut</value>
+  </data>
+  <data name="ParamDef_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="ParamDef_Sequence" xml:space="preserve">
+    <value>_Sequence</value>
+  </data>
+  <data name="ParamDef_Sequence_ToolTip" xml:space="preserve">
+    <value>Trình tự 0 là Parameter trả về, trình tự 1 là Parameter đầu tiên, v.v</value>
+  </data>
+  <data name="ParameterNumber" xml:space="preserve">
+    <value>param({0})</value>
+  </data>
+  <data name="ParameterReturn" xml:space="preserve">
+    <value>param(return)</value>
+  </data>
+  <data name="Parameter_DefaultValueInfo" xml:space="preserve">
+    <value>Giá trị mặc định cho Parameter này</value>
+  </data>
+  <data name="PasteAfterSelectionCommand" xml:space="preserve">
+    <value>Dán sau lựa chọn</value>
+  </data>
+  <data name="PasteCommand" xml:space="preserve">
+    <value>_Dán</value>
+  </data>
+  <data name="PickMember_OpenAsmToolTip" xml:space="preserve">
+    <value>Mở Assembly hoặc NetModule</value>
+  </data>
+  <data name="PickMember_Search" xml:space="preserve">
+    <value>_Tìm kiếm</value>
+  </data>
+  <data name="PickMember_SelectCorrectNode" xml:space="preserve">
+    <value>Bạn phải chọn một Node chính xác</value>
+  </data>
+  <data name="PickMember_TypeMustBeSelected" xml:space="preserve">
+    <value>Một Type phải được chọn.</value>
+  </data>
+  <data name="Pick_Constructor" xml:space="preserve">
+    <value>Chọn một Constructor</value>
+  </data>
+  <data name="Pick_EnumType" xml:space="preserve">
+    <value>Chọn một Enum type</value>
+  </data>
+  <data name="Pick_Type" xml:space="preserve">
+    <value>Chọn một Type</value>
+  </data>
+  <data name="RawCustomAttributeBlob" xml:space="preserve">
+    <value>Raw Blob</value>
+  </data>
+  <data name="RawCustomAttributeBlob2" xml:space="preserve">
+    <value>&lt;raw blob&gt;</value>
+  </data>
+  <data name="RemoveAssembliesCommand" xml:space="preserve">
+    <value>Xóa bỏ {0} assembly</value>
+  </data>
+  <data name="RemoveAssemblyCommand" xml:space="preserve">
+    <value>Xóa bỏ Assembly</value>
+  </data>
+  <data name="RemoveCharacter" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="RemoveCharacter_ToolTip" xml:space="preserve">
+    <value>Xóa bỏ đối tượng cuối</value>
+  </data>
+  <data name="RemoveCommand" xml:space="preserve">
+    <value>Xóa bỏ {0}</value>
+  </data>
+  <data name="RemoveLastTypeCharacter" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="RemoveLastTypeCharacter_ToolTip" xml:space="preserve">
+    <value>Xóa bỏ Type cuối</value>
+  </data>
+  <data name="ReturnTypeRequired" xml:space="preserve">
+    <value>Yêu cầu Type trả về</value>
+  </data>
+  <data name="SecurityDeclarationsTab" xml:space="preserve">
+    <value>Sec Decls</value>
+  </data>
+  <data name="ShortCutKeyA" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="ShortcutKeyAltEnter" xml:space="preserve">
+    <value>Alt+Enter</value>
+  </data>
+  <data name="ShortCutKeyC" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="ShortCutKeyCtrlAltV" xml:space="preserve">
+    <value>Ctrl+Alt+V</value>
+  </data>
+  <data name="ShortCutKeyCtrlC" xml:space="preserve">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="ShortCutKeyCtrlDel" xml:space="preserve">
+    <value>Ctrl+Del</value>
+  </data>
+  <data name="ShortCutKeyCtrlT" xml:space="preserve">
+    <value>Ctrl+Del</value>
+  </data>
+  <data name="ShortCutKeyCtrlV" xml:space="preserve">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="ShortCutKeyCtrlX" xml:space="preserve">
+    <value>Ctrl+X</value>
+  </data>
+  <data name="ShortCutKeyD" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="ShortCutKeyF" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="ShortCutKeyU" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type: {0}</value>
+  </data>
+  <data name="TypeMustBeGeneric" xml:space="preserve">
+    <value>Type phải là một Generic Type</value>
+  </data>
+  <data name="TypeSigCreator_Array" xml:space="preserve">
+    <value>Arra_y</value>
+  </data>
+  <data name="TypeSigCreator_Array_LowerBounds" xml:space="preserve">
+    <value>Lo_wer Bounds</value>
+  </data>
+  <data name="TypeSigCreator_Array_LowerBounds_ToolTip" xml:space="preserve">
+    <value>Danh sách ngăn cách bằng dấu phẩy của mảng lower bounds (số nguyên có dấu)</value>
+  </data>
+  <data name="TypeSigCreator_Array_Rank" xml:space="preserve">
+    <value>Ran_k</value>
+  </data>
+  <data name="TypeSigCreator_Array_Sizes" xml:space="preserve">
+    <value>S_izes</value>
+  </data>
+  <data name="TypeSigCreator_Array_Sizes_ToolTip" xml:space="preserve">
+    <value>Danh sách ngăn cách bằng dấu phẩy của kích thước array (số nguyên không dấu)</value>
+  </data>
+  <data name="TypeSigCreator_Array_ToolTip" xml:space="preserve">
+    <value>Chuyển thành multidimensional array</value>
+  </data>
+  <data name="TypeSigCreator_ByRef" xml:space="preserve">
+    <value>_ByRef</value>
+  </data>
+  <data name="TypeSigCreator_ByRef_ToolTip" xml:space="preserve">
+    <value>Convert Type thành by-reference</value>
+  </data>
+  <data name="TypeSigCreator_Clear" xml:space="preserve">
+    <value>Cl_ear</value>
+  </data>
+  <data name="TypeSigCreator_Clear_ToolTip" xml:space="preserve">
+    <value>Xóa Type</value>
+  </data>
+  <data name="TypeSigCreator_CModOpt" xml:space="preserve">
+    <value>CModOp_t</value>
+  </data>
+  <data name="TypeSigCreator_CModOpt_ToolTip" xml:space="preserve">
+    <value>Thêm tùy chọn C modifier</value>
+  </data>
+  <data name="TypeSigCreator_CModReqd" xml:space="preserve">
+    <value>C_ModReqd</value>
+  </data>
+  <data name="TypeSigCreator_CModReqd_ToolTip" xml:space="preserve">
+    <value>Thêm C modifier bắt buộc</value>
+  </data>
+  <data name="TypeSigCreator_FnPtr" xml:space="preserve">
+    <value>_FnPtr</value>
+  </data>
+  <data name="TypeSigCreator_FnPtr_ToolTip" xml:space="preserve">
+    <value>Thêm một function pointer</value>
+  </data>
+  <data name="TypeSigCreator_GenericInst" xml:space="preserve">
+    <value>_GenericInst</value>
+  </data>
+  <data name="TypeSigCreator_GenericInst_ToolTip" xml:space="preserve">
+    <value>Thêm một Generic instance type</value>
+  </data>
+  <data name="TypeSigCreator_GenericsCount" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="TypeSigCreator_GenericsCount_ToolTip" xml:space="preserve">
+    <value>Type/method generic variable number</value>
+  </data>
+  <data name="TypeSigCreator_MultidimensionalArray" xml:space="preserve">
+    <value>Multidimensional Array</value>
+  </data>
+  <data name="TypeSigCreator_MVar" xml:space="preserve">
+    <value>_MVar</value>
+  </data>
+  <data name="TypeSigCreator_MVar_ToolTip" xml:space="preserve">
+    <value>Thêm một Method generic variable</value>
+  </data>
+  <data name="TypeSigCreator_Pinned" xml:space="preserve">
+    <value>Pi_nned</value>
+  </data>
+  <data name="TypeSigCreator_Pinned_ToolTip" xml:space="preserve">
+    <value>Turn it into a pinned variable</value>
+  </data>
+  <data name="TypeSigCreator_Pointer" xml:space="preserve">
+    <value>_Pointer</value>
+  </data>
+  <data name="TypeSigCreator_Pointer_ToolTip" xml:space="preserve">
+    <value>Convert type to a pointer</value>
+  </data>
+  <data name="TypeSigCreator_Remove_ToolTip" xml:space="preserve">
+    <value>Remove last added type</value>
+  </data>
+  <data name="TypeSigCreator_SZArray" xml:space="preserve">
+    <value>S_Z Array</value>
+  </data>
+  <data name="TypeSigCreator_SZArray_ToolTip" xml:space="preserve">
+    <value>Convert type to a single-dimension, zero lower-bound array</value>
+  </data>
+  <data name="TypeSigCreator_Type" xml:space="preserve">
+    <value>_Type</value>
+  </data>
+  <data name="TypeSigCreator_Type_ToolTip" xml:space="preserve">
+    <value>Thêm Type</value>
+  </data>
+  <data name="TypeSigCreator_Var" xml:space="preserve">
+    <value>_Var</value>
+  </data>
+  <data name="TypeSigCreator_Var_ToolTip" xml:space="preserve">
+    <value>Thêm một Generic Variable</value>
+  </data>
+  <data name="TypeTab" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="UnknownBytesMsg" xml:space="preserve">
+    <value>Một số bytes không xác định vì Method đã bị thay đổi. Token mới và String Offset chỉ xác định sau khi file được lưu và mở lại.</value>
+  </data>
+  <data name="UnknownEnum" xml:space="preserve">
+    <value>Enum không xác định</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>_Value</value>
+  </data>
+  <data name="ValueType_ToolTip" xml:space="preserve">
+    <value>Kiểu giá trị</value>
+  </data>
+  <data name="XML" xml:space="preserve">
+    <value>_XML</value>
+  </data>
+  <data name="AddExistingNetModuleToAssemblyCommand" xml:space="preserve">
+    <value>Thêm NetModule có sẵn vào Assembly...</value>
+  </data>
+  <data name="AddExistingNetModuleToAssemblyCommand2" xml:space="preserve">
+    <value>Thêm NetModule có sẵn vào Assembly</value>
+  </data>
+  <data name="AddNewNetModuleToAssemblyCommand" xml:space="preserve">
+    <value>Thêm NetModule có sẵn vào Assembly...</value>
+  </data>
+  <data name="AddNewNetModuleToAssemblyCommand2" xml:space="preserve">
+    <value>Thêm NetModule có sẵn vào Assembly</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>Tất cả tập tin</value>
+  </data>
+  <data name="AskCancelSave" xml:space="preserve">
+    <value>Bạn không muốn lưu tập tin nữa?</value>
+  </data>
+  <data name="AskCancelSaveCloseWindow" xml:space="preserve">
+    <value>Tác vụ lưu tập tin sẽ bị hủy.
+Bạn có muốn đóng cửa sổ không?</value>
+  </data>
+  <data name="AskDeleteField" xml:space="preserve">
+    <value>Field dữ liệu này có thể còn được tham chiếu trong mã nguồn. Bạn có chắc chắn muốn xóa nó không?</value>
+  </data>
+  <data name="AskDeleteMethod" xml:space="preserve">
+    <value>Method này có thể còn được tham chiếu trong mã nguồn. Bạn có chắc chắn muốn xóa nó không?</value>
+  </data>
+  <data name="AskDeleteType" xml:space="preserve">
+    <value>There could be code in some assembly that references this type. Are you sure you want to delete the type?</value>
+  </data>
+  <data name="AskExitUnsavedFile" xml:space="preserve">
+    <value>Có một tệp tin chưa lưu. Bạn có muốn lưu nó trước khi thoát không?</value>
+  </data>
+  <data name="AskExitUnsavedFiles" xml:space="preserve">
+    <value>Có {0} tệp tin chưa lưu. Bạn có muốn lưu chúng trước khi thoát không?</value>
+  </data>
+  <data name="AskLoadAssembliesLoseChanges" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn tải các Assembly mới và hủy tất cả các thay đổi?</value>
+  </data>
+  <data name="AskReloadAssembliesLoseChanges" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn tải lại tất cả assembly và hủy tất cả các thay đổi?</value>
+  </data>
+  <data name="AskSaveFile" xml:space="preserve">
+    <value>Các tập tin chưa được lưu. Bạn có muốn lưu nó trước khi tiếp tục?</value>
+  </data>
+  <data name="AskSaveFiles" xml:space="preserve">
+    <value>Các tập tin chưa được lưu. Bạn có muốn lưu chúng trước khi tiếp tục?</value>
+  </data>
+  <data name="BaseTypeTab" xml:space="preserve">
+    <value>Base type</value>
+  </data>
+  <data name="BaseTypeX" xml:space="preserve">
+    <value>Base type:{0}</value>
+  </data>
+  <data name="Button_Append" xml:space="preserve">
+    <value>A_ppend</value>
+  </data>
+  <data name="Button_Assembly" xml:space="preserve">
+    <value>Assembly</value>
+  </data>
+  <data name="ConvAssemblyToNetModuleCommand" xml:space="preserve">
+    <value>Chuyển đổi Assembly thành NetModule</value>
+  </data>
+  <data name="ConvertUncondBranchCommand" xml:space="preserve">
+    <value>Chuyển đổi thành Unconditional _Branch</value>
+  </data>
+  <data name="ConvertUncondBranchesCommand" xml:space="preserve">
+    <value>Chuyển đổi thành các Unconditional _Branche</value>
+  </data>
+  <data name="ConvNetModuleToAssemblyCommand" xml:space="preserve">
+    <value>Chuyển đổi NetModule thành Assembly</value>
+  </data>
+  <data name="CopyAsTextCommand2" xml:space="preserve">
+    <value>Sao chép như _Văn bản</value>
+  </data>
+  <data name="CopyFileOffsetCommand" xml:space="preserve">
+    <value>Sao chép File Offset</value>
+  </data>
+  <data name="CopyFileOffsetsCommand" xml:space="preserve">
+    <value>Sao chép các File Offsets</value>
+  </data>
+  <data name="CopyMetaDataToken" xml:space="preserve">
+    <value>Sao chép _MD Token</value>
+  </data>
+  <data name="CopyMetaDataTokens" xml:space="preserve">
+    <value>Sao chép các _MD Token</value>
+  </data>
+  <data name="CopyRVACommand" xml:space="preserve">
+    <value>C_opy RVA</value>
+  </data>
+  <data name="CopyRVAsCommand" xml:space="preserve">
+    <value>C_opy các RVA</value>
+  </data>
+  <data name="CreateAnExceptionCatchType" xml:space="preserve">
+    <value>Tạo một Exception Catch Type</value>
+  </data>
+  <data name="CreateAssemblyLinkedResourceCommand" xml:space="preserve">
+    <value>Tạo Resource liên kết Assembly...</value>
+  </data>
+  <data name="CreateAssemblyLinkedResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource liên kết Assembly</value>
+  </data>
+  <data name="CreateBitMapIconResourceCommand" xml:space="preserve">
+    <value>Tạo Resource System.Data.Bitmap/Icon...</value>
+  </data>
+  <data name="CreateBitMapIconResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource System.Data.Bitmap/Icon</value>
+  </data>
+  <data name="CreateByteArrayResourceCommand" xml:space="preserve">
+    <value>Tạo Resource Byte Array...</value>
+  </data>
+  <data name="CreateByteArrayResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource Byte Array</value>
+  </data>
+  <data name="CreateFileLinkedResourceCommand" xml:space="preserve">
+    <value>Tạo Resource liên kết Tập tin...</value>
+  </data>
+  <data name="CreateFileLinkedResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource liên kết Tập tin</value>
+  </data>
+  <data name="CreateFileResourceCommand" xml:space="preserve">
+    <value>Tạo Resource Tệp tin...</value>
+  </data>
+  <data name="CreateFileResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource Tệp tin</value>
+  </data>
+  <data name="CreateImageListStreamerResourceCommand" xml:space="preserve">
+    <value>Tạo Resource System.Windows.Forms.ImageListStreamer...</value>
+  </data>
+  <data name="CreateImageListStreamerResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource System.Windows.Forms.ImageListStreamer</value>
+  </data>
+  <data name="CreateInterfaceImpl" xml:space="preserve">
+    <value>Tạo Interface Impl</value>
+  </data>
+  <data name="CreateLocalType" xml:space="preserve">
+    <value>Tạo một Local Type</value>
+  </data>
+  <data name="CreateMethodCommand" xml:space="preserve">
+    <value>Tạo Method...</value>
+  </data>
+  <data name="CreateMethodCommand2" xml:space="preserve">
+    <value>Tạo Method</value>
+  </data>
+  <data name="CreateMethodSig" xml:space="preserve">
+    <value>Tạo MethodSig</value>
+  </data>
+  <data name="CreateMultiFileResourceCommand" xml:space="preserve">
+    <value>Tạo nhiều tệp Resources...</value>
+  </data>
+  <data name="CreateMultiFileResourceCommand2" xml:space="preserve">
+    <value>Tạo nhiều tệp Resources</value>
+  </data>
+  <data name="CreateNestedTypeCommand" xml:space="preserve">
+    <value>Tạo Nested Type...</value>
+  </data>
+  <data name="CreateNestedTypeCommand2" xml:space="preserve">
+    <value>Tạo type Nested</value>
+  </data>
+  <data name="CreateNetModuleCommand" xml:space="preserve">
+    <value>Tạo NetModule...</value>
+  </data>
+  <data name="CreateNetModuleCommand2" xml:space="preserve">
+    <value>Tạo NetModule</value>
+  </data>
+  <data name="CreatePropertyCommand" xml:space="preserve">
+    <value>Tạo Property...</value>
+  </data>
+  <data name="CreatePropertyCommand2" xml:space="preserve">
+    <value>Tạo Property</value>
+  </data>
+  <data name="CreateResourceCommand" xml:space="preserve">
+    <value>Tạo Resource...</value>
+  </data>
+  <data name="CreateResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource</value>
+  </data>
+  <data name="CreateStreamResourceCommand" xml:space="preserve">
+    <value>Tạo Resource System.IO.Stream...</value>
+  </data>
+  <data name="CreateStreamResourceCommand2" xml:space="preserve">
+    <value>Tạo Resource System.IO.Stream</value>
+  </data>
+  <data name="CreateTypeCommand" xml:space="preserve">
+    <value>Tạo Type...</value>
+  </data>
+  <data name="CreateTypeCommand2" xml:space="preserve">
+    <value>Tạo Type</value>
+  </data>
+  <data name="DeleteMethodCommand" xml:space="preserve">
+    <value>Xóa Method</value>
+  </data>
+  <data name="DeleteMethodsCommand" xml:space="preserve">
+    <value>Xóa {0} methods</value>
+  </data>
+  <data name="DeleteNamespaceCommand" xml:space="preserve">
+    <value>Xóa Namespace</value>
+  </data>
+  <data name="DeleteNamespacesCommand" xml:space="preserve">
+    <value>Xóa {0} Namespaces</value>
+  </data>
+  <data name="DeletePropertiesCommand" xml:space="preserve">
+    <value>Xóa {0} Propertys</value>
+  </data>
+  <data name="DeletePropertyCommand" xml:space="preserve">
+    <value>Xóa Property</value>
+  </data>
+  <data name="DeleteResourceCommand" xml:space="preserve">
+    <value>Xóa Resource</value>
+  </data>
+  <data name="DeleteResourcesCommand" xml:space="preserve">
+    <value>Xóa {0} Resources</value>
+  </data>
+  <data name="DeleteTypeCommand" xml:space="preserve">
+    <value>Xóa Type</value>
+  </data>
+  <data name="DeleteTypesCommand" xml:space="preserve">
+    <value>Xóa {0} Types</value>
+  </data>
+  <data name="EditFieldMemberRef" xml:space="preserve">
+    <value>Chỉnh sửa Field MemberRef</value>
+  </data>
+  <data name="EditILInstructionsCommand" xml:space="preserve">
+    <value>Chỉnh sửa IL Instruction_s...</value>
+  </data>
+  <data name="EditInterfaceImpl" xml:space="preserve">
+    <value>Chỉnh sửa Interface Impl</value>
+  </data>
+  <data name="EditMethodBodyCommand" xml:space="preserve">
+    <value>Chỉnh sửa Method Body...</value>
+  </data>
+  <data name="EditMethodBodyCommand2" xml:space="preserve">
+    <value>Chỉnh sửa Method Body</value>
+  </data>
+  <data name="EditMethodCommand" xml:space="preserve">
+    <value>Chỉnh sửa Method...</value>
+  </data>
+  <data name="EditMethodCommand2" xml:space="preserve">
+    <value>Chỉnh sửa Method</value>
+  </data>
+  <data name="EditMethodMemberRef" xml:space="preserve">
+    <value>Chỉnh sửa method MemberRef</value>
+  </data>
+  <data name="EditModuleCommand" xml:space="preserve">
+    <value>Chỉnh sửa Module...</value>
+  </data>
+  <data name="EditModuleCommand2" xml:space="preserve">
+    <value>Chỉnh sửa Module</value>
+  </data>
+  <data name="EditNamespace" xml:space="preserve">
+    <value>Chỉnh sửa Namespace</value>
+  </data>
+  <data name="EditOperand_Field" xml:space="preserve">
+    <value>_Field...</value>
+  </data>
+  <data name="EditOperand_Field_MemberRef" xml:space="preserve">
+    <value>F_ield MemberRef...</value>
+  </data>
+  <data name="EditOperand_Method" xml:space="preserve">
+    <value>_Method...</value>
+  </data>
+  <data name="EditOperand_MethodSpec" xml:space="preserve">
+    <value>Met_hodSpec...</value>
+  </data>
+  <data name="EditOperand_Method_MemberRef" xml:space="preserve">
+    <value>M_ethod MemberRef...</value>
+  </data>
+  <data name="EditOperand_Type" xml:space="preserve">
+    <value>_Type...</value>
+  </data>
+  <data name="EditOperand_TypeSpec" xml:space="preserve">
+    <value>Type_Spec...</value>
+  </data>
+  <data name="EditPropertyCommand" xml:space="preserve">
+    <value>Sửa Property...</value>
+  </data>
+  <data name="EditPropertyCommand2" xml:space="preserve">
+    <value>Sửa Properties</value>
+  </data>
+  <data name="EditResourceCommand" xml:space="preserve">
+    <value>Sửa Resource...</value>
+  </data>
+  <data name="EditResourceCommand2" xml:space="preserve">
+    <value>Sửa Resource</value>
+  </data>
+  <data name="EditResource_ContainsNoMetadata" xml:space="preserve">
+    <value>_Does not contain metadata</value>
+  </data>
+  <data name="EditResource_File" xml:space="preserve">
+    <value>_File</value>
+  </data>
+  <data name="EditResource_Hash" xml:space="preserve">
+    <value>_Hash</value>
+  </data>
+  <data name="EditSwitchInstructionOperand" xml:space="preserve">
+    <value>Sửa Switch Operand</value>
+  </data>
+  <data name="EditTypeCommand" xml:space="preserve">
+    <value>Sửa Type...</value>
+  </data>
+  <data name="EditTypeCommand2" xml:space="preserve">
+    <value>Sửa Type</value>
+  </data>
+  <data name="EH_Command1" xml:space="preserve">
+    <value>Thêm mới quản lý lỗi trước khi lựa chọn</value>
+  </data>
+  <data name="EH_Command2" xml:space="preserve">
+    <value>Thêm mới quản lý lỗi sau khi lựa chọn</value>
+  </data>
+  <data name="EH_Command3" xml:space="preserve">
+    <value>Bổ sung mới quản lý lỗi</value>
+  </data>
+  <data name="EH_Command4" xml:space="preserve">
+    <value>_Loại bỏ quản lý lỗi</value>
+  </data>
+  <data name="EH_Command5" xml:space="preserve">
+    <value>_Loại bỏ các quản lý lỗi</value>
+  </data>
+  <data name="EH_Command6" xml:space="preserve">
+    <value>Loại_ bỏ toàn bộ quản lý lỗi</value>
+  </data>
+  <data name="EmptyFilename" xml:space="preserve">
+    <value>&lt;tên file rỗng&gt;</value>
+  </data>
+  <data name="Error_AssemblyFieldMustNotBeEmpty" xml:space="preserve">
+    <value>Assembly không được để trống.</value>
+  </data>
+  <data name="Error_CouldNotFindMethod" xml:space="preserve">
+    <value>Không thể tìm thấy method: {0}</value>
+  </data>
+  <data name="Error_CouldNotFindTypeOrItsAssembly" xml:space="preserve">
+    <value>Không tìm thấy type hoặc assembly tương ứng.</value>
+  </data>
+  <data name="Error_CouldNotLoadType" xml:space="preserve">
+    <value>Không thể đọc type '{0}': {1}</value>
+  </data>
+  <data name="Error_CouldNotSerializeImages" xml:space="preserve">
+    <value>Không thể serialize ảnh. Lỗi: {0}</value>
+  </data>
+  <data name="Error_DeSerializationDisabledInSettings" xml:space="preserve">
+    <value>(De)serialization bị vô hiệu hóa trong settings.</value>
+  </data>
+  <data name="Error_EmptyImageList" xml:space="preserve">
+    <value>Không thể tạo hình ảnh rỗng</value>
+  </data>
+  <data name="Error_Filename_ContainsInvalidPathCharacter" xml:space="preserve">
+    <value>Tên file chứa ít nhất ký tự đường dẫn không hợp lệ.</value>
+  </data>
+  <data name="Error_Filename_Empty" xml:space="preserve">
+    <value>Tên file không thể để trống.</value>
+  </data>
+  <data name="Error_Filename_FolderDoesNotExist" xml:space="preserve">
+    <value>Folder '{0}' không tồn tại.</value>
+  </data>
+  <data name="Error_Filename_FolderExists" xml:space="preserve">
+    <value>Thư mục có tên trùng tên file đã tồn tại.</value>
+  </data>
+  <data name="Error_Filename_OnlyWhitespace" xml:space="preserve">
+    <value>Tên file không thể chứa ký tự trống</value>
+  </data>
+  <data name="Error_Filename_ReservedOSFilename" xml:space="preserve">
+    <value>Tên file là tên dành riêng cho hệ điều hành, không thể dùng.</value>
+  </data>
+  <data name="Error_Filename_TooLong" xml:space="preserve">
+    <value>Tên file quá dài.</value>
+  </data>
+  <data name="Error_InstrHasBeenRemoved" xml:space="preserve">
+    <value>Instruction đã bị xóa</value>
+  </data>
+  <data name="Error_InstrTargetHasBeenRemoved" xml:space="preserve">
+    <value>Instrucrion target đã bị xóa</value>
+  </data>
+  <data name="Error_InvalidResourceData" xml:space="preserve">
+    <value>Không thể sử dụng data này: {0}</value>
+  </data>
+  <data name="Error_LocalHasBeenRemoved" xml:space="preserve">
+    <value>Local đã bị xóa</value>
+  </data>
+  <data name="Error_NewResourceDataMustBeImage" xml:space="preserve">
+    <value>Data mới phải là hình ảnh. Error: {0}</value>
+  </data>
+  <data name="Error_NotNetModule" xml:space="preserve">
+    <value>{0} không phải là NetModule</value>
+  </data>
+  <data name="Error_NotSNKFile" xml:space="preserve">
+    <value>'{0}' không phải là strong name key file (snk)</value>
+  </data>
+  <data name="Error_OnlyInstrsCanBeSelected" xml:space="preserve">
+    <value>Chỉ có thể lựa chọn các Instructions</value>
+  </data>
+  <data name="Error_OpenFile" xml:space="preserve">
+    <value>Lỗi mở file: {0}</value>
+  </data>
+  <data name="Error_OpenImage" xml:space="preserve">
+    <value>Không thể mở file hoặc file không phải là hình ảnh. Error: {0}</value>
+  </data>
+  <data name="Error_OpMustBeField" xml:space="preserve">
+    <value>Operand phải là một Field</value>
+  </data>
+  <data name="Error_OpMustBeInstr" xml:space="preserve">
+    <value>Operand phải là một Instruction</value>
+  </data>
+  <data name="Error_OpMustBeListInstrs" xml:space="preserve">
+    <value>Operand phải là một tập hợp các Instructions</value>
+  </data>
+  <data name="Error_OpMustBeLocal" xml:space="preserve">
+    <value>Operand phải là một Local</value>
+  </data>
+  <data name="Error_OpMustBeMethod" xml:space="preserve">
+    <value>Operand phải là một Method</value>
+  </data>
+  <data name="Error_OpMustBeMethodSig" xml:space="preserve">
+    <value>Operand phải là một Method signature</value>
+  </data>
+  <data name="Error_OpMustBeParam" xml:space="preserve">
+    <value>Operand phải là một Parameter</value>
+  </data>
+  <data name="Error_OpMustBeType" xml:space="preserve">
+    <value>Operand phải là một Type</value>
+  </data>
+  <data name="Error_OpMustBeTypeMethodField" xml:space="preserve">
+    <value>Operand phải là một Type, Method, Field</value>
+  </data>
+  <data name="Error_ReadingFiles" xml:space="preserve">
+    <value>Lỗi đọc files: {0}</value>
+  </data>
+  <data name="Error_SwitchInstrTargetHasBeenRemoved" xml:space="preserve">
+    <value>Switch Instruction target đã bị xóa</value>
+  </data>
+  <data name="Error_VersionStringTooLong" xml:space="preserve">
+    <value>Chuỗi version quá dài</value>
+  </data>
+  <data name="ExceptionHandlersTab" xml:space="preserve">
+    <value>Quản lý lỗi</value>
+  </data>
+  <data name="GenericParametersTab" xml:space="preserve">
+    <value>Generic Parameter</value>
+  </data>
+  <data name="GoToMetaDataTableRowCommand" xml:space="preserve">
+    <value>Đi đến MD Table Row ({0:X8})</value>
+  </data>
+  <data name="GoToMetaDataTableRowCommand2" xml:space="preserve">
+    <value>Đi đến MD Table Row...</value>
+  </data>
+  <data name="GoToMetaDataTableRowTitle" xml:space="preserve">
+    <value>Đi đến MD Table Row</value>
+  </data>
+  <data name="GoToMetaDataTableRow_InvalidMetadataToken" xml:space="preserve">
+    <value>Metadata token sai: 0x{0:X8}</value>
+  </data>
+  <data name="GoToMetaDataTableRow_MetadataToken" xml:space="preserve">
+    <value>_Metadata token</value>
+  </data>
+  <data name="GoToMetaDataTableRow_TokenDoesNotExist" xml:space="preserve">
+    <value>Token {0:X8} không tồn tại trong metadata</value>
+  </data>
+  <data name="GoToRowIdentifierCommand" xml:space="preserve">
+    <value>_Đi đến RID...</value>
+  </data>
+  <data name="GoToRowIdentifier_InvalidRowIdentifier" xml:space="preserve">
+    <value>Invalid RID: {0}</value>
+  </data>
+  <data name="GoToRowIdentifier_Title" xml:space="preserve">
+    <value>Đi đến RID</value>
+  </data>
+  <data name="HexCopyMethodBodyCommand" xml:space="preserve">
+    <value>Hex Copy Method Body</value>
+  </data>
+  <data name="HexNode_PE" xml:space="preserve">
+    <value>PE</value>
+  </data>
+  <data name="HexNode_PE_Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="HexNode_StorageHeader" xml:space="preserve">
+    <value>Storage Header</value>
+  </data>
+  <data name="HexNode_StorageSignature" xml:space="preserve">
+    <value>Storage Signature</value>
+  </data>
+  <data name="HexNode_StorageStream" xml:space="preserve">
+    <value>Storage Stream</value>
+  </data>
+  <data name="HexNode_TablesStream" xml:space="preserve">
+    <value>Tables Stream</value>
+  </data>
+  <data name="HexPasteMethodBodyCommand" xml:space="preserve">
+    <value>Hex Paste Method Body</value>
+  </data>
+  <data name="HexWriteEmptyMethodBodyCommand" xml:space="preserve">
+    <value>Hex Write Empty Body</value>
+  </data>
+  <data name="HexWriteReturnFalseBodyCommand" xml:space="preserve">
+    <value>Hex Write 'return false' Body</value>
+  </data>
+  <data name="HexWriteReturnTrueBodyCommand" xml:space="preserve">
+    <value>Hex Write 'return true' Body</value>
+  </data>
+  <data name="Hex_Undo_Message_InsertBytes" xml:space="preserve">
+    <value>Insert Bytes</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="InstructionOperand" xml:space="preserve">
+    <value>Operand</value>
+  </data>
+  <data name="Instr_Command1" xml:space="preserve">
+    <value>Thêm Instruction mới tr_ước lựa chọn</value>
+  </data>
+  <data name="Instr_Command2" xml:space="preserve">
+    <value>Thêm Instruction mới sau Sele_ction</value>
+  </data>
+  <data name="Instr_Command3" xml:space="preserve">
+    <value>_Thêm Instruction mới</value>
+  </data>
+  <data name="Instr_Command4" xml:space="preserve">
+    <value>_Xóa Instruction</value>
+  </data>
+  <data name="Instr_Command5" xml:space="preserve">
+    <value>_Xóa Instructions</value>
+  </data>
+  <data name="Instr_Command6" xml:space="preserve">
+    <value>Remo_ve tất cả Instructions</value>
+  </data>
+  <data name="InterfacesTab" xml:space="preserve">
+    <value>Interfaces</value>
+  </data>
+  <data name="InvertBranchCommand" xml:space="preserve">
+    <value>_Invert Branch</value>
+  </data>
+  <data name="InvertBranchesCommand" xml:space="preserve">
+    <value>_Invert Branches</value>
+  </data>
+  <data name="LocalName" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="LocalsTab" xml:space="preserve">
+    <value>Locals</value>
+  </data>
+  <data name="LocalType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Local_Command1" xml:space="preserve">
+    <value>Thêm Local mới tr_ước lựa chọn</value>
+  </data>
+  <data name="Local_Command2" xml:space="preserve">
+    <value>Thêm Local mới sau Sele_ction</value>
+  </data>
+  <data name="Local_Command3" xml:space="preserve">
+    <value>_Thêm vào Local mới</value>
+  </data>
+  <data name="Local_Command4" xml:space="preserve">
+    <value>_Xóa Local</value>
+  </data>
+  <data name="Local_Command5" xml:space="preserve">
+    <value>_Xóa Locals</value>
+  </data>
+  <data name="Local_Command6" xml:space="preserve">
+    <value>Remo_ve tất cả Local</value>
+  </data>
+  <data name="Local_CompilerGenerated_Character" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="Local_CompilerGenerated_Character_ToolTip" xml:space="preserve">
+    <value>Compiler generated</value>
+  </data>
+  <data name="Local_Pinned_Character" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="Local_Pinned_Character_ToolTip" xml:space="preserve">
+    <value>Pinned</value>
+  </data>
+  <data name="MDWriterOptionsTab" xml:space="preserve">
+    <value>Tùy chọn MD Writer</value>
+  </data>
+  <data name="MetadataTab" xml:space="preserve">
+    <value>Metadata</value>
+  </data>
+  <data name="MethodBodyType_IL" xml:space="preserve">
+    <value>IL</value>
+  </data>
+  <data name="MethodBodyType_Native" xml:space="preserve">
+    <value>Native</value>
+  </data>
+  <data name="MethodBodyType_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="MethodBody_CodeType" xml:space="preserve">
+    <value>Cod_e Type</value>
+  </data>
+  <data name="MethodBody_HeaderOffset" xml:space="preserve">
+    <value>Header O_ffset</value>
+  </data>
+  <data name="MethodBody_HeaderRVA" xml:space="preserve">
+    <value>Header _RVA</value>
+  </data>
+  <data name="MethodBody_InitLocals" xml:space="preserve">
+    <value>_Init Locals</value>
+  </data>
+  <data name="MethodBody_KeepOldMaxStack" xml:space="preserve">
+    <value>_Keep Old MaxStack</value>
+  </data>
+  <data name="MethodBody_KeepOldMaxStack_ToolTip" xml:space="preserve">
+    <value>Không tính toán loại giá trị MaxStack khi lưu file</value>
+  </data>
+  <data name="MethodBody_MaxStack" xml:space="preserve">
+    <value>_MaxStack</value>
+  </data>
+  <data name="MethodBody_RVA" xml:space="preserve">
+    <value>_RVA</value>
+  </data>
+  <data name="MethodBody_Type" xml:space="preserve">
+    <value>_Body Type</value>
+  </data>
+  <data name="MethodOverridesTab" xml:space="preserve">
+    <value>Overrides</value>
+  </data>
+  <data name="MethodParametersTab" xml:space="preserve">
+    <value>Params</value>
+  </data>
+  <data name="MethodSignatureTab" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="Method_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="Module_DotNetVersion" xml:space="preserve">
+    <value>.NET _Version</value>
+  </data>
+  <data name="Module_EntryPoint" xml:space="preserve">
+    <value>Entry Point</value>
+  </data>
+  <data name="Module_EntryPoint_Managed" xml:space="preserve">
+    <value>Mana_ged</value>
+  </data>
+  <data name="Module_EntryPoint_Native" xml:space="preserve">
+    <value>Native</value>
+  </data>
+  <data name="Module_EntryPoint_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Module_GUIDs" xml:space="preserve">
+    <value>GUIDs</value>
+  </data>
+  <data name="Module_Metadata" xml:space="preserve">
+    <value>Metadata</value>
+  </data>
+  <data name="Module_ModuleType" xml:space="preserve">
+    <value>Module _Type</value>
+  </data>
+  <data name="Module_Name" xml:space="preserve">
+    <value>N_ame</value>
+  </data>
+  <data name="MoveTypesToEmptyNamespaceCommand" xml:space="preserve">
+    <value>Di chuyển type vào namespace rỗng</value>
+  </data>
+  <data name="Namespace_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="NetModule_DotNetVersion" xml:space="preserve">
+    <value>.NET _Version</value>
+  </data>
+  <data name="NetModule_Name" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="NodesUseHexEditorMsg" xml:space="preserve">
+    <value>Tất cả các nodes dưới sử dụng hex editor để chỉnh sửa PE file</value>
+  </data>
+  <data name="NopInstrCommand" xml:space="preserve">
+    <value>_NOP Instruction</value>
+  </data>
+  <data name="NopInstrsCommand" xml:space="preserve">
+    <value>_NOP Instructions</value>
+  </data>
+  <data name="Offset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="OpenHexEditorCommand" xml:space="preserve">
+    <value>Mở He_x Editor</value>
+  </data>
+  <data name="OptimizeAllInstructionsCommand" xml:space="preserve">
+    <value>Tối ưu tất cả Instructions</value>
+  </data>
+  <data name="Padding" xml:space="preserve">
+    <value>pad</value>
+  </data>
+  <data name="PasteRecordsCommand" xml:space="preserve">
+    <value>_Dán {0} bản ghi @ {1:X8}, RID {2}</value>
+  </data>
+  <data name="PropertyX" xml:space="preserve">
+    <value>Thuộc tính: {0}</value>
+  </data>
+  <data name="Property_DefaultValue" xml:space="preserve">
+    <value>Giá trị mặc định cho thuộc tính này</value>
+  </data>
+  <data name="Property_GetterMethods" xml:space="preserve">
+    <value>Getters</value>
+  </data>
+  <data name="Property_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="Property_OtherMethods" xml:space="preserve">
+    <value>Các Methods khác</value>
+  </data>
+  <data name="Property_SetterMethods" xml:space="preserve">
+    <value>Setters</value>
+  </data>
+  <data name="Property_Signature" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="RawSaveResourceCommand" xml:space="preserve">
+    <value>Raw Save {0}</value>
+  </data>
+  <data name="RawSaveResourcesCommand" xml:space="preserve">
+    <value>Raw Save {0} resources</value>
+  </data>
+  <data name="RawSaveResourcesSubDirectoriesCommand" xml:space="preserve">
+    <value>Raw Save {0} resources, sử dụng thư mục con</value>
+  </data>
+  <data name="RedoCommand" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="RedoToolBarToolTip" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="RemoveAndAddPopsCommand" xml:space="preserve">
+    <value>X_óa và thêm Pops</value>
+  </data>
+  <data name="RemoveNetModuleCommand" xml:space="preserve">
+    <value>Xóa NetModule khỏi Assembly</value>
+  </data>
+  <data name="RenameNamespaceCommand" xml:space="preserve">
+    <value>Đổi tên namespace</value>
+  </data>
+  <data name="Resource_ColorDepth" xml:space="preserve">
+    <value>Color _Depth</value>
+  </data>
+  <data name="Resource_ColorDepth_16Bit" xml:space="preserve">
+    <value>16-bit</value>
+  </data>
+  <data name="Resource_ColorDepth_24Bit" xml:space="preserve">
+    <value>24-bit</value>
+  </data>
+  <data name="Resource_ColorDepth_32Bit" xml:space="preserve">
+    <value>32-bit</value>
+  </data>
+  <data name="Resource_ColorDepth_4Bit" xml:space="preserve">
+    <value>4-bit</value>
+  </data>
+  <data name="Resource_ColorDepth_8Bit" xml:space="preserve">
+    <value>8-bit</value>
+  </data>
+  <data name="Resource_Data" xml:space="preserve">
+    <value>_Dữ liệu</value>
+  </data>
+  <data name="Resource_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="Resource_Size" xml:space="preserve">
+    <value>_Kích thước</value>
+  </data>
+  <data name="Resource_TransparentColor" xml:space="preserve">
+    <value>_Màu trong suốt</value>
+  </data>
+  <data name="Resource_Type" xml:space="preserve">
+    <value>_Type</value>
+  </data>
+  <data name="Resource_Value" xml:space="preserve">
+    <value>_Value</value>
+  </data>
+  <data name="RowIdentifier" xml:space="preserve">
+    <value>RID</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>_Lưu...</value>
+  </data>
+  <data name="SaveAllCommand" xml:space="preserve">
+    <value>Lưu tất cả...</value>
+  </data>
+  <data name="SaveAllToolBarToolTip" xml:space="preserve">
+    <value>Lưu mọi thứ</value>
+  </data>
+  <data name="SaveModuleCommand" xml:space="preserve">
+    <value>Lưu _Module...</value>
+  </data>
+  <data name="SaveModuleCommand2" xml:space="preserve">
+    <value>Lưu Module</value>
+  </data>
+  <data name="SaveModulesCommand" xml:space="preserve">
+    <value>Lưu Module...</value>
+  </data>
+  <data name="SaveModules_CancelingSave" xml:space="preserve">
+    <value>Huỷ lưu. Vui lòng đợi...</value>
+  </data>
+  <data name="SaveModules_Close" xml:space="preserve">
+    <value>_Đóng</value>
+  </data>
+  <data name="SaveModules_ErrorsInLog" xml:space="preserve">
+    <value>Có lỗi trong Nhật kí:</value>
+  </data>
+  <data name="SaveModules_FileHasErrors" xml:space="preserve">
+    <value>Tập tin #{0} ({1}) xảy ra lỗi</value>
+  </data>
+  <data name="SaveModules_Log_AccessError" xml:space="preserve">
+    <value>Lỗi truy cập: {0}</value>
+  </data>
+  <data name="SaveModules_Log_AllFilesWritten" xml:space="preserve">
+    <value>Tất cả tập tin đã được ghi vào đĩa.</value>
+  </data>
+  <data name="SaveModules_Log_Exception" xml:space="preserve">
+    <value>Đã xảy ra một trường hợp ngoại lệ
+
+{0}</value>
+  </data>
+  <data name="SaveModules_Log_FileError" xml:space="preserve">
+    <value>Lỗi tệp tin: {0}</value>
+  </data>
+  <data name="SaveModules_Log_SaveWasCanceled" xml:space="preserve">
+    <value>Lưu đã bị huỷ bỏ bởi người dùng.</value>
+  </data>
+  <data name="SaveModules_Log_WritingFile" xml:space="preserve">
+    <value>Đang viết {0}...</value>
+  </data>
+  <data name="SaveModules_Options" xml:space="preserve">
+    <value>_Cài đặt...</value>
+  </data>
+  <data name="SaveModules_SaveAll" xml:space="preserve">
+    <value>_Lưu tất cả</value>
+  </data>
+  <data name="SaveModules_SavedFiles" xml:space="preserve">
+    <value>Tập tin đó sẽ được lưu:</value>
+  </data>
+  <data name="SaveModules_Title" xml:space="preserve">
+    <value>Lưu Modules</value>
+  </data>
+  <data name="SaveModule_AddPECheckSum" xml:space="preserve">
+    <value>_Thêm tổng kiểm tra PE</value>
+  </data>
+  <data name="SaveModule_CreateHeapEvenIfEmpty" xml:space="preserve">
+    <value>Tạo thành đống kể cả khi nó rỗng</value>
+  </data>
+  <data name="SaveModule_Filename" xml:space="preserve">
+    <value>_Tên Tập tin</value>
+  </data>
+  <data name="SaveModule_KeepOldMaxStack" xml:space="preserve">
+    <value>_Giữ giá trị MaxStack cũ</value>
+  </data>
+  <data name="SaveModule_KeepOldMaxStack_ToolTip" xml:space="preserve">
+    <value>Sử dụng giá trị MaxStack từ Method thay vì tính giá trị MaxStack mới.
+Cần thiết nếu các Methods vẫn còn bị xáo trộn</value>
+  </data>
+  <data name="SaveModule_MetadataHeaderOptions" xml:space="preserve">
+    <value>Cài đặt tiêu đề của Metadata</value>
+  </data>
+  <data name="SaveModule_MiscOptions" xml:space="preserve">
+    <value>Cài đặt Khác</value>
+  </data>
+  <data name="SaveModule_ModuleType" xml:space="preserve">
+    <value>Module _Type</value>
+  </data>
+  <data name="SaveModule_PreserveExtraSigData" xml:space="preserve">
+    <value>Bảo tồn dữ liệu chữ ký E_xtra</value>
+  </data>
+  <data name="SaveModule_PreserveExtraSigData_ToolTip" xml:space="preserve">
+    <value>Bảo tồn bất kỳ dữ liệu bổ sung nào sau các chữ ký.
+Một số obfuscators đặt dữ liệu ở đó</value>
+  </data>
+  <data name="SaveModule_PreserveHeapOffsets" xml:space="preserve">
+    <value>Bảo vệ các Heap Offsets</value>
+  </data>
+  <data name="SaveModule_PreserveTokens" xml:space="preserve">
+    <value>P_reserve Tất cả MD Tokens</value>
+  </data>
+  <data name="SaveModule_PreserveTokens_ToolTip" xml:space="preserve">
+    <value>Nếu tập tin vẫn còn hỗn loạn, thoát ngay nếu muốn bảo vệ ngay lập tức</value>
+  </data>
+  <data name="SaveModule_ShareMethodBodies" xml:space="preserve">
+    <value>Share Method_Bodies</value>
+  </data>
+  <data name="SaveModule_ShareMethodBodies_ToolTip" xml:space="preserve">
+    <value>Các phương pháp .NET có cùng mã chính xác sẽ chia sẻ các phần thân Method.
+Các tập tin đầu ra sẽ nhỏ hơn một chút</value>
+  </data>
+  <data name="SaveModule_Title" xml:space="preserve">
+    <value>Lưu Module</value>
+  </data>
+  <data name="SaveModule_UseMixedMode" xml:space="preserve">
+    <value>_Chế độ trộn Module</value>
+  </data>
+  <data name="SaveModule_UseMixedMode_ToolTip" xml:space="preserve">
+    <value>Nên kiểm tra nếu đó là Module chế độ hỗn hợp (ví dụ: C ++/. NET).
+Hầu hết các tùy chọn sẽ được khởi tạo lại khi hộp này được chọn</value>
+  </data>
+  <data name="SaveModule_WritePdb" xml:space="preserve">
+    <value>Lưu tệp _PDB</value>
+  </data>
+  <data name="SaveResourceCommand" xml:space="preserve">
+    <value>Lưu {0}</value>
+  </data>
+  <data name="SaveResourcesCommand" xml:space="preserve">
+    <value>Lưu tài nguyên {0}</value>
+  </data>
+  <data name="SaveResourcesSubDirectoriesCommand" xml:space="preserve">
+    <value>Lưu tài nguyên {0}, Sử dụng thư mục con</value>
+  </data>
+  <data name="ShortCutKeyB" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="ShortCutKeyCtrlF" xml:space="preserve">
+    <value>Ctrl+F</value>
+  </data>
+  <data name="ShortCutKeyCtrlG" xml:space="preserve">
+    <value>Ctrl+G</value>
+  </data>
+  <data name="ShortCutKeyCtrlM" xml:space="preserve">
+    <value>Ctrl+M</value>
+  </data>
+  <data name="ShortCutKeyCtrlR" xml:space="preserve">
+    <value>Ctrl + R</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftC" xml:space="preserve">
+    <value>Ctrl+Shift+C</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftD" xml:space="preserve">
+    <value>Ctrl+Shift+D</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftS" xml:space="preserve">
+    <value>Ctrl+Shift+S</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftT" xml:space="preserve">
+    <value>Ctrl+Shift+T</value>
+  </data>
+  <data name="ShortCutKeyCtrlY" xml:space="preserve">
+    <value>Ctrl+Y</value>
+  </data>
+  <data name="ShortCutKeyCtrlZ" xml:space="preserve">
+    <value>Ctrl+Z</value>
+  </data>
+  <data name="ShortCutKeyI" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="ShortCutKeyN" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="ShortCutKeyO" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="ShortCutKeyP" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="ShortCutKeyR" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="ShortCutKeyS" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="ShortCutKeyShiftAltR" xml:space="preserve">
+    <value>Shift+Alt+R</value>
+  </data>
+  <data name="ShowDataInHexEditorCommand" xml:space="preserve">
+    <value>Hiển thị data trong He_x Editor</value>
+  </data>
+  <data name="ShowInHexEditorCommand" xml:space="preserve">
+    <value>Hiển thị trong He_x Editor</value>
+  </data>
+  <data name="ShowInHexEditorCommand2" xml:space="preserve">
+    <value>Hiển thị trong Hex Editor</value>
+  </data>
+  <data name="ShowInitialValueInHexEditorCommand" xml:space="preserve">
+    <value>Hiển thị giá trị khởi tạo trong Hex Editor</value>
+  </data>
+  <data name="ShowInstrsInHexEditorCommand" xml:space="preserve">
+    <value>Hiển thị các chỉ thị trong He_x Editor</value>
+  </data>
+  <data name="ShowMethodBodyInHexEditorCommand" xml:space="preserve">
+    <value>Hiển thị method body trong Hex Editor</value>
+  </data>
+  <data name="SimplifyAllInstructionsCommand" xml:space="preserve">
+    <value>_Đơn giản tất cả các Instructions</value>
+  </data>
+  <data name="SortMetadataTableCommand" xml:space="preserve">
+    <value>_Sắp xếp bảng</value>
+  </data>
+  <data name="SortSelectionCommand" xml:space="preserve">
+    <value>Sắ_p xếp lựa chọn</value>
+  </data>
+  <data name="TablesHeapOptionsTab" xml:space="preserve">
+    <value>Tables Heap Options</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="TooManyBytesSelected" xml:space="preserve">
+    <value>Bạn đã lựa chọn quá nhiều bytes data</value>
+  </data>
+  <data name="Type_ClassSize" xml:space="preserve">
+    <value>C_lass Size</value>
+  </data>
+  <data name="Type_Name" xml:space="preserve">
+    <value>_Tên</value>
+  </data>
+  <data name="Type_Namespace" xml:space="preserve">
+    <value>N_amespace</value>
+  </data>
+  <data name="Type_PackingSize" xml:space="preserve">
+    <value>Packing Si_ze</value>
+  </data>
+  <data name="UndoCommand" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="UndoToolBarToolTip" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="UnsavedFile" xml:space="preserve">
+    <value>Có file chưa được lưu.</value>
+  </data>
+  <data name="UnsavedFiles" xml:space="preserve">
+    <value>Có {0} files chưa được lưu.</value>
+  </data>
+  <data name="XBytes" xml:space="preserve">
+    <value>{0} bytes</value>
+  </data>
+  <data name="AddAfterSelInstr_ToolTip" xml:space="preserve">
+    <value>Thêm Instruction sau khi Instruction được chọn</value>
+  </data>
+  <data name="InstructionsTab" xml:space="preserve">
+    <value>Các Instructions</value>
+  </data>
+  <data name="Module_NewGuid1" xml:space="preserve">
+    <value>_Mới</value>
+  </data>
+  <data name="Module_NewGuid2" xml:space="preserve">
+    <value>M_ới</value>
+  </data>
+  <data name="Module_NewGuid3" xml:space="preserve">
+    <value>Mớ_i</value>
+  </data>
+  <data name="NetModule_NewGuid1" xml:space="preserve">
+    <value>Mớ_i</value>
+  </data>
+  <data name="Pick_Assembly" xml:space="preserve">
+    <value>Chọn một Assembly</value>
+  </data>
+  <data name="Pick_EntryPoint" xml:space="preserve">
+    <value>Chọn một Entry Point</value>
+  </data>
+  <data name="Pick_Field" xml:space="preserve">
+    <value>Chọn một Field</value>
+  </data>
+  <data name="Pick_GenericType" xml:space="preserve">
+    <value>Chọn một Generic Type</value>
+  </data>
+  <data name="Pick_Method" xml:space="preserve">
+    <value>Chọn một Method</value>
+  </data>
+  <data name="Pick_Module" xml:space="preserve">
+    <value>Chọn một Module</value>
+  </data>
+  <data name="ExceptionHandler_Column_CatchType" xml:space="preserve">
+    <value>CatchType</value>
+  </data>
+  <data name="ExceptionHandler_Column_FilterStart" xml:space="preserve">
+    <value>FilterStart</value>
+  </data>
+  <data name="ExceptionHandler_Column_HandlerEnd" xml:space="preserve">
+    <value>HandlerEnd</value>
+  </data>
+  <data name="ExceptionHandler_Column_HandlerStart" xml:space="preserve">
+    <value>HandlerStart</value>
+  </data>
+  <data name="ExceptionHandler_Column_TryEnd" xml:space="preserve">
+    <value>TryEnd</value>
+  </data>
+  <data name="ExceptionHandler_Column_TryStart" xml:space="preserve">
+    <value>TryStart</value>
+  </data>
+  <data name="ExceptionHandler_Column_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Flags" xml:space="preserve">
+    <value>Flags</value>
+  </data>
+  <data name="MethodBody_Column_OpCode" xml:space="preserve">
+    <value>OpCode</value>
+  </data>
+  <data name="Column_Metadata_RID" xml:space="preserve">
+    <value>RID</value>
+  </data>
+  <data name="EditResource_Visibility" xml:space="preserve">
+    <value>_Visibility</value>
+  </data>
+  <data name="GP_GenericParamConstraints" xml:space="preserve">
+    <value>Constraints</value>
+  </data>
+  <data name="Metadata_Sorted_Rows" xml:space="preserve">
+    <value>Sorted</value>
+  </data>
+  <data name="Metadata_Valid_Rows" xml:space="preserve">
+    <value>Valid</value>
+  </data>
+  <data name="Method_Access" xml:space="preserve">
+    <value>Access</value>
+  </data>
+  <data name="Module_Cor20_RuntimeVersion" xml:space="preserve">
+    <value>_Runtime Version</value>
+  </data>
+  <data name="Module_Metadata_HeaderVersion" xml:space="preserve">
+    <value>_Header Version</value>
+  </data>
+  <data name="Module_Metadata_VersionString" xml:space="preserve">
+    <value>_VersionString</value>
+  </data>
+  <data name="Module_PE_Machine" xml:space="preserve">
+    <value>_Machine</value>
+  </data>
+  <data name="Property_Flags_RTSpecialName" xml:space="preserve">
+    <value>_RTSpecialName</value>
+  </data>
+  <data name="Property_Flags_SpecialName" xml:space="preserve">
+    <value>_SpecialName</value>
+  </data>
+  <data name="SaveModule_Cor20_EntryPoint" xml:space="preserve">
+    <value>_Entry Point</value>
+  </data>
+  <data name="SaveModule_Cor20_MajorRuntimeVersion" xml:space="preserve">
+    <value>_Major RT Ver</value>
+  </data>
+  <data name="SaveModule_Cor20_MinorRuntimeVersion" xml:space="preserve">
+    <value>Mino_r RT Ver</value>
+  </data>
+  <data name="SaveModule_Metadata_MajorVersion" xml:space="preserve">
+    <value>_MajorVersion</value>
+  </data>
+  <data name="SaveModule_Metadata_MinorVersion" xml:space="preserve">
+    <value>MinorVe_rsion</value>
+  </data>
+  <data name="SaveModule_Metadata_Reserved1" xml:space="preserve">
+    <value>Reserved_1</value>
+  </data>
+  <data name="SaveModule_Metadata_Reserved2" xml:space="preserve">
+    <value>Reserved_2</value>
+  </data>
+  <data name="SaveModule_Metadata_Signature" xml:space="preserve">
+    <value>_Signature</value>
+  </data>
+  <data name="SaveModule_Metadata_StorageFlags" xml:space="preserve">
+    <value>S_torageFlags</value>
+  </data>
+  <data name="SaveModule_Metadata_VersionString" xml:space="preserve">
+    <value>_VersionString</value>
+  </data>
+  <data name="SaveModule_PE_Machine" xml:space="preserve">
+    <value>_Machine</value>
+  </data>
+  <data name="SaveModule_PE_Subsystem" xml:space="preserve">
+    <value>_Subsystem</value>
+  </data>
+  <data name="SaveModule_TablesHeap_ExtraData" xml:space="preserve">
+    <value>Extra_Data</value>
+  </data>
+  <data name="SaveModule_TablesHeap_HasDeletedRows" xml:space="preserve">
+    <value>_HasDeletedRows</value>
+  </data>
+  <data name="SaveModule_TablesHeap_MajorVersion" xml:space="preserve">
+    <value>M_ajorVersion</value>
+  </data>
+  <data name="SaveModule_TablesHeap_MinorVersion" xml:space="preserve">
+    <value>Reserv_ed1</value>
+  </data>
+  <data name="SaveModule_TablesHeap_Reserved1" xml:space="preserve">
+    <value>Reserv_ed1</value>
+  </data>
+  <data name="SaveModule_TablesHeap_UseENC" xml:space="preserve">
+    <value>_Use #- Table</value>
+  </data>
+  <data name="CustomAttribute_NamedArg_Field" xml:space="preserve">
+    <value>Field</value>
+  </data>
+  <data name="CustomAttribute_NamedArg_Property" xml:space="preserve">
+    <value>Property</value>
+  </data>
+  <data name="SaveModules_FixErrorsByEditingSettings" xml:space="preserve">
+    <value>-- Sửa lỗi bằng cách sửa tùy chọn.</value>
+  </data>
+  <data name="GoToMetaDataTableRow_RID" xml:space="preserve">
+    <value>_RID</value>
+  </data>
+  <data name="Plugin_ShortDescription" xml:space="preserve">
+    <value>Trình soạn thảo Assembly</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftE" xml:space="preserve">
+    <value>Ctrl+Shift+E</value>
+  </data>
+  <data name="EditMethodBodyCode" xml:space="preserve">
+    <value>Sửa Method ({0})...</value>
+  </data>
+  <data name="EditCodeTitle" xml:space="preserve">
+    <value>Sửa Code</value>
+  </data>
+  <data name="Decompiling" xml:space="preserve">
+    <value>Đang dịch ngược...</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Description" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="CompileDiagnostics_Header_File" xml:space="preserve">
+    <value>Tập tin</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Line" xml:space="preserve">
+    <value>Dòng</value>
+  </data>
+  <data name="Button_Compile" xml:space="preserve">
+    <value>Compile</value>
+  </data>
+  <data name="StatusError" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="StatusHidden" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="StatusInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="StatusWarning" xml:space="preserve">
+    <value>Cảnh báo</value>
+  </data>
+  <data name="AddAssemblyReferenceToolTip" xml:space="preserve">
+    <value>Thêm Assembly Reference</value>
+  </data>
+  <data name="AddGacReferenceToolTip" xml:space="preserve">
+    <value>Thêm Assembly Reference (GAC)</value>
+  </data>
+  <data name="Error_CouldNotAddAssemblyReferences" xml:space="preserve">
+    <value>Không thể thêm Assembly Reference.</value>
+  </data>
+  <data name="EditMethodCode" xml:space="preserve">
+    <value>Sửa Method code</value>
+  </data>
+  <data name="ERR_IM_AddingRemovingStaticFromEditedMethodNotSupported" xml:space="preserve">
+    <value>Không hỗ trợ thêm hoặc xóa 'Static'/'Shared' khỏi Method được sửa: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindEditedMethod" xml:space="preserve">
+    <value>Không tìm thấy Method đã sửa. Hãy chắc chắn bạn không thêm hoặc xóa 'Static'/'Shared' hoặc thay đổi parameter type trả về hoặc tên Method: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindField" xml:space="preserve">
+    <value>Không thể tìm thấy Field: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindMethod" xml:space="preserve">
+    <value>Không thể tìm thấy Method: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindMethodType" xml:space="preserve">
+    <value>Không thể tìm thấy type của Method đã sửa: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindType" xml:space="preserve">
+    <value>Không thể tìm thấy Type: {0}</value>
+  </data>
+  <data name="ERR_IM_RenamingVirtualEventsIsNotSupported" xml:space="preserve">
+    <value>Không hỗ trợ đổi tên của Virtual events: {0}</value>
+  </data>
+  <data name="ERR_IM_RenamingVirtualMethodsIsNotSupported" xml:space="preserve">
+    <value>Không hỗ trợ đổi tên của Virtual methods: {0}</value>
+  </data>
+  <data name="ERR_IM_RenamingVirtualPropsIsNotSupported" xml:space="preserve">
+    <value>Không hỗ trợ đổi tên của Virtual properties: {0}</value>
+  </data>
+  <data name="FindCommand" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
+  <data name="IncrementalSearchCommand" xml:space="preserve">
+    <value>Incremental Search</value>
+  </data>
+  <data name="ShortCutKeyCtrlI" xml:space="preserve">
+    <value>Ctrl+I</value>
+  </data>
+  <data name="ShortCutKeyF6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="Button_Cancel2" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="EditAssemblyCode" xml:space="preserve">
+    <value>Sửa thuộc tính Assembly</value>
+  </data>
+  <data name="EditCodeAddClass" xml:space="preserve">
+    <value>Thêm Class</value>
+  </data>
+  <data name="MergeWithAssemblyCommand" xml:space="preserve">
+    <value>Merge với Assembly...</value>
+  </data>
+  <data name="MergeWithAssemblyCommand2" xml:space="preserve">
+    <value>Merge với Assembly</value>
+  </data>
+  <data name="EditAssemblyCode2" xml:space="preserve">
+    <value>Sửa thuộc tính Assembly ({0})...</value>
+  </data>
+  <data name="EditCodeAddClass2" xml:space="preserve">
+    <value>Thêm Class ({0})...</value>
+  </data>
+  <data name="EditCodeEditClass" xml:space="preserve">
+    <value>Sửa Class</value>
+  </data>
+  <data name="EditCodeEditClass2" xml:space="preserve">
+    <value>Sửa Class ({0})...</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindEditedType" xml:space="preserve">
+    <value>Không thể tìm thấy Type đã sửa: {0}</value>
+  </data>
+  <data name="CloseOldInMemoryModules" xml:space="preserve">
+    <value>Đóng In-Memory Modules cũ</value>
+  </data>
+  <data name="CloseAllMissingFilesCommand" xml:space="preserve">
+    <value>Đóng tất cả các Missing files</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Severity" xml:space="preserve">
+    <value>Độ nghiêm trọng</value>
+  </data>
+  <data name="ParamDef_Flags_Lcid" xml:space="preserve">
+    <value>Lcid</value>
+  </data>
+  <data name="ParamDef_Flags_Retval" xml:space="preserve">
+    <value>Retval</value>
+  </data>
+  <data name="AddDocumentsToolTip" xml:space="preserve">
+    <value>Thêm Source Code</value>
+  </data>
+  <data name="ShortCutKeyCtrlO" xml:space="preserve">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftA" xml:space="preserve">
+    <value>Ctrl+Shift+A</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftO" xml:space="preserve">
+    <value>Ctrl+Shift+O</value>
+  </data>
+  <data name="EditCodeAddClassMembers" xml:space="preserve">
+    <value>Thêm Class Members</value>
+  </data>
+  <data name="EditCodeAddClassMembers2" xml:space="preserve">
+    <value>Thêm Class Members ({0})...</value>
+  </data>
+  <data name="SaveModule_PreserveOtherMetadataStreams" xml:space="preserve">
+    <value>Copy Unkno_wn Metadata streams</value>
+  </data>
+  <data name="RerunNgenIfGacAssembly" xml:space="preserve">
+    <value>Chạy NGEN.exe nếu Assembly này đã được cài sẵn trong GAC</value>
+  </data>
+  <data name="CompilerDlgTabTitle" xml:space="preserve">
+    <value>Compiler</value>
+  </data>
+  <data name="ReplaceNopsInstrCommand" xml:space="preserve">
+    <value>_Thay thế với NOPs</value>
+  </data>
+  <data name="ReplaceNopsInstrsCommand" xml:space="preserve">
+    <value>_Thay thế với NOPs</value>
+  </data>
+  <data name="Type_Flags_Accessibility" xml:space="preserve">
+    <value>Accessibilit_y</value>
+  </data>
+  <data name="Type_Flags_Kind" xml:space="preserve">
+    <value>_Loại</value>
+  </data>
+  <data name="Type_Flags_Layout" xml:space="preserve">
+    <value>Layo_ut</value>
+  </data>
+  <data name="Type_Flags_String" xml:space="preserve">
+    <value>Strin_g</value>
+  </data>
+  <data name="Type_Flags_Visibility" xml:space="preserve">
+    <value>Visibilit_y</value>
+  </data>
+</root>

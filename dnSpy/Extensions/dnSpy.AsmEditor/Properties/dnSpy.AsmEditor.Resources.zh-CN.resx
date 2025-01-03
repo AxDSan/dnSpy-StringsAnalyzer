@@ -1,0 +1,2314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppendObject" xml:space="preserve">
+    <value>追加对象</value>
+  </data>
+  <data name="AppendType" xml:space="preserve">
+    <value>追加类型</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_DisableJITCompileOpt" xml:space="preserve">
+    <value>禁用 JIT编译优化(_D)</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_EnableJITCompTrck" xml:space="preserve">
+    <value>启用 JIT 编译跟踪(_J)</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_ProcessArchSpec" xml:space="preserve">
+    <value>指定处理器架构(_E)</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_PublicKey" xml:space="preserve">
+    <value>公钥(_K)</value>
+  </data>
+  <data name="AssemblyDlg_Main_CB_Retargetable" xml:space="preserve">
+    <value>可重定向(_R)</value>
+  </data>
+  <data name="AssemblyDlg_Main_ContentType" xml:space="preserve">
+    <value>内容类型(_T)</value>
+  </data>
+  <data name="AssemblyDlg_Main_Culture" xml:space="preserve">
+    <value>区域(_U)</value>
+  </data>
+  <data name="AssemblyDlg_Main_DotNetVersion" xml:space="preserve">
+    <value>.NET 版本(_V)</value>
+  </data>
+  <data name="AssemblyDlg_Main_HashAlgorithm" xml:space="preserve">
+    <value>Hash 算法(_H)</value>
+  </data>
+  <data name="AssemblyDlg_Main_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="AssemblyDlg_Main_ProcessorArch" xml:space="preserve">
+    <value>处理器架构(_S)</value>
+  </data>
+  <data name="AssemblyDlg_Main_PublicKey" xml:space="preserve">
+    <value>公钥(_P)</value>
+  </data>
+  <data name="AssemblyDlg_Main_Version" xml:space="preserve">
+    <value>版本(_V)</value>
+  </data>
+  <data name="Button_Add" xml:space="preserve">
+    <value>添加(_A)</value>
+  </data>
+  <data name="Button_Add2" xml:space="preserve">
+    <value>添加(_A)...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>取消(_C)</value>
+  </data>
+  <data name="Button_Delete" xml:space="preserve">
+    <value>删除(_D)</value>
+  </data>
+  <data name="Button_Edit" xml:space="preserve">
+    <value>编辑(_E)...</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>确定(_O)</value>
+  </data>
+  <data name="Button_Remove" xml:space="preserve">
+    <value>移除(_R)</value>
+  </data>
+  <data name="Button_RestoreSettings" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="CA_NA_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="CA_NA_PropertyFieldTypeToolTip" xml:space="preserve">
+    <value>属性/字段类型</value>
+  </data>
+  <data name="ClearCharacter" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="ClearCharacter_ToolTip" xml:space="preserve">
+    <value>清除对象</value>
+  </data>
+  <data name="ClearTypesCharacter" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="ClearTypesCharacter_ToolTip" xml:space="preserve">
+    <value>清除类型</value>
+  </data>
+  <data name="ConstantDlg_Constant" xml:space="preserve">
+    <value>常量</value>
+  </data>
+  <data name="ConstructorArguments" xml:space="preserve">
+    <value>构造器参数</value>
+  </data>
+  <data name="CopyAsTextCommand" xml:space="preserve">
+    <value>复制为文本(_X)</value>
+  </data>
+  <data name="CopyCommand" xml:space="preserve">
+    <value>复制(_Y)</value>
+  </data>
+  <data name="CopyILBytesCommand" xml:space="preserve">
+    <value>复制 IL 字节</value>
+  </data>
+  <data name="CopyILBytesKey" xml:space="preserve">
+    <value>Ctrl+B</value>
+  </data>
+  <data name="CouldNotResolveType" xml:space="preserve">
+    <value>无法解析此类型。请确保相应的程序集已加载。</value>
+  </data>
+  <data name="CreateAssemblyCommand" xml:space="preserve">
+    <value>创建程序集...</value>
+  </data>
+  <data name="CreateAssemblyCommand2" xml:space="preserve">
+    <value>创建程序集</value>
+  </data>
+  <data name="CreateConstant_Title" xml:space="preserve">
+    <value>创建常量</value>
+  </data>
+  <data name="CreateCustomAttribute" xml:space="preserve">
+    <value>创建自定义特性</value>
+  </data>
+  <data name="CreateEventCommand" xml:space="preserve">
+    <value>创建事件...</value>
+  </data>
+  <data name="CreateEventCommand2" xml:space="preserve">
+    <value>创建事件</value>
+  </data>
+  <data name="CreateFieldCommand" xml:space="preserve">
+    <value>创建字段...</value>
+  </data>
+  <data name="CreateFieldCommand2" xml:space="preserve">
+    <value>创建字段</value>
+  </data>
+  <data name="CreateFieldTypeSig" xml:space="preserve">
+    <value>创建字段类型签名</value>
+  </data>
+  <data name="CreateFnPtrMethodSignature" xml:space="preserve">
+    <value>创建函数指针方法签名</value>
+  </data>
+  <data name="CreateGenericInstanceTypeArguments" xml:space="preserve">
+    <value>创建泛型实例类型参数</value>
+  </data>
+  <data name="CreateGenericParameter" xml:space="preserve">
+    <value>创建泛型参数</value>
+  </data>
+  <data name="CreateGenericParameterConstraint" xml:space="preserve">
+    <value>创建泛型参数约束</value>
+  </data>
+  <data name="CreateMethodOverride" xml:space="preserve">
+    <value>创建方法重写</value>
+  </data>
+  <data name="CreateMethodSignature" xml:space="preserve">
+    <value>创建方法签名</value>
+  </data>
+  <data name="CreateParameter" xml:space="preserve">
+    <value>创建参数</value>
+  </data>
+  <data name="CreatePropertySignature" xml:space="preserve">
+    <value>创建属性签名</value>
+  </data>
+  <data name="CreateReturnType" xml:space="preserve">
+    <value>创建返回类型</value>
+  </data>
+  <data name="CreateSecurityAttribute" xml:space="preserve">
+    <value>创建安全特性</value>
+  </data>
+  <data name="CreateSecurityDeclaration" xml:space="preserve">
+    <value>创建安全声明</value>
+  </data>
+  <data name="CreateType" xml:space="preserve">
+    <value>创建类型</value>
+  </data>
+  <data name="CreateTypeSig" xml:space="preserve">
+    <value>创建类型签名</value>
+  </data>
+  <data name="CreateTypeSpec" xml:space="preserve">
+    <value>创建类型声明</value>
+  </data>
+  <data name="Create_N_TypeSigs" xml:space="preserve">
+    <value>创建 {0} 类型签名</value>
+  </data>
+  <data name="Create_TypeSig" xml:space="preserve">
+    <value>创建类型签名</value>
+  </data>
+  <data name="Create_TypeSigs" xml:space="preserve">
+    <value>创建类型签名</value>
+  </data>
+  <data name="Create_TypeSigs_N_Left" xml:space="preserve">
+    <value>{0} TypeSigs 剩余</value>
+  </data>
+  <data name="Create_TypeSigs_OneLeft" xml:space="preserve">
+    <value>剩余一个方法签名</value>
+  </data>
+  <data name="CustomAttributesTab" xml:space="preserve">
+    <value>自定义特性</value>
+  </data>
+  <data name="CutCommand" xml:space="preserve">
+    <value>剪切(_T)</value>
+  </data>
+  <data name="DeleteCommandKey" xml:space="preserve">
+    <value>Del</value>
+    <comment>the delete key</comment>
+  </data>
+  <data name="DeleteEventCommand" xml:space="preserve">
+    <value>删除事件</value>
+  </data>
+  <data name="DeleteEvents" xml:space="preserve">
+    <value>删除 {0} 事件</value>
+  </data>
+  <data name="DeleteFieldCommand" xml:space="preserve">
+    <value>删除字段</value>
+  </data>
+  <data name="DeleteFieldsCommand" xml:space="preserve">
+    <value>删除 {0} 个字段</value>
+  </data>
+  <data name="DeleteX" xml:space="preserve">
+    <value>删除{0}</value>
+  </data>
+  <data name="DisableMMapIOCommand" xml:space="preserve">
+    <value>禁用内存映射 I/O</value>
+  </data>
+  <data name="EditAssemblyCommand" xml:space="preserve">
+    <value>编辑程序集...</value>
+  </data>
+  <data name="EditAssemblyCommand2" xml:space="preserve">
+    <value>编辑程序集</value>
+  </data>
+  <data name="EditCustomAttribute" xml:space="preserve">
+    <value>编辑自定义特性</value>
+  </data>
+  <data name="EditEventCommand" xml:space="preserve">
+    <value>编辑事件...</value>
+  </data>
+  <data name="EditEventCommand2" xml:space="preserve">
+    <value>编辑事件</value>
+  </data>
+  <data name="EditFieldCommand" xml:space="preserve">
+    <value>编辑字段...</value>
+  </data>
+  <data name="EditFieldCommand2" xml:space="preserve">
+    <value>编辑字段</value>
+  </data>
+  <data name="EditGenericParameter" xml:space="preserve">
+    <value>编辑泛型参数</value>
+  </data>
+  <data name="EditGenericParameterConstraint" xml:space="preserve">
+    <value>编辑泛型参数约束</value>
+  </data>
+  <data name="EditMemberRef" xml:space="preserve">
+    <value>编辑成员引用</value>
+  </data>
+  <data name="EditMethodOverride" xml:space="preserve">
+    <value>编辑方法重写</value>
+  </data>
+  <data name="EditMethodSpec" xml:space="preserve">
+    <value>编辑方法声明</value>
+  </data>
+  <data name="EditParamDef" xml:space="preserve">
+    <value>编辑 ParamDef</value>
+  </data>
+  <data name="EditParameter" xml:space="preserve">
+    <value>编辑参数</value>
+  </data>
+  <data name="EditSecurityAttribute" xml:space="preserve">
+    <value>编辑安全特性</value>
+  </data>
+  <data name="EditSecurityDeclaration" xml:space="preserve">
+    <value>编辑安全声明</value>
+  </data>
+  <data name="EnumType" xml:space="preserve">
+    <value>枚举：{0}</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>&lt;错误&gt;</value>
+  </data>
+  <data name="EventType" xml:space="preserve">
+    <value>事件类型：{0}</value>
+  </data>
+  <data name="Event_ClearCharacter" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="Event_ClearCharacter_ToolTip" xml:space="preserve">
+    <value>设置为 Null</value>
+  </data>
+  <data name="Event_InvokeMethod" xml:space="preserve">
+    <value>调用(_I)...</value>
+  </data>
+  <data name="Event_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="Event_RemoveMethod" xml:space="preserve">
+    <value>移除(_R)...</value>
+  </data>
+  <data name="FieldType" xml:space="preserve">
+    <value>字段类型: {0}</value>
+  </data>
+  <data name="Field_Access" xml:space="preserve">
+    <value>访问</value>
+  </data>
+  <data name="Field_DefaultValueInfo" xml:space="preserve">
+    <value>字段默认值</value>
+  </data>
+  <data name="Field_Flags" xml:space="preserve">
+    <value>标志位</value>
+  </data>
+  <data name="Field_InitialValue" xml:space="preserve">
+    <value>初始值(_V)</value>
+  </data>
+  <data name="Field_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="Field_Offset" xml:space="preserve">
+    <value>偏移(_F)</value>
+  </data>
+  <data name="Field_RVA" xml:space="preserve">
+    <value>_RVA</value>
+  </data>
+  <data name="GenericParameterNumber" xml:space="preserve">
+    <value>通用参数({0})</value>
+  </data>
+  <data name="GP_Class" xml:space="preserve">
+    <value>类(_L)</value>
+  </data>
+  <data name="GP_Constraints" xml:space="preserve">
+    <value>约束</value>
+  </data>
+  <data name="GP_DefaultConstructor" xml:space="preserve">
+    <value>默认构造函数(_D)</value>
+  </data>
+  <data name="GP_Kind" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="GP_Kind_ToolTip" xml:space="preserve">
+    <value>只有MD的头版本是1.1(0x0101) 时使用，它永远不可能是1.1所以忽略种类</value>
+  </data>
+  <data name="GP_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="GP_Number" xml:space="preserve">
+    <value>数字(_U)</value>
+  </data>
+  <data name="GP_Struct" xml:space="preserve">
+    <value>结构体(_S)</value>
+  </data>
+  <data name="GP_Variance" xml:space="preserve">
+    <value>方差(_V)</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_32BitPref" xml:space="preserve">
+    <value>优先32位</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_32BitReqd" xml:space="preserve">
+    <value>强制32位</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_ILLibrary" xml:space="preserve">
+    <value>IL库</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_IL_Only" xml:space="preserve">
+    <value>仅IL</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_NativeEntryPoint" xml:space="preserve">
+    <value>本机入口点</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_StrongNameSigned" xml:space="preserve">
+    <value>强名称签名</value>
+  </data>
+  <data name="HexNode_Cor20Header_Flags_TrackDebugData" xml:space="preserve">
+    <value>跟踪调试数据</value>
+  </data>
+  <data name="HexNode_Cor20_Header" xml:space="preserve">
+    <value>Cor20 头</value>
+  </data>
+  <data name="HexNode_DOSHeader" xml:space="preserve">
+    <value>DOS 头</value>
+  </data>
+  <data name="HexNode_FileHeader" xml:space="preserve">
+    <value>文件头</value>
+  </data>
+  <data name="HexNode_OptHeader32" xml:space="preserve">
+    <value>可选头（32 -位）</value>
+  </data>
+  <data name="HexNode_OptHeader64" xml:space="preserve">
+    <value>可选头（64 - 位）</value>
+  </data>
+  <data name="ImplMapTab" xml:space="preserve">
+    <value>实现映射</value>
+  </data>
+  <data name="ImplMap_Enable" xml:space="preserve">
+    <value>启用(_E)</value>
+  </data>
+  <data name="ImplMap_Module" xml:space="preserve">
+    <value>模块(_D)</value>
+  </data>
+  <data name="ImplMap_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="MainTab" xml:space="preserve">
+    <value>主要</value>
+  </data>
+  <data name="MarshalType" xml:space="preserve">
+    <value>元类型: {0}</value>
+  </data>
+  <data name="MarshalTypeTab" xml:space="preserve">
+    <value>元类型</value>
+  </data>
+  <data name="MarshalType_Array" xml:space="preserve">
+    <value>数组(_A)</value>
+  </data>
+  <data name="MarshalType_ByRef" xml:space="preserve">
+    <value>引用(_B)</value>
+  </data>
+  <data name="MarshalType_Cookie" xml:space="preserve">
+    <value>Coo_kie</value>
+  </data>
+  <data name="MarshalType_Data" xml:space="preserve">
+    <value>数据(_D)</value>
+  </data>
+  <data name="MarshalType_ElemType" xml:space="preserve">
+    <value>元素类型(_T)</value>
+  </data>
+  <data name="MarshalType_Enable" xml:space="preserve">
+    <value>启用(_E)</value>
+  </data>
+  <data name="MarshalType_EnumNotInitialized" xml:space="preserve">
+    <value>&lt; 未初始化 &gt;</value>
+  </data>
+  <data name="MarshalType_Flags" xml:space="preserve">
+    <value>标识位(_F)</value>
+  </data>
+  <data name="MarshalType_GUID" xml:space="preserve">
+    <value>_GUID</value>
+  </data>
+  <data name="MarshalType_NativeType" xml:space="preserve">
+    <value>本机类型(_N)</value>
+  </data>
+  <data name="MarshalType_Nothing" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="MarshalType_NumElems" xml:space="preserve">
+    <value>数字元素(_N)</value>
+  </data>
+  <data name="MarshalType_ParamIndex" xml:space="preserve">
+    <value>参数索引</value>
+  </data>
+  <data name="MarshalType_ParamIndex2" xml:space="preserve">
+    <value>参数索引(_P)</value>
+  </data>
+  <data name="MarshalType_ParamNum" xml:space="preserve">
+    <value>参数数目(_P)</value>
+  </data>
+  <data name="MarshalType_Reserved" xml:space="preserve">
+    <value>已保留(_R)</value>
+  </data>
+  <data name="MarshalType_Size" xml:space="preserve">
+    <value>长度(_S)</value>
+  </data>
+  <data name="MarshalType_Vector" xml:space="preserve">
+    <value>矢量(_T)</value>
+  </data>
+  <data name="MarshalType_VT" xml:space="preserve">
+    <value>_VT</value>
+  </data>
+  <data name="MemberRef_Class" xml:space="preserve">
+    <value>类</value>
+  </data>
+  <data name="MemberRef_ClassTab" xml:space="preserve">
+    <value>类</value>
+  </data>
+  <data name="MemberRef_FieldSigTab" xml:space="preserve">
+    <value>字段签名</value>
+  </data>
+  <data name="MemberRef_InitFromField" xml:space="preserve">
+    <value>从字段初始化...</value>
+  </data>
+  <data name="MemberRef_InitFromMethod" xml:space="preserve">
+    <value>从方法初始化...</value>
+  </data>
+  <data name="MemberRef_MethodDef" xml:space="preserve">
+    <value>方法定义(_M)</value>
+  </data>
+  <data name="MemberRef_MethodDef_ToolTip" xml:space="preserve">
+    <value>初始化类的方法定义</value>
+  </data>
+  <data name="MemberRef_MethodSigTab" xml:space="preserve">
+    <value>方法签名</value>
+  </data>
+  <data name="MemberRef_ModuleRef" xml:space="preserve">
+    <value>模块引用(_d)</value>
+  </data>
+  <data name="MemberRef_ModuleRef_ToolTip" xml:space="preserve">
+    <value>将类初始化为模块引用</value>
+  </data>
+  <data name="MemberRef_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="MemberRef_Type" xml:space="preserve">
+    <value>类型(_T)</value>
+  </data>
+  <data name="MemberRef_TypeSpec" xml:space="preserve">
+    <value>类型声明(_S)</value>
+  </data>
+  <data name="MemberRef_TypeSpec_ToolTip" xml:space="preserve">
+    <value>初始化类的类型声明</value>
+  </data>
+  <data name="MemberRef_Type_ToolTip" xml:space="preserve">
+    <value>初始化类至类型</value>
+  </data>
+  <data name="MethodCantBeNull" xml:space="preserve">
+    <value>方法不能为 null</value>
+  </data>
+  <data name="MethodInstantiationTypesTab" xml:space="preserve">
+    <value>方法实例类型</value>
+  </data>
+  <data name="MethodSig_CallingConv" xml:space="preserve">
+    <value>调用约定(_l)</value>
+  </data>
+  <data name="MethodSig_MethodParameterTypes" xml:space="preserve">
+    <value>方法参数类型</value>
+  </data>
+  <data name="MethodSig_MethodVarArgParameterTypes" xml:space="preserve">
+    <value>方法参数类型</value>
+  </data>
+  <data name="MethodSig_NumGenerics" xml:space="preserve">
+    <value># 通用数字(_S)</value>
+  </data>
+  <data name="MethodSig_ReturnType" xml:space="preserve">
+    <value>返回类型(_U)...</value>
+  </data>
+  <data name="MethodSpec_Method" xml:space="preserve">
+    <value>方法(_M)</value>
+  </data>
+  <data name="MethodsTab" xml:space="preserve">
+    <value>方法</value>
+  </data>
+  <data name="MoveDownCommand" xml:space="preserve">
+    <value>下移(_D)</value>
+  </data>
+  <data name="MoveDown_ToolTip" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="MoveUpCommand" xml:space="preserve">
+    <value>上移(_U)</value>
+  </data>
+  <data name="MoveUp_ToolTip" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="NamedArguments" xml:space="preserve">
+    <value>命名参数</value>
+  </data>
+  <data name="NoName" xml:space="preserve">
+    <value>&lt;&lt; 没有名字 &gt;&gt;</value>
+  </data>
+  <data name="NotGenericType" xml:space="preserve">
+    <value>{0} 不是泛型类型</value>
+  </data>
+  <data name="OtherMethodsTab" xml:space="preserve">
+    <value>其它方法</value>
+  </data>
+  <data name="ParamDef_Flags" xml:space="preserve">
+    <value>标志位</value>
+  </data>
+  <data name="ParamDef_Flags_In" xml:space="preserve">
+    <value>传入(_I)</value>
+  </data>
+  <data name="ParamDef_Flags_Optional" xml:space="preserve">
+    <value>可选的(_O)</value>
+  </data>
+  <data name="ParamDef_Flags_Out" xml:space="preserve">
+    <value>传出(_U)</value>
+  </data>
+  <data name="ParamDef_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="ParamDef_Sequence" xml:space="preserve">
+    <value>序列(_S)</value>
+  </data>
+  <data name="ParamDef_Sequence_ToolTip" xml:space="preserve">
+    <value>序列0是返回参数，序列1是第一个参数，以此类推。</value>
+  </data>
+  <data name="ParameterNumber" xml:space="preserve">
+    <value>参数({0})</value>
+  </data>
+  <data name="ParameterReturn" xml:space="preserve">
+    <value>参数(返回)</value>
+  </data>
+  <data name="Parameter_DefaultValueInfo" xml:space="preserve">
+    <value>参数默认值</value>
+  </data>
+  <data name="PasteAfterSelectionCommand" xml:space="preserve">
+    <value>在选区后粘贴(_L)</value>
+  </data>
+  <data name="PasteCommand" xml:space="preserve">
+    <value>粘贴(_P)</value>
+  </data>
+  <data name="PickMember_OpenAsmToolTip" xml:space="preserve">
+    <value>打开程序集或模块</value>
+  </data>
+  <data name="PickMember_Search" xml:space="preserve">
+    <value>搜索(_S)</value>
+  </data>
+  <data name="PickMember_SelectCorrectNode" xml:space="preserve">
+    <value>您需要选择一个正确的节点</value>
+  </data>
+  <data name="PickMember_TypeMustBeSelected" xml:space="preserve">
+    <value>必须选择一个类型.</value>
+  </data>
+  <data name="Pick_Constructor" xml:space="preserve">
+    <value>选择一个构造函数</value>
+  </data>
+  <data name="Pick_EnumType" xml:space="preserve">
+    <value>选择枚举类型</value>
+  </data>
+  <data name="Pick_Type" xml:space="preserve">
+    <value>选择类型</value>
+  </data>
+  <data name="RawCustomAttributeBlob" xml:space="preserve">
+    <value>原始Blob</value>
+  </data>
+  <data name="RawCustomAttributeBlob2" xml:space="preserve">
+    <value>&lt;原始Blob&gt;</value>
+  </data>
+  <data name="RemoveAssembliesCommand" xml:space="preserve">
+    <value>移除 {0} 程序集</value>
+  </data>
+  <data name="RemoveAssemblyCommand" xml:space="preserve">
+    <value>移除程序集</value>
+  </data>
+  <data name="RemoveCharacter" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="RemoveCharacter_ToolTip" xml:space="preserve">
+    <value>移除最后的对象</value>
+  </data>
+  <data name="RemoveCommand" xml:space="preserve">
+    <value>移除 {0}</value>
+  </data>
+  <data name="RemoveLastTypeCharacter" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="RemoveLastTypeCharacter_ToolTip" xml:space="preserve">
+    <value>移除最后类型</value>
+  </data>
+  <data name="ReturnTypeRequired" xml:space="preserve">
+    <value>返回类型是必须的</value>
+  </data>
+  <data name="SecurityDeclarationsTab" xml:space="preserve">
+    <value>安全性说明</value>
+  </data>
+  <data name="ShortCutKeyA" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="ShortcutKeyAltEnter" xml:space="preserve">
+    <value>Alt+Enter</value>
+  </data>
+  <data name="ShortCutKeyC" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="ShortCutKeyCtrlAltV" xml:space="preserve">
+    <value>Ctrl+Alt+V</value>
+  </data>
+  <data name="ShortCutKeyCtrlC" xml:space="preserve">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="ShortCutKeyCtrlDel" xml:space="preserve">
+    <value>Ctrl + Del</value>
+  </data>
+  <data name="ShortCutKeyCtrlT" xml:space="preserve">
+    <value>Ctrl+T</value>
+  </data>
+  <data name="ShortCutKeyCtrlV" xml:space="preserve">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="ShortCutKeyCtrlX" xml:space="preserve">
+    <value>Ctrl+X</value>
+  </data>
+  <data name="ShortCutKeyD" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="ShortCutKeyF" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="ShortCutKeyU" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型: {0}</value>
+  </data>
+  <data name="TypeMustBeGeneric" xml:space="preserve">
+    <value>类型必须为泛型</value>
+  </data>
+  <data name="TypeSigCreator_Array" xml:space="preserve">
+    <value>数组(_Y)</value>
+  </data>
+  <data name="TypeSigCreator_Array_LowerBounds" xml:space="preserve">
+    <value>下标(_W)</value>
+  </data>
+  <data name="TypeSigCreator_Array_LowerBounds_ToolTip" xml:space="preserve">
+    <value>逗号分隔的数组下标列表(有符号整数)</value>
+  </data>
+  <data name="TypeSigCreator_Array_Rank" xml:space="preserve">
+    <value>维度(_K)</value>
+  </data>
+  <data name="TypeSigCreator_Array_Sizes" xml:space="preserve">
+    <value>长度(_I)</value>
+  </data>
+  <data name="TypeSigCreator_Array_Sizes_ToolTip" xml:space="preserve">
+    <value>以逗号分隔的数组长度 （无符号整数）</value>
+  </data>
+  <data name="TypeSigCreator_Array_ToolTip" xml:space="preserve">
+    <value>将类型转换为一个多维数组</value>
+  </data>
+  <data name="TypeSigCreator_ByRef" xml:space="preserve">
+    <value>引用(_B)</value>
+  </data>
+  <data name="TypeSigCreator_ByRef_ToolTip" xml:space="preserve">
+    <value>将类型转换为引用</value>
+  </data>
+  <data name="TypeSigCreator_Clear" xml:space="preserve">
+    <value>清除(_E)</value>
+  </data>
+  <data name="TypeSigCreator_Clear_ToolTip" xml:space="preserve">
+    <value>清除类型</value>
+  </data>
+  <data name="TypeSigCreator_CModOpt" xml:space="preserve">
+    <value>C修饰符可选 (_T)</value>
+  </data>
+  <data name="TypeSigCreator_CModOpt_ToolTip" xml:space="preserve">
+    <value>添加可选的C修饰符</value>
+  </data>
+  <data name="TypeSigCreator_CModReqd" xml:space="preserve">
+    <value>C修饰符依赖(_M)</value>
+  </data>
+  <data name="TypeSigCreator_CModReqd_ToolTip" xml:space="preserve">
+    <value>添加依赖的C修饰符</value>
+  </data>
+  <data name="TypeSigCreator_FnPtr" xml:space="preserve">
+    <value>函数指针(_F)</value>
+  </data>
+  <data name="TypeSigCreator_FnPtr_ToolTip" xml:space="preserve">
+    <value>添加函数指针</value>
+  </data>
+  <data name="TypeSigCreator_GenericInst" xml:space="preserve">
+    <value>泛型实例(_G)</value>
+  </data>
+  <data name="TypeSigCreator_GenericInst_ToolTip" xml:space="preserve">
+    <value>添加一个泛型实例类型</value>
+  </data>
+  <data name="TypeSigCreator_GenericsCount" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="TypeSigCreator_GenericsCount_ToolTip" xml:space="preserve">
+    <value>类型/方法泛型变量数</value>
+  </data>
+  <data name="TypeSigCreator_MultidimensionalArray" xml:space="preserve">
+    <value>多维数组</value>
+  </data>
+  <data name="TypeSigCreator_MVar" xml:space="preserve">
+    <value>M变量(_M)</value>
+  </data>
+  <data name="TypeSigCreator_MVar_ToolTip" xml:space="preserve">
+    <value>添加一个方法的泛型变量</value>
+  </data>
+  <data name="TypeSigCreator_Pinned" xml:space="preserve">
+    <value>已固定的(_n)</value>
+  </data>
+  <data name="TypeSigCreator_Pinned_ToolTip" xml:space="preserve">
+    <value>把他变成固定变量</value>
+  </data>
+  <data name="TypeSigCreator_Pointer" xml:space="preserve">
+    <value>指针(_P)</value>
+  </data>
+  <data name="TypeSigCreator_Pointer_ToolTip" xml:space="preserve">
+    <value>转换类型为指针</value>
+  </data>
+  <data name="TypeSigCreator_Remove_ToolTip" xml:space="preserve">
+    <value>移除最后添加的类型</value>
+  </data>
+  <data name="TypeSigCreator_SZArray" xml:space="preserve">
+    <value>SZ数组(_Z)</value>
+  </data>
+  <data name="TypeSigCreator_SZArray_ToolTip" xml:space="preserve">
+    <value>将类型转换为一维零下限数组</value>
+  </data>
+  <data name="TypeSigCreator_Type" xml:space="preserve">
+    <value>类型(_T)</value>
+  </data>
+  <data name="TypeSigCreator_Type_ToolTip" xml:space="preserve">
+    <value>添加类型</value>
+  </data>
+  <data name="TypeSigCreator_Var" xml:space="preserve">
+    <value>变量(_V)</value>
+  </data>
+  <data name="TypeSigCreator_Var_ToolTip" xml:space="preserve">
+    <value>添加泛型变量</value>
+  </data>
+  <data name="TypeTab" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="UnknownBytesMsg" xml:space="preserve">
+    <value>某些被复制的字节未知，因为该方法已被编辑。只有将文件保存到磁盘并重新打开后，才会知道新的标记和字符串偏移。</value>
+  </data>
+  <data name="UnknownEnum" xml:space="preserve">
+    <value>未知枚举</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>值(_V)</value>
+  </data>
+  <data name="ValueType_ToolTip" xml:space="preserve">
+    <value>值类型</value>
+  </data>
+  <data name="XML" xml:space="preserve">
+    <value>_XML</value>
+  </data>
+  <data name="AddExistingNetModuleToAssemblyCommand" xml:space="preserve">
+    <value>添加现有模块到程序集...</value>
+  </data>
+  <data name="AddExistingNetModuleToAssemblyCommand2" xml:space="preserve">
+    <value>添加现有模块到程序集</value>
+  </data>
+  <data name="AddNewNetModuleToAssemblyCommand" xml:space="preserve">
+    <value>添加新的模块到程序集...</value>
+  </data>
+  <data name="AddNewNetModuleToAssemblyCommand2" xml:space="preserve">
+    <value>添加新的模块到程序集</value>
+  </data>
+  <data name="AllFiles" xml:space="preserve">
+    <value>所有文件</value>
+  </data>
+  <data name="AskCancelSave" xml:space="preserve">
+    <value>确定取消保存？</value>
+  </data>
+  <data name="AskCancelSaveCloseWindow" xml:space="preserve">
+    <value>保存已经被取消。确定要关闭窗口吗？</value>
+  </data>
+  <data name="AskDeleteField" xml:space="preserve">
+    <value>程序集中的部分代码可能会引用此字段。确定要删除此字段吗？</value>
+  </data>
+  <data name="AskDeleteMethod" xml:space="preserve">
+    <value>程序集中的部分代码可能会引用此方法。确定要删除此方法吗？</value>
+  </data>
+  <data name="AskDeleteType" xml:space="preserve">
+    <value>程序集中的部分代码可能会引用此类型。确定要删除此类型吗？</value>
+  </data>
+  <data name="AskExitUnsavedFile" xml:space="preserve">
+    <value>有文件尚未保存。要在退出前保存吗？</value>
+  </data>
+  <data name="AskExitUnsavedFiles" xml:space="preserve">
+    <value>有 {0} 个文件尚未保存。要在退出前保存吗？</value>
+  </data>
+  <data name="AskLoadAssembliesLoseChanges" xml:space="preserve">
+    <value>确定要加载新程序集并放弃所有修改吗？</value>
+  </data>
+  <data name="AskReloadAssembliesLoseChanges" xml:space="preserve">
+    <value>确定要重新载入所有程序集并放弃所有修改吗？</value>
+  </data>
+  <data name="AskSaveFile" xml:space="preserve">
+    <value>文件尚未被保存，需要在继续前保存吗？</value>
+  </data>
+  <data name="AskSaveFiles" xml:space="preserve">
+    <value>文件尚未被保存，需要在继续前保存吗？</value>
+  </data>
+  <data name="BaseTypeTab" xml:space="preserve">
+    <value>基类型</value>
+  </data>
+  <data name="BaseTypeX" xml:space="preserve">
+    <value>基类型: {0}</value>
+  </data>
+  <data name="Button_Append" xml:space="preserve">
+    <value>追加(_P)</value>
+  </data>
+  <data name="Button_Assembly" xml:space="preserve">
+    <value>程序集</value>
+  </data>
+  <data name="ConvAssemblyToNetModuleCommand" xml:space="preserve">
+    <value>转换程序集为模块</value>
+  </data>
+  <data name="ConvertUncondBranchCommand" xml:space="preserve">
+    <value>转换为无条件分支(_B)</value>
+  </data>
+  <data name="ConvertUncondBranchesCommand" xml:space="preserve">
+    <value>转换为无条件分支(_B)</value>
+  </data>
+  <data name="ConvNetModuleToAssemblyCommand" xml:space="preserve">
+    <value>转换模块为程序集</value>
+  </data>
+  <data name="CopyAsTextCommand2" xml:space="preserve">
+    <value>复制为文本</value>
+  </data>
+  <data name="CopyFileOffsetCommand" xml:space="preserve">
+    <value>复制文件偏移</value>
+  </data>
+  <data name="CopyFileOffsetsCommand" xml:space="preserve">
+    <value>复制文件偏移</value>
+  </data>
+  <data name="CopyMetaDataToken" xml:space="preserve">
+    <value>复制 MD 标记(_D)</value>
+  </data>
+  <data name="CopyMetaDataTokens" xml:space="preserve">
+    <value>复制 MD 标记(_M)</value>
+  </data>
+  <data name="CopyRVACommand" xml:space="preserve">
+    <value>复制 RVA</value>
+  </data>
+  <data name="CopyRVAsCommand" xml:space="preserve">
+    <value>复制 RVA</value>
+  </data>
+  <data name="CreateAnExceptionCatchType" xml:space="preserve">
+    <value>创建异常捕获类型</value>
+  </data>
+  <data name="CreateAssemblyLinkedResourceCommand" xml:space="preserve">
+    <value>创建程序集链接资源......</value>
+  </data>
+  <data name="CreateAssemblyLinkedResourceCommand2" xml:space="preserve">
+    <value>创建程序集链接资源</value>
+  </data>
+  <data name="CreateBitMapIconResourceCommand" xml:space="preserve">
+    <value>创建 System.Data.Bitmap/Icon 资源...</value>
+  </data>
+  <data name="CreateBitMapIconResourceCommand2" xml:space="preserve">
+    <value>创建 System.Data.Bitmap/Icon 资源</value>
+  </data>
+  <data name="CreateByteArrayResourceCommand" xml:space="preserve">
+    <value>创建字节数组资源...</value>
+  </data>
+  <data name="CreateByteArrayResourceCommand2" xml:space="preserve">
+    <value>创建字节数组资源</value>
+  </data>
+  <data name="CreateFileLinkedResourceCommand" xml:space="preserve">
+    <value>创建链接文件资源...</value>
+  </data>
+  <data name="CreateFileLinkedResourceCommand2" xml:space="preserve">
+    <value>创建文件链接资源</value>
+  </data>
+  <data name="CreateFileResourceCommand" xml:space="preserve">
+    <value>创建文件资源...</value>
+  </data>
+  <data name="CreateFileResourceCommand2" xml:space="preserve">
+    <value>创建文件资源</value>
+  </data>
+  <data name="CreateImageListStreamerResourceCommand" xml:space="preserve">
+    <value>创建 System.Windows.Forms.ImageListStreamer 资源...</value>
+  </data>
+  <data name="CreateImageListStreamerResourceCommand2" xml:space="preserve">
+    <value>创建 System.Windows.Forms.ImageListStreamer 资源</value>
+  </data>
+  <data name="CreateInterfaceImpl" xml:space="preserve">
+    <value>创建接口实现</value>
+  </data>
+  <data name="CreateLocalType" xml:space="preserve">
+    <value>创建一个局部类型</value>
+  </data>
+  <data name="CreateMethodCommand" xml:space="preserve">
+    <value>创建方法...</value>
+  </data>
+  <data name="CreateMethodCommand2" xml:space="preserve">
+    <value>创建方法</value>
+  </data>
+  <data name="CreateMethodSig" xml:space="preserve">
+    <value>创建方法签名</value>
+  </data>
+  <data name="CreateMultiFileResourceCommand" xml:space="preserve">
+    <value>创建多文件资源...</value>
+  </data>
+  <data name="CreateMultiFileResourceCommand2" xml:space="preserve">
+    <value>创建多文件资源</value>
+  </data>
+  <data name="CreateNestedTypeCommand" xml:space="preserve">
+    <value>创建嵌套的类型...</value>
+  </data>
+  <data name="CreateNestedTypeCommand2" xml:space="preserve">
+    <value>创建嵌套的类型</value>
+  </data>
+  <data name="CreateNetModuleCommand" xml:space="preserve">
+    <value>创建模块...</value>
+  </data>
+  <data name="CreateNetModuleCommand2" xml:space="preserve">
+    <value>创建模块</value>
+  </data>
+  <data name="CreatePropertyCommand" xml:space="preserve">
+    <value>创建属性...</value>
+  </data>
+  <data name="CreatePropertyCommand2" xml:space="preserve">
+    <value>创建属性</value>
+  </data>
+  <data name="CreateResourceCommand" xml:space="preserve">
+    <value>创建资源...</value>
+  </data>
+  <data name="CreateResourceCommand2" xml:space="preserve">
+    <value>创建资源</value>
+  </data>
+  <data name="CreateStreamResourceCommand" xml:space="preserve">
+    <value>创建 System.IO.Stream 资源...</value>
+  </data>
+  <data name="CreateStreamResourceCommand2" xml:space="preserve">
+    <value>创建 System.IO.Stream 资源</value>
+  </data>
+  <data name="CreateTypeCommand" xml:space="preserve">
+    <value>创建类型...</value>
+  </data>
+  <data name="CreateTypeCommand2" xml:space="preserve">
+    <value>创建类型</value>
+  </data>
+  <data name="DeleteMethodCommand" xml:space="preserve">
+    <value>删除方法</value>
+  </data>
+  <data name="DeleteMethodsCommand" xml:space="preserve">
+    <value>删除 {0} 个方法</value>
+  </data>
+  <data name="DeleteNamespaceCommand" xml:space="preserve">
+    <value>删除命名空间</value>
+  </data>
+  <data name="DeleteNamespacesCommand" xml:space="preserve">
+    <value>删除 {0} 个命名空间</value>
+  </data>
+  <data name="DeletePropertiesCommand" xml:space="preserve">
+    <value>删除 {0} 个属性</value>
+  </data>
+  <data name="DeletePropertyCommand" xml:space="preserve">
+    <value>删除属性</value>
+  </data>
+  <data name="DeleteResourceCommand" xml:space="preserve">
+    <value>删除资源</value>
+  </data>
+  <data name="DeleteResourcesCommand" xml:space="preserve">
+    <value>删除 {0} 个资源</value>
+  </data>
+  <data name="DeleteTypeCommand" xml:space="preserve">
+    <value>删除类型</value>
+  </data>
+  <data name="DeleteTypesCommand" xml:space="preserve">
+    <value>删除 {0} 个类型</value>
+  </data>
+  <data name="EditFieldMemberRef" xml:space="preserve">
+    <value>编辑字段成员引用</value>
+  </data>
+  <data name="EditILInstructionsCommand" xml:space="preserve">
+    <value>编辑IL指令(_S)</value>
+  </data>
+  <data name="EditInterfaceImpl" xml:space="preserve">
+    <value>编辑接口实现</value>
+  </data>
+  <data name="EditMethodBodyCommand" xml:space="preserve">
+    <value>编辑方法体...</value>
+  </data>
+  <data name="EditMethodBodyCommand2" xml:space="preserve">
+    <value>编辑方法体</value>
+  </data>
+  <data name="EditMethodCommand" xml:space="preserve">
+    <value>编辑方法...</value>
+  </data>
+  <data name="EditMethodCommand2" xml:space="preserve">
+    <value>编辑方法</value>
+  </data>
+  <data name="EditMethodMemberRef" xml:space="preserve">
+    <value>编辑方法成员引用</value>
+  </data>
+  <data name="EditModuleCommand" xml:space="preserve">
+    <value>编辑模块...</value>
+  </data>
+  <data name="EditModuleCommand2" xml:space="preserve">
+    <value>编辑模块</value>
+  </data>
+  <data name="EditNamespace" xml:space="preserve">
+    <value>编辑命名空间</value>
+  </data>
+  <data name="EditOperand_Field" xml:space="preserve">
+    <value>字段(_F)...</value>
+  </data>
+  <data name="EditOperand_Field_MemberRef" xml:space="preserve">
+    <value>字段引用成员(_I)</value>
+  </data>
+  <data name="EditOperand_Method" xml:space="preserve">
+    <value>方法(_M)...</value>
+  </data>
+  <data name="EditOperand_MethodSpec" xml:space="preserve">
+    <value>方法声明(_H)...</value>
+  </data>
+  <data name="EditOperand_Method_MemberRef" xml:space="preserve">
+    <value>方法成员引用(_E)</value>
+  </data>
+  <data name="EditOperand_Type" xml:space="preserve">
+    <value>_Type...</value>
+  </data>
+  <data name="EditOperand_TypeSpec" xml:space="preserve">
+    <value>类型声明(_S)...</value>
+  </data>
+  <data name="EditPropertyCommand" xml:space="preserve">
+    <value>编辑属性...</value>
+  </data>
+  <data name="EditPropertyCommand2" xml:space="preserve">
+    <value>编辑属性</value>
+  </data>
+  <data name="EditResourceCommand" xml:space="preserve">
+    <value>编辑资源...</value>
+  </data>
+  <data name="EditResourceCommand2" xml:space="preserve">
+    <value>编辑资源</value>
+  </data>
+  <data name="EditResource_ContainsNoMetadata" xml:space="preserve">
+    <value>不包含元数据(_D)</value>
+  </data>
+  <data name="EditResource_File" xml:space="preserve">
+    <value>文件(_F)</value>
+  </data>
+  <data name="EditResource_Hash" xml:space="preserve">
+    <value>_Hash</value>
+  </data>
+  <data name="EditSwitchInstructionOperand" xml:space="preserve">
+    <value>编辑分支操作数</value>
+  </data>
+  <data name="EditTypeCommand" xml:space="preserve">
+    <value>编辑类型...</value>
+  </data>
+  <data name="EditTypeCommand2" xml:space="preserve">
+    <value>编辑类型</value>
+  </data>
+  <data name="EH_Command1" xml:space="preserve">
+    <value>在选择之前添加新异常处理</value>
+  </data>
+  <data name="EH_Command2" xml:space="preserve">
+    <value>在选择之后添加新异常处理</value>
+  </data>
+  <data name="EH_Command3" xml:space="preserve">
+    <value>添加新的异常处理(_A)</value>
+  </data>
+  <data name="EH_Command4" xml:space="preserve">
+    <value>移除异常处理程序(_R)</value>
+  </data>
+  <data name="EH_Command5" xml:space="preserve">
+    <value>移除异常处理程序(_R)</value>
+  </data>
+  <data name="EH_Command6" xml:space="preserve">
+    <value>删除所有异常处理程序(_V)</value>
+  </data>
+  <data name="EmptyFilename" xml:space="preserve">
+    <value>&lt; 空文件名 &gt;</value>
+  </data>
+  <data name="Error_AssemblyFieldMustNotBeEmpty" xml:space="preserve">
+    <value>程序集不能为空.</value>
+  </data>
+  <data name="Error_CouldNotFindMethod" xml:space="preserve">
+    <value>找不到方法: {0}</value>
+  </data>
+  <data name="Error_CouldNotFindTypeOrItsAssembly" xml:space="preserve">
+    <value>无法找到类型或其程序集</value>
+  </data>
+  <data name="Error_CouldNotLoadType" xml:space="preserve">
+    <value>未能加载类型 '{0}': {1}</value>
+  </data>
+  <data name="Error_CouldNotSerializeImages" xml:space="preserve">
+    <value>无法序列化图片。错误：{0}</value>
+  </data>
+  <data name="Error_DeSerializationDisabledInSettings" xml:space="preserve">
+    <value>(反)序列化已被设置禁止。</value>
+  </data>
+  <data name="Error_EmptyImageList" xml:space="preserve">
+    <value>无法创建空的图像列表。</value>
+  </data>
+  <data name="Error_Filename_ContainsInvalidPathCharacter" xml:space="preserve">
+    <value>文件名包含无效路径字符。</value>
+  </data>
+  <data name="Error_Filename_Empty" xml:space="preserve">
+    <value>文件名不能为空。</value>
+  </data>
+  <data name="Error_Filename_FolderDoesNotExist" xml:space="preserve">
+    <value>文件夹 '{0}' 不存在。</value>
+  </data>
+  <data name="Error_Filename_FolderExists" xml:space="preserve">
+    <value>与文件夹同名的文件已经存在。</value>
+  </data>
+  <data name="Error_Filename_OnlyWhitespace" xml:space="preserve">
+    <value>文件名不能仅包含空白字符。</value>
+  </data>
+  <data name="Error_Filename_ReservedOSFilename" xml:space="preserve">
+    <value>无法使用系统保留的文件名。</value>
+  </data>
+  <data name="Error_Filename_TooLong" xml:space="preserve">
+    <value>文件名过长。</value>
+  </data>
+  <data name="Error_InstrHasBeenRemoved" xml:space="preserve">
+    <value>指令已被移除。</value>
+  </data>
+  <data name="Error_InstrTargetHasBeenRemoved" xml:space="preserve">
+    <value>目标已经被移除</value>
+  </data>
+  <data name="Error_InvalidResourceData" xml:space="preserve">
+    <value>不能使用此数据{0}</value>
+  </data>
+  <data name="Error_LocalHasBeenRemoved" xml:space="preserve">
+    <value>局部变量已被移除</value>
+  </data>
+  <data name="Error_NewResourceDataMustBeImage" xml:space="preserve">
+    <value>新数据必须是图像。错误：{0}</value>
+  </data>
+  <data name="Error_NotNetModule" xml:space="preserve">
+    <value>{0} 不是一个. Net模块</value>
+  </data>
+  <data name="Error_NotSNKFile" xml:space="preserve">
+    <value>'{0}' 不是一个强名称密钥文件 (snk)</value>
+  </data>
+  <data name="Error_OnlyInstrsCanBeSelected" xml:space="preserve">
+    <value>只能选择指令</value>
+  </data>
+  <data name="Error_OpenFile" xml:space="preserve">
+    <value>打开文件时出错 ： {0}</value>
+  </data>
+  <data name="Error_OpenImage" xml:space="preserve">
+    <value>无法打开文件或它不是一个图像。错误 ︰ {0}</value>
+  </data>
+  <data name="Error_OpMustBeField" xml:space="preserve">
+    <value>操作数必须是一个字段</value>
+  </data>
+  <data name="Error_OpMustBeInstr" xml:space="preserve">
+    <value>操作数必须是指令</value>
+  </data>
+  <data name="Error_OpMustBeListInstrs" xml:space="preserve">
+    <value>操作数必须是指令列表</value>
+  </data>
+  <data name="Error_OpMustBeLocal" xml:space="preserve">
+    <value>操作数必须是一个局部变量</value>
+  </data>
+  <data name="Error_OpMustBeMethod" xml:space="preserve">
+    <value>操作数必须是一个方法</value>
+  </data>
+  <data name="Error_OpMustBeMethodSig" xml:space="preserve">
+    <value>操作数必须是一个方法签名</value>
+  </data>
+  <data name="Error_OpMustBeParam" xml:space="preserve">
+    <value>操作数必须是一个参数</value>
+  </data>
+  <data name="Error_OpMustBeType" xml:space="preserve">
+    <value>操作数必须是一个类型</value>
+  </data>
+  <data name="Error_OpMustBeTypeMethodField" xml:space="preserve">
+    <value>操作数必须是类型、 方法、 字段</value>
+  </data>
+  <data name="Error_ReadingFiles" xml:space="preserve">
+    <value>读取文件时出错 ︰ {0}</value>
+  </data>
+  <data name="Error_SwitchInstrTargetHasBeenRemoved" xml:space="preserve">
+    <value>分支指令目标已经被移除</value>
+  </data>
+  <data name="Error_VersionStringTooLong" xml:space="preserve">
+    <value>版本字符串过长</value>
+  </data>
+  <data name="ExceptionHandlersTab" xml:space="preserve">
+    <value>异常处理程序</value>
+  </data>
+  <data name="GenericParametersTab" xml:space="preserve">
+    <value>泛型参数</value>
+  </data>
+  <data name="GoToMetaDataTableRowCommand" xml:space="preserve">
+    <value>转到 MD 表行 ({0:X8})</value>
+  </data>
+  <data name="GoToMetaDataTableRowCommand2" xml:space="preserve">
+    <value>转到 MD 表行......</value>
+  </data>
+  <data name="GoToMetaDataTableRowTitle" xml:space="preserve">
+    <value>转到 MD 表行</value>
+  </data>
+  <data name="GoToMetaDataTableRow_InvalidMetadataToken" xml:space="preserve">
+    <value>无效的元数据标记 ︰ 0x{0:X8}</value>
+  </data>
+  <data name="GoToMetaDataTableRow_MetadataToken" xml:space="preserve">
+    <value>元数据标记(_M)</value>
+  </data>
+  <data name="GoToMetaDataTableRow_TokenDoesNotExist" xml:space="preserve">
+    <value>标记{0:X8} 不存在元数据中</value>
+  </data>
+  <data name="GoToRowIdentifierCommand" xml:space="preserve">
+    <value>跳转到行ID (_G)...</value>
+  </data>
+  <data name="GoToRowIdentifier_InvalidRowIdentifier" xml:space="preserve">
+    <value>无效的行ID: {0}</value>
+  </data>
+  <data name="GoToRowIdentifier_Title" xml:space="preserve">
+    <value>跳转到行ID</value>
+  </data>
+  <data name="HexCopyMethodBodyCommand" xml:space="preserve">
+    <value>十六进制复制方法体</value>
+  </data>
+  <data name="HexNode_PE" xml:space="preserve">
+    <value>PE</value>
+  </data>
+  <data name="HexNode_PE_Section" xml:space="preserve">
+    <value>节</value>
+  </data>
+  <data name="HexNode_StorageHeader" xml:space="preserve">
+    <value>存储标题</value>
+  </data>
+  <data name="HexNode_StorageSignature" xml:space="preserve">
+    <value>存储签名</value>
+  </data>
+  <data name="HexNode_StorageStream" xml:space="preserve">
+    <value>存储流</value>
+  </data>
+  <data name="HexNode_TablesStream" xml:space="preserve">
+    <value>表流</value>
+  </data>
+  <data name="HexPasteMethodBodyCommand" xml:space="preserve">
+    <value>十六进制粘贴方法体</value>
+  </data>
+  <data name="HexWriteEmptyMethodBodyCommand" xml:space="preserve">
+    <value>十六进制写入空方法体</value>
+  </data>
+  <data name="HexWriteReturnFalseBodyCommand" xml:space="preserve">
+    <value>十六进制写入方法体“return false”</value>
+  </data>
+  <data name="HexWriteReturnTrueBodyCommand" xml:space="preserve">
+    <value>十六进制写入方法体“return true”</value>
+  </data>
+  <data name="Hex_Undo_Message_InsertBytes" xml:space="preserve">
+    <value>插入字节</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="InstructionOperand" xml:space="preserve">
+    <value>操作符</value>
+  </data>
+  <data name="Instr_Command1" xml:space="preserve">
+    <value>在选区前添加指令(_F)</value>
+  </data>
+  <data name="Instr_Command2" xml:space="preserve">
+    <value>在选区后添加指令(_C)</value>
+  </data>
+  <data name="Instr_Command3" xml:space="preserve">
+    <value>添加新指令(_A)</value>
+  </data>
+  <data name="Instr_Command4" xml:space="preserve">
+    <value>移除指令(_R)</value>
+  </data>
+  <data name="Instr_Command5" xml:space="preserve">
+    <value>移除指令(_R)</value>
+  </data>
+  <data name="Instr_Command6" xml:space="preserve">
+    <value>移除所有指令(_V)</value>
+  </data>
+  <data name="InterfacesTab" xml:space="preserve">
+    <value>接口</value>
+  </data>
+  <data name="InvertBranchCommand" xml:space="preserve">
+    <value>反转分支(_I)</value>
+  </data>
+  <data name="InvertBranchesCommand" xml:space="preserve">
+    <value>反转分支(_I)</value>
+  </data>
+  <data name="LocalName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="LocalsTab" xml:space="preserve">
+    <value>局部变量</value>
+  </data>
+  <data name="LocalType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Local_Command1" xml:space="preserve">
+    <value>在选区前增加局部变量</value>
+  </data>
+  <data name="Local_Command2" xml:space="preserve">
+    <value>在选区后添加局部变量</value>
+  </data>
+  <data name="Local_Command3" xml:space="preserve">
+    <value>添加局部变量(_A)</value>
+  </data>
+  <data name="Local_Command4" xml:space="preserve">
+    <value>移除局部变量(_R)</value>
+  </data>
+  <data name="Local_Command5" xml:space="preserve">
+    <value>移除局部变量(_R)</value>
+  </data>
+  <data name="Local_Command6" xml:space="preserve">
+    <value>删除所有局部变量(_V)</value>
+  </data>
+  <data name="Local_CompilerGenerated_Character" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="Local_CompilerGenerated_Character_ToolTip" xml:space="preserve">
+    <value>编译器生成</value>
+  </data>
+  <data name="Local_Pinned_Character" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="Local_Pinned_Character_ToolTip" xml:space="preserve">
+    <value>已固定</value>
+  </data>
+  <data name="MDWriterOptionsTab" xml:space="preserve">
+    <value>MD 写入选项</value>
+  </data>
+  <data name="MetadataTab" xml:space="preserve">
+    <value>元数据</value>
+  </data>
+  <data name="MethodBodyType_IL" xml:space="preserve">
+    <value>IL</value>
+  </data>
+  <data name="MethodBodyType_Native" xml:space="preserve">
+    <value>原生</value>
+  </data>
+  <data name="MethodBodyType_None" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="MethodBody_CodeType" xml:space="preserve">
+    <value>代码类型(_E)</value>
+  </data>
+  <data name="MethodBody_HeaderOffset" xml:space="preserve">
+    <value>头部偏移(_F)</value>
+  </data>
+  <data name="MethodBody_HeaderRVA" xml:space="preserve">
+    <value>头数据 _RVA</value>
+  </data>
+  <data name="MethodBody_InitLocals" xml:space="preserve">
+    <value>初始化局部变量(_I)</value>
+  </data>
+  <data name="MethodBody_KeepOldMaxStack" xml:space="preserve">
+    <value>保持之前的 MaxStack 值(_K)</value>
+  </data>
+  <data name="MethodBody_KeepOldMaxStack_ToolTip" xml:space="preserve">
+    <value>保存文件时不重新计算 MaxStack 值</value>
+  </data>
+  <data name="MethodBody_MaxStack" xml:space="preserve">
+    <value>_MaxStack</value>
+  </data>
+  <data name="MethodBody_RVA" xml:space="preserve">
+    <value>_RVA</value>
+  </data>
+  <data name="MethodBody_Type" xml:space="preserve">
+    <value>主体类型(_B)</value>
+  </data>
+  <data name="MethodOverridesTab" xml:space="preserve">
+    <value>重写</value>
+  </data>
+  <data name="MethodParametersTab" xml:space="preserve">
+    <value>参数</value>
+  </data>
+  <data name="MethodSignatureTab" xml:space="preserve">
+    <value>签名</value>
+  </data>
+  <data name="Method_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="Module_DotNetVersion" xml:space="preserve">
+    <value>.NET 版本(_V)</value>
+  </data>
+  <data name="Module_EntryPoint" xml:space="preserve">
+    <value>入口点</value>
+  </data>
+  <data name="Module_EntryPoint_Managed" xml:space="preserve">
+    <value>托管(_G)</value>
+  </data>
+  <data name="Module_EntryPoint_Native" xml:space="preserve">
+    <value>原生</value>
+  </data>
+  <data name="Module_EntryPoint_None" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="Module_GUIDs" xml:space="preserve">
+    <value>GUIDs</value>
+  </data>
+  <data name="Module_Metadata" xml:space="preserve">
+    <value>元数据</value>
+  </data>
+  <data name="Module_ModuleType" xml:space="preserve">
+    <value>模块类型(_T)</value>
+  </data>
+  <data name="Module_Name" xml:space="preserve">
+    <value>名称(_A)</value>
+  </data>
+  <data name="MoveTypesToEmptyNamespaceCommand" xml:space="preserve">
+    <value>将类型移动到空命名空间下</value>
+  </data>
+  <data name="Namespace_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="NetModule_DotNetVersion" xml:space="preserve">
+    <value>.NET 版本(_V)</value>
+  </data>
+  <data name="NetModule_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="NodesUseHexEditorMsg" xml:space="preserve">
+    <value>所有树节点都使用十六进制编辑器来修改 PE 文件</value>
+  </data>
+  <data name="NopInstrCommand" xml:space="preserve">
+    <value>_NOP 指令</value>
+  </data>
+  <data name="NopInstrsCommand" xml:space="preserve">
+    <value>_NOP 指令</value>
+  </data>
+  <data name="Offset" xml:space="preserve">
+    <value>偏移　　</value>
+  </data>
+  <data name="OpenHexEditorCommand" xml:space="preserve">
+    <value>打开十六进制编辑器(_X)</value>
+  </data>
+  <data name="OptimizeAllInstructionsCommand" xml:space="preserve">
+    <value>优化所有指令(_Z)</value>
+  </data>
+  <data name="Padding" xml:space="preserve">
+    <value>填充</value>
+  </data>
+  <data name="PasteRecordsCommand" xml:space="preserve">
+    <value>粘贴 {0} 条记录 @ {1:X8}, 行ID {2} (_P)</value>
+  </data>
+  <data name="PropertyX" xml:space="preserve">
+    <value>属性： {0}</value>
+  </data>
+  <data name="Property_DefaultValue" xml:space="preserve">
+    <value>属性的默认值</value>
+  </data>
+  <data name="Property_GetterMethods" xml:space="preserve">
+    <value>取值器</value>
+  </data>
+  <data name="Property_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="Property_OtherMethods" xml:space="preserve">
+    <value>其它方法</value>
+  </data>
+  <data name="Property_SetterMethods" xml:space="preserve">
+    <value>赋值器</value>
+  </data>
+  <data name="Property_Signature" xml:space="preserve">
+    <value>签名</value>
+  </data>
+  <data name="RawSaveResourceCommand" xml:space="preserve">
+    <value>直接保存 {0}</value>
+  </data>
+  <data name="RawSaveResourcesCommand" xml:space="preserve">
+    <value>直接保存 {0} 资源</value>
+  </data>
+  <data name="RawSaveResourcesSubDirectoriesCommand" xml:space="preserve">
+    <value>以子目录直接保存 {0} 资源</value>
+  </data>
+  <data name="RedoCommand" xml:space="preserve">
+    <value>重做</value>
+  </data>
+  <data name="RedoToolBarToolTip" xml:space="preserve">
+    <value>重做</value>
+  </data>
+  <data name="RemoveAndAddPopsCommand" xml:space="preserve">
+    <value>移除并添加POP操作(_E)</value>
+  </data>
+  <data name="RemoveNetModuleCommand" xml:space="preserve">
+    <value>从程序集移除Net模块</value>
+  </data>
+  <data name="RenameNamespaceCommand" xml:space="preserve">
+    <value>重命名命名空间</value>
+  </data>
+  <data name="Resource_ColorDepth" xml:space="preserve">
+    <value>色彩位深(_D)</value>
+  </data>
+  <data name="Resource_ColorDepth_16Bit" xml:space="preserve">
+    <value>16 位</value>
+  </data>
+  <data name="Resource_ColorDepth_24Bit" xml:space="preserve">
+    <value>24 位</value>
+  </data>
+  <data name="Resource_ColorDepth_32Bit" xml:space="preserve">
+    <value>32 位</value>
+  </data>
+  <data name="Resource_ColorDepth_4Bit" xml:space="preserve">
+    <value>4 位</value>
+  </data>
+  <data name="Resource_ColorDepth_8Bit" xml:space="preserve">
+    <value>8 位</value>
+  </data>
+  <data name="Resource_Data" xml:space="preserve">
+    <value>数据(_D)</value>
+  </data>
+  <data name="Resource_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="Resource_Size" xml:space="preserve">
+    <value>长度(_S)</value>
+  </data>
+  <data name="Resource_TransparentColor" xml:space="preserve">
+    <value>透明颜色(_T)</value>
+  </data>
+  <data name="Resource_Type" xml:space="preserve">
+    <value>类型(_T)</value>
+  </data>
+  <data name="Resource_Value" xml:space="preserve">
+    <value>值(_V)</value>
+  </data>
+  <data name="RowIdentifier" xml:space="preserve">
+    <value>行ID</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存(_S)...</value>
+  </data>
+  <data name="SaveAllCommand" xml:space="preserve">
+    <value>全部保存(_L)...</value>
+  </data>
+  <data name="SaveAllToolBarToolTip" xml:space="preserve">
+    <value>保存所有</value>
+  </data>
+  <data name="SaveModuleCommand" xml:space="preserve">
+    <value>保存模块(_M)...</value>
+  </data>
+  <data name="SaveModuleCommand2" xml:space="preserve">
+    <value>保存模块</value>
+  </data>
+  <data name="SaveModulesCommand" xml:space="preserve">
+    <value>保存模块(_M)...</value>
+  </data>
+  <data name="SaveModules_CancelingSave" xml:space="preserve">
+    <value>正在取消保存，请稍候...</value>
+  </data>
+  <data name="SaveModules_Close" xml:space="preserve">
+    <value>关闭(_C)</value>
+  </data>
+  <data name="SaveModules_ErrorsInLog" xml:space="preserve">
+    <value>在日志中有错误:</value>
+  </data>
+  <data name="SaveModules_FileHasErrors" xml:space="preserve">
+    <value>文件 #{0} ({1}) 有错误</value>
+  </data>
+  <data name="SaveModules_Log_AccessError" xml:space="preserve">
+    <value>访问错误 ︰ {0}</value>
+  </data>
+  <data name="SaveModules_Log_AllFilesWritten" xml:space="preserve">
+    <value>所有文件已保存。</value>
+  </data>
+  <data name="SaveModules_Log_Exception" xml:space="preserve">
+    <value>发生了异常 {0}</value>
+  </data>
+  <data name="SaveModules_Log_FileError" xml:space="preserve">
+    <value>文件错误 ︰ {0}</value>
+  </data>
+  <data name="SaveModules_Log_SaveWasCanceled" xml:space="preserve">
+    <value>保存已被用户取消。</value>
+  </data>
+  <data name="SaveModules_Log_WritingFile" xml:space="preserve">
+    <value>正在写入 {0}...</value>
+  </data>
+  <data name="SaveModules_Options" xml:space="preserve">
+    <value>选项(_O)...</value>
+  </data>
+  <data name="SaveModules_SaveAll" xml:space="preserve">
+    <value>全部保存(S)</value>
+  </data>
+  <data name="SaveModules_SavedFiles" xml:space="preserve">
+    <value>将保存的文件 ︰</value>
+  </data>
+  <data name="SaveModules_Title" xml:space="preserve">
+    <value>保存模块</value>
+  </data>
+  <data name="SaveModule_AddPECheckSum" xml:space="preserve">
+    <value>添加 PE 校验和(_A)</value>
+  </data>
+  <data name="SaveModule_CreateHeapEvenIfEmpty" xml:space="preserve">
+    <value>即使为空也创建堆栈</value>
+  </data>
+  <data name="SaveModule_Filename" xml:space="preserve">
+    <value>文件名(_F)</value>
+  </data>
+  <data name="SaveModule_KeepOldMaxStack" xml:space="preserve">
+    <value>保持之前的 MaxStack 值(_K)</value>
+  </data>
+  <data name="SaveModule_KeepOldMaxStack_ToolTip" xml:space="preserve">
+    <value>使用方法原始的 MaxStack 值而不是重新计算。
+如果此方法被混淆，则可能需要此选项。</value>
+  </data>
+  <data name="SaveModule_MetadataHeaderOptions" xml:space="preserve">
+    <value>元数据头选项</value>
+  </data>
+  <data name="SaveModule_MiscOptions" xml:space="preserve">
+    <value>其它选项</value>
+  </data>
+  <data name="SaveModule_ModuleType" xml:space="preserve">
+    <value>模块类型(_T)</value>
+  </data>
+  <data name="SaveModule_PreserveExtraSigData" xml:space="preserve">
+    <value>保留额外的签名数据(_X)</value>
+  </data>
+  <data name="SaveModule_PreserveExtraSigData_ToolTip" xml:space="preserve">
+    <value>保留签名后任何额外的数据。
+一些混淆器可能把数据放在那儿。</value>
+  </data>
+  <data name="SaveModule_PreserveHeapOffsets" xml:space="preserve">
+    <value>保留堆偏移量</value>
+  </data>
+  <data name="SaveModule_PreserveTokens" xml:space="preserve">
+    <value>保留所有MD标记(_R)</value>
+  </data>
+  <data name="SaveModule_PreserveTokens_ToolTip" xml:space="preserve">
+    <value>如果文件仍然被混淆，行ID可能需要被保留。</value>
+  </data>
+  <data name="SaveModule_ShareMethodBodies" xml:space="preserve">
+    <value>共享方法体(_B)</value>
+  </data>
+  <data name="SaveModule_ShareMethodBodies_ToolTip" xml:space="preserve">
+    <value>有相同代码的.NET方法将会共享方法体。
+输出文件将会变小。</value>
+  </data>
+  <data name="SaveModule_Title" xml:space="preserve">
+    <value>保存模块</value>
+  </data>
+  <data name="SaveModule_UseMixedMode" xml:space="preserve">
+    <value>混合模块(_M)</value>
+  </data>
+  <data name="SaveModule_UseMixedMode_ToolTip" xml:space="preserve">
+    <value>检查是否它是一个混合模式模块 (例如C+ +/.NET)。单击此复选框时大多数选项将被重新初始化</value>
+  </data>
+  <data name="SaveModule_WritePdb" xml:space="preserve">
+    <value>保存PDB文件(_P)</value>
+  </data>
+  <data name="SaveResourceCommand" xml:space="preserve">
+    <value>保存{0}</value>
+  </data>
+  <data name="SaveResourcesCommand" xml:space="preserve">
+    <value>保存 {0} 资源</value>
+  </data>
+  <data name="SaveResourcesSubDirectoriesCommand" xml:space="preserve">
+    <value>以子目录保存 {0} 资源(_S)</value>
+  </data>
+  <data name="ShortCutKeyB" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="ShortCutKeyCtrlF" xml:space="preserve">
+    <value>Ctrl+F</value>
+  </data>
+  <data name="ShortCutKeyCtrlG" xml:space="preserve">
+    <value>Ctrl+G</value>
+  </data>
+  <data name="ShortCutKeyCtrlM" xml:space="preserve">
+    <value>Ctrl+M</value>
+  </data>
+  <data name="ShortCutKeyCtrlR" xml:space="preserve">
+    <value>Ctrl+R</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftC" xml:space="preserve">
+    <value>Ctrl+Shift+C</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftD" xml:space="preserve">
+    <value>Ctrl+Shift+D</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftS" xml:space="preserve">
+    <value>Ctrl+Shift+S</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftT" xml:space="preserve">
+    <value>Ctrl+Shift+T</value>
+  </data>
+  <data name="ShortCutKeyCtrlY" xml:space="preserve">
+    <value>Ctrl + Y</value>
+  </data>
+  <data name="ShortCutKeyCtrlZ" xml:space="preserve">
+    <value>Ctrl + Z</value>
+  </data>
+  <data name="ShortCutKeyI" xml:space="preserve">
+    <value>l</value>
+  </data>
+  <data name="ShortCutKeyN" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="ShortCutKeyO" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="ShortCutKeyP" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="ShortCutKeyR" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="ShortCutKeyS" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="ShortCutKeyShiftAltR" xml:space="preserve">
+    <value>Shift+Alt+R</value>
+  </data>
+  <data name="ShowDataInHexEditorCommand" xml:space="preserve">
+    <value>在十六进制编辑器中显示数据(_X)</value>
+  </data>
+  <data name="ShowInHexEditorCommand" xml:space="preserve">
+    <value>在十六进制编辑器中显示(_X)</value>
+  </data>
+  <data name="ShowInHexEditorCommand2" xml:space="preserve">
+    <value>在十六进制编辑器中显示</value>
+  </data>
+  <data name="ShowInitialValueInHexEditorCommand" xml:space="preserve">
+    <value>在十六进制编辑器中显示初始值</value>
+  </data>
+  <data name="ShowInstrsInHexEditorCommand" xml:space="preserve">
+    <value>在十六进制编辑器中显示指令(_X)</value>
+  </data>
+  <data name="ShowMethodBodyInHexEditorCommand" xml:space="preserve">
+    <value>在十六进制编辑器中显示方法体</value>
+  </data>
+  <data name="SimplifyAllInstructionsCommand" xml:space="preserve">
+    <value>简化所有指令(_S)</value>
+  </data>
+  <data name="SortMetadataTableCommand" xml:space="preserve">
+    <value>将表排序</value>
+  </data>
+  <data name="SortSelectionCommand" xml:space="preserve">
+    <value>排序选区(_R)</value>
+  </data>
+  <data name="TablesHeapOptionsTab" xml:space="preserve">
+    <value>表堆选项</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>标记</value>
+  </data>
+  <data name="TooManyBytesSelected" xml:space="preserve">
+    <value>您选择数据的字节数太多</value>
+  </data>
+  <data name="Type_ClassSize" xml:space="preserve">
+    <value>类大小(_L)</value>
+  </data>
+  <data name="Type_Name" xml:space="preserve">
+    <value>名称(_N)</value>
+  </data>
+  <data name="Type_Namespace" xml:space="preserve">
+    <value>命名空间(_A)</value>
+  </data>
+  <data name="Type_PackingSize" xml:space="preserve">
+    <value>封装大小(_Z)</value>
+  </data>
+  <data name="UndoCommand" xml:space="preserve">
+    <value>撤消</value>
+  </data>
+  <data name="UndoToolBarToolTip" xml:space="preserve">
+    <value>撤消</value>
+  </data>
+  <data name="UnsavedFile" xml:space="preserve">
+    <value>还有一个未保存的文件。</value>
+  </data>
+  <data name="UnsavedFiles" xml:space="preserve">
+    <value>有 {0} 个未保存的文件。</value>
+  </data>
+  <data name="XBytes" xml:space="preserve">
+    <value>{0} 字节</value>
+  </data>
+  <data name="AddAfterSelInstr_ToolTip" xml:space="preserve">
+    <value>在选定的指令后添加指令</value>
+  </data>
+  <data name="InstructionsTab" xml:space="preserve">
+    <value>指令</value>
+  </data>
+  <data name="Module_NewGuid1" xml:space="preserve">
+    <value>新建(_N)</value>
+  </data>
+  <data name="Module_NewGuid2" xml:space="preserve">
+    <value>新建(_E)</value>
+  </data>
+  <data name="Module_NewGuid3" xml:space="preserve">
+    <value>新建(_W)</value>
+  </data>
+  <data name="NetModule_NewGuid1" xml:space="preserve">
+    <value>新建(_W)</value>
+  </data>
+  <data name="Pick_Assembly" xml:space="preserve">
+    <value>选择程序集</value>
+  </data>
+  <data name="Pick_EntryPoint" xml:space="preserve">
+    <value>选择入口点</value>
+  </data>
+  <data name="Pick_Field" xml:space="preserve">
+    <value>选择一个字段</value>
+  </data>
+  <data name="Pick_GenericType" xml:space="preserve">
+    <value>选择一个泛型类型</value>
+  </data>
+  <data name="Pick_Method" xml:space="preserve">
+    <value>选择一个方法</value>
+  </data>
+  <data name="Pick_Module" xml:space="preserve">
+    <value>选择一个模块</value>
+  </data>
+  <data name="ExceptionHandler_Column_CatchType" xml:space="preserve">
+    <value>捕捉类型</value>
+  </data>
+  <data name="ExceptionHandler_Column_FilterStart" xml:space="preserve">
+    <value>过滤开始</value>
+  </data>
+  <data name="ExceptionHandler_Column_HandlerEnd" xml:space="preserve">
+    <value>处理程序结束</value>
+  </data>
+  <data name="ExceptionHandler_Column_HandlerStart" xml:space="preserve">
+    <value>处理程序开始</value>
+  </data>
+  <data name="ExceptionHandler_Column_TryEnd" xml:space="preserve">
+    <value>异常捕捉结束</value>
+  </data>
+  <data name="ExceptionHandler_Column_TryStart" xml:space="preserve">
+    <value>异常捕捉开始</value>
+  </data>
+  <data name="ExceptionHandler_Column_Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Flags" xml:space="preserve">
+    <value>标志位</value>
+  </data>
+  <data name="MethodBody_Column_OpCode" xml:space="preserve">
+    <value>操作码</value>
+  </data>
+  <data name="Column_Metadata_RID" xml:space="preserve">
+    <value>列ID</value>
+  </data>
+  <data name="EditResource_Visibility" xml:space="preserve">
+    <value>可见性(_V)</value>
+  </data>
+  <data name="GP_GenericParamConstraints" xml:space="preserve">
+    <value>约束</value>
+  </data>
+  <data name="Metadata_Sorted_Rows" xml:space="preserve">
+    <value>已排序</value>
+  </data>
+  <data name="Metadata_Valid_Rows" xml:space="preserve">
+    <value>有效</value>
+  </data>
+  <data name="Method_Access" xml:space="preserve">
+    <value>访问权限</value>
+  </data>
+  <data name="Module_Cor20_RuntimeVersion" xml:space="preserve">
+    <value>运行时版本(_R)</value>
+  </data>
+  <data name="Module_Metadata_HeaderVersion" xml:space="preserve">
+    <value>头版本(_H)</value>
+  </data>
+  <data name="Module_Metadata_VersionString" xml:space="preserve">
+    <value>版本号(_V)</value>
+  </data>
+  <data name="Module_PE_Machine" xml:space="preserve">
+    <value>机器(_M)</value>
+  </data>
+  <data name="Property_Flags_RTSpecialName" xml:space="preserve">
+    <value>RT特殊名称(_R)</value>
+  </data>
+  <data name="Property_Flags_SpecialName" xml:space="preserve">
+    <value>特殊名称(_S)</value>
+  </data>
+  <data name="SaveModule_Cor20_EntryPoint" xml:space="preserve">
+    <value>入口点(_E)</value>
+  </data>
+  <data name="SaveModule_Cor20_MajorRuntimeVersion" xml:space="preserve">
+    <value>运行时主版本号(_M)</value>
+  </data>
+  <data name="SaveModule_Cor20_MinorRuntimeVersion" xml:space="preserve">
+    <value>运行时次版本号(_R)</value>
+  </data>
+  <data name="SaveModule_Metadata_MajorVersion" xml:space="preserve">
+    <value>主版本号(_M)</value>
+  </data>
+  <data name="SaveModule_Metadata_MinorVersion" xml:space="preserve">
+    <value>次版本号(_R)</value>
+  </data>
+  <data name="SaveModule_Metadata_Reserved1" xml:space="preserve">
+    <value>预留1(_1)</value>
+  </data>
+  <data name="SaveModule_Metadata_Reserved2" xml:space="preserve">
+    <value>预留2(_2)</value>
+  </data>
+  <data name="SaveModule_Metadata_Signature" xml:space="preserve">
+    <value>签名(_S)</value>
+  </data>
+  <data name="SaveModule_Metadata_StorageFlags" xml:space="preserve">
+    <value>存储标识位(_t)</value>
+  </data>
+  <data name="SaveModule_Metadata_VersionString" xml:space="preserve">
+    <value>版本号(_V)</value>
+  </data>
+  <data name="SaveModule_PE_Machine" xml:space="preserve">
+    <value>机器(_M)</value>
+  </data>
+  <data name="SaveModule_PE_Subsystem" xml:space="preserve">
+    <value>子系统(_S)</value>
+  </data>
+  <data name="SaveModule_TablesHeap_ExtraData" xml:space="preserve">
+    <value>扩展数据(_D)</value>
+  </data>
+  <data name="SaveModule_TablesHeap_Log2Rid" xml:space="preserve">
+    <value>_Log2Rid</value>
+  </data>
+  <data name="SaveModule_TablesHeap_HasDeletedRows" xml:space="preserve">
+    <value>包含已删除的行(_H)</value>
+  </data>
+  <data name="SaveModule_TablesHeap_MajorVersion" xml:space="preserve">
+    <value>主版本号(_a)</value>
+  </data>
+  <data name="SaveModule_TablesHeap_MinorVersion" xml:space="preserve">
+    <value>预留1(_e)</value>
+  </data>
+  <data name="SaveModule_TablesHeap_Reserved1" xml:space="preserve">
+    <value>预留1(_e)</value>
+  </data>
+  <data name="SaveModule_TablesHeap_UseENC" xml:space="preserve">
+    <value>使用 #- 表(_U)</value>
+  </data>
+  <data name="CustomAttribute_NamedArg_Field" xml:space="preserve">
+    <value>字段</value>
+  </data>
+  <data name="CustomAttribute_NamedArg_Property" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="SaveModules_FixErrorsByEditingSettings" xml:space="preserve">
+    <value>-- 通过编辑选项修复错误。</value>
+  </data>
+  <data name="GoToMetaDataTableRow_RID" xml:space="preserve">
+    <value>行ID(_R)</value>
+  </data>
+  <data name="Plugin_ShortDescription" xml:space="preserve">
+    <value>程序集编辑器</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftE" xml:space="preserve">
+    <value>Ctrl+Shift+E</value>
+  </data>
+  <data name="EditMethodBodyCode" xml:space="preserve">
+    <value>编辑方法 ({0})...</value>
+  </data>
+  <data name="EditCodeTitle" xml:space="preserve">
+    <value>修改代码</value>
+  </data>
+  <data name="Decompiling" xml:space="preserve">
+    <value>反编译中…</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Code" xml:space="preserve">
+    <value>代码</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="CompileDiagnostics_Header_File" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Line" xml:space="preserve">
+    <value>行</value>
+  </data>
+  <data name="Button_Compile" xml:space="preserve">
+    <value>编译</value>
+  </data>
+  <data name="StatusError" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="StatusHidden" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="StatusInfo" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="StatusWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="AddAssemblyReferenceToolTip" xml:space="preserve">
+    <value>添加程序集引用</value>
+  </data>
+  <data name="AddGacReferenceToolTip" xml:space="preserve">
+    <value>添加全局程序集引用 (GAC)</value>
+  </data>
+  <data name="Error_CouldNotAddAssemblyReferences" xml:space="preserve">
+    <value>无法添加程序集引用。</value>
+  </data>
+  <data name="EditMethodCode" xml:space="preserve">
+    <value>编辑方法代码</value>
+  </data>
+  <data name="ERR_IM_AddingRemovingStaticFromEditedMethodNotSupported" xml:space="preserve">
+    <value>不支持在被编辑的方法上添加或移除”静态(static)“或”已共享(Shared)“: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindEditedMethod" xml:space="preserve">
+    <value>找不到被编辑的方法。请确保您没有添加或移除”静态(static)“或”已共享(Shared)“，或更改参数类型、返回类型或方法名称: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindField" xml:space="preserve">
+    <value>找不到字段： {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindMethod" xml:space="preserve">
+    <value>找不到方法: {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindMethodType" xml:space="preserve">
+    <value>找不到编辑的方法类型： {0}</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindType" xml:space="preserve">
+    <value>找不到类型： {0}</value>
+  </data>
+  <data name="ERR_IM_RenamingVirtualEventsIsNotSupported" xml:space="preserve">
+    <value>不支持重命名虚拟事件: {0}</value>
+  </data>
+  <data name="ERR_IM_RenamingVirtualMethodsIsNotSupported" xml:space="preserve">
+    <value>不支持重命名虚拟方法: {0}</value>
+  </data>
+  <data name="ERR_IM_RenamingVirtualPropsIsNotSupported" xml:space="preserve">
+    <value>不支持重命名虚拟属性: {0}</value>
+  </data>
+  <data name="FindCommand" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="IncrementalSearchCommand" xml:space="preserve">
+    <value>渐进式搜索</value>
+  </data>
+  <data name="ShortCutKeyCtrlI" xml:space="preserve">
+    <value>Ctrl+I</value>
+  </data>
+  <data name="ShortCutKeyF6" xml:space="preserve">
+    <value>F6</value>
+  </data>
+  <data name="Button_Cancel2" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="EditAssemblyCode" xml:space="preserve">
+    <value>编辑程序集特性</value>
+  </data>
+  <data name="EditCodeAddClass" xml:space="preserve">
+    <value>添加类</value>
+  </data>
+  <data name="MergeWithAssemblyCommand" xml:space="preserve">
+    <value>与程序集合并...</value>
+  </data>
+  <data name="MergeWithAssemblyCommand2" xml:space="preserve">
+    <value>与程序集合并</value>
+  </data>
+  <data name="EditAssemblyCode2" xml:space="preserve">
+    <value>编辑程序集特性 ({0})...</value>
+  </data>
+  <data name="EditCodeAddClass2" xml:space="preserve">
+    <value>添加类 ({0})...</value>
+  </data>
+  <data name="EditCodeEditClass" xml:space="preserve">
+    <value>编辑类</value>
+  </data>
+  <data name="EditCodeEditClass2" xml:space="preserve">
+    <value>编辑类 ({0})...</value>
+  </data>
+  <data name="ERR_IM_CouldNotFindEditedType" xml:space="preserve">
+    <value>找不到编辑的类型： {0}</value>
+  </data>
+  <data name="CloseOldInMemoryModules" xml:space="preserve">
+    <value>关闭过时的内存缓存模块</value>
+  </data>
+  <data name="CloseAllMissingFilesCommand" xml:space="preserve">
+    <value>关闭所有已丢失的文件</value>
+  </data>
+  <data name="CompileDiagnostics_Header_Severity" xml:space="preserve">
+    <value>严重程度</value>
+  </data>
+  <data name="ParamDef_Flags_Lcid" xml:space="preserve">
+    <value>Lcid</value>
+  </data>
+  <data name="ParamDef_Flags_Retval" xml:space="preserve">
+    <value>Retval</value>
+  </data>
+  <data name="AddDocumentsToolTip" xml:space="preserve">
+    <value>添加源代码</value>
+  </data>
+  <data name="ShortCutKeyCtrlO" xml:space="preserve">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftA" xml:space="preserve">
+    <value>Ctrl+Shift+A</value>
+  </data>
+  <data name="ShortCutKeyCtrlShiftO" xml:space="preserve">
+    <value>Ctrl+Shift+O</value>
+  </data>
+  <data name="EditCodeAddClassMembers" xml:space="preserve">
+    <value>添加类成员</value>
+  </data>
+  <data name="EditCodeAddClassMembers2" xml:space="preserve">
+    <value>添加类成员 ({0})...</value>
+  </data>
+  <data name="SaveModule_PreserveOtherMetadataStreams" xml:space="preserve">
+    <value>复制未知的元数据流(_W)</value>
+  </data>
+  <data name="RerunNgenIfGacAssembly" xml:space="preserve">
+    <value>如果在 GAC 中安装了此程序集，则运行 NGEN.exe</value>
+  </data>
+  <data name="CompilerDlgTabTitle" xml:space="preserve">
+    <value>编译器</value>
+  </data>
+  <data name="ReplaceNopsInstrCommand" xml:space="preserve">
+    <value>_用NOP替换</value>
+  </data>
+  <data name="ReplaceNopsInstrsCommand" xml:space="preserve">
+    <value>用NOP替换(_R)</value>
+  </data>
+  <data name="Type_Flags_Accessibility" xml:space="preserve">
+    <value>可访问性(_y)</value>
+  </data>
+  <data name="Type_Flags_Kind" xml:space="preserve">
+    <value>类别(_K)</value>
+  </data>
+  <data name="Type_Flags_Layout" xml:space="preserve">
+    <value>布局(_U)</value>
+  </data>
+  <data name="Type_Flags_String" xml:space="preserve">
+    <value>字串(_G)</value>
+  </data>
+  <data name="Type_Flags_Visibility" xml:space="preserve">
+    <value>可见性(_Y)</value>
+  </data>
+</root>
