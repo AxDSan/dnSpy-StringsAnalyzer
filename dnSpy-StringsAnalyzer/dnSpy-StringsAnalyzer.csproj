@@ -28,36 +28,15 @@
 
   <!-- Project References -->
   <ItemGroup>
-    <!--<ProjectReference Include="..\dnSpy\dnSpy\dnSpy\dnSpy.csproj">
-      <Private>false</Private>
-    </ProjectReference>-->
     <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.Logic\dnSpy.Contracts.Logic.csproj">
       <Private>false</Private>
     </ProjectReference>
     <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.DnSpy\dnSpy.Contracts.DnSpy.csproj">
       <Private>false</Private>
     </ProjectReference>
-    <!-- <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.Controls\dnSpy.Contracts.Controls.csproj">
-      <Private>false</Private>
-    </ProjectReference> -->
-    <!-- <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.Documents\dnSpy.Contracts.Documents.csproj">
-      <Private>false</Private>
-    </ProjectReference> -->
-    <!-- <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.Documents.TreeView\dnSpy.Contracts.Documents.TreeView.csproj">
-      <Private>false</Private>
-    </ProjectReference> -->
-    <!-- <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.TreeView\dnSpy.Contracts.TreeView.csproj">
-      <Private>false</Private>
-    </ProjectReference> -->
-    <!-- <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.Menus\dnSpy.Contracts.Menus.csproj">
-      <Private>false</Private>
-    </ProjectReference> -->
     <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Images\dnSpy.Images.csproj">
       <Private>false</Private>
     </ProjectReference>
-    <!--<ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Shared\dnSpy.Shared.csproj">
-      <Private>false</Private>
-    </ProjectReference>-->
   </ItemGroup>
 
   <!-- System References -->
@@ -73,7 +52,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Text.UI.Wpf" Version="15.5.27130" />
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="15.3.23" />
-    <!-- <PackageReference Include="Microsoft.VisualStudio.Validation" Version="15.3.15" /> -->
   </ItemGroup>
 
   <ItemGroup>
