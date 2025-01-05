@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "AwWTXlZKthzRGHvWzBZxCvfJTgkePj4snAZdTeGAX+PeJIcccPFlJ0J/QYF6qc2Yu2nqd6BGOmR5mkJuSiGIJw==",
-  "success": false,
+  "dgSpecHash": "4+M9W6yxpvSsOEO2FlGAzkwb9lUh5KoJHn+lTGyxPAy4GTS3xF/TND1gnr2IyqP6L0ITLbBqxTJdu7iBBA+zhA==",
+  "success": true,
   "projectFilePath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\0x90\\.nuget\\packages\\dnlib\\3.6.0\\dnlib.3.6.0.nupkg.sha512",
@@ -16,24 +16,5 @@
     "C:\\Users\\0x90\\.nuget\\packages\\ookii.dialogs.wpf\\5.0.1\\ookii.dialogs.wpf.5.0.1.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\system.componentmodel.composition\\6.0.0\\system.componentmodel.composition.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Shared\\dnSpy.Shared.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Shared\\dnSpy.Shared.csproj",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8"
-      ]
-    },
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy\\dnSpy.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy\\dnSpy.csproj",
-      "targetGraphs": [
-        ".NETFramework,Version=v4.8"
-      ]
-    }
-  ]
+  "logs": []
 }

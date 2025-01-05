@@ -19,12 +19,18 @@
     <OutputPath>.\bin\Output</OutputPath>
     <IntermediateOutputPath>obj\Debug\net48</IntermediateOutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Colorizer.cs" />
+    <Compile Remove="HexColorizer.cs" />
+    <Compile Remove="TreeNodeDataProvider.cs" />
+    <Compile Remove="TreeViewNodeColorizer.cs" />
+  </ItemGroup>
 
   <!-- Project References -->
   <ItemGroup>
-    <ProjectReference Include="..\dnSpy\dnSpy\dnSpy\dnSpy.csproj">
+    <!--<ProjectReference Include="..\dnSpy\dnSpy\dnSpy\dnSpy.csproj">
       <Private>false</Private>
-    </ProjectReference>
+    </ProjectReference>-->
     <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Contracts.Logic\dnSpy.Contracts.Logic.csproj">
       <Private>false</Private>
     </ProjectReference>
@@ -49,9 +55,9 @@
     <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Images\dnSpy.Images.csproj">
       <Private>false</Private>
     </ProjectReference>
-    <ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Shared\dnSpy.Shared.csproj">
+    <!--<ProjectReference Include="..\dnSpy\dnSpy\dnSpy.Shared\dnSpy.Shared.csproj">
       <Private>false</Private>
-    </ProjectReference>
+    </ProjectReference>-->
   </ItemGroup>
 
   <!-- System References -->
