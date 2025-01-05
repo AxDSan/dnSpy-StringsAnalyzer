@@ -14,17 +14,22 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <!-- Output paths -->
-  <PropertyGroup>
-    <OutputPath>.\bin\Output</OutputPath>
+  <!-- Debug Configuration -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\net48</OutputPath>
     <IntermediateOutputPath>obj\Debug\net48</IntermediateOutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Colorizer.cs" />
-    <Compile Remove="HexColorizer.cs" />
-    <Compile Remove="TreeNodeDataProvider.cs" />
-    <Compile Remove="TreeViewNodeColorizer.cs" />
-  </ItemGroup>
+
+  <!-- Release Configuration -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\net48</OutputPath>
+    <IntermediateOutputPath>obj\Release\net48</IntermediateOutputPath>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
 
   <!-- Project References -->
   <ItemGroup>
