@@ -25,7 +25,7 @@ using System.IO;
 using System.Text;
 
 namespace dnSpy.BamlDecompiler.Baml {
-	internal class BamlBinaryWriter : BinaryWriter {
+	sealed class BamlBinaryWriter : BinaryWriter {
 		public BamlBinaryWriter(Stream stream)
 			: base(stream) {
 		}
@@ -33,7 +33,7 @@ namespace dnSpy.BamlDecompiler.Baml {
 		public void WriteEncodedInt(int val) => Write7BitEncodedInt(val);
 	}
 
-	internal class BamlWriter {
+	static class BamlWriter {
 		public static void WriteDocument(BamlDocument doc, Stream str) {
 			var writer = new BamlBinaryWriter(str);
 			{
@@ -52,14 +52,15 @@ namespace dnSpy.BamlDecompiler.Baml {
 
 			var defers = new List<int>();
 			for (int i = 0; i < doc.Count; i++) {
-				BamlRecord rec = doc[i];
+				var rec = doc[i];
 				rec.Position = str.Position;
 				writer.Write((byte)rec.Type);
 				rec.Write(writer);
-				if (rec is IBamlDeferRecord) defers.Add(i);
+				if (rec is IBamlDeferRecord)
+					defers.Add(i);
 			}
 			foreach (int i in defers)
-				(doc[i] as IBamlDeferRecord).WriteDefer(doc, i, writer);
+				(doc[i] as IBamlDeferRecord)!.WriteDefer(doc, i, writer);
 		}
 	}
 }

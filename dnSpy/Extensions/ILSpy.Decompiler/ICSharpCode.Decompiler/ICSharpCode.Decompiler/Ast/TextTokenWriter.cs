@@ -339,7 +339,13 @@ namespace ICSharpCode.Decompiler.Ast {
 
 		void WritePrimitiveValueCore(string text, object reference, object color)
 		{
-			if (color == BoxedTextColor.String || color == BoxedTextColor.Char) {
+			if (color == BoxedTextColor.String) {
+				int start = output.NextPosition;
+				output.Write(text, color);
+				int end = output.NextPosition;
+				output.AddBracePair(new TextSpan(start, 1), new TextSpan(end - 1, 1), CodeBracesRangeFlags.DoubleQuotes);
+			}
+			else if (color == BoxedTextColor.Char) {
 				int start = output.NextPosition;
 				output.Write(text, color);
 				int end = output.NextPosition;

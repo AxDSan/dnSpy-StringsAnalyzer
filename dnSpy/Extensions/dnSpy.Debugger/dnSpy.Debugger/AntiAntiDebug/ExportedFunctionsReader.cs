@@ -23,7 +23,7 @@ using dnlib.IO;
 using dnlib.PE;
 
 namespace dnSpy.Debugger.AntiAntiDebug {
-	struct ExportedFunctionsReader : IDisposable {
+	readonly struct ExportedFunctionsReader : IDisposable {
 		readonly ulong baseAddress;
 		readonly PEImage peImage;
 

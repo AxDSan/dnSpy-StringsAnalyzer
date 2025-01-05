@@ -25,14 +25,14 @@ using System.Diagnostics;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Xaml {
-	internal class XamlResourceKey {
+	sealed class XamlResourceKey {
 		XamlResourceKey(BamlNode node) {
 			KeyNode = node;
 			StaticResources = new List<BamlNode>();
 
 			IBamlDeferRecord keyRecord;
-			if (node is BamlBlockNode)
-				keyRecord = (IBamlDeferRecord)((BamlBlockNode)node).Header;
+			if (node is BamlBlockNode blockNode)
+				keyRecord = (IBamlDeferRecord)blockNode.Header;
 			else
 				keyRecord = (IBamlDeferRecord)((BamlRecordNode)node).Record;
 
@@ -83,11 +83,11 @@ namespace dnSpy.BamlDecompiler.Xaml {
 		public static XamlResourceKey FindKeyInAncestors(BamlNode node) => FindKeyInAncestors(node, out var found);
 
 		public static XamlResourceKey FindKeyInAncestors(BamlNode node, out BamlNode found) {
-			BamlNode n = node;
+			var n = node;
 			do {
-				if (n.Annotation is XamlResourceKey) {
+				if (n.Annotation is XamlResourceKey resourceKey) {
 					found = n;
-					return (XamlResourceKey)n.Annotation;
+					return resourceKey;
 				}
 				n = n.Parent;
 			} while (n is not null);

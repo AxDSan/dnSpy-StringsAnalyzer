@@ -31,12 +31,12 @@ using dnSpy.Contracts.Text;
 using dnSpy.Contracts.Utilities;
 
 namespace dnSpy.BamlDecompiler {
-	internal class BamlDisassembler {
+	sealed class BamlDisassembler {
 		#region Record handler map
 
 		static Action<BamlContext, BamlRecord> Thunk<TRecord>(Action<BamlContext, TRecord> handler) where TRecord : BamlRecord => (ctx, record) => handler(ctx, (TRecord)record);
 
-		Dictionary<BamlRecordType, Action<BamlContext, BamlRecord>> handlerMap =
+		readonly Dictionary<BamlRecordType, Action<BamlContext, BamlRecord>> handlerMap =
 			new Dictionary<BamlRecordType, Action<BamlContext, BamlRecord>>();
 
 		void InitRecordHandlers() {
@@ -84,8 +84,8 @@ namespace dnSpy.BamlDecompiler {
 
 		#endregion
 
-		IDecompilerOutput output;
-		CancellationToken token;
+		readonly IDecompilerOutput output;
+		readonly CancellationToken token;
 
 		public BamlDisassembler(IDecompilerOutput output, CancellationToken token) {
 			this.output = output;
@@ -96,132 +96,213 @@ namespace dnSpy.BamlDecompiler {
 
 		void WriteText(string value) => output.Write(value, BoxedTextColor.Text);
 
+		void WriteRecordField(string value) => output.Write(value, BoxedTextColor.StaticField);
+
+		void WriteFlagField(string value) => output.Write(value, BoxedTextColor.EnumField);
+
+		void WriteOperator(string value) => output.Write(value, BoxedTextColor.Operator);
+
+		void WriteComma(bool spaceAfterComma) {
+			output.Write(",", BoxedTextColor.Punctuation);
+			if (spaceAfterComma)
+				WriteSpace();
+		}
+
+		void WriteSpace(bool writeSpace = true) {
+			if (writeSpace)
+				WriteText(" ");
+		}
+
 		void WriteString(string value) {
 			string str = SimpleTypeConverter.ToString(value, true);
+			int start = output.NextPosition;
 			output.Write(str, BoxedTextColor.String);
+			int end = output.NextPosition;
+			output.AddBracePair(new TextSpan(start, 1), new TextSpan(end - 1, 1), CodeBracesRangeFlags.DoubleQuotes);
 		}
 
-		void WriteHexNumber(byte num) {
-			output.Write("0x", BoxedTextColor.Number);
-			output.Write(num.ToString("x2", CultureInfo.InvariantCulture), BoxedTextColor.Number);
+		void WriteIdentifierNameString(string value, bool allowSpaces = false) {
+			int start = output.NextPosition;
+			output.Write($"\"{IdentifierEscaper.Escape(value, allowSpaces)}\"", BoxedTextColor.String);
+			int end = output.NextPosition;
+			output.AddBracePair(new TextSpan(start, 1), new TextSpan(end - 1, 1), CodeBracesRangeFlags.DoubleQuotes);
 		}
 
-		void WriteHexNumber(ushort num) {
-			output.Write("0x", BoxedTextColor.Number);
-			output.Write(num.ToString("x4", CultureInfo.InvariantCulture), BoxedTextColor.Number);
-		}
+		const DecompilerReferenceFlags toolTipReferenceFlags = DecompilerReferenceFlags.Local | DecompilerReferenceFlags.Hidden | DecompilerReferenceFlags.NoFollow;
 
-		void WriteHexNumber(uint num) {
-			output.Write("0x", BoxedTextColor.Number);
-			output.Write(num.ToString("x8", CultureInfo.InvariantCulture), BoxedTextColor.Number);
-		}
+		void WriteHexNumber(byte num) => output.Write($"0x{num:x2}", num, toolTipReferenceFlags, BoxedTextColor.Number);
+
+		void WriteHexNumber(ushort num) => output.Write($"0x{num:x4}", num, toolTipReferenceFlags, BoxedTextColor.Number);
+
+		void WriteHexNumber(uint num) => output.Write($"0x{num:x8}", num, toolTipReferenceFlags, BoxedTextColor.Number);
 
 		void WriteBool(bool value) => output.Write(value ? "true" : "false", BoxedTextColor.Keyword);
 
 		void WriteVersion(BamlDocument.BamlVersion value) {
-			output.Write("[", BoxedTextColor.Text);
+			var bh = BracePairHelper.Create(output, "[", CodeBracesRangeFlags.SquareBrackets);
 			WriteHexNumber(value.Major);
-			output.Write(", ", BoxedTextColor.Text);
+			WriteComma(spaceAfterComma: true);
 			WriteHexNumber(value.Minor);
-			output.Write("]", BoxedTextColor.Text);
+			bh.Write("]");
 		}
 
-		void WriteAssemblyId(BamlContext ctx, ushort id) {
-			string reference;
+		readonly Dictionary<ushort, object> assemblyReferences = new Dictionary<ushort, object>();
+
+		object GetAssemblyReferenceObject(BamlContext ctx, ushort id) {
+			if (assemblyReferences.TryGetValue(id, out var reference))
+				return reference;
+			string assemblyFullName;
 			if (id == 0xffff)
-				reference = ctx.KnownThings.FrameworkAssembly.FullName;
-			else if (ctx.AssemblyIdMap.ContainsKey(id))
-				reference = ctx.AssemblyIdMap[id].AssemblyFullName;
+				assemblyFullName = ctx.KnownThings.PresentationFrameworkAssembly.FullName;
+			else if (ctx.AssemblyIdMap.TryGetValue(id, out var assemblyRecord))
+				assemblyFullName = assemblyRecord.AssemblyFullName;
 			else
-				reference = null;
-			output.Write($"0x{id:x4}", BamlToolTipReference.Create(reference), DecompilerReferenceFlags.Local, BoxedTextColor.Number);
+				assemblyFullName = null;
+			return assemblyReferences[id] = BamlAssemblyReference.Create(assemblyFullName);
 		}
 
-		void WriteTypeId(BamlContext ctx, ushort id) {
-			string reference;
-			if (id > 0x7fff)
-				reference = ctx.KnownThings.Types((KnownTypes)(-id)).FullName;
-			else if (ctx.TypeIdMap.ContainsKey(id))
-				reference = ctx.TypeIdMap[id].TypeFullName;
-			else
-				reference = null;
+		void WriteAssemblyId(BamlContext ctx, ushort id, bool isDefinition = false) =>
+			output.Write($"0x{id:x4}", GetAssemblyReferenceObject(ctx, id), DecompilerReferenceFlags.Local | (isDefinition ? DecompilerReferenceFlags.Definition : 0), BoxedTextColor.Number);
 
-			if (reference is not null)
-				reference = IdentifierEscaper.Escape(reference);
+		readonly Dictionary<ushort, object> typeReferences = new Dictionary<ushort, object>();
 
-			output.Write($"0x{id:x4}", BamlToolTipReference.Create(reference), DecompilerReferenceFlags.Local, BoxedTextColor.Number);
+		object GetTypeReferenceObject(BamlContext ctx, ushort id) {
+			if (typeReferences.TryGetValue(id, out var reference))
+				return reference;
+			if (id > 0x7fff) {
+				return typeReferences[id] = BamlTypeReference.Create(ctx.KnownThings.Types((KnownTypes)(-id)).TypeDef);
+			}
+			if (ctx.TypeIdMap.TryGetValue(id, out var typeRecord)) {
+				var type = TypeNameParser.ParseReflection(ctx.Module, typeRecord.TypeFullName, new DummyAssemblyRefFinder(ctx.ResolveAssembly(typeRecord.AssemblyId)));
+				if (type is not null)
+					return typeReferences[id] = BamlTypeReference.Create(type);
+			}
+			return typeReferences[id] = null;
 		}
 
-		void WriteAttributeId(BamlContext ctx, ushort id) {
-			string declType;
-			string name;
+		void WriteTypeId(BamlContext ctx, ushort id, bool isDefinition = false) =>
+			output.Write($"0x{id:x4}", GetTypeReferenceObject(ctx, id), DecompilerReferenceFlags.Local | (isDefinition ? DecompilerReferenceFlags.Definition : 0), BoxedTextColor.Number);
+
+		readonly Dictionary<ushort, object> attributeReferences = new Dictionary<ushort, object>();
+
+		object GetAttributeReferenceObject(BamlContext ctx, ushort id) {
+			if (attributeReferences.TryGetValue(id, out var reference))
+				return reference;
+
 			if (id > 0x7fff) {
 				var knownMember = ctx.KnownThings.Members((KnownMembers)(-id));
-				declType = knownMember.DeclaringType.FullName;
-				name = knownMember.Name;
+				return attributeReferences[id] = BamlAttributeReference.Create(knownMember.DeclaringType.TypeDef, knownMember.Name);
 			}
-			else if (ctx.AttributeIdMap.ContainsKey(id)) {
-				var attrInfo = ctx.AttributeIdMap[id];
-				if (attrInfo.OwnerTypeId > 0x7fff)
-					declType = ctx.KnownThings.Types((KnownTypes)(-attrInfo.OwnerTypeId)).FullName;
-				else if (ctx.TypeIdMap.ContainsKey(attrInfo.OwnerTypeId))
-					declType = ctx.TypeIdMap[attrInfo.OwnerTypeId].TypeFullName;
-				else
-					declType = $"(0x{attrInfo.OwnerTypeId:x4})";
-				name = attrInfo.Name;
+			if (ctx.AttributeIdMap.TryGetValue(id, out var attrInfo)) {
+				if (attrInfo.OwnerTypeId > 0x7fff) {
+					return attributeReferences[id] = BamlAttributeReference.Create(ctx.KnownThings.Types((KnownTypes)(-attrInfo.OwnerTypeId)).TypeDef, attrInfo.Name);
+				}
+				if (ctx.TypeIdMap.TryGetValue(attrInfo.OwnerTypeId, out var typeRecord)) {
+					var type = TypeNameParser.ParseReflection(ctx.Module, typeRecord.TypeFullName, new DummyAssemblyRefFinder(ctx.ResolveAssembly(typeRecord.AssemblyId)));
+					if (type is not null)
+						return attributeReferences[id] = BamlAttributeReference.Create(type, attrInfo.Name);
+				}
 			}
-			else
-				declType = name = null;
-
-			string reference = null;
-			if (declType is not null && name is not null)
-				reference = $"{IdentifierEscaper.Escape(declType)}::{IdentifierEscaper.Escape(name)}";
-			output.Write($"0x{id:x4}", BamlToolTipReference.Create(reference), DecompilerReferenceFlags.Local, BoxedTextColor.Number);
+			return attributeReferences[id] = null;
 		}
 
-		void WriteStringId(BamlContext ctx, ushort id) {
+		void WriteAttributeId(BamlContext ctx, ushort id, bool isDefinition = false) =>
+			output.Write($"0x{id:x4}", GetAttributeReferenceObject(ctx, id), DecompilerReferenceFlags.Local | (isDefinition ? DecompilerReferenceFlags.Definition : 0), BoxedTextColor.Number);
+
+		readonly Dictionary<ushort, object> stringReferences = new Dictionary<ushort, object>();
+
+		object GetStringReferenceObject(BamlContext ctx, ushort id) {
+			if (stringReferences.TryGetValue(id, out var reference))
+				return reference;
 			string str;
 			if (id > 0x7fff)
 				str = ctx.KnownThings.Strings((short)-id);
-			else if (ctx.StringIdMap.ContainsKey(id))
-				str = ctx.StringIdMap[id].Value;
+			else if (ctx.StringIdMap.TryGetValue(id, out var stringInfo))
+				str = stringInfo.Value;
 			else
 				str = null;
-			string reference = null;
-			if (str is not null)
-				reference = SimpleTypeConverter.ToString(str, true);
-			output.Write($"0x{id:x4}", BamlToolTipReference.Create(reference), DecompilerReferenceFlags.Local, BoxedTextColor.Number);
+			return stringReferences[id] = BamlStringReference.Create(SimpleTypeConverter.ToString(str, true));
 		}
 
-		void WriteDefinition(string value, string def = null) {
-			string str = SimpleTypeConverter.ToString(value, true);
-			output.Write(str, BamlToolTipReference.Create(def ?? IdentifierEscaper.Escape(value)), DecompilerReferenceFlags.Local | DecompilerReferenceFlags.Definition, BoxedTextColor.String);
+		void WriteStringId(BamlContext ctx, ushort id, bool isDefinition = false) =>
+			output.Write($"0x{id:x4}", GetStringReferenceObject(ctx, id), DecompilerReferenceFlags.Local | (isDefinition ? DecompilerReferenceFlags.Definition : 0), BoxedTextColor.Number);
+
+		readonly Dictionary<ushort, object> resourceReferences = new Dictionary<ushort, object>();
+
+		object GetResourceReferenceObject(BamlContext ctx, ushort id) {
+			if (resourceReferences.TryGetValue(id, out var reference))
+				return reference;
+			bool isKey = true;
+			short bamlId = unchecked((short)-id);
+			if (bamlId > 232 && bamlId < 464) {
+				bamlId -= 232;
+				isKey = false;
+			}
+			else if (bamlId > 464 && bamlId < 467) {
+				bamlId -= 231;
+			}
+			else if (bamlId > 467 && bamlId < 470) {
+				bamlId -= 234;
+				isKey = false;
+			}
+			var res = ctx.KnownThings.Resources(bamlId);
+			return resourceReferences[id] = isKey
+					? BamlResourceReference.CreateKey(res.TypeName, res.KeyName)
+					: BamlResourceReference.CreateProperty(res.TypeName, res.PropertyName);
 		}
 
-		void WriteRecordRef(BamlRecord record) => output.Write(record.Type.ToString(), BamlToolTipReference.Create(GetRecordReference(record)), DecompilerReferenceFlags.Local, BoxedTextColor.Keyword);
+		void WriteResourceId(BamlContext ctx, ushort id) =>
+			output.Write($"0x{id:x4}", GetResourceReferenceObject(ctx, id), DecompilerReferenceFlags.Local, BoxedTextColor.Number);
+
+		readonly Dictionary<BamlRecord, object> recordReferences = new Dictionary<BamlRecord, object>();
+
+		object GetRecordReference(BamlRecord record) {
+			if (recordReferences.TryGetValue(record, out var value))
+				return value;
+			return recordReferences[record] = BamlRecordReference.Create(record);
+		}
+
+		void WriteRecordName(BamlRecord record, bool isDefinition = false) =>
+			output.Write(record.Type.ToString(), GetRecordReference(record), DecompilerReferenceFlags.Local | (isDefinition ? DecompilerReferenceFlags.Definition : 0), BoxedTextColor.Keyword);
 
 		public void Disassemble(ModuleDef module, BamlDocument document) {
-			WriteText("Signature:      \t");
+			WriteText("Signature");
+			output.Write(":", BoxedTextColor.Punctuation);
+			WriteText("      \t");
 			WriteString(document.Signature);
 			output.WriteLine();
 
-			WriteText("Reader Version: \t");
+			WriteText("Reader Version");
+			output.Write(":", BoxedTextColor.Punctuation);
+			WriteText(" \t");
 			WriteVersion(document.ReaderVersion);
 			output.WriteLine();
 
-			WriteText("Updater Version:\t");
+			WriteText("Updater Version");
+			output.Write(":", BoxedTextColor.Punctuation);
+			WriteText("\t");
 			WriteVersion(document.UpdaterVersion);
 			output.WriteLine();
 
-			WriteText("Writer Version: \t");
+			WriteText("Writer Version");
+			output.Write(":", BoxedTextColor.Punctuation);
+			WriteText(" \t");
 			WriteVersion(document.WriterVersion);
 			output.WriteLine();
 
 			WriteText("Record #:       \t");
-			output.Write(document.Count.ToString(CultureInfo.InvariantCulture), BoxedTextColor.Number);
+			output.Write(document.Count.ToString(CultureInfo.InvariantCulture), document.Count, toolTipReferenceFlags, BoxedTextColor.Number);
 			output.WriteLine();
 
 			output.WriteLine();
+
+			// Reset all references
+			assemblyReferences.Clear();
+			typeReferences.Clear();
+			attributeReferences.Clear();
+			stringReferences.Clear();
+			resourceReferences.Clear();
+			recordReferences.Clear();
 
 			var ctx = BamlContext.ConstructContext(module, document, token);
 			scopeStack.Clear();
@@ -231,34 +312,39 @@ namespace dnSpy.BamlDecompiler {
 			}
 		}
 
-		static string GetRecordReference(BamlRecord record) => $"Position: 0x{record.Position:x}";
-
-		Stack<BamlRecord> scopeStack = new Stack<BamlRecord>();
+		readonly Stack<(BamlRecord Record, TextSpan HeaderSpan)> scopeStack = new Stack<(BamlRecord Record, TextSpan HeaderSpan)>();
 
 		void DisassembleRecord(BamlContext ctx, BamlRecord record) {
+			TextSpan startBraceSpan = default;
 			if (BamlNode.IsFooter(record)) {
-				while (scopeStack.Count > 0 && !BamlNode.IsMatch(scopeStack.Peek(), record)) {
+				while (scopeStack.Count > 0 && !BamlNode.IsMatchHeaderAndFooter(scopeStack.Peek().Record, record)) {
 					scopeStack.Pop();
 					output.DecreaseIndent();
 				}
 				if (scopeStack.Count > 0) {
-					scopeStack.Pop();
+					startBraceSpan = scopeStack.Pop().HeaderSpan;
 					output.DecreaseIndent();
 				}
 			}
 
-			output.Write(record.Type.ToString(), BamlToolTipReference.Create(GetRecordReference(record)), DecompilerReferenceFlags.Local | DecompilerReferenceFlags.Definition, BoxedTextColor.Keyword);
+			int recordNameStart = output.NextPosition;
+			WriteRecordName(record, isDefinition: true);
+			var recordSpan = new TextSpan(recordNameStart, output.NextPosition - recordNameStart);
+
+			if (!startBraceSpan.IsEmpty)
+				output.AddBracePair(startBraceSpan, recordSpan, CodeBracesRangeFlags.OtherBlockBraces);
 
 			if (handlerMap.TryGetValue(record.Type, out var handler)) {
-				output.Write(" [", BoxedTextColor.Text);
+				WriteSpace();
+				var bh = BracePairHelper.Create(output, "[", CodeBracesRangeFlags.SquareBrackets);
 				handler(ctx, record);
-				output.Write("]", BoxedTextColor.Text);
+				bh.Write("]");
 			}
 
 			output.WriteLine();
 
 			if (BamlNode.IsHeader(record)) {
-				scopeStack.Push(record);
+				scopeStack.Push((record, recordSpan));
 				output.IncreaseIndent();
 			}
 		}
@@ -266,311 +352,462 @@ namespace dnSpy.BamlDecompiler {
 		#region Record handlers
 
 		void DisassembleRecord(BamlContext ctx, XmlnsPropertyRecord record) {
-			WriteText("Prefix=");
+			WriteRecordField("Prefix");
+			WriteOperator("=");
 			WriteString(record.Prefix);
 
-			WriteText(", XmlNamespace=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("XmlNamespace");
+			WriteOperator("=");
 			WriteString(record.XmlNamespace);
 
-			WriteText(", AssemblyIds={");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("AssemblyIds");
+			WriteOperator("=");
+			var bh = BracePairHelper.Create(output, "{", CodeBracesRangeFlags.CurlyBraces);
 			for (int i = 0; i < record.AssemblyIds.Length; i++) {
 				if (i != 0)
-					WriteText(", ");
+					WriteComma(spaceAfterComma: true);
 				WriteAssemblyId(ctx, record.AssemblyIds[i]);
 			}
-			WriteText("}");
+			bh.Write("}");
 		}
 
 		void DisassembleRecord(BamlContext ctx, PresentationOptionsAttributeRecord record) {
-			WriteText("Value=");
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 
-			WriteText(", NameId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("NameId");
+			WriteOperator("=");
 			WriteStringId(ctx, record.NameId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PIMappingRecord record) {
-			WriteText("XmlNamespace=");
+			WriteRecordField("XmlNamespace");
+			WriteOperator("=");
 			WriteString(record.XmlNamespace);
 
-			WriteText(", ClrNamespace=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("ClrNamespace");
+			WriteOperator("=");
 			WriteString(record.ClrNamespace);
 
-			WriteText(", AssemblyId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("AssemblyId");
+			WriteOperator("=");
 			WriteAssemblyId(ctx, record.AssemblyId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, AssemblyInfoRecord record) {
-			WriteText("AssemblyId=");
-			WriteHexNumber(record.AssemblyId);
+			WriteRecordField("AssemblyId");
+			WriteOperator("=");
+			WriteAssemblyId(ctx, record.AssemblyId, isDefinition: true);
 
-			WriteText(", AssemblyFullName=");
-			WriteDefinition(record.AssemblyFullName);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("AssemblyFullName");
+			WriteOperator("=");
+			WriteString(record.AssemblyFullName);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyRecord record) {
-			WriteText("AttributeId=");
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
 
-			WriteText(", Value=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyWithConverterRecord record) {
 			DisassembleRecord(ctx, (PropertyRecord)record);
 
-			WriteText(", ConverterTypeId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("ConverterTypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.ConverterTypeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyCustomRecord record) {
-			WriteText("AttributeId=");
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
 
-			WriteText(", SerializerTypeId=");
-			WriteTypeId(ctx, record.SerializerTypeId);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("IsValueTypeId");
+			WriteOperator("=");
+			WriteBool(record.IsValueTypeId);
 
-			WriteText(", Data=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("SerializerType");
+			WriteOperator("=");
+			WriteFlagField(((KnownTypes)record.SerializerTypeId).ToString());
+
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Data");
+			WriteOperator("=");
 			for (int i = 0; i < record.Data.Length; i++)
-				output.Write(record.Data[i].ToString("x2"), BoxedTextColor.String);
+				output.Write(record.Data[i].ToString("x2"), BoxedTextColor.Number);
 		}
 
 		void DisassembleRecord(BamlContext ctx, DefAttributeRecord record) {
-			WriteText("Value=");
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 
-			WriteText(", NameId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("NameId");
+			WriteOperator("=");
 			WriteStringId(ctx, record.NameId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, DefAttributeKeyStringRecord record) {
-			WriteText("ValueId=");
+			WriteRecordField("ValueId");
+			WriteOperator("=");
 			WriteStringId(ctx, record.ValueId);
 
-			WriteText(", Shared=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Shared");
+			WriteOperator("=");
 			WriteBool(record.Shared);
 
-			WriteText(", SharedSet=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("SharedSet");
+			WriteOperator("=");
 			WriteBool(record.SharedSet);
 
-			WriteText(", Record=");
-			WriteRecordRef(record.Record);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Record");
+			WriteOperator("=");
+			WriteRecordName(record.Record);
 		}
 
 		void DisassembleRecord(BamlContext ctx, TypeInfoRecord record) {
-			WriteText("TypeId=");
-			WriteHexNumber(record.TypeId);
+			WriteRecordField("TypeId");
+			WriteOperator("=");
+			WriteTypeId(ctx, record.TypeId, isDefinition: true);
 
-			WriteText(", AssemblyId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("AssemblyId");
+			WriteOperator("=");
 			WriteAssemblyId(ctx, record.AssemblyId);
 
-			WriteText(", TypeFullName=");
-			WriteDefinition(record.TypeFullName);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("TypeFullName");
+			WriteOperator("=");
+			WriteIdentifierNameString(record.TypeFullName, true);
 		}
 
 		void DisassembleRecord(BamlContext ctx, TypeSerializerInfoRecord record) {
 			DisassembleRecord(ctx, (TypeInfoRecord)record);
 
-			WriteText(", SerializerTypeId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("SerializerTypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.SerializerTypeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, AttributeInfoRecord record) {
-			WriteText("AttributeId=");
-			WriteHexNumber(record.AttributeId);
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
+			WriteAttributeId(ctx, record.AttributeId, isDefinition: true);
 
-			WriteText(", OwnerTypeId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("OwnerTypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.OwnerTypeId);
 
-			WriteText(", AttributeUsage=");
-			WriteHexNumber(record.AttributeUsage);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("AttributeUsage");
+			WriteOperator("=");
+			switch (record.AttributeUsage) {
+			case BamlAttributeUsage.Default:
+				WriteFlagField("Default");
+				break;
+			case BamlAttributeUsage.XmlLang:
+				WriteFlagField("XmlLang");
+				break;
+			case BamlAttributeUsage.XmlSpace:
+				WriteFlagField("XmlSpace");
+				break;
+			case BamlAttributeUsage.RuntimeName:
+				WriteFlagField("XmlSpace");
+				break;
+			default:
+				WriteHexNumber((byte)record.AttributeUsage);
+				break;
+			}
 
-			string declType;
-			if (record.OwnerTypeId > 0x7fff)
-				declType = ctx.KnownThings.Types((KnownTypes)(-record.OwnerTypeId)).FullName;
-			else if (ctx.TypeIdMap.ContainsKey(record.OwnerTypeId))
-				declType = ctx.TypeIdMap[record.OwnerTypeId].TypeFullName;
-			else
-				declType = $"(0x{record.OwnerTypeId:x4})";
-			var def = $"{IdentifierEscaper.Escape(declType)}::{IdentifierEscaper.Escape(record.Name)}";
-
-			WriteText(", Name=");
-			WriteDefinition(record.Name, def);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Name");
+			WriteOperator("=");
+			WriteIdentifierNameString(record.Name);
 		}
 
 		void DisassembleRecord(BamlContext ctx, StringInfoRecord record) {
-			WriteText("StringId=");
-			WriteHexNumber(record.StringId);
+			WriteRecordField("StringId");
+			WriteOperator("=");
+			WriteStringId(ctx, record.StringId, isDefinition: true);
 
-			WriteText(", Value=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 		}
 
 		void DisassembleRecord(BamlContext ctx, TextRecord record) {
-			WriteText("Value=");
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 		}
 
 		void DisassembleRecord(BamlContext ctx, TextWithConverterRecord record) {
 			DisassembleRecord(ctx, (TextRecord)record);
 
-			WriteText(", ConverterTypeId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("ConverterTypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.ConverterTypeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, TextWithIdRecord record) {
-			WriteText("ValueId=");
+			WriteRecordField("ValueId");
+			WriteOperator("=");
 			WriteStringId(ctx, record.ValueId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, LiteralContentRecord record) {
-			WriteText("Value=");
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 
-			WriteText(", Reserved0=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Reserved0");
+			WriteOperator("=");
 			WriteHexNumber(record.Reserved0);
 
-			WriteText(", Reserved1=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Reserved1");
+			WriteOperator("=");
 			WriteHexNumber(record.Reserved1);
 		}
 
 		void DisassembleRecord(BamlContext ctx, RoutedEventRecord record) {
-			WriteText("Value=");
+			WriteRecordField("Value");
+			WriteOperator("=");
 			WriteString(record.Value);
 
-			WriteText(", AttributeId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
-
-			WriteText(", Reserved1=");
-			WriteHexNumber(record.Reserved1);
 		}
 
 		void DisassembleRecord(BamlContext ctx, DocumentStartRecord record) {
-			WriteText("LoadAsync=");
+			WriteRecordField("LoadAsync");
+			WriteOperator("=");
 			WriteBool(record.LoadAsync);
 
-			WriteText(", MaxAsyncRecords=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("MaxAsyncRecords");
+			WriteOperator("=");
 			WriteHexNumber(record.MaxAsyncRecords);
 
-			WriteText(", DebugBaml=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("DebugBaml");
+			WriteOperator("=");
 			WriteBool(record.DebugBaml);
 		}
 
 		void DisassembleRecord(BamlContext ctx, ElementStartRecord record) {
-			WriteText("TypeId=");
+			WriteRecordField("TypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.TypeId);
 
-			WriteText(", Flags=");
-			WriteHexNumber(record.Flags);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Flags");
+			WriteOperator("=");
+
+			var flags = record.Flags;
+			if (flags == 0)
+				WriteHexNumber(0);
+			else {
+				bool first = true;
+				if ((flags & ElementStartRecordFlags.CreateUsingTypeConverter) != 0) {
+					WriteFlagField("CreateUsingTypeConverter");
+					first = false;
+					flags &= ~ElementStartRecordFlags.CreateUsingTypeConverter;
+				}
+
+				if ((flags & ElementStartRecordFlags.IsInjected) != 0) {
+					if (!first)
+						WriteOperator("|");
+					WriteFlagField("IsInjected");
+					first = false;
+					flags &= ~ElementStartRecordFlags.IsInjected;
+				}
+
+				if (flags != 0) {
+					if (!first)
+						WriteOperator("|");
+					WriteHexNumber((byte)flags);
+				}
+			}
 		}
 
 		void DisassembleRecord(BamlContext ctx, ConnectionIdRecord record) {
-			WriteText("ConnectionId=");
+			WriteRecordField("ConnectionId");
+			WriteOperator("=");
 			WriteHexNumber(record.ConnectionId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyWithExtensionRecord record) {
-			WriteText("AttributeId=");
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
 
-			WriteText(", Flags=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Flags");
+			WriteOperator("=");
 			WriteHexNumber(record.Flags);
 
-			WriteText(", ValueId=");
-			WriteHexNumber(record.ValueId);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("ValueId");
+			WriteOperator("=");
+			if (record.IsValueTypeExtension)
+				WriteTypeId(ctx, record.ValueId);
+			else if (record.IsValueStaticExtension) {
+				if (record.ValueId > 0x7fff)
+					WriteResourceId(ctx, record.ValueId);
+				else
+					WriteAttributeId(ctx, record.ValueId);
+			}
+			else
+				WriteHexNumber(record.ValueId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyTypeReferenceRecord record) {
 			DisassembleRecord(ctx, (PropertyComplexStartRecord)record);
 
-			WriteText(", TypeId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("TypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.TypeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyStringReferenceRecord record) {
 			DisassembleRecord(ctx, (PropertyComplexStartRecord)record);
 
-			WriteText(", StringId=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("StringId");
+			WriteOperator("=");
 			WriteStringId(ctx, record.StringId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyWithStaticResourceIdRecord record) {
-			WriteText("AttributeId=");
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
-			WriteText(", ");
+			WriteComma(spaceAfterComma: true);
 
 			DisassembleRecord(ctx, (StaticResourceIdRecord)record);
 		}
 
 		void DisassembleRecord(BamlContext ctx, ContentPropertyRecord record) {
-			WriteText("AttributeId=");
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, DefAttributeKeyTypeRecord record) {
 			DisassembleRecord(ctx, (ElementStartRecord)record);
 
-			WriteText(", Shared=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Shared");
+			WriteOperator("=");
 			WriteBool(record.Shared);
 
-			WriteText(", SharedSet=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("SharedSet");
+			WriteOperator("=");
 			WriteBool(record.SharedSet);
 
-			WriteText(", Record=");
-			WriteRecordRef(record.Record);
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("Record");
+			WriteOperator("=");
+			WriteRecordName(record.Record);
 		}
 
 		void DisassembleRecord(BamlContext ctx, PropertyComplexStartRecord record) {
-			WriteText("AttributeId=");
+			WriteRecordField("AttributeId");
+			WriteOperator("=");
 			WriteAttributeId(ctx, record.AttributeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, ConstructorParameterTypeRecord record) {
-			WriteText("TypeId=");
+			WriteRecordField("TypeId");
+			WriteOperator("=");
 			WriteTypeId(ctx, record.TypeId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, DeferableContentStartRecord record) {
-			WriteText("Record=");
-			WriteRecordRef(record.Record);
+			WriteRecordField("Record");
+			WriteOperator("=");
+			WriteRecordName(record.Record);
 		}
 
 		void DisassembleRecord(BamlContext ctx, StaticResourceIdRecord record) {
-			WriteText("StaticResourceId=");
+			WriteRecordField("StaticResourceId");
+			WriteOperator("=");
 			WriteHexNumber(record.StaticResourceId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, OptimizedStaticResourceRecord record) {
-			WriteText("Flags=");
+			WriteRecordField("Flags");
+			WriteOperator("=");
 			WriteHexNumber(record.Flags);
 
-			WriteText(", ValueId=");
-			if (record.IsType)
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("ValueId");
+			WriteOperator("=");
+			if (record.IsValueTypeExtension)
 				WriteTypeId(ctx, record.ValueId);
-			else if (record.IsStatic)
-				WriteAttributeId(ctx, record.ValueId);
+			else if (record.IsValueStaticExtension) {
+				if (record.ValueId > 0x7fff)
+					WriteResourceId(ctx, record.ValueId);
+				else
+					WriteAttributeId(ctx, record.ValueId);
+			}
 			else
 				WriteStringId(ctx, record.ValueId);
 		}
 
 		void DisassembleRecord(BamlContext ctx, LineNumberAndPositionRecord record) {
-			WriteText("LineNumber=");
+			WriteRecordField("LineNumber");
+			WriteOperator("=");
 			WriteHexNumber(record.LineNumber);
 
-			WriteText(", LinePosition=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("LinePosition");
+			WriteOperator("=");
 			WriteHexNumber(record.LinePosition);
 		}
 
 		void DisassembleRecord(BamlContext ctx, LinePositionRecord record) {
-			WriteText("LinePosition=");
+			WriteRecordField("LinePosition");
+			WriteOperator("=");
 			WriteHexNumber(record.LinePosition);
 		}
 
 		void DisassembleRecord(BamlContext ctx, NamedElementStartRecord record) {
-			WriteText("TypeId=");
-			WriteTypeId(ctx, record.TypeId);
+			DisassembleRecord(ctx, (ElementStartRecord)record);
 
-			WriteText(", RuntimeName=");
+			WriteComma(spaceAfterComma: true);
+			WriteRecordField("RuntimeName");
+			WriteOperator("=");
 			WriteString(record.RuntimeName);
 		}
 

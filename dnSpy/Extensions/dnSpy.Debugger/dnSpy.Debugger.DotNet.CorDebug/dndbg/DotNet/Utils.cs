@@ -17,13 +17,13 @@
     along with dnSpy.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+using System;
 using dnlib.DotNet;
 
 namespace dndbg.DotNet {
 	static class Utils {
 		public static void SplitNameAndNamespace(UTF8String? utf8Name, string? fullName, out UTF8String ns, out UTF8String name) {
-			if (fullName is null)
-				fullName = string.Empty;
+			fullName ??= string.Empty;
 
 			if (!UTF8String.IsNull(utf8Name)) {
 				if (fullName == utf8Name!.String) {
@@ -32,7 +32,7 @@ namespace dndbg.DotNet {
 					return;
 				}
 
-				if (fullName.EndsWith("." + utf8Name.String)) {
+				if (fullName.EndsWith("." + utf8Name.String, StringComparison.Ordinal)) {
 					ns = fullName.Substring(0, fullName.Length - utf8Name.String.Length - 1);
 					name = utf8Name;
 					return;

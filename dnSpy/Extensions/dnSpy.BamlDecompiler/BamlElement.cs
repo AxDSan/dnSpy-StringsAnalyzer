@@ -25,7 +25,7 @@ using System.Xml.Linq;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler {
-	internal readonly struct XamlNode {
+	readonly struct XamlNode {
 		XamlNode(XElement value) {
 			Element = value;
 			String = null;
@@ -45,7 +45,7 @@ namespace dnSpy.BamlDecompiler {
 		public static implicit operator string(XamlNode node) => node.String;
 	}
 
-	internal class BamlElement {
+	sealed class BamlElement {
 		public BamlNode Node { get; }
 		public XamlNode Xaml { get; set; }
 

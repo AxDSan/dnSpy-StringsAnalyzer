@@ -18,7 +18,6 @@
 */
 
 using System;
-using System.Collections.ObjectModel;
 
 namespace dnSpy.Contracts.Debugger.DotNet.Evaluation.ExpressionCompiler {
 	/// <summary>
@@ -54,31 +53,26 @@ namespace dnSpy.Contracts.Debugger.DotNet.Evaluation.ExpressionCompiler {
 	/// <summary>
 	/// An alias (eg. return value, object id, etc)
 	/// </summary>
-	public struct DbgDotNetAlias {
+	public readonly struct DbgDotNetAlias {
 		/// <summary>
 		/// Alias kind
 		/// </summary>
-		public DbgDotNetAliasKind Kind;
+		public readonly DbgDotNetAliasKind Kind;
 
 		/// <summary>
-		/// Custom type info understood by the EE or null
+		///	Custom type info understood by the EE or null
 		/// </summary>
-		public ReadOnlyCollection<byte>? CustomTypeInfo;
-
-		/// <summary>
-		/// Custom type info ID
-		/// </summary>
-		public Guid CustomTypeInfoId;
+		public readonly DbgDotNetCustomTypeInfo? CustomTypeInfo;
 
 		/// <summary>
 		/// Name, eg. "$ReturnValue", "$1"
 		/// </summary>
-		public string Name;
+		public readonly string Name;
 
 		/// <summary>
 		/// Serialized type name, see <see cref="Type.AssemblyQualifiedName"/>
 		/// </summary>
-		public string Type;
+		public readonly string Type;
 
 		/// <summary>
 		/// Constructor
@@ -86,14 +80,12 @@ namespace dnSpy.Contracts.Debugger.DotNet.Evaluation.ExpressionCompiler {
 		/// <param name="kind">Alias kind</param>
 		/// <param name="type">Serialized type name, see <see cref="Type.AssemblyQualifiedName"/></param>
 		/// <param name="name">Name, eg. "$ReturnValue", "$1"</param>
-		/// <param name="customTypeInfoId">Custom type info ID</param>
 		/// <param name="customTypeInfo">Custom type info understood by the EE or null</param>
-		public DbgDotNetAlias(DbgDotNetAliasKind kind, string type, string name, Guid customTypeInfoId, ReadOnlyCollection<byte>? customTypeInfo) {
+		public DbgDotNetAlias(DbgDotNetAliasKind kind, string type, string name, DbgDotNetCustomTypeInfo? customTypeInfo) {
 			Kind = kind;
 			Type = type ?? throw new ArgumentNullException(nameof(type));
 			Name = name ?? throw new ArgumentNullException(nameof(name));
 			CustomTypeInfo = customTypeInfo;
-			CustomTypeInfoId = customTypeInfoId;
 		}
 	}
 }

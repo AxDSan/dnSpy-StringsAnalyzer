@@ -19,8 +19,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using dnlib.DotNet;
+using dnlib.PE;
+using dnSpy.Contracts.Utilities;
+using dnSpy.Decompiler;
 
 namespace dnSpy.AsmEditor.Compiler {
 	readonly struct MetadataReferenceFinder {
@@ -28,12 +32,16 @@ namespace dnSpy.AsmEditor.Compiler {
 		readonly CancellationToken cancellationToken;
 		readonly Dictionary<IAssembly, AssemblyDef> assemblies;
 		readonly HashSet<IAssembly> checkedContractsAssemblies;
+		readonly DotNetPathProvider dotNetPathProvider;
+		readonly TargetFrameworkInfo targetFrameworkInfo;
 
 		public MetadataReferenceFinder(ModuleDef module, CancellationToken cancellationToken) {
 			this.module = module ?? throw new ArgumentNullException(nameof(module));
 			this.cancellationToken = cancellationToken;
 			assemblies = new Dictionary<IAssembly, AssemblyDef>(new AssemblyNameComparer(AssemblyNameComparerFlags.All & ~AssemblyNameComparerFlags.Version));
 			checkedContractsAssemblies = new HashSet<IAssembly>(AssemblyNameComparer.CompareAll);
+			dotNetPathProvider = new DotNetPathProvider();
+			targetFrameworkInfo = TargetFrameworkInfo.Create(module);
 		}
 
 		public IEnumerable<ModuleDef> Find(IEnumerable<string> extraAssemblyReferences) {
@@ -66,7 +74,7 @@ namespace dnSpy.AsmEditor.Compiler {
 
 			foreach (var asmRef in GetAssemblyRefs(module, extraAssemblyReferences)) {
 				cancellationToken.ThrowIfCancellationRequested();
-				asm = module.Context.AssemblyResolver.Resolve(asmRef, module);
+				asm = Resolve(module, asmRef);
 				if (asm is null)
 					continue;
 				foreach (var a in GetAssemblies(asm))
@@ -133,7 +141,7 @@ namespace dnSpy.AsmEditor.Compiler {
 					continue;
 				checkedContractsAssemblies.Add(asmRef);
 
-				var contractsAsm = module.Context.AssemblyResolver.Resolve(asmRef, module);
+				var contractsAsm = Resolve(module, asmRef);
 				if (contractsAsm is not null) {
 					yield return contractsAsm;
 					foreach (var m in contractsAsm.Modules) {
@@ -149,10 +157,54 @@ namespace dnSpy.AsmEditor.Compiler {
 			}
 			foreach (var asmRef in nonContractAsms) {
 				cancellationToken.ThrowIfCancellationRequested();
-				var asm = module.Context.AssemblyResolver.Resolve(asmRef, module);
+				var asm = Resolve(module, asmRef);
 				if (asm is not null)
 					yield return asm;
 			}
+		}
+
+		AssemblyDef? Resolve(ModuleDef module, IAssembly asmRef) {
+			var resolved = module.Context.AssemblyResolver.Resolve(asmRef, module);
+			if (resolved is null)
+				return null;
+			if (!dotNetPathProvider.HasDotNet || targetFrameworkInfo.IsDotNetFramework)
+				return resolved;
+			if (!IsPublicKeyToken(contractsPublicKeyTokens, asmRef.PublicKeyOrToken?.Token))
+				return resolved;
+
+			if (!Version.TryParse(targetFrameworkInfo.Version, out var ver))
+				return resolved;
+			var moniker = targetFrameworkInfo.GetTargetFrameworkMoniker();
+			if (moniker is null)
+				return resolved;
+
+			string[]? referencePaths;
+			switch (targetFrameworkInfo.Framework) {
+			case ".NETStandard":
+				referencePaths = dotNetPathProvider.TryGetNetStandardReferencePaths(ver, module.GetPointerSize(IntPtr.Size) * 8);
+				break;
+			case ".NETCoreApp": {
+				referencePaths = dotNetPathProvider.TryGetReferenceDotNetPaths(ver, module.GetPointerSize(IntPtr.Size) * 8);
+				break;
+			}
+			default:
+				return resolved;
+			}
+
+			if (referencePaths is null)
+				return resolved;
+
+			string fileName = Path.GetFileName(resolved.ManifestModule.Location);
+			foreach (string path in referencePaths) {
+				var newFileName = Path.Combine(path, "ref", moniker, fileName);
+				if (!File.Exists(newFileName))
+					continue;
+				var newModule = ModuleDefMD.Load(newFileName, module.Context);
+				(newModule.Metadata.PEImage as IInternalPEImage)?.UnsafeDisableMemoryMappedIO();
+				return newModule.Assembly;
+			}
+
+			return resolved;
 		}
 	}
 }

@@ -1022,7 +1022,7 @@ namespace dnSpy.Decompiler.CSharp {
 				case ElementType.Var:
 				case ElementType.MVar:
 					var gsType = Read(type.ElementType == ElementType.Var ? typeGenArgs : methGenArgs, (int)((GenericSig)type).Number);
-					if (gsType is not null)
+					if (gsType is not null && gsType != type)
 						Write(gsType, typeGenArgs, methGenArgs, ref dynamicTypeIndex, ref tupleNameIndex, ref nativeIntIndex, attributeProvider);
 					else {
 						var gp = ((GenericSig)type).GenericParam;

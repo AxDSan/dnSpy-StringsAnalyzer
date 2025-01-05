@@ -23,7 +23,7 @@
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class ConnectionIdHandler : IHandler {
+	sealed class ConnectionIdHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.ConnectionId;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

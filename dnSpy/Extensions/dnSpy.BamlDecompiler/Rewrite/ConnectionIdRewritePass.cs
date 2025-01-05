@@ -33,7 +33,7 @@ using ICSharpCode.Decompiler;
 using ICSharpCode.Decompiler.ILAst;
 
 namespace dnSpy.BamlDecompiler.Rewrite {
-	internal class ConnectionIdRewritePass : IRewritePass {
+	sealed class ConnectionIdRewritePass : IRewritePass {
 		static bool Impl(MethodDef method, MethodDef ifaceMethod) {
 			if (method.HasOverrides) {
 				var comparer = new SigComparer(SigComparerOptions.CompareDeclaringTypes | SigComparerOptions.PrivateScopeIsComparable);
@@ -55,8 +55,8 @@ namespace dnSpy.BamlDecompiler.Rewrite {
 			if (type is null)
 				return;
 
-			var componentConnectorConnect = ctx.Baml.KnownThings.Types(KnownTypes.IComponentConnector).FindMethod("Connect");
-			var styleConnectorConnect = ctx.Baml.KnownThings.Types(KnownTypes.IStyleConnector).FindMethod("Connect");
+			var componentConnectorConnect = ctx.Baml.KnownThings.Types(KnownTypes.IComponentConnector).TypeDef.FindMethod("Connect");
+			var styleConnectorConnect = ctx.Baml.KnownThings.Types(KnownTypes.IStyleConnector).TypeDef.FindMethod("Connect");
 
 			var connIds = new Dictionary<int, Action<XamlContext, XElement>>();
 

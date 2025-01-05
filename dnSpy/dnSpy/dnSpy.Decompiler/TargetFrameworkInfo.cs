@@ -24,7 +24,7 @@ using System.Text;
 using dnlib.DotNet;
 
 namespace dnSpy.Decompiler {
-	readonly struct TargetFrameworkInfo {
+	public readonly struct TargetFrameworkInfo {
 		/// <summary>
 		/// true if <see cref="Framework"/> is .NET Framework
 		/// </summary>

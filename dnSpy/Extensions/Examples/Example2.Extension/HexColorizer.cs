@@ -8,7 +8,7 @@ using dnSpy.Contracts.Text.Classification;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	// Define our classification types. A classification type is converted to a color
 	static class HexConstants {
 		// Use unique names

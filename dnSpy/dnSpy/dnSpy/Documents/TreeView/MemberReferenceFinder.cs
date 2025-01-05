@@ -24,7 +24,7 @@ using System.Diagnostics.CodeAnalysis;
 using dnlib.DotNet;
 
 namespace dnSpy.Documents.TreeView {
-	struct MemberReferenceFinder {
+	readonly struct MemberReferenceFinder {
 		readonly ModuleDefMD module;
 
 		public MemberReferenceFinder(ModuleDefMD module) => this.module = module;

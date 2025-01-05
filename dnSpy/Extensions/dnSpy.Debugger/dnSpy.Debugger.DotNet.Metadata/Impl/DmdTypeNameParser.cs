@@ -200,7 +200,7 @@ namespace dnSpy.Debugger.DotNet.Metadata.Impl {
 		List<string> ReadTypeRefAndNestedNoAssembly(char nestedChar) {
 			var typeNames = new List<string>();
 			while (true) {
-				typeNames.Add(ReadId(false));
+				typeNames.Add(ReadId(false, false));
 				SkipWhite();
 				if (PeekChar() != nestedChar)
 					break;
@@ -291,13 +291,13 @@ namespace dnSpy.Debugger.DotNet.Metadata.Impl {
 			}
 		}
 
-		string ReadId() => ReadId(true);
+		string ReadId() => ReadId(true, true);
 
-		string ReadId(bool ignoreWhiteSpace) {
+		string ReadId(bool ignoreWhiteSpace, bool ignoreEqualSign) {
 			SkipWhite();
 			StringBuilder? sb = ObjectPools.AllocStringBuilder();
 			int c;
-			while ((c = GetIdChar(ignoreWhiteSpace)) != -1)
+			while ((c = GetIdChar(ignoreWhiteSpace, ignoreEqualSign)) != -1)
 				sb.Append((char)c);
 			Verify(sb.Length > 0, "Expected an id");
 			return ObjectPools.FreeAndToString(ref sb);
@@ -571,6 +571,7 @@ namespace dnSpy.Debugger.DotNet.Metadata.Impl {
 					break;
 
 				case "PUBLICKEYTOKEN":
+					flags &= ~DmdAssemblyNameFlags.PublicKey;
 					if (StringComparer.OrdinalIgnoreCase.Equals(value, "null") ||
 						StringComparer.OrdinalIgnoreCase.Equals(value, "neutral"))
 						publicKeyToken = Array.Empty<byte>();
@@ -618,7 +619,7 @@ namespace dnSpy.Debugger.DotNet.Metadata.Impl {
 			}
 		}
 
-		int GetIdChar(bool ignoreWhiteSpace) {
+		int GetIdChar(bool ignoreWhiteSpace, bool ignoreEqualSign) {
 			int c = PeekChar();
 			if (c == -1)
 				return -1;
@@ -635,7 +636,7 @@ namespace dnSpy.Debugger.DotNet.Metadata.Impl {
 			case '*':
 			case '[':
 			case ']':
-			case '=':
+			case '=' when ignoreEqualSign:
 				return -1;
 
 			default:

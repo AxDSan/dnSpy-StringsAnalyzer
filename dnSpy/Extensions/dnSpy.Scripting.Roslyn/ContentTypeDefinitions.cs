@@ -27,16 +27,19 @@ namespace dnSpy.Scripting.Roslyn {
 		[Export]
 		[Name(ContentTypes.ReplRoslyn)]
 		[BaseDefinition(ContentTypes.Repl)]
+		[BaseDefinition(ContentTypes.RoslynCode)]
 		static readonly ContentTypeDefinition? ReplRoslynContentTypeDefinition;
 
 		[Export]
 		[Name(ContentTypes.ReplCSharpRoslyn)]
 		[BaseDefinition(ContentTypes.ReplRoslyn)]
+		[BaseDefinition(ContentTypes.CSharpRoslyn)]
 		static readonly ContentTypeDefinition? ReplCSharpRoslynContentTypeDefinition;
 
 		[Export]
 		[Name(ContentTypes.ReplVisualBasicRoslyn)]
 		[BaseDefinition(ContentTypes.ReplRoslyn)]
+		[BaseDefinition(ContentTypes.VisualBasicRoslyn)]
 		static readonly ContentTypeDefinition? ReplVisualBasicRoslynContentTypeDefinition;
 #pragma warning restore CS0169
 	}

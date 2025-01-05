@@ -2,6 +2,7 @@ dnSpy credits:
 
 	0xd4d
 	Ki
+	ElektroKill
 	And all other contributors: https://github.com/dnSpyEx/dnSpy/graphs/contributors
 
 ILSpy decompiler and analyzer credits:
@@ -15,6 +16,7 @@ ILSpy decompiler and analyzer credits:
 	Pent Ploompuu
 	Ki
 	0xd4d
+	ElektroKill
 
 
 Translators:
@@ -28,6 +30,7 @@ Chinese Simplified:
 	linkinshi
 	YuXiaoChou
 	zqy2419328026
+	Noisrev
 
 Russian:
 
@@ -105,3 +108,7 @@ Portuguese, Brazilian:
 	Marcos De Noni Buturri (marcosdenoni)
 	Bruno Silva (irbein.tepes)
 	EduardooViip
+
+Vietnamese:
+
+    VNGhostMans

@@ -23,22 +23,26 @@ using System.Diagnostics;
 using System.IO;
 
 namespace dndbg.DotNet {
-	sealed class ProcessBinaryReader {
+	sealed class ProcessBinaryReader : IDisposable {
 		const int CACHE_SIZE = 0x100;
 		readonly IProcessReader reader;
+		readonly bool disposeReader;
 		readonly ulong baseAddress;
 		readonly byte[] cache;
 		ulong cacheAddress;
 		bool cacheValid;
 		ulong address;
 
-		public ProcessBinaryReader(IProcessReader reader, ulong address) {
+		public ProcessBinaryReader(IProcessReader reader, ulong address) : this(reader, address, true) { }
+
+		public ProcessBinaryReader(IProcessReader reader, ulong address, bool disposeReader) {
 			this.reader = reader;
 			baseAddress = address;
 			cache = new byte[CACHE_SIZE];
 			cacheAddress = 0;
 			cacheValid = false;
 			this.address = address;
+			this.disposeReader = disposeReader;
 		}
 
 		public long Length => long.MaxValue;
@@ -48,7 +52,10 @@ namespace dndbg.DotNet {
 			set => address = baseAddress + (ulong)value;
 		}
 
-		public void Dispose() => (reader as IDisposable)?.Dispose();
+		public void Dispose() {
+			if (disposeReader && reader is IDisposable disposable)
+				disposable.Dispose();
+		}
 
 		public int Read(byte[] buffer, int offset, int length) {
 			int sizeRead = reader.ReadBytes(address, buffer, offset, length);

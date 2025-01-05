@@ -34,6 +34,7 @@ namespace dnSpy.Contracts.Utilities {
 	public sealed class DotNetPathProvider {
 		readonly FrameworkPaths[] netPathsShared;
 		readonly FrameworkPaths[] netPathsRef;
+		readonly FrameworkPaths[] netStandardPaths;
 
 		/// <summary>
 		/// Returns true if .NET Core was found on the system, false otherwise.
@@ -75,13 +76,16 @@ namespace dnSpy.Contracts.Utilities {
 		public DotNetPathProvider() {
 			var sharedPaths = new List<FrameworkPath>();
 			var refPaths = new List<FrameworkPath>();
+			var standardPaths = new List<FrameworkPath>();
 			foreach (var info in GetDotNetBaseDirs()) {
 				sharedPaths.AddRange(GetDotNetPathsShared(info.Directory, info.Bitness));
 				refPaths.AddRange(GetDotNetPathsRef(info.Directory, info.Bitness));
+				standardPaths.AddRange(GetNetStandardRefPaths(info.Directory, info.Bitness));
 			}
 
 			netPathsShared = CreateAndSortFrameworkPaths(sharedPaths, false);
 			netPathsRef = CreateAndSortFrameworkPaths(refPaths, true);
+			netStandardPaths = CreateAndSortFrameworkPaths(standardPaths, true);
 		}
 
 		static FrameworkPaths[] CreateAndSortFrameworkPaths(IEnumerable<FrameworkPath> list, bool isRef) {
@@ -95,52 +99,45 @@ namespace dnSpy.Contracts.Utilities {
 		}
 
 		/// <summary>
-		/// Returns the .NET Core installation directories found on the system.
+		/// Returns the .NET Core runtime assembly directories found on the system.
 		/// </summary>
 		/// <param name="version">Preferred .NET Core version</param>
 		/// <param name="bitness">Preferred bitness</param>
-		/// <returns>.NET Core installation directories, null if not found</returns>
-		public string[]? TryGetSharedDotNetPaths(Version version, int bitness) {
-			Debug.Assert(bitness == 32 || bitness == 64);
-			int bitness2 = bitness ^ 0x60;
-
-			var info = TryGetDotNetPathsCore(version.Major, version.Minor, bitness, netPathsShared) ??
-					   TryGetDotNetPathsCore(version.Major, version.Minor, bitness2, netPathsShared);
-			if (info is not null)
-				return info.Paths;
-
-			info = TryGetDotNetPathsCore(version.Major, bitness, netPathsShared) ??
-				TryGetDotNetPathsCore(version.Major, bitness2, netPathsShared);
-			if (info is not null)
-				return info.Paths;
-
-			info = TryGetDotNetPathsCore(bitness, netPathsShared) ??
-				TryGetDotNetPathsCore(bitness2, netPathsShared);
-			return info?.Paths;
-		}
+		/// <returns>.NET Core runtime assembly directories, null if not found</returns>
+		public string[]? TryGetSharedDotNetPaths(Version version, int bitness) => TryGetBestMatchingPaths(version, bitness, netPathsShared);
 
 		/// <summary>
-		/// Returns the .NET Core installation directories found on the system.
+		/// Returns the .NET Core reference assembly directories found on the system.
 		/// </summary>
 		/// <param name="version">Preferred .NET Core version</param>
 		/// <param name="bitness">Preferred bitness</param>
-		/// <returns>.NET Core installation directories, null if not found</returns>
-		public string[]? TryGetReferenceDotNetPaths(Version version, int bitness) {
+		/// <returns>.NET Core reference assembly directories, null if not found</returns>
+		public string[]? TryGetReferenceDotNetPaths(Version version, int bitness) => TryGetBestMatchingPaths(version, bitness, netPathsRef);
+
+		/// <summary>
+		/// Returns the .NET Standard reference assembly directories found on the system.
+		/// </summary>
+		/// <param name="version">Preferred .NET Standard version</param>
+		/// <param name="bitness">Preferred bitness</param>
+		/// <returns> .NET Standard reference assembly directories, null if not found</returns>
+		public string[]? TryGetNetStandardReferencePaths(Version version, int bitness) => TryGetBestMatchingPaths(version, bitness, netStandardPaths);
+
+		static string[]? TryGetBestMatchingPaths(Version version, int bitness, FrameworkPaths[] paths) {
 			Debug.Assert(bitness == 32 || bitness == 64);
 			int bitness2 = bitness ^ 0x60;
 
-			var info = TryGetDotNetPathsCore(version.Major, version.Minor, bitness, netPathsRef) ??
-					   TryGetDotNetPathsCore(version.Major, version.Minor, bitness2, netPathsRef);
+			var info = TryGetDotNetPathsCore(version.Major, version.Minor, bitness, paths) ??
+					   TryGetDotNetPathsCore(version.Major, version.Minor, bitness2, paths);
 			if (info is not null)
 				return info.Paths;
 
-			info = TryGetDotNetPathsCore(version.Major, bitness, netPathsRef) ??
-				   TryGetDotNetPathsCore(version.Major, bitness2, netPathsRef);
+			info = TryGetDotNetPathsCore(version.Major, bitness, paths) ??
+				   TryGetDotNetPathsCore(version.Major, bitness2, paths);
 			if (info is not null)
 				return info.Paths;
 
-			info = TryGetDotNetPathsCore(bitness, netPathsRef) ??
-				   TryGetDotNetPathsCore(bitness2, netPathsRef);
+			info = TryGetDotNetPathsCore(bitness, paths) ??
+				   TryGetDotNetPathsCore(bitness2, paths);
 			return info?.Paths;
 		}
 
@@ -338,14 +335,32 @@ namespace dnSpy.Contracts.Utilities {
 				yield break;
 			// Known dirs: Microsoft.NETCore.App.Ref, Microsoft.WindowsDesktop.App.Ref, Microsoft.AspNetCore.App.Ref
 			foreach (var packDirs in GetDirectories(packsDir)) {
-				// Exclude app host packs
-				if (!packDirs.EndsWith(".Ref", StringComparison.Ordinal))
+				// Exclude app host packs and .NET Standard packs
+				if (!packDirs.EndsWith(".Ref", StringComparison.Ordinal) || packDirs.EndsWith(NetStandardRefPackName, StringComparison.Ordinal))
 					continue;
 				foreach (var versionDir in GetDirectories(packDirs)) {
 					var frameWorkPath = CreateFrameworkPath(versionDir, bitness);
 					if (frameWorkPath is not null)
 						yield return frameWorkPath;
 				}
+			}
+		}
+
+		const string NetStandardRefPackName = "NETStandard.Library.Ref";
+
+		static IEnumerable<FrameworkPath> GetNetStandardRefPaths(string basePath, int bitness) {
+			if (!Directory.Exists(basePath))
+				yield break;
+			var packsDir = Path.Combine(basePath, "packs");
+			if (!Directory.Exists(packsDir))
+				yield break;
+			var netStandardPack = Path.Combine(packsDir, NetStandardRefPackName);
+			if (!Directory.Exists(netStandardPack))
+				yield break;
+			foreach (string directory in GetDirectories(netStandardPack)) {
+				var frameWorkPath = CreateFrameworkPath(directory, bitness);
+				if (frameWorkPath is not null)
+					yield return frameWorkPath;
 			}
 		}
 

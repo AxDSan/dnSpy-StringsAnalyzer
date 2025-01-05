@@ -13,7 +13,7 @@ using dnSpy.Contracts.ToolWindows.App;
 // Adds a tool window and a command that will show it. The command is added to the View menu and a
 // keyboard shortcut is added to the main window. Keyboard shortcut Ctrl+Alt+Z shows the tool window.
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	// Adds the 'OpenToolWindow' command to the main window and sets keyboard shortcut to Ctrl+Alt+Z
 	[ExportAutoLoaded]
 	sealed class ToolWindowLoader : IAutoLoaded {

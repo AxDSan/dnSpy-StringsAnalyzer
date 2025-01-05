@@ -40,10 +40,23 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		}
 
 		public override ILValue? Unbox(DmdType type) {
-			var dnValue = runtime.GetDotNetValue(ilValue);
-			if (dnValue.Type != type)
-				return null;
-			return new UnboxAddressILValue(runtime, dnValue);
+			DbgDotNetValue unboxedValue;
+			if (type.IsNullable) {
+				var t = type.GetNullableElementType();
+				if (ilValue.Type != t)
+					return null;
+				var method = type.GetConstructor(new[] { t });
+				if (method is null)
+					return null;
+				unboxedValue = runtime.CreateInstance2(method, new[] { ilValue });
+			}
+			else {
+				var dnValue = runtime.GetDotNetValue(ilValue);
+				if (dnValue.Type != type)
+					return null;
+				unboxedValue = dnValue;
+			}
+			return new UnboxAddressILValue(runtime, unboxedValue);
 		}
 	}
 }

@@ -365,7 +365,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.ExpressionEvaluator
 
         Public Overrides ReadOnly Property DeclaringSyntaxReferences As ImmutableArray(Of SyntaxReference)
             Get
-                Throw ExceptionUtilities.Unreachable
+                Return GetDeclaringSyntaxReferenceHelper(Of VisualBasicSyntaxNode)(_locations)
             End Get
         End Property
 

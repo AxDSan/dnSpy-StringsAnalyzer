@@ -23,7 +23,7 @@
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class LinePositionHandler : IHandler {
+	sealed class LinePositionHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.LinePosition;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) => null;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -124,7 +124,7 @@
     <value>添加异常(_X)</value>
   </data>
   <data name="AppDomainNotAvailable" xml:space="preserve">
-    <value>&lt; 不可用 &gt;</value>
+    <value>&lt;AppDomain 不可用&gt;</value>
   </data>
   <data name="AppMenu_Debug" xml:space="preserve">
     <value>调试(_D)</value>
@@ -133,7 +133,7 @@
     <value>调试中</value>
   </data>
   <data name="AskDeleteAllBreakpoints" xml:space="preserve">
-    <value>要删除所有的断点吗？</value>
+    <value>是否删除所有的断点？</value>
   </data>
   <data name="AttachToProcessCommand" xml:space="preserve">
     <value>附加到进程(_P)...</value>
@@ -142,10 +142,10 @@
     <value>附加到进程</value>
   </data>
   <data name="Attach_UseDnSpy32" xml:space="preserve">
-    <value>请改用64位dnspy 来调试64位应用程序。</value>
+    <value>请改用 64 位的 dnSpy 来调试 64 位应用程序。</value>
   </data>
   <data name="Attach_UseDnSpy64" xml:space="preserve">
-    <value>请改用32位dnspy 来调试32位应用程序。</value>
+    <value>请改用 32 位的 dnSpy 来调试 32 位应用程序。</value>
   </data>
   <data name="BreakCommand" xml:space="preserve">
     <value>全部中断(_K)</value>
@@ -160,7 +160,7 @@
     <value>取消(_C)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
-    <value>确定 (_O)</value>
+    <value>确定(_O)</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
     <value>刷新(_R)</value>
@@ -169,13 +169,13 @@
     <value>调用堆栈(_C)</value>
   </data>
   <data name="CallStack_MaxFramesExceeded" xml:space="preserve">
-    <value>堆栈帧数量已超出dnSpy所支持的最大值。</value>
+    <value>堆栈帧数量已超出 dnSpy 所支持的最大值。</value>
   </data>
   <data name="Column_Address" xml:space="preserve">
     <value>地址</value>
   </data>
   <data name="Column_AppDomain" xml:space="preserve">
-    <value>程序域</value>
+    <value>AppDomain</value>
   </data>
   <data name="Column_DynamicModule" xml:space="preserve">
     <value>动态</value>
@@ -202,13 +202,13 @@
     <value>进程</value>
   </data>
   <data name="Column_ProcessArchitecture" xml:space="preserve">
-    <value>架构</value>
+    <value>体系架构</value>
   </data>
   <data name="Column_ProcessFilename" xml:space="preserve">
     <value>文件名</value>
   </data>
   <data name="Column_ProcessID" xml:space="preserve">
-    <value>ID</value>
+    <value>PID</value>
   </data>
   <data name="Column_ProcessTitle" xml:space="preserve">
     <value>标题</value>
@@ -229,7 +229,7 @@
     <value>位置</value>
   </data>
   <data name="Column_ThreadManagedId" xml:space="preserve">
-    <value>托管ID</value>
+    <value>托管 ID</value>
   </data>
   <data name="Column_ThreadPriority" xml:space="preserve">
     <value>优先级</value>
@@ -271,10 +271,10 @@
     <value>忽略 Debugger.Break() 和中断指令</value>
   </data>
   <data name="DbgSettings_PropertyEvalAndFunctionCalls" xml:space="preserve">
-    <value>启用属性计算和其它隐式函数调用</value>
+    <value>启用属性求值和其它隐式函数调用</value>
   </data>
   <data name="DbgSettings_UseMemoryModules" xml:space="preserve">
-    <value>调试从进程内存加载的文件（取消选中以使用磁盘文件）</value>
+    <value>调试从进程内存加载的文件 (取消选中以使用磁盘文件)</value>
   </data>
   <data name="DbgSettings_UseStringConversionFunction" xml:space="preserve">
     <value>在变量窗口中对对象调用字符串转换方法</value>
@@ -322,15 +322,15 @@
     <value>启用断点(_L)</value>
   </data>
   <data name="ErrorOccurredX" xml:space="preserve">
-    <value>发生错误：
+    <value>发生错误: 
 
 {0}</value>
   </data>
   <data name="Error_CantEvalUnlessDebuggerStopped" xml:space="preserve">
-    <value>除非调试器停止，否则无法计算</value>
+    <value>除非调试器停止，否则无法求值</value>
   </data>
   <data name="Error_CantEvalWhenUnhandledExceptionHasOccurred" xml:space="preserve">
-    <value>当未捕捉异常发生时无法计算</value>
+    <value>当触发未捕获的异常时无法求值</value>
   </data>
   <data name="Error_StartWithoutDebuggingCouldNotStart" xml:space="preserve">
     <value>无法启动 '{0}' 
@@ -343,7 +343,7 @@
     <value>从列表中移除异常</value>
   </data>
   <data name="Exceptions_RestoreSettings_ToolTip" xml:space="preserve">
-    <value>恢复列表到默认设置</value>
+    <value>还原列表到默认设置</value>
   </data>
   <data name="Exceptions_Search" xml:space="preserve">
     <value>搜索</value>
@@ -391,22 +391,20 @@
     <value>保存(_S)...</value>
   </data>
   <data name="LocalsSave_Error_CouldNotSaveDataToFilename" xml:space="preserve">
-    <value>保存数据到 '{0}' 错误
-错误：{1}</value>
+    <value>无法将数据保存到 '{0}'
+错误: {1}</value>
   </data>
   <data name="Locals_Ask_TooManyItems" xml:space="preserve">
-    <value>此项目包含有超过 {0} 个子项目。当展开时会限制要显示的项目数量。
-
-您确定要展开它？</value>
+    <value>该节点中的子元素数量已超过最大值 ({0} 个)，当展开时会限制显示的子元素数量。是否需要显示所有的内容？</value>
   </data>
   <data name="Locals_Error_CantEvaluateWhenThreadIsAtUnsafePoint" xml:space="preserve">
-    <value>当线程位于不安全状态时无法计算表达式。按步调试或运行直到触发断点。</value>
+    <value>当线程位于不安全状态时无法对表达式进行求值。按步调试或运行直到触发断点。</value>
   </data>
   <data name="Locals_Error_EvalDisabledCantCallPropsAndMethods" xml:space="preserve">
     <value>当前无法调用属性和方法</value>
   </data>
   <data name="Locals_Error_EvalTimedOutIsDisabled" xml:space="preserve">
-    <value>求值已超时并已被禁用，直到您继续调试为止。</value>
+    <value>由于此前的函数求值已超时，因此该功能已被禁用。必须继续执行才能重新启用它</value>
   </data>
   <data name="Locals_Error_EvaluationTimedOut" xml:space="preserve">
     <value>求值超时</value>
@@ -433,7 +431,7 @@
     <value>打开所在文件夹(_O)</value>
   </data>
   <data name="OpenModuleFromMemoryCommand" xml:space="preserve">
-    <value>从内存打开模块</value>
+    <value>从内存中打开模块</value>
   </data>
   <data name="RemoveExceptionCommand" xml:space="preserve">
     <value>移除(_R)</value>
@@ -442,10 +440,10 @@
     <value>重命名</value>
   </data>
   <data name="RestartCommand" xml:space="preserve">
-    <value>重新开始(_R)</value>
+    <value>重新启动(_R)</value>
   </data>
   <data name="RestoreDefaultExceptionSettingsCommand" xml:space="preserve">
-    <value>恢复默认值</value>
+    <value>还原默认值</value>
   </data>
   <data name="RunToCursorCommand" xml:space="preserve">
     <value>运行到光标处(_N)</value>
@@ -559,7 +557,7 @@
     <value>在内存窗口中显示</value>
   </data>
   <data name="ShowInstructionPointerCommand" xml:space="preserve">
-    <value>显示IP</value>
+    <value>显示指令指针</value>
   </data>
   <data name="ShowModuleNamesCommand" xml:space="preserve">
     <value>显示模块名称(_M)</value>
@@ -619,7 +617,7 @@
     <value>切换到线程(_S)</value>
   </data>
   <data name="ThawThreadCommand" xml:space="preserve">
-    <value>解冻(_T)</value>
+    <value>解冻线程(_T)</value>
   </data>
   <data name="ThreadsCommand" xml:space="preserve">
     <value>线程(_H)</value>
@@ -640,7 +638,7 @@
     <value>工作线程</value>
   </data>
   <data name="Thread_LocationNotAvailable" xml:space="preserve">
-    <value>&lt; 不可用 &gt;</value>
+    <value>&lt;不可用&gt;</value>
   </data>
   <data name="Thread_NoName" xml:space="preserve">
     <value>&lt;无名称&gt;</value>
@@ -772,7 +770,7 @@
     <value>线程退出消息(_T)</value>
   </data>
   <data name="ShowMDAMessages" xml:space="preserve">
-    <value>MDA消息</value>
+    <value>托管调试助手消息</value>
   </data>
   <data name="DebugLogAdditionalInformation" xml:space="preserve">
     <value>其他信息: {0}</value>
@@ -799,7 +797,7 @@
     <value>已卸载 '{0}'</value>
   </data>
   <data name="ExceptionMessageIsNull" xml:space="preserve">
-    <value>"&lt; 没有异常消息 &gt;"</value>
+    <value>"&lt;没有异常消息&gt;"</value>
   </data>
   <data name="GlyphToolTip_Location" xml:space="preserve">
     <value>位置</value>
@@ -856,7 +854,7 @@
     <value>调试中</value>
   </data>
   <data name="Column_ID" xml:space="preserve">
-    <value>ID</value>
+    <value>PID</value>
   </data>
   <data name="Column_State" xml:space="preserve">
     <value>状态</value>
@@ -895,10 +893,10 @@
     <value>进程</value>
   </data>
   <data name="Column_ProcessName" xml:space="preserve">
-    <value>进程名</value>
+    <value>名称</value>
   </data>
   <data name="AllRemainingExceptionsNotInList" xml:space="preserve">
-    <value>&lt;不在此列表中的所有 {0} &gt;</value>
+    <value>&lt;所有的 {0} 不在此列表中&gt;</value>
   </data>
   <data name="Exceptions_EditConditions_ToolTip" xml:space="preserve">
     <value>编辑条件</value>
@@ -937,7 +935,7 @@
     <value>查找(_F)</value>
   </data>
   <data name="Exceptions_NoMatch" xml:space="preserve">
-    <value>没有能匹配搜索过滤器的异常类型。</value>
+    <value>未找到与搜索条件匹配的异常类型。</value>
   </data>
   <data name="AddExceptionButton" xml:space="preserve">
     <value>添加</value>
@@ -967,7 +965,7 @@
     <value>移除断点</value>
   </data>
   <data name="EditAppDomainNameCommand" xml:space="preserve">
-    <value>编辑程序域名称</value>
+    <value>编辑 AppDomain 名称</value>
   </data>
   <data name="EditModuleNameCommand" xml:space="preserve">
     <value>编辑模块名称</value>
@@ -1003,13 +1001,13 @@
     <value>Ctrl+Shift+Alt+F11</value>
   </data>
   <data name="StepIntoCurrentProcessCommand" xml:space="preserve">
-    <value>逐语句（当前进程）</value>
+    <value>逐语句 (当前进程)</value>
   </data>
   <data name="StepOutCurrentProcessCommand" xml:space="preserve">
-    <value>跳出（当前进程）</value>
+    <value>跳出 (当前进程)</value>
   </data>
   <data name="StepOverCurrentProcessCommand" xml:space="preserve">
-    <value>逐过程（当前进程）</value>
+    <value>逐过程 (当前进程)</value>
   </data>
   <data name="Processes_BreakProcessToolTip" xml:space="preserve">
     <value>中断进程</value>
@@ -1054,7 +1052,7 @@
     <value>导出选中项(_E)...</value>
   </data>
   <data name="Breakpoints_NoMatch" xml:space="preserve">
-    <value>没有断点匹配您的筛选条件。</value>
+    <value>未找到符合搜索条件的断点。</value>
   </data>
   <data name="Breakpoints_Search" xml:space="preserve">
     <value>搜索</value>
@@ -1075,7 +1073,7 @@
     <value>全部</value>
   </data>
   <data name="Modules_NoMatch" xml:space="preserve">
-    <value>没有模块匹配您的搜索条件。</value>
+    <value>未找到符合搜索条件的模块。</value>
   </data>
   <data name="Modules_Search" xml:space="preserve">
     <value>搜索</value>
@@ -1120,7 +1118,7 @@
     <value>当 '{0}' 已更改时</value>
   </data>
   <data name="Breakpoint_Condition_WhenConditionIsTrue" xml:space="preserve">
-    <value>当'{0}'为true时</value>
+    <value>当 '{0}' 为 True 时</value>
   </data>
   <data name="Breakpoint_Filter_NoFilter" xml:space="preserve">
     <value>(无)</value>
@@ -1165,7 +1163,7 @@
     <value>条件表达式(_E)</value>
   </data>
   <data name="EditBreakpointSettings_Filter" xml:space="preserve">
-    <value>过滤器(_F)</value>
+    <value>筛选器(_F)</value>
   </data>
   <data name="EditBreakpointSettings_HitCount" xml:space="preserve">
     <value>命中计数(_H)</value>
@@ -1174,19 +1172,19 @@
     <value>日志信息(_L)</value>
   </data>
   <data name="GlyphToolTip_Actions" xml:space="preserve">
-    <value>操作:</value>
+    <value>操作: </value>
   </data>
   <data name="GlyphToolTip_Conditions" xml:space="preserve">
-    <value>条件:</value>
+    <value>条件: </value>
   </data>
   <data name="Breakpoint_Condition_ConditionalExpression" xml:space="preserve">
-    <value>条件表达式:</value>
+    <value>条件表达式: </value>
   </data>
   <data name="Breakpoint_Condition_WhenConditionHasChanged2" xml:space="preserve">
     <value>当 '{0}' 已更改时</value>
   </data>
   <data name="Breakpoint_Condition_WhenConditionIsTrue2" xml:space="preserve">
-    <value>当'{0}'为 True 时</value>
+    <value>当 '{0}' 为 True 时</value>
   </data>
   <data name="Breakpoint_Filter_Filter" xml:space="preserve">
     <value>筛选器: '{0}'</value>
@@ -1201,7 +1199,7 @@
     <value>命中次数大于或等于 {0}</value>
   </data>
   <data name="Breakpoint_Tracepoint_PrintMessage2" xml:space="preserve">
-    <value>将消息'{0}'，打印到“输出"窗口</value>
+    <value>将消息 '{0}'，打印到 "输出" 窗口</value>
   </data>
   <data name="Breakpoints_GlyphMargin_DisableBreakpoint" xml:space="preserve">
     <value>禁用断点</value>
@@ -1231,7 +1229,7 @@
     <value>中断并打印消息 '{0}'</value>
   </data>
   <data name="BreakpointMessage_TheFunctionCanNotBeFound" xml:space="preserve">
-    <value>无法找到方法： {0}</value>
+    <value>无法找到方法: {0}</value>
   </data>
   <data name="Breakpoints_BreakpointWillNotBeHit" xml:space="preserve">
     <value>当前不会命中断点。{0}</value>
@@ -1252,7 +1250,7 @@
     <value>冻结线程</value>
   </data>
   <data name="Threads_NoMatch" xml:space="preserve">
-    <value>没有满足搜索条件的线程</value>
+    <value>未找到符合搜索条件的线程</value>
   </data>
   <data name="Threads_Process" xml:space="preserve">
     <value>进程</value>
@@ -1279,7 +1277,7 @@
     <value>编辑标签</value>
   </data>
   <data name="Breakpoint_HitCount_CurrentHitCountValue" xml:space="preserve">
-    <value>目前 {0}</value>
+    <value>目前命中次数 {0}</value>
   </data>
   <data name="ResetBreakpointHitCountCommand" xml:space="preserve">
     <value>重置命中次数</value>
@@ -1288,22 +1286,22 @@
     <value>帮助</value>
   </data>
   <data name="FilterExpression_AllVariables" xml:space="preserve">
-    <value>可以使用的变量：</value>
+    <value>可以使用的变量: </value>
   </data>
   <data name="FilterExpression_Example" xml:space="preserve">
-    <value>示例： {0}</value>
+    <value>示例: {0}</value>
   </data>
   <data name="TracepointMessage_EscapeSequences" xml:space="preserve">
-    <value>转义序列： {0}</value>
+    <value>转义序列: {0}</value>
   </data>
   <data name="TracepointMessage_EvaluateMessage" xml:space="preserve">
-    <value>使用 {xxx} 来求值表达式 xxx</value>
+    <value>使用 {xxx} 来对表达式 xxx 进行求值</value>
   </data>
   <data name="TracepointMessage_Example" xml:space="preserve">
-    <value>示例： {0}</value>
+    <value>示例: {0}</value>
   </data>
   <data name="TracepointMessage_ValidKeywords" xml:space="preserve">
-    <value>可以使用以下关键字：</value>
+    <value>可以使用以下关键字: </value>
   </data>
   <data name="CallStackBreakpointCommand" xml:space="preserve">
     <value>断点(_B)</value>
@@ -1315,7 +1313,7 @@
     <value>插入跟踪点(_T)</value>
   </data>
   <data name="UnwindToThisFrameCommand" xml:space="preserve">
-    <value>从这个框架中解开</value>
+    <value>回溯到目标栈帧</value>
   </data>
   <data name="GlyphMargin_CurrentStatementToolTip" xml:space="preserve">
     <value>这是将要执行的下一个语句。</value>
@@ -1339,7 +1337,7 @@
     <value>在变量窗口中高亮显示更改过的变量</value>
   </data>
   <data name="MakeObjectIdCommand" xml:space="preserve">
-    <value>设置对象ID(_M)</value>
+    <value>设置对象 ID(_M)</value>
   </data>
   <data name="LanguageCommand" xml:space="preserve">
     <value>语言</value>
@@ -1363,13 +1361,13 @@
     <value>粘贴(_P)</value>
   </data>
   <data name="ExpressionCausesSideEffectsNoEval" xml:space="preserve">
-    <value>此表达式可导致副作用，将不被计算</value>
+    <value>此表达式可导致副作用，将不被求值</value>
   </data>
   <data name="RefreshExpressionButtonToolTip" xml:space="preserve">
     <value>单击按钮立即计算。</value>
   </data>
   <data name="ErrorEvaluatingExpression" xml:space="preserve">
-    <value>无法计算表达式的值</value>
+    <value>无法对表达式进行求值</value>
   </data>
   <data name="DeleteObjectIdCommand" xml:space="preserve">
     <value>删除对象 ID</value>
@@ -1438,7 +1436,7 @@
     <value>断点表达式必须是布尔表达式</value>
   </data>
   <data name="DbgSettings_SuppressJITOptimization" xml:space="preserve">
-    <value>在模块加载时禁用JIT优化</value>
+    <value>在模块加载时禁用 JIT 优化</value>
   </data>
   <data name="DbgSettings_SuppressJITOptimization_ProgramModules" xml:space="preserve">
     <value>程序模块</value>
@@ -1447,7 +1445,7 @@
     <value>系统模块</value>
   </data>
   <data name="RuntimeIsUnableToEvaluateExpression" xml:space="preserve">
-    <value>运行时无法计算此表达式。</value>
+    <value>运行时无法对该表达式进行求值。</value>
   </data>
   <data name="Exceptions_ToggleMatchingExceptions_ToolTip" xml:space="preserve">
     <value>启用或禁用与当前搜索条件匹配的所有异常</value>
@@ -1459,7 +1457,7 @@
     <value>添加异常到列表</value>
   </data>
   <data name="AskAppWindowClosingStopDebugging" xml:space="preserve">
-    <value>要停止调试吗？</value>
+    <value>是否停止调试？</value>
   </data>
   <data name="DbgSettings_FocusActiveProcess" xml:space="preserve">
     <value>使被调试进程获得焦点</value>
@@ -1477,7 +1475,7 @@
     <value>将 GUI 应用程序的控制台输出重定向到 "输出" 窗口</value>
   </data>
   <data name="AttachToProcess_MakingAnImageEasierToDebug" xml:space="preserve">
-    <value>使映像更易于调试</value>
+    <value>使映像更易于调试 (Wiki)</value>
   </data>
   <data name="ShowOnlyPublicMembersCommand" xml:space="preserve">
     <value>公共成员</value>
@@ -1495,7 +1493,7 @@
     <value>复制表达式(_X)</value>
   </data>
   <data name="Error_CouldNotShowDisassembly" xml:space="preserve">
-    <value>找不到方法的代码。请确保进程已暂停，并且该方法已实时编译（JIT）。</value>
+    <value>找不到目标方法的代码。请确保进程已暂停，并且该方法已实时编译 (JIT)。</value>
   </data>
   <data name="DisassemblyCommand" xml:space="preserve">
     <value>反汇编(_D)</value>
@@ -1507,13 +1505,13 @@
     <value>忽略未处理的异常</value>
   </data>
   <data name="RunWithInvalidExtension" xml:space="preserve">
-    <value>确定要运行此无有效扩展名的文件吗？</value>
+    <value>是否要运行具有无效扩展名的文件？</value>
   </data>
   <data name="DebugWithInvalidExtension" xml:space="preserve">
-    <value>确定要调试此无有效扩展名的文件吗？</value>
+    <value>是否要调试具有无效扩展名的文件？</value>
   </data>
   <data name="Processes_NoMatch" xml:space="preserve">
-    <value>没有进程匹配您的搜索过滤器。</value>
+    <value>未找到符合搜索条件的进程</value>
   </data>
   <data name="Processes_Search" xml:space="preserve">
     <value>搜索</value>
@@ -1525,7 +1523,7 @@
     <value>搜索进程</value>
   </data>
   <data name="DbgSettings_FocusDebuggerWhenProcessBreaks" xml:space="preserve">
-    <value>当调试器中断时，将dnSpy带到最前</value>
+    <value>当调试器中断时，为 dnSpy 设置焦点</value>
   </data>
   <data name="Column_LoadModule" xml:space="preserve">
     <value>加载</value>

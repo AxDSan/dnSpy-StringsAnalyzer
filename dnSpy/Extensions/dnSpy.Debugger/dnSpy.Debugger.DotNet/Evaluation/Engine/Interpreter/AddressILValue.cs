@@ -29,9 +29,9 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 
 		protected readonly DebuggerRuntimeImpl runtime;
 
-		protected AddressILValue(DebuggerRuntimeImpl runtime, DmdType locationType) {
+		protected AddressILValue(DebuggerRuntimeImpl runtime, DmdType locationType, bool isManagedByRef) {
 			this.runtime = runtime;
-			Type = locationType.MakeByRefType();
+			Type = isManagedByRef ? locationType.MakeByRefType() : locationType.MakePointerType();
 		}
 
 		protected abstract DbgDotNetValue? ReadValue();
@@ -83,7 +83,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly DmdFieldInfo field;
 
 		public StaticFieldAddress(DebuggerRuntimeImpl runtime, DmdFieldInfo field)
-			: base(runtime, field.FieldType) {
+			: base(runtime, field.FieldType, true) {
 			this.field = field;
 		}
 
@@ -100,7 +100,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly DmdFieldInfo field;
 
 		public ReferenceTypeFieldAddress(DebuggerRuntimeImpl runtime, DbgDotNetValue objValue, DmdFieldInfo field)
-			: base(runtime, field.FieldType) {
+			: base(runtime, field.FieldType, true) {
 			Debug.Assert(!field.ReflectedType!.IsValueType && !objValue.Type.IsArray);
 			this.objValue = objValue;
 			this.field = field;
@@ -120,7 +120,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly DmdFieldInfo field;
 
 		public ValueTypeFieldAddress(DebuggerRuntimeImpl runtime, AddressILValue objValue, DmdFieldInfo field)
-			: base(runtime, field.FieldType) {
+			: base(runtime, field.FieldType, true) {
 			Debug.Assert(field.ReflectedType!.IsValueType);
 			this.objValue = objValue;
 			this.field = field;
@@ -140,7 +140,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly uint index;
 
 		public ArrayElementAddress(DebuggerRuntimeImpl runtime, ArrayILValue arrayValue, uint index)
-			: base(runtime, arrayValue.Type!.GetElementType()!) {
+			: base(runtime, arrayValue.Type!.GetElementType()!, true) {
 			Debug.Assert(arrayValue.Type.IsArray);
 			this.arrayValue = arrayValue;
 			this.index = index;
@@ -160,7 +160,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly int index;
 
 		public LocalAddress(DebuggerRuntimeImpl runtime, DmdType localType, int index)
-			: base(runtime, localType) {
+			: base(runtime, localType, true) {
 			this.localType = localType;
 			this.index = index;
 		}
@@ -178,7 +178,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly int index;
 
 		public ArgumentAddress(DebuggerRuntimeImpl runtime, DmdType argumentType, int index)
-			: base(runtime, argumentType) {
+			: base(runtime, argumentType, true) {
 			this.argumentType = argumentType;
 			this.index = index;
 		}

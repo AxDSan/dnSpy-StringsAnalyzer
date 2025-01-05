@@ -52,6 +52,8 @@ namespace dnSpy.Decompiler.ILSpy.Settings {
 				RefreshCode<Core.CSharp.CSharpDecompiler>();
 			if (refreshVB)
 				RefreshCode<Core.VisualBasic.VBDecompiler>();
+			if (refreshCSharp || refreshIL)
+				RefreshCode<Core.Mixed.ILWithCSharpDecompiler>();
 		}
 
 		IEnumerable<(IDocumentTab tab, IDecompiler decompiler)> DecompilerTabs {

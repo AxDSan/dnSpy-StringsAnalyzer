@@ -23,7 +23,7 @@
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class TextHandler : IHandler {
+	class TextHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.Text;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {
@@ -35,7 +35,7 @@ namespace dnSpy.BamlDecompiler.Handlers {
 		}
 	}
 
-	internal class TextWithIdHandler : IHandler {
+	sealed class TextWithIdHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.TextWithId;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

@@ -746,7 +746,7 @@ namespace dndbg.DotNet {
 			if (DisableMDAPICalls)
 				return null;
 			uint ownerRid = MDAPI.GetEventOwnerRid(mdi, new MDToken(Table.Event, rid).Raw);
-			((CorTypeDef?)ResolveTypeDef(ownerRid))?.UpdateProperties();
+			((CorTypeDef?)ResolveTypeDef(ownerRid))?.UpdateEvents();
 			ridToEventDef.TryGetValue(rid, out info);
 			return info?.Item;
 		}
@@ -874,8 +874,8 @@ namespace dndbg.DotNet {
 				return info.Item;
 			if (DisableMDAPICalls)
 				return null;
-			uint ownerToken = MDAPI.GetGenericParamOwner(mdi2, new MDToken(Table.Param, rid).Raw);
-			((ICorTypeOrMethodDef)ResolveToken(ownerToken))?.UpdateGenericParams();
+			uint ownerToken = MDAPI.GetGenericParamOwner(mdi2, new MDToken(Table.GenericParam, rid).Raw);
+			((ICorTypeOrMethodDef?)ResolveToken(ownerToken))?.UpdateGenericParams();
 			ridToGenericParam.TryGetValue(rid, out info);
 			return info?.Item;
 		}
@@ -1149,17 +1149,17 @@ namespace dndbg.DotNet {
 
 			if (token.Rid == 0) {
 				if (TryCreateResourceStream(mr.Offset, out var dataReaderFactory, out uint resourceOffset, out uint resourceLength))
-					return new EmbeddedResource(mr.Name, dataReaderFactory, resourceOffset, resourceLength, mr.Flags) { Rid = rid, Offset = mr.Offset };
-				return new EmbeddedResource(mr.Name, Array.Empty<byte>(), mr.Flags) { Rid = rid, Offset = mr.Offset };
+					return new CorEmbeddedResource(this, mr, dataReaderFactory, resourceOffset, resourceLength);
+				return new CorEmbeddedResource(this, mr, Array.Empty<byte>());
 			}
 
 			if (mr.Implementation is FileDef file)
-				return new LinkedResource(mr.Name, file, mr.Flags) { Rid = rid, Offset = mr.Offset };
+				return new CorLinkedResource(this, mr, file);
 
 			if (mr.Implementation is AssemblyRef asmRef)
-				return new AssemblyLinkedResource(mr.Name, asmRef, mr.Flags) { Rid = rid, Offset = mr.Offset };
+				return new CorAssemblyLinkedResource(this, mr, asmRef);
 
-			return new EmbeddedResource(mr.Name, Array.Empty<byte>(), mr.Flags) { Rid = rid, Offset = mr.Offset };
+			return new CorEmbeddedResource(this, mr, Array.Empty<byte>());
 		}
 
 		bool TryCreateResourceStream(uint offset, [NotNullWhen(true)] out DataReaderFactory? dataReaderFactory, out uint resourceOffset, out uint resourceLength) =>
@@ -1273,6 +1273,8 @@ namespace dndbg.DotNet {
 				if (!b)
 					break;
 				base.LoadEverything(cancellationToken);
+				// We need to make sure this is initialized since it is not called by LoadEverything
+				Assembly?.TryGetOriginalTargetFrameworkAttribute(out _, out _, out _);
 			} while (memberNeedsReInitialization);
 		}
 		bool memberNeedsReInitialization;

@@ -23,9 +23,7 @@
 using System.Collections.Generic;
 
 namespace dnSpy.BamlDecompiler.Baml {
-	internal class BamlDocument : List<BamlRecord> {
-		public string DocumentName { get; set; }
-
+	sealed class BamlDocument : List<BamlRecord> {
 		public string Signature { get; set; }
 		public BamlVersion ReaderVersion { get; set; }
 		public BamlVersion UpdaterVersion { get; set; }

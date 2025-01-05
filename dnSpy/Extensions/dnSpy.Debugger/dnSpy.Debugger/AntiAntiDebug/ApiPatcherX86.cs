@@ -25,7 +25,7 @@ using Iced.Intel;
 using II = Iced.Intel;
 
 namespace dnSpy.Debugger.AntiAntiDebug {
-	struct ApiPatcherX86 {
+	readonly struct ApiPatcherX86 {
 		readonly ProcessMemoryBlockAllocator processMemoryBlockAllocator;
 		readonly bool is64;
 		readonly ulong funcAddress;

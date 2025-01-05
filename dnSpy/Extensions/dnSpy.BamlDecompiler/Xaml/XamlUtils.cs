@@ -25,7 +25,7 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace dnSpy.BamlDecompiler.Xaml {
-	internal static class XamlUtils {
+	static class XamlUtils {
 		public static string Escape(string value) {
 			if (value.Length == 0)
 				return value;

@@ -24,7 +24,7 @@ using System.Xml.Linq;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class PresentationOptionsAttributeHandler : IHandler {
+	sealed class PresentationOptionsAttributeHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.PresentationOptionsAttribute;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

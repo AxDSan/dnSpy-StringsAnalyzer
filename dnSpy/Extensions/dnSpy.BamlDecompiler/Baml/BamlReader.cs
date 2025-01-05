@@ -27,7 +27,7 @@ using System.Text;
 using System.Threading;
 
 namespace dnSpy.BamlDecompiler.Baml {
-	internal class BamlBinaryReader : BinaryReader {
+	sealed class BamlBinaryReader : BinaryReader {
 		public BamlBinaryReader(Stream stream)
 			: base(stream) {
 		}
@@ -35,7 +35,7 @@ namespace dnSpy.BamlDecompiler.Baml {
 		public int ReadEncodedInt() => Read7BitEncodedInt();
 	}
 
-	internal class BamlReader {
+	static class BamlReader {
 		const string MSBAML_SIG = "MSBAML";
 
 		internal static bool IsBamlHeader(Stream str) {
@@ -80,7 +80,7 @@ namespace dnSpy.BamlDecompiler.Baml {
 
 				long pos = str.Position;
 				var type = (BamlRecordType)reader.ReadByte();
-				BamlRecord rec = null;
+				BamlRecord rec;
 				switch (type) {
 					case BamlRecordType.AssemblyInfo:
 						rec = new AssemblyInfoRecord();

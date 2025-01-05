@@ -36,12 +36,15 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		}
 
 		public override ILValue? Box(DmdType type) {
-			var hasValueResult = runtime.LoadInstanceField2(ObjValue, hasValueField).GetRawValue();
-			if (!hasValueResult.HasRawValue || hasValueResult.ValueType != DbgSimpleValueType.Boolean)
-				return null;
-			if ((bool)hasValueResult.RawValue!)
-				return runtime.Box(runtime.LoadInstanceField(ObjValue, valueField), Type!.GetNullableElementType());
-			return new NullObjectRefILValue();
+			if (type.IsNullable && type.Equals(Type)) {
+				var hasValueResult = runtime.LoadInstanceField2(ObjValue, hasValueField).GetRawValue();
+				if (!hasValueResult.HasRawValue || hasValueResult.ValueType != DbgSimpleValueType.Boolean)
+					return null;
+				if ((bool)hasValueResult.RawValue!)
+					return runtime.Box(runtime.LoadInstanceField(ObjValue, valueField), Type!.GetNullableElementType());
+				return new NullObjectRefILValue();
+			}
+			return base.Box(type);
 		}
 	}
 }

@@ -87,6 +87,17 @@ namespace dnSpy.AsmEditor.SaveModule {
 		}
 		bool addCheckSum;
 
+		public bool AddMvidSection {
+			get => addMvidSection;
+			set {
+				if (value != addMvidSection) {
+					addMvidSection = value;
+					OnPropertyChanged(nameof(AddMvidSection));
+				}
+			}
+		}
+		bool addMvidSection;
+
 		public Win32Resources? Win32Resources {
 			get => win32Resources;
 			set {
@@ -217,6 +228,7 @@ namespace dnSpy.AsmEditor.SaveModule {
 			options.WritePdb = WritePdb;
 			options.ShareMethodBodies = ShareMethodBodies;
 			options.AddCheckSum = AddCheckSum;
+			options.AddMvidSection = AddMvidSection;
 			options.Win32Resources = Win32Resources;
 			options.ModuleKind = (ModuleKind)ModuleKind.SelectedItem!;
 		}
@@ -262,6 +274,7 @@ namespace dnSpy.AsmEditor.SaveModule {
 			WritePdb = options.WritePdb;
 			ShareMethodBodies = options.ShareMethodBodies;
 			AddCheckSum = options.AddCheckSum;
+			AddMvidSection = options.AddMvidSection;
 			Win32Resources = options.Win32Resources;
 
 			// Writing to Machine and ModuleKind triggers code that updates Characteristics
@@ -1148,6 +1161,15 @@ namespace dnSpy.AsmEditor.SaveModule {
 		}
 		bool? useENC;
 
+		public bool? ForceBigColumns {
+			get => forceBigColumns;
+			set {
+				forceBigColumns = value;
+				OnPropertyChanged(nameof(ForceBigColumns));
+			}
+		}
+		bool? forceBigColumns;
+
 		public NullableUInt32VM ExtraData { get; }
 
 		public NullableByteVM Log2Rid { get; }
@@ -1166,6 +1188,7 @@ namespace dnSpy.AsmEditor.SaveModule {
 			options.MajorVersion = MajorVersion.Value;
 			options.MinorVersion = MinorVersion.Value;
 			options.UseENC = UseENC;
+			options.ForceBigColumns = ForceBigColumns;
 			options.ExtraData = ExtraData.Value;
 			options.Log2Rid = Log2Rid.Value;
 			options.HasDeletedRows = HasDeletedRows;
@@ -1176,6 +1199,7 @@ namespace dnSpy.AsmEditor.SaveModule {
 			MajorVersion.Value = options.MajorVersion;
 			MinorVersion.Value = options.MinorVersion;
 			UseENC = options.UseENC;
+			ForceBigColumns = options.ForceBigColumns;
 			ExtraData.Value = options.ExtraData;
 			Log2Rid.Value = options.Log2Rid;
 			HasDeletedRows = options.HasDeletedRows;

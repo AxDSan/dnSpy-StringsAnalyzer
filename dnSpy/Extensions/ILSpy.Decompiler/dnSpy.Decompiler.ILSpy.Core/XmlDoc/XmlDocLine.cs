@@ -40,7 +40,7 @@ namespace dnSpy.Decompiler.ILSpy.Core.XmlDoc {
 			end = start + length;
 			current = null;
 			indent = null;
-			iter = new StringLineIterator(s, start, end - start);
+			iter = new StringLineIterator(s, start, length);
 			emptyLines = 0;
 		}
 

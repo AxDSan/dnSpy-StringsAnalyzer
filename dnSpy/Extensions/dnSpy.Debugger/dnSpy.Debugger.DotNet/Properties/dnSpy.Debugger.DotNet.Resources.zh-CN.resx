@@ -133,10 +133,10 @@
     <value>取消(_C)</value>
   </data>
   <data name="CancelLoadingModulesMessage" xml:space="preserve">
-    <value>取消加载模块吗？</value>
+    <value>是否要取消加载模块？</value>
   </data>
   <data name="CantEvaluateWhenCurrentFrameIsNative" xml:space="preserve">
-    <value>在当前栈帧为本地栈帧时无法计算表达式</value>
+    <value>在当前栈帧为本地栈帧时无法对表达式进行求值</value>
   </data>
   <data name="DecompilerGeneratedVariablesCanNotBeEvaluated" xml:space="preserve">
     <value>反编译器生成的变量不能被求值</value>
@@ -151,13 +151,13 @@
     <value>内部调试器错误</value>
   </data>
   <data name="LoadModule_InfoText" xml:space="preserve">
-    <value>正在加载模块。如果它是个大模块则需要一些时间。</value>
+    <value>正在加载模块。如果该模块较大则可能需要额外的一些时间。</value>
   </data>
   <data name="LoadModule_Title" xml:space="preserve">
     <value>加载动态模块中</value>
   </data>
   <data name="Method_X_ThrewAnExceptionOfType_Y" xml:space="preserve">
-    <value>'{0}'抛出了类型为'{1}'的异常</value>
+    <value>'{0}' 抛出了类型为 '{1}' 的异常</value>
   </data>
   <data name="ModuleMetadataNotFoundOrInvalid" xml:space="preserve">
     <value>模块的元数据不存在或无效</value>
@@ -166,7 +166,7 @@
     <value>加载动态模块前您必须先中断此进程。</value>
   </data>
   <data name="NoDotNetObjectFoundAtAddress" xml:space="preserve">
-    <value>在给定地址未找到对象</value>
+    <value>在给定的地址中未找到对象</value>
   </data>
   <data name="NoExceptionOnTheCurrentThread" xml:space="preserve">
     <value>在当前线程上未发生异常</value>
@@ -178,12 +178,12 @@
     <value>返回值当前不可用</value>
   </data>
   <data name="StepFilter_SteppingOverOperator" xml:space="preserve">
-    <value>步入：跨越运算符“{0}”。</value>
+    <value>逐过程执行运算符 "{0}"。</value>
   </data>
   <data name="StepFilter_SteppingOverProperty" xml:space="preserve">
-    <value>步入：跨越属性“{0}”。</value>
+    <value>逐过程执行属性 "{0}"。</value>
   </data>
   <data name="UnknownVariableOrObjectId" xml:space="preserve">
-    <value>未知变量或对象ID</value>
+    <value>未知的变量或对象 ID</value>
   </data>
 </root>

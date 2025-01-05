@@ -1,7 +1,9 @@
 using System.Windows.Controls;
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	public partial class ToolWindowControl : UserControl {
-		public ToolWindowControl() => InitializeComponent();
+		public ToolWindowControl() {
+			InitializeComponent();
+		}
 	}
 }

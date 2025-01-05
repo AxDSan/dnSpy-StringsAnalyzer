@@ -23,7 +23,7 @@
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class AssemblyInfoHandler : IHandler {
+	sealed class AssemblyInfoHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.AssemblyInfo;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) => null;

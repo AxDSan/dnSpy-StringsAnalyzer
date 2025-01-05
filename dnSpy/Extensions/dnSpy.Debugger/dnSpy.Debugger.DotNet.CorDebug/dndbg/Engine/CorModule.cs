@@ -189,6 +189,8 @@ namespace dndbg.Engine {
 		public T? GetMetaDataInterface<T>() where T : class {
 			var riid = typeof(T).GUID;
 			int hr = obj.GetMetaDataInterface(ref riid, out object o);
+			if (hr < 0)
+				return null;
 			return o as T;
 		}
 

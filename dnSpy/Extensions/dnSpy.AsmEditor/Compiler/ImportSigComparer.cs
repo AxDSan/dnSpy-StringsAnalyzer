@@ -1347,6 +1347,7 @@ namespace dnSpy.AsmEditor.Compiler {
 				case CallingConvention.FastCall:
 				case CallingConvention.VarArg:
 				case CallingConvention.Property:
+				case CallingConvention.Unmanaged:
 				case CallingConvention.NativeVarArg:
 					MethodBaseSig ma = (MethodBaseSig)a, mb = (MethodBaseSig)b;
 					result = ma is not null && mb is not null && Equals(ma, mb, compareHasThisFlag);
@@ -1367,7 +1368,6 @@ namespace dnSpy.AsmEditor.Compiler {
 					result = ga is not null && gb is not null && Equals(ga, gb);
 					break;
 
-				case CallingConvention.Unmanaged:
 				default:
 					result = false;
 					break;
@@ -1393,6 +1393,7 @@ namespace dnSpy.AsmEditor.Compiler {
 			case CallingConvention.FastCall:
 			case CallingConvention.VarArg:
 			case CallingConvention.Property:
+			case CallingConvention.Unmanaged:
 			case CallingConvention.NativeVarArg:
 				MethodBaseSig? ma = a as MethodBaseSig;
 				hash = ma is null ? 0 : GetHashCode(ma);
@@ -1413,7 +1414,6 @@ namespace dnSpy.AsmEditor.Compiler {
 				hash = ga is null ? 0 : GetHashCode(ga);
 				break;
 
-			case CallingConvention.Unmanaged:
 			default:
 				hash = GetHashCode_CallingConvention(a);
 				break;

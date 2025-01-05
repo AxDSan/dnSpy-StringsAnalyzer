@@ -50,17 +50,20 @@ namespace dnSpy.AsmEditor.Event {
 			evt.Name = Name ?? UTF8String.Empty;
 			evt.EventType = EventType;
 
-			evt.AddMethod.IsAddOn = false;
+			if (evt.AddMethod is not null)
+				evt.AddMethod.IsAddOn = false;
 			if (AddMethod is not null)
 				AddMethod.IsAddOn = true;
 			evt.AddMethod = AddMethod;
 
-			evt.InvokeMethod.IsFire = false;
+			if (evt.InvokeMethod is not null)
+				evt.InvokeMethod.IsFire = false;
 			if (InvokeMethod is not null)
 				InvokeMethod.IsFire = true;
 			evt.InvokeMethod = InvokeMethod;
 
-			evt.RemoveMethod.IsRemoveOn = false;
+			if (evt.RemoveMethod is not null)
+				evt.RemoveMethod.IsRemoveOn = false;
 			if (RemoveMethod is not null)
 				RemoveMethod.IsRemoveOn = true;
 			evt.RemoveMethod = RemoveMethod;

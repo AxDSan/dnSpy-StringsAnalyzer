@@ -31,13 +31,13 @@ namespace ICSharpCode.Decompiler.Disassembler {
 	/// <summary>
 	/// Disassembles a method body.
 	/// </summary>
-	sealed class MethodBodyDisassembler
+	public class MethodBodyDisassembler
 	{
-		readonly IDecompilerOutput output;
-		readonly bool detectControlStructure;
-		readonly DisassemblerOptions options;
-		readonly NumberFormatter numberFormatter;
-		readonly StringBuilder sb;
+		protected readonly IDecompilerOutput output;
+		protected readonly bool detectControlStructure;
+		protected readonly DisassemblerOptions options;
+		protected readonly NumberFormatter numberFormatter;
+		protected readonly StringBuilder sb;
 
 		public MethodBodyDisassembler(IDecompilerOutput output, bool detectControlStructure, DisassemblerOptions options, StringBuilder stringBuilder)
 		{
@@ -50,7 +50,7 @@ namespace ICSharpCode.Decompiler.Disassembler {
 			numberFormatter = NumberFormatter.GetCSharpInstance(hex: options.HexadecimalNumbers, upper: true);
 		}
 
-		public void Disassemble(MethodDef method, MethodDebugInfoBuilder builder, InstructionOperandConverter instructionOperandConverter)
+		public virtual void Disassemble(MethodDef method, MethodDebugInfoBuilder builder, InstructionOperandConverter instructionOperandConverter)
 		{
 			// start writing IL code
 			CilBody body = method.Body;
@@ -203,7 +203,7 @@ namespace ICSharpCode.Decompiler.Disassembler {
 								s.ExceptionHandler.CatchType.WriteTo(output, sb, ILNameSyntax.TypeName);
 							}
 							output.WriteLine();
-							bpk = s.ExceptionHandler.HandlerType == ExceptionHandlerType.Catch ? CodeBracesRangeFlags.CatchBraces : CodeBracesRangeFlags.FilterBraces;
+							bpk = CodeBracesRangeFlags.CatchBraces;
 							break;
 						case ExceptionHandlerType.Finally:
 							output.WriteLine("finally", BoxedTextColor.Keyword);
@@ -215,7 +215,7 @@ namespace ICSharpCode.Decompiler.Disassembler {
 							break;
 						default:
 							output.WriteLine(s.ExceptionHandler.HandlerType.ToString(), BoxedTextColor.Keyword);
-							bpk= CodeBracesRangeFlags.OtherBlockBraces;
+							bpk = CodeBracesRangeFlags.OtherBlockBraces;
 							break;
 					}
 					bh = BracePairHelper.Create(output, "{", bpk);
@@ -254,7 +254,7 @@ namespace ICSharpCode.Decompiler.Disassembler {
 						output.WriteLine(); // put an empty line after branches, and in front of branch targets
 					}
 
-					inst.WriteTo(output, sb, options, baseOffs, byteReader, method, instructionOperandConverter, pdbAsyncInfo, out int startLocation);
+					int startLocation = WriteInstruction(instructionOperandConverter, baseOffs, byteReader, pdbAsyncInfo, method, inst);
 
 					if (builder != null) {
 						var next = index + 1 < instructions.Count ? instructions[index + 1] : null;
@@ -272,6 +272,11 @@ namespace ICSharpCode.Decompiler.Disassembler {
 				}
 				isFirstInstructionInStructure = false;
 			}
+		}
+
+		protected virtual int WriteInstruction(InstructionOperandConverter instructionOperandConverter, long baseOffs, IInstructionBytesReader byteReader, PdbAsyncMethodCustomDebugInfo pdbAsyncInfo, MethodDef method, Instruction inst) {
+			inst.WriteTo(output, sb, options, baseOffs, byteReader, method, instructionOperandConverter, pdbAsyncInfo, out int startLocation);
+			return startLocation;
 		}
 
 		void WriteStructureFooter(ILStructure s, BracePairHelper bh)

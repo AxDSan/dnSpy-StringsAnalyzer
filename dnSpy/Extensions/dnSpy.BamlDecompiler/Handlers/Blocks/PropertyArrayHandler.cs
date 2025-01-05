@@ -24,7 +24,7 @@ using System.Xml.Linq;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class PropertyArrayHandler : IHandler {
+	sealed class PropertyArrayHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.PropertyArrayStart;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

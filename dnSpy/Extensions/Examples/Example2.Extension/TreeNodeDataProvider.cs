@@ -11,7 +11,7 @@ using dnSpy.Contracts.TreeView;
 
 // This file contains classes that create new child nodes of IAssemblyFileNode and IModuleFileNode
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	// This class adds a new child node to all assembly nodes
 	[ExportTreeNodeDataProvider(Guid = DocumentTreeViewConstants.ASSEMBLY_NODE_GUID)]
 	sealed class AssemblyTreeNodeDataProvider : ITreeNodeDataProvider {

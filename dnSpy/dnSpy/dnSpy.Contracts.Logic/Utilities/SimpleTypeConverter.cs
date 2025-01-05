@@ -129,7 +129,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="value">Value</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="useDecimal">true to use decimal, false to use hex, null to use decimal if possible, hex otherwise</param>
 		/// <returns></returns>
 		public static string ToString(ulong value, ulong min, ulong max, bool? useDecimal) {
@@ -149,7 +149,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="value">Value</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="useDecimal">true to use decimal, false to use hex, null to use decimal if possible, hex otherwise</param>
 		/// <returns></returns>
 		public static string ToString(long value, long min, long max, bool? useDecimal) {
@@ -241,11 +241,38 @@ namespace dnSpy.Contracts.Utilities {
 			case '\\': sb.Append(@"\\"); break;
 			case '\0': sb.Append(@"\0"); break;
 			case '\'': sb.Append(@"\'"); break;
+			case ' ':
+			case '_':
+			case '`':
+			case '^':
+				// ASCII characters we allow directly in the output even though we don't use
+				// other Unicode characters of the same category.
+				sb.Append(value);
+				break;
+			case '\ufffd':
+				sb.Append($@"\u{(ushort)value:X4}");
+				break;
 			default:
-				if (char.IsControl(value))
-					sb.Append(string.Format(@"\u{0:X4}", (ushort)value));
-				else
+				switch (char.GetUnicodeCategory(value)) {
+				case UnicodeCategory.NonSpacingMark:
+				case UnicodeCategory.SpacingCombiningMark:
+				case UnicodeCategory.EnclosingMark:
+				case UnicodeCategory.LineSeparator:
+				case UnicodeCategory.ParagraphSeparator:
+				case UnicodeCategory.Control:
+				case UnicodeCategory.Format:
+				case UnicodeCategory.Surrogate:
+				case UnicodeCategory.PrivateUse:
+				case UnicodeCategory.ConnectorPunctuation:
+				case UnicodeCategory.ModifierSymbol:
+				case UnicodeCategory.OtherNotAssigned:
+				case UnicodeCategory.SpaceSeparator:
+					sb.Append($@"\u{(ushort)value:X4}");
+					break;
+				default:
 					sb.Append(value);
+					break;
+				}
 				break;
 			}
 			sb.Append('\'');
@@ -277,11 +304,38 @@ namespace dnSpy.Contracts.Utilities {
 				case '\\': sb.Append(@"\\"); break;
 				case '\0': sb.Append(@"\0"); break;
 				case '"':  sb.Append("\\\""); break;
+				case ' ':
+				case '_':
+				case '`':
+				case '^':
+					// ASCII characters we allow directly in the output even though we don't use
+					// other Unicode characters of the same category.
+					sb.Append(c);
+					break;
+				case '\ufffd':
+					sb.Append($@"\u{(ushort)c:X4}");
+					break;
 				default:
-					if (char.IsControl(c))
-						sb.Append(string.Format(@"\u{0:X4}", (ushort)c));
-					else
+					switch (char.GetUnicodeCategory(c)) {
+					case UnicodeCategory.NonSpacingMark:
+					case UnicodeCategory.SpacingCombiningMark:
+					case UnicodeCategory.EnclosingMark:
+					case UnicodeCategory.LineSeparator:
+					case UnicodeCategory.ParagraphSeparator:
+					case UnicodeCategory.Control:
+					case UnicodeCategory.Format:
+					case UnicodeCategory.Surrogate:
+					case UnicodeCategory.PrivateUse:
+					case UnicodeCategory.ConnectorPunctuation:
+					case UnicodeCategory.ModifierSymbol:
+					case UnicodeCategory.OtherNotAssigned:
+					case UnicodeCategory.SpaceSeparator:
+						sb.Append($@"\u{(ushort)c:X4}");
+						break;
+					default:
 						sb.Append(c);
+						break;
+					}
 					break;
 				}
 			}
@@ -302,7 +356,7 @@ namespace dnSpy.Contracts.Utilities {
 			else
 				isValid = ulong.TryParse(s, NumberStyles.Integer, null, out value);
 			if (!isValid) {
-				if (s.StartsWith("-"))
+				if (s.StartsWith("-", StringComparison.OrdinalIgnoreCase))
 					return dnSpy_Contracts_Logic_Resources.InvalidUnsignedInteger1;
 				return dnSpy_Contracts_Logic_Resources.InvalidUnsignedInteger2;
 			}
@@ -463,8 +517,7 @@ namespace dnSpy.Contracts.Utilities {
 				case 'u':
 					if (index >= s.Length)
 						return SetParseCharError(out error);
-					char surrogate;
-					int ch = ParseHex(s, ref index, c == 'x' ? -1 : 4, out surrogate);
+					int ch = ParseHex(s, ref index, c == 'x' ? -1 : 4, out char _);
 					if (ch < 0)
 						return SetParseCharError(out error);
 					c = (char)ch;
@@ -512,7 +565,7 @@ namespace dnSpy.Contracts.Utilities {
 
 		static string? ParseString(string s, bool canHaveNull, ref int index, out string? error) {
 			SkipSpaces(s, ref index);
-			if (canHaveNull && s.Substring(index).StartsWith("null")) {
+			if (canHaveNull && s.Substring(index).StartsWith("null", StringComparison.Ordinal)) {
 				index += 4;
 				error = null;
 				return null;
@@ -552,8 +605,7 @@ namespace dnSpy.Contracts.Utilities {
 						index++;
 						if (index >= s.Length)
 							return SetParseStringError(canHaveNull, out error);
-						char surrogate;
-						int ch = ParseHex(s, ref index, c == 'x' ? -1 : c == 'u' ? 4 : 8, out surrogate);
+						int ch = ParseHex(s, ref index, c == 'x' ? -1 : c == 'u' ? 4 : 8, out char surrogate);
 						if (ch < 0)
 							return SetParseStringError(canHaveNull, out error);
 						if (c == 'U' && surrogate != 0)
@@ -737,7 +789,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// <returns></returns>
 		public static long ParseInt64(string s, long min, long max, out string? error) => (long)ParseSigned(s, min, max, min, out error);
 
-		static string ToString<T>(IList<T> list, Func<T, string> toString) {
+		static string ToString<T>(IList<T>? list, Func<T, string> toString) {
 			if (list is null)
 				return string.Empty;
 			var sb = new StringBuilder();
@@ -754,14 +806,14 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="values">Values</param>
 		/// <returns></returns>
-		public static string ToString(IList<bool> values) => ToString(values, v => ToString(v));
+		public static string ToString(IList<bool> values) => ToString(values, ToString);
 
 		/// <summary>
 		/// Converts a list of <see cref="char"/>s to a string
 		/// </summary>
 		/// <param name="values">Values</param>
 		/// <returns></returns>
-		public static string ToString(IList<char> values) => ToString(values, v => ToString(v));
+		public static string ToString(IList<char> values) => ToString(values, ToString);
 
 		/// <summary>
 		/// Converts a list of <see cref="byte"/>s to a string
@@ -848,14 +900,14 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="values">Values</param>
 		/// <returns></returns>
-		public static string ToString(IList<float> values) => ToString(values, v => ToString(v));
+		public static string ToString(IList<float> values) => ToString(values, ToString);
 
 		/// <summary>
 		/// Converts a list of <see cref="double"/>s to a string
 		/// </summary>
 		/// <param name="values">Values</param>
 		/// <returns></returns>
-		public static string ToString(IList<double> values) => ToString(values, v => ToString(v));
+		public static string ToString(IList<double> values) => ToString(values, ToString);
 
 		/// <summary>
 		/// Converts a list of <see cref="string"/>s to a string
@@ -893,7 +945,7 @@ namespace dnSpy.Contracts.Utilities {
 			return list.ToArray();
 		}
 
-		delegate T ParseListCallBack<T, U>(U data, string s, ref int index, out string? error);
+		delegate T ParseListCallBack<out T, in U>(U data, string s, ref int index, out string? error);
 
 		static T[]? ParseList<T, U>(string s, out string? error, ParseListCallBack<T, U> parseValue, U data) {
 			var list = new List<T>();
@@ -947,7 +999,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static byte[]? ParseByteList(string s, byte min, byte max, out string? error) => ParseList(s, out error, v => { var res = ParseByte(v, min, max, out var err); return (res, err); });
@@ -957,7 +1009,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static ushort[]? ParseUInt16List(string s, ushort min, ushort max, out string? error) => ParseList(s, out error, v => { var res = ParseUInt16(v, min, max, out var err); return (res, err); });
@@ -967,7 +1019,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static uint[]? ParseUInt32List(string s, uint min, uint max, out string? error) => ParseList(s, out error, v => { var res = ParseUInt32(v, min, max, out var err); return (res, err); });
@@ -977,7 +1029,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static ulong[]? ParseUInt64List(string s, ulong min, ulong max, out string? error) => ParseList(s, out error, v => { var res = ParseUInt64(v, min, max, out var err); return (res, err); });
@@ -987,7 +1039,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static sbyte[]? ParseSByteList(string s, sbyte min, sbyte max, out string? error) => ParseList(s, out error, v => { var res = ParseSByte(v, min, max, out var err); return (res, err); });
@@ -997,7 +1049,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static short[]? ParseInt16List(string s, short min, short max, out string? error) => ParseList(s, out error, v => { var res = ParseInt16(v, min, max, out var err); return (res, err); });
@@ -1007,7 +1059,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static int[]? ParseInt32List(string s, int min, int max, out string? error) => ParseList(s, out error, v => { var res = ParseInt32(v, min, max, out var err); return (res, err); });
@@ -1017,7 +1069,7 @@ namespace dnSpy.Contracts.Utilities {
 		/// </summary>
 		/// <param name="s">Input string</param>
 		/// <param name="min">Minimum value</param>
-		/// <param name="max">Maximium value</param>
+		/// <param name="max">Maximum value</param>
 		/// <param name="error">Updated with error string or null if no error</param>
 		/// <returns></returns>
 		public static long[]? ParseInt64List(string s, long min, long max, out string? error) => ParseList(s, out error, v => { var res = ParseInt64(v, min, max, out var err); return (res, err); });

@@ -178,13 +178,7 @@ namespace dnSpy.Debugger.DotNet.Mono.Impl.Evaluation {
 				return false;
 			if (module.Assembly.IsDynamic)
 				return false;
-			switch (MDToken.ToTable(type.MetadataToken)) {
-			case Table.TypeDef:
-			case Table.TypeRef:
-				return true;
-			default:
-				return false;
-			}
+			return true;
 		}
 	}
 }

@@ -124,7 +124,7 @@
     <value>分析器</value>
   </data>
   <data name="AppliedToTreeNode" xml:space="preserve">
-    <value>已应用到</value>
+    <value>被应用于</value>
   </data>
   <data name="AssignedByTreeNode" xml:space="preserve">
     <value>赋值于</value>
@@ -148,10 +148,10 @@
     <value>显示方法内的引用</value>
   </data>
   <data name="GoToReferenceInCodeNewTabCommand" xml:space="preserve">
-    <value>显示方法内的引用（新标签页）(_T)</value>
+    <value>显示方法内的引用 (新标签页)(_T)</value>
   </data>
   <data name="GoToReferenceNewTabCommand" xml:space="preserve">
-    <value>转到引用（新标签页）(_B)</value>
+    <value>转到引用 (新标签页)(_B)</value>
   </data>
   <data name="HidesParent" xml:space="preserve">
     <value>隐藏</value>

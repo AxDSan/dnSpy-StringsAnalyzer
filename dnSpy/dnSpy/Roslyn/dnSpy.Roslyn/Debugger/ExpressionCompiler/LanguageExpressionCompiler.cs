@@ -378,7 +378,10 @@ namespace dnSpy.Roslyn.Debugger.ExpressionCompiler {
 				default:
 					throw new InvalidOperationException();
 				}
-				builder.Add(new Alias(aliasKind, alias.Name, alias.Name, alias.Type, alias.CustomTypeInfoId, alias.CustomTypeInfo));
+				if (alias.CustomTypeInfo is null)
+					builder.Add(new Alias(aliasKind, alias.Name, alias.Name, alias.Type, Guid.Empty, null));
+				else
+					builder.Add(new Alias(aliasKind, alias.Name, alias.Name, alias.Type, alias.CustomTypeInfo.CustomTypeInfoId, alias.CustomTypeInfo.CustomTypeInfo));
 			}
 			return builder.ToImmutableArray();
 		}
@@ -548,8 +551,9 @@ namespace dnSpy.Roslyn.Debugger.ExpressionCompiler {
 			}
 		}
 
-		protected DbgDotNetCompilationResult CompileGetLocals(EvalContextState state, MethodDef method) {
-			var builder = new GetLocalsAssemblyBuilder(this, method, state.MethodDebugInfo.LocalVariableNames, state.MethodDebugInfo.ParameterNames);
+		protected DbgDotNetCompilationResult CompileGetLocals(EvalContextState state, MethodDef method, GetMethodDebugInfo getMethodDebugInfo) {
+			var methodDebugInfo = getMethodDebugInfo();
+			var builder = new GetLocalsAssemblyBuilder(this, method, methodDebugInfo.LocalVariableNames, methodDebugInfo.ParameterNames);
 			var asmBytes = builder.Compile(out var localsInfo, out var typeName, out var errorMessage);
 			return CreateCompilationResult(state, asmBytes, typeName, localsInfo, errorMessage);
 		}

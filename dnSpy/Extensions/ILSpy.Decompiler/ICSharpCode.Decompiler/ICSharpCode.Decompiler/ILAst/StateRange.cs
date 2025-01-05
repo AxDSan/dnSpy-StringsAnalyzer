@@ -22,7 +22,7 @@ using System.Diagnostics;
 using dnlib.DotNet;
 
 namespace ICSharpCode.Decompiler.ILAst {
-	struct Interval {
+	readonly struct Interval {
 		public readonly int Start, End;
 
 		public Interval(int start, int end) {

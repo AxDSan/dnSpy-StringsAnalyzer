@@ -58,7 +58,7 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
 
         internal sealed override LocalSymbol WithSynthesizedLocalKindAndSyntax(SynthesizedLocalKind kind, SyntaxNode syntax)
         {
-            throw ExceptionUtilities.Unreachable;
+            throw ExceptionUtilities.Unreachable();
         }
 
         internal sealed override bool IsImportedFromMetadata
@@ -68,7 +68,7 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
 
         internal override SyntaxNode GetDeclaratorSyntax()
         {
-            throw ExceptionUtilities.Unreachable;
+            throw ExceptionUtilities.Unreachable();
         }
 
         internal sealed override UseSiteInfo<AssemblySymbol> GetUseSiteInfo()
@@ -87,18 +87,6 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
 
             return result;
         }
-
-        /// <summary>
-        /// EE Symbols have no source symbols associated with them.
-        /// They should be safe to escape for evaluation purposes.
-        /// </summary>
-        internal override uint ValEscapeScope => Binder.CurrentMethodScope;
-
-        /// <summary>
-        /// EE Symbols have no source symbols associated with them.
-        /// They should be safe to escape for evaluation purposes.
-        /// </summary>
-        internal override uint RefEscapeScope => Binder.CurrentMethodScope;
 
         internal override DeclarationScope Scope => DeclarationScope.Unscoped;
     }

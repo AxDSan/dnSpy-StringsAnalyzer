@@ -26,7 +26,7 @@ namespace dnSpy.Decompiler.ILSpy.Core.CSharp {
 	/// Gets the <see cref="AstBuilderState"/> from the pool and returns it when <see cref="Dispose"/>
 	/// gets called.
 	/// </summary>
-	struct BuilderState : IDisposable {
+	readonly struct BuilderState : IDisposable {
 		public AstBuilder AstBuilder => State.AstBuilder;
 
 		public readonly AstBuilderState State;

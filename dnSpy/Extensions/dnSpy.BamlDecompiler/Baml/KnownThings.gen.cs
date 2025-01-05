@@ -67,7 +67,7 @@ namespace Test {
 					assemblies.Add(GetDeclAssembly(member.Item3));
 			}
 
-			code.AppendLine("\tinternal enum KnownTypes : short {");
+			code.AppendLine("\tenum KnownTypes : short {");
 			code.AppendLine("\t\tUnknown = 0,");
 			for (int i = 1; i < types.Count; i++) {
 				if (types[i] is null) {
@@ -79,7 +79,7 @@ namespace Test {
 			}
 			code.AppendLine("\t}").AppendLine();
 
-			code.AppendLine("\tinternal enum KnownMembers : short {");
+			code.AppendLine("\tenum KnownMembers : short {");
 			code.AppendLine("\t\tUnknown = 0,");
 			for (int i = 1; i < members.Count; i++) {
 				if (members[i] is null) {
@@ -93,7 +93,7 @@ namespace Test {
 
 			code.AppendLine("\t\tvoid InitAssemblies() {");
 			for (int i = 0; i < assemblies.Count; i++) {
-				var line = "\t\t\tassemblies[{0}] = ResolveThrow(\"{1}\");";
+				var line = "\t\t\tassemblies[{0}] = InitAssembly(\"{1}\");";
 				code.AppendLine(string.Format(line, i, assemblies[i]));
 			}
 			code.AppendLine("\t\t}").AppendLine();
@@ -149,7 +149,7 @@ namespace Test {
 					continue;
 				}
 				var res = resources[i];
-				var line = "\t\t\tresources[{0}] = Tuple.Create(\"{1}\", \"{2}\", \"{3}\");";
+				var line = "\t\t\tresources[{0}] = (\"{1}\", \"{2}\", \"{3}\");";
 				code.AppendLine(string.Format(line, i, res.Item1.Name, res.Item2, res.Item3));
 			}
 			code.AppendLine("\t\t}").AppendLine();

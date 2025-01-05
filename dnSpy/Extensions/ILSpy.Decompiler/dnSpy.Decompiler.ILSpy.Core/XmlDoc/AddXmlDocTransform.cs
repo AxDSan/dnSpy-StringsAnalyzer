@@ -26,7 +26,7 @@ namespace dnSpy.Decompiler.ILSpy.Core.XmlDoc {
 	/// <summary>
 	/// Adds XML documentation for member definitions.
 	/// </summary>
-	struct AddXmlDocTransform {
+	readonly struct AddXmlDocTransform {
 		readonly StringBuilder stringBuilder;
 
 		public AddXmlDocTransform(StringBuilder sb) => stringBuilder = sb;

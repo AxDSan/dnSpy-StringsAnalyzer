@@ -25,7 +25,7 @@ using System.Xml.Linq;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler.Rewrite {
-	internal class AttributeRewritePass : IRewritePass {
+	sealed class AttributeRewritePass : IRewritePass {
 		XName key;
 
 		public void Run(XamlContext ctx, XDocument document) {

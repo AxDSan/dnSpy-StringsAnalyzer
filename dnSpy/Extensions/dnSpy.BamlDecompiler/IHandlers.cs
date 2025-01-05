@@ -4,16 +4,16 @@ using System.Diagnostics;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler {
-	internal interface IHandler {
+	interface IHandler {
 		BamlRecordType Type { get; }
 		BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent);
 	}
 
-	internal interface IDeferHandler {
+	interface IDeferHandler {
 		BamlElement TranslateDefer(XamlContext ctx, BamlNode node, BamlElement parent);
 	}
 
-	internal static class HandlerMap {
+	static class HandlerMap {
 		static readonly Dictionary<BamlRecordType, IHandler> handlers;
 
 		static HandlerMap() {
@@ -42,20 +42,19 @@ namespace dnSpy.BamlDecompiler {
 					break;
 			}
 #endif
-			return handlers.ContainsKey(type) ? handlers[type] : null;
+			return handlers.TryGetValue(type, out var handler) ? handler : null;
 		}
 
 		public static void ProcessChildren(XamlContext ctx, BamlBlockNode node, BamlElement nodeElem) {
 			ctx.XmlNs.PushScope(nodeElem);
-			if (nodeElem.Xaml.Element is not null)
-				nodeElem.Xaml.Element.AddAnnotation(ctx.XmlNs.CurrentScope);
+			nodeElem.Xaml.Element?.AddAnnotation(ctx.XmlNs.CurrentScope);
 			foreach (var child in node.Children) {
 				var handler = LookupHandler(child.Type);
 				if (handler is null) {
 					Debug.WriteLine("BAML Handler {0} not implemented.", child.Type);
 					continue;
 				}
-				var elem = handler.Translate(ctx, (BamlNode)child, nodeElem);
+				var elem = handler.Translate(ctx, child, nodeElem);
 				if (elem is not null) {
 					nodeElem.Children.Add(elem);
 					elem.Parent = nodeElem;

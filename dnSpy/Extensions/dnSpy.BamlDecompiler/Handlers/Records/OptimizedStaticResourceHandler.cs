@@ -25,7 +25,7 @@ using dnSpy.BamlDecompiler.Baml;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class OptimizedStaticResourceHandler : IHandler, IDeferHandler {
+	sealed class OptimizedStaticResourceHandler : IHandler, IDeferHandler {
 		public BamlRecordType Type => BamlRecordType.OptimizedStaticResource;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {
@@ -40,7 +40,7 @@ namespace dnSpy.BamlDecompiler.Handlers {
 			var record = (OptimizedStaticResourceRecord)((BamlRecordNode)node).Record;
 			var bamlElem = new BamlElement(node);
 			object key;
-			if (record.IsType) {
+			if (record.IsValueTypeExtension) {
 				var value = ctx.ResolveType(record.ValueId);
 
 				var typeElem = new XElement(ctx.GetKnownNamespace("TypeExtension", XamlContext.KnownNamespace_Xaml, parent.Xaml));
@@ -48,7 +48,7 @@ namespace dnSpy.BamlDecompiler.Handlers {
 				typeElem.Add(new XElement(ctx.GetPseudoName("Ctor"), ctx.ToString(parent.Xaml, value)));
 				key = typeElem;
 			}
-			else if (record.IsStatic) {
+			else if (record.IsValueStaticExtension) {
 				string attrName;
 				if (record.ValueId > 0x7fff) {
 					bool isKey = true;
@@ -67,9 +67,9 @@ namespace dnSpy.BamlDecompiler.Handlers {
 					var res = ctx.Baml.KnownThings.Resources(bamlId);
 					string name;
 					if (isKey)
-						name = res.Item1 + "." + res.Item2;
+						name = res.TypeName + "." + res.KeyName;
 					else
-						name = res.Item1 + "." + res.Item3;
+						name = res.TypeName + "." + res.PropertyName;
 					var xmlns = ctx.GetXmlNamespace(XamlContext.KnownNamespace_Presentation);
 					attrName = ctx.ToString(parent.Xaml, xmlns.GetName(name));
 				}

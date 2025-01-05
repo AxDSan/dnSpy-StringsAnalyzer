@@ -965,7 +965,7 @@ namespace dnSpy.Decompiler.VisualBasic {
 				case ElementType.Var:
 				case ElementType.MVar:
 					var gsType = Read(type.ElementType == ElementType.Var ? typeGenArgs : methGenArgs, (int)((GenericSig)type).Number);
-					if (gsType is not null)
+					if (gsType is not null && gsType != type)
 						Write(gsType, typeGenArgs, methGenArgs, ref tupleNameIndex, attributeProvider);
 					else {
 						var gp = ((GenericSig)type).GenericParam;

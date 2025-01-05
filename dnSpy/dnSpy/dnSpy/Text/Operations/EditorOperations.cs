@@ -983,7 +983,37 @@ namespace dnSpy.Text.Operations {
 			return InsertText(text, isProvisional, overwriteMode, isFullLineData);
 		}
 
-		public bool InsertFinalNewLine() => false;//TODO:
+		public bool InsertFinalNewLine() {
+			var lastLine = Snapshot.GetLineFromLineNumber(Snapshot.LineCount - 1);
+			if (lastLine.Start.Position != lastLine.EndIncludingLineBreak.Position) {
+				ITextSnapshot textSnapshot;
+				if (Options.GetTrimTrailingWhieSpace() && !HasAnyNonWhitespaceCharacters(lastLine))
+					textSnapshot = TextBuffer.Delete(lastLine.ExtentIncludingLineBreak);
+				else
+					textSnapshot = TextBuffer.Insert(lastLine.End.Position, GetNewLineCharacterToInsert(lastLine));
+				return textSnapshot is not null && Snapshot != textSnapshot;
+			}
+			return true;
+		}
+
+		string GetNewLineCharacterToInsert(ITextSnapshotLine line) {
+			if (Options.GetReplicateNewLineCharacter()) {
+				if (line.LineBreakLength > 0)
+					return line.GetLineBreakText();
+				if (line.Snapshot.LineCount > 1)
+					return line.Snapshot.GetLineFromLineNumber(line.Snapshot.LineCount - 2).GetLineBreakText();
+			}
+			return Options.GetNewLineCharacter();
+		}
+
+		static bool HasAnyNonWhitespaceCharacters(ITextSnapshotLine line) {
+			int position = line.Start.Position;
+			for (int i = line.End.Position - line.Start.Position - 1; i >= 0; i--) {
+				if (!char.IsWhiteSpace(line.Snapshot[position + i]))
+					return true;
+			}
+			return false;
+		}
 
 		public bool Paste() {
 			string text;
@@ -1494,9 +1524,30 @@ namespace dnSpy.Text.Operations {
 
 		public int ReplaceAllMatches(string searchText, string replaceText, bool matchCase, bool matchWholeWord, bool useRegularExpressions) => 0;//TODO:
 
-		public bool ReplaceSelection(string text) => true;//TODO:
+		public bool ReplaceSelection(string text) {
+			if (text is null)
+				return false;
+			using (var ed = TextBuffer.CreateEdit()) {
+				foreach (var span in Selection.VirtualSelectedSpans) {
+					string replacement = text;
+					if (span.Start.IsInVirtualSpace)
+						replacement = GetWhitespaceForVirtualSpace(span.Start) + text;
+					ed.Replace(span.SnapshotSpan, replacement);
+				}
+				ed.Apply();
+			}
+			return true;
+		}
 
-		public bool ReplaceText(Span replaceSpan, string text) => true;//TODO:
+		public bool ReplaceText(Span replaceSpan, string text) {
+			if (replaceSpan.End > Snapshot.Length)
+				return false;
+			using (var ed = TextBuffer.CreateEdit()) {
+				ed.Replace(replaceSpan, text);
+				ed.Apply();
+			}
+			return true;
+		}
 
 		public void ResetSelection() => Selection.Clear();
 
@@ -1632,11 +1683,21 @@ namespace dnSpy.Text.Operations {
 		}
 
 		public void SelectEnclosing() {
-			return;//TODO:
+			SnapshotSpan oldSelection;
+			if (Selection.IsEmpty || Selection.Mode == TextSelectionMode.Box)
+				oldSelection = new SnapshotSpan(Caret.Position.BufferPosition, 0);
+			else
+				oldSelection = Selection.StreamSelectionSpan.SnapshotSpan;
+			SelectAndMove(TextStructureNavigator.GetSpanOfEnclosing(oldSelection));
 		}
 
 		public void SelectFirstChild() {
-			return;//TODO:
+			SnapshotSpan oldSelection;
+			if (Selection.IsEmpty || Selection.Mode == TextSelectionMode.Box)
+				oldSelection = new SnapshotSpan(Caret.Position.BufferPosition, 0);
+			else
+				oldSelection = Selection.StreamSelectionSpan.SnapshotSpan;
+			SelectAndMove(TextStructureNavigator.GetSpanOfFirstChild(oldSelection));
 		}
 
 		public void SelectLine(ITextViewLine viewLine, bool extendSelection) {
@@ -1669,11 +1730,35 @@ namespace dnSpy.Text.Operations {
 		}
 
 		public void SelectNextSibling(bool extendSelection) {
-			return;//TODO:
+			SnapshotSpan oldSelection;
+			if (Selection.IsEmpty || Selection.Mode == TextSelectionMode.Box)
+				oldSelection = new SnapshotSpan(Caret.Position.BufferPosition, 0);
+			else
+				oldSelection = Selection.StreamSelectionSpan.SnapshotSpan;
+			var newSelection = TextStructureNavigator.GetSpanOfNextSibling(oldSelection);
+			Selection.Clear();
+			if (!newSelection.IsEmpty && extendSelection) {
+				var start = newSelection.Start <= oldSelection.Start ? newSelection.Start : oldSelection.Start;
+				var end = newSelection.End <= oldSelection.End ? oldSelection.End : newSelection.End;
+				newSelection = new SnapshotSpan(start, end);
+			}
+			SelectAndMove(newSelection);
 		}
 
 		public void SelectPreviousSibling(bool extendSelection) {
-			return;//TODO:
+			SnapshotSpan oldSelection;
+			if (Selection.IsEmpty || Selection.Mode == TextSelectionMode.Box)
+				oldSelection = new SnapshotSpan(Caret.Position.BufferPosition, 0);
+			else
+				oldSelection = Selection.StreamSelectionSpan.SnapshotSpan;
+			var newSelection = TextStructureNavigator.GetSpanOfPreviousSibling(oldSelection);
+			Selection.Clear();
+			if (!newSelection.IsEmpty && extendSelection) {
+				var start = newSelection.Start <= oldSelection.Start ? newSelection.Start : oldSelection.Start;
+				var end = newSelection.End <= oldSelection.End ? oldSelection.End : newSelection.End;
+				newSelection = new SnapshotSpan(start, end);
+			}
+			SelectAndMove(newSelection);
 		}
 
 		public void SwapCaretAndAnchor() {

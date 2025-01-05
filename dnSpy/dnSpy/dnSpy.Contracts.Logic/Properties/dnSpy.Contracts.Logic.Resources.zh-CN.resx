@@ -124,7 +124,7 @@
     <value>字符必须括在单引号 (')</value>
   </data>
   <data name="InvalidDateTime" xml:space="preserve">
-    <value>值必须为DateTime</value>
+    <value>值必须为 DateTime</value>
   </data>
   <data name="InvalidDecimal" xml:space="preserve">
     <value>值必须是一个十进制数</value>
@@ -148,10 +148,10 @@
     <value>值不是一个十六进制或十进制整数</value>
   </data>
   <data name="InvalidInteger2" xml:space="preserve">
-    <value>值太小</value>
+    <value>给定的值太小</value>
   </data>
   <data name="InvalidInteger3" xml:space="preserve">
-    <value>值太大</value>
+    <value>给定的值太大</value>
   </data>
   <data name="InvalidInteger4" xml:space="preserve">
     <value>值必须介于 {0} 和 {1} (0x{1:X}) 之间</value>

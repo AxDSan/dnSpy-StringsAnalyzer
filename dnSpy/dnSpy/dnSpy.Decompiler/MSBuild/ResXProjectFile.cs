@@ -19,49 +19,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Resources;
+using System.Linq;
 using dnlib.DotNet;
+using dnlib.DotNet.Emit;
+using dnlib.DotNet.Resources;
 using dnSpy.Decompiler.Properties;
 
 namespace dnSpy.Decompiler.MSBuild {
 	sealed class ResXProjectFile : ProjectFile {
-		static ResXProjectFile() {
-			// Mono doesn't support the constructors that we need
-
-			Type[] paramTypes;
-			ConstructorInfo? ctorInfo;
-
-			paramTypes = new Type[] { typeof(string), typeof(Func<Type, string>) };
-			ctorInfo = typeof(ResXResourceWriter).GetConstructor(paramTypes);
-			if (ctorInfo is not null) {
-				var dynMethod = new DynamicMethod("ResXResourceWriter-ctor", typeof(ResXResourceWriter), paramTypes);
-				var ilg = dynMethod.GetILGenerator();
-				ilg.Emit(OpCodes.Ldarg_0);
-				ilg.Emit(OpCodes.Ldarg_1);
-				ilg.Emit(OpCodes.Newobj, ctorInfo);
-				ilg.Emit(OpCodes.Ret);
-				delegateResXResourceWriterConstructor = (Func<string, Func<Type, string>, ResXResourceWriter>)dynMethod.CreateDelegate(typeof(Func<string, Func<Type, string>, ResXResourceWriter>));
-			}
-
-			paramTypes = new Type[] { typeof(string), typeof(object), typeof(Func<Type, string>) };
-			ctorInfo = typeof(ResXDataNode).GetConstructor(paramTypes);
-			if (ctorInfo is not null) {
-				var dynMethod = new DynamicMethod("ResXDataNode-ctor", typeof(ResXDataNode), paramTypes);
-				var ilg = dynMethod.GetILGenerator();
-				ilg.Emit(OpCodes.Ldarg_0);
-				ilg.Emit(OpCodes.Ldarg_1);
-				ilg.Emit(OpCodes.Ldarg_2);
-				ilg.Emit(OpCodes.Newobj, ctorInfo);
-				ilg.Emit(OpCodes.Ret);
-				delegateResXDataNodeConstructor = (Func<string, object?, Func<Type, string>, ResXDataNode>)dynMethod.CreateDelegate(typeof(Func<string, object?, Func<Type, string>, ResXDataNode>));
-			}
-		}
-		static readonly Func<string, Func<Type, string>, ResXResourceWriter>? delegateResXResourceWriterConstructor;
-		static readonly Func<string, object?, Func<Type, string>, ResXDataNode>? delegateResXDataNodeConstructor;
-
 		public override string Description => dnSpy_Decompiler_Resources.MSBuild_CreateResXFile;
 		public override BuildAction BuildAction => BuildAction.EmbeddedResource;
 		public override string Filename => filename;
@@ -70,13 +35,15 @@ namespace dnSpy.Decompiler.MSBuild {
 		public string TypeFullName { get; }
 		public bool IsSatelliteFile { get; set; }
 
-		readonly EmbeddedResource embeddedResource;
+		readonly ModuleDef module;
+		readonly ResourceElementSet resourceElementSet;
 		readonly Dictionary<IAssembly, IAssembly> newToOldAsm;
 
-		public ResXProjectFile(ModuleDef module, string filename, string typeFullName, EmbeddedResource er) {
+		public ResXProjectFile(ModuleDef module, string filename, string typeFullName, ResourceElementSet resourceElementSet) {
+			this.module = module;
 			this.filename = filename;
 			TypeFullName = typeFullName;
-			embeddedResource = er;
+			this.resourceElementSet = resourceElementSet;
 
 			newToOldAsm = new Dictionary<IAssembly, IAssembly>(new AssemblyNameComparer(AssemblyNameComparerFlags.All & ~AssemblyNameComparerFlags.Version));
 			foreach (var asmRef in module.GetAssemblyRefs())
@@ -84,12 +51,10 @@ namespace dnSpy.Decompiler.MSBuild {
 		}
 
 		public override void Create(DecompileContext ctx) {
-			var list = ReadResourceEntries(ctx);
-
-			using (var writer = delegateResXResourceWriterConstructor?.Invoke(Filename, TypeNameConverter) ?? new ResXResourceWriter(Filename)) {
-				foreach (var t in list) {
+			using (var writer = new ResXResourceFileWriter(Filename, TypeNameConverter, HasTypeConverterForByteArray)) {
+				foreach (var resourceElement in resourceElementSet.ResourceElements) {
 					ctx.CancellationToken.ThrowIfCancellationRequested();
-					writer.AddResource(t);
+					writer.AddResourceData(resourceElement);
 				}
 			}
 		}
@@ -105,44 +70,72 @@ namespace dnSpy.Decompiler.MSBuild {
 			return $"{type.FullName}, {oldAsm.FullName}";
 		}
 
-		List<ResXDataNode> ReadResourceEntries(DecompileContext ctx) {
-			var list = new List<ResXDataNode>();
-			int errors = 0;
-			try {
-				using (var reader = new ResourceReader(embeddedResource.CreateReader().AsStream())) {
-					var iter = reader.GetEnumerator();
-					while (iter.MoveNext()) {
-						ctx.CancellationToken.ThrowIfCancellationRequested();
-						string? key = null;
-						try {
-							key = iter.Key as string;
-							if (key is null)
-								continue;
-							var value = iter.Value;
-							// ResXDataNode ctor checks if the input is serializable, which this stream isn't.
-							// We have no choice but to create a new stream.
-							if (value is Stream && !value.GetType().IsSerializable) {
-								var stream = (Stream)value;
-								var data = new byte[stream.Length];
-								if (stream.Read(data, 0, data.Length) != data.Length)
-									throw new IOException("Could not read all bytes");
-								value = new MemoryStream(data);
-							}
-							//TODO: Some resources, like images, should be saved as separate files. Use ResXFileRef.
-							//		Don't do it if it's a satellite assembly.
-							list.Add(delegateResXDataNodeConstructor?.Invoke(key, value, TypeNameConverter) ?? new ResXDataNode(key, value));
-						}
-						catch (Exception ex) {
-							if (errors++ < 30)
-								ctx.Logger.Error($"Could not add resource '{key}', Message: {ex.Message}");
-						}
+		bool HasTypeConverterForByteArray(string typeFullName) {
+			var typeDef = TypeNameParser.ParseReflection(module, typeFullName, null)?.ResolveTypeDef();
+
+			while (typeDef is not null) {
+				var attribute = typeDef.CustomAttributes.Find("System.ComponentModel.TypeConverterAttribute");
+				if (attribute is not null && attribute.ConstructorArguments.Count == 1 && attribute.ConstructorArguments[0].Value is ClassOrValueTypeSig typeSig) {
+					var converter = typeSig.TypeDefOrRef.ResolveTypeDef();
+					var (canConvertToMethod, canConvertFromMethod) = FindCanConvertMethods(converter);
+
+					if (canConvertToMethod is not null && canConvertFromMethod is not null) {
+						bool canConvertToHasByteArray = ContainsByteArrayReference(canConvertToMethod);
+						bool canConvertFromHasByteArray = ContainsByteArrayReference(canConvertFromMethod);
+						if (canConvertFromHasByteArray && canConvertToHasByteArray)
+							return true;
+					}
+
+					return false;
+				}
+
+				typeDef = typeDef.BaseType.ResolveTypeDef();
+			}
+
+			return false;
+		}
+
+		static (MethodDef? canConvertToMethod, MethodDef? canConvertFromMethod) FindCanConvertMethods(TypeDef type) {
+			MethodDef? canConvertToMethod = null;
+			MethodDef? canConvertFromMethod = null;
+			foreach (var method in type.Methods) {
+				if (!method.MethodSig.HasThis)
+					continue;
+				if (method.MethodSig.Params.Count != 2)
+					continue;
+				if (method.ReturnType.GetElementType() != ElementType.Boolean)
+					continue;
+
+				if (method.Name == "CanConvertTo")
+					canConvertToMethod ??= method;
+				else if (method.Name == "CanConvertFrom")
+					canConvertFromMethod ??= method;
+				else {
+					foreach (var methodOverride in method.Overrides) {
+						var overridenMethod = methodOverride.MethodDeclaration.ResolveMethodDef();
+						if (overridenMethod.Name == "CanConvertTo")
+							canConvertToMethod ??= method;
+						else if (overridenMethod.Name == "CanConvertFrom")
+							canConvertFromMethod ??= method;
 					}
 				}
 			}
-			catch (Exception ex) {
-				ctx.Logger.Error($"Could not read resources from {embeddedResource.Name}, Message: {ex.Message}");
+
+			return (canConvertToMethod, canConvertFromMethod);
+		}
+
+		static bool ContainsByteArrayReference(MethodDef method) {
+			if (!method.HasBody)
+				return false;
+			for (var i = 0; i < method.Body.Instructions.Count; i++) {
+				var instr = method.Body.Instructions[i];
+				if (instr.OpCode.Code == Code.Ldtoken && instr.Operand is TypeSpec typeSpec &&
+				    typeSpec.TypeSig is SZArraySig arraySig &&
+				    arraySig.Next.GetElementType() == ElementType.U1) {
+					return true;
+				}
 			}
-			return list;
+			return false;
 		}
 	}
 }

@@ -23,7 +23,7 @@
 using System.Xml.Linq;
 
 namespace dnSpy.BamlDecompiler {
-	internal interface IRewritePass {
+	interface IRewritePass {
 		void Run(XamlContext ctx, XDocument document);
 	}
 }

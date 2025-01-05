@@ -28,7 +28,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly DbgDotNetValue byRefValue;
 
 		public ByRefILValueImpl(DebuggerRuntimeImpl runtime, DbgDotNetValue byRefValue)
-			: base(runtime, byRefValue.Type.GetElementType()!) {
+			: base(runtime, byRefValue.Type.GetElementType()!, true) {
 			this.byRefValue = byRefValue;
 		}
 
@@ -47,7 +47,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly DbgDotNetValue pointerValue;
 
 		public PointerILValue(DebuggerRuntimeImpl runtime, DbgDotNetValue pointerValue)
-			: base(runtime, pointerValue.Type.GetElementType()!) {
+			: base(runtime, pointerValue.Type.GetElementType()!, false) {
 			this.pointerValue = pointerValue;
 		}
 

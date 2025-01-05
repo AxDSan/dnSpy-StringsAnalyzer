@@ -31,16 +31,16 @@ using dnSpy.BamlDecompiler.Xaml;
 using dnSpy.Contracts.Decompiler;
 
 namespace dnSpy.BamlDecompiler {
-	internal class XamlContext {
+	sealed class XamlContext {
 		XamlContext(ModuleDef module) {
 			Module = module;
 			NodeMap = new Dictionary<BamlRecord, BamlBlockNode>();
 			XmlNs = new XmlnsDictionary();
 		}
 
-		Dictionary<ushort, XamlType> typeMap = new Dictionary<ushort, XamlType>();
-		Dictionary<ushort, XamlProperty> propertyMap = new Dictionary<ushort, XamlProperty>();
-		Dictionary<string, XNamespace> xmlnsMap = new Dictionary<string, XNamespace>();
+		readonly Dictionary<ushort, XamlType> typeMap = new Dictionary<ushort, XamlType>();
+		readonly Dictionary<ushort, XamlProperty> propertyMap = new Dictionary<ushort, XamlProperty>();
+		readonly Dictionary<string, XNamespace> xmlnsMap = new Dictionary<string, XNamespace>();
 
 		public ModuleDef Module { get; }
 		public CancellationToken CancellationToken { get; private set; }
@@ -82,20 +82,11 @@ namespace dnSpy.BamlDecompiler {
 
 		void BuildPIMappings(BamlDocument document) {
 			foreach (var record in document) {
-				var piMap = record as PIMappingRecord;
-				if (piMap is null)
+				if (record is not PIMappingRecord piMap)
 					continue;
 
 				XmlNs.SetPIMapping(piMap.XmlNamespace, piMap.ClrNamespace, Baml.ResolveAssembly(piMap.AssemblyId));
 			}
-		}
-
-		class DummyAssemblyRefFinder : IAssemblyRefFinder {
-			readonly IAssembly assemblyDef;
-
-			public DummyAssemblyRefFinder(IAssembly assemblyDef) => this.assemblyDef = assemblyDef;
-
-			public AssemblyRef FindAssemblyRef(TypeRef nonNestedTypeRef) => assemblyDef.ToAssemblyRef();
 		}
 
 		public XamlType ResolveType(ushort id) {
@@ -106,7 +97,7 @@ namespace dnSpy.BamlDecompiler {
 			IAssembly assembly;
 
 			if (id > 0x7fff) {
-				type = Baml.KnownThings.Types((KnownTypes)(-id));
+				type = Baml.KnownThings.Types((KnownTypes)(-id)).TypeDef;
 				assembly = type.DefinitionAssembly;
 			}
 			else {
@@ -158,9 +149,8 @@ namespace dnSpy.BamlDecompiler {
 		public string ResolveString(ushort id) {
 			if (id > 0x7fff)
 				return Baml.KnownThings.Strings(unchecked((short)-id));
-			else if (Baml.StringIdMap.ContainsKey(id))
-				return Baml.StringIdMap[id].Value;
-
+			if (Baml.StringIdMap.TryGetValue(id, out var stringInfo))
+				return stringInfo.Value;
 			return null;
 		}
 

@@ -30,7 +30,7 @@ namespace dnSpy.AsmEditor.Compiler {
 	/// <c>System.Runtime.InteropServices.TypeIdentifierAttribute</c> helper code used by <see cref="SigComparer"/>
 	/// </summary>
 	static class TIAHelper {
-		struct Info : IEquatable<Info> {
+		readonly struct Info : IEquatable<Info> {
 			public readonly UTF8String? Scope;
 			public readonly UTF8String? Identifier;
 

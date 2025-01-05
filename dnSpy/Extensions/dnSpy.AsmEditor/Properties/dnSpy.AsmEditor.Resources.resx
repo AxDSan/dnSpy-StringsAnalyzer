@@ -1777,6 +1777,9 @@ Are you sure you want to close the window?</value>
   <data name="SaveModule_AddPECheckSum" xml:space="preserve">
     <value>_Add PE Checksum</value>
   </data>
+  <data name="SaveModule_AddMVIDSection" xml:space="preserve">
+    <value>_Add MVID Section</value>
+  </data>
   <data name="SaveModule_CreateHeapEvenIfEmpty" xml:space="preserve">
     <value>Create Heap Even If Empty</value>
   </data>
@@ -2116,6 +2119,9 @@ Most options will be re-initialized when this checkbox is clicked</value>
   </data>
   <data name="SaveModule_TablesHeap_UseENC" xml:space="preserve">
     <value>_Use #- Table</value>
+  </data>
+  <data name="SaveModule_TablesHeap_ForceBigColumns" xml:space="preserve">
+    <value>_Force Big Columns</value>
   </data>
   <data name="CustomAttribute_NamedArg_Field" xml:space="preserve">
     <value>Field</value>

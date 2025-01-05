@@ -318,6 +318,7 @@ namespace dnSpy.AsmEditor.Compiler {
 				case CallingConvention.ThisCall:
 				case CallingConvention.FastCall:
 				case CallingConvention.VarArg:
+				case CallingConvention.Unmanaged:
 				case CallingConvention.NativeVarArg:
 				case CallingConvention.Property:
 					if ((callingConvention & CallingConvention.Generic) != 0)
@@ -339,10 +340,6 @@ namespace dnSpy.AsmEditor.Compiler {
 					count = ReadCompressedUInt32();
 					for (i = 0; i < count; i++)
 						PatchTypeSignature();
-					break;
-
-				case CallingConvention.Unmanaged:
-				default:
 					break;
 				}
 			}

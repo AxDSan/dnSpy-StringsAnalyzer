@@ -24,15 +24,11 @@ using dnSpy.Contracts.Decompiler;
 namespace dnSpy.BamlDecompiler {
 	[Export(typeof(IXamlOutputOptionsProvider))]
 	sealed class XamlOutputOptionsProvider : IXamlOutputOptionsProvider {
-		public XamlOutputOptions Default {
-			get {
-				return new XamlOutputOptions {
-					IndentChars = bamlSettings.UseTabs ? "\t" : "    ",
-					NewLineChars = Environment.NewLine,
-					NewLineOnAttributes = bamlSettings.NewLineOnAttributes,
-				};
-			}
-		}
+		public XamlOutputOptions Default => new XamlOutputOptions {
+			IndentChars = bamlSettings.UseTabs ? "\t" : "    ",
+			NewLineChars = Environment.NewLine,
+			NewLineOnAttributes = bamlSettings.NewLineOnAttributes,
+		};
 
 		readonly BamlSettingsImpl bamlSettings;
 

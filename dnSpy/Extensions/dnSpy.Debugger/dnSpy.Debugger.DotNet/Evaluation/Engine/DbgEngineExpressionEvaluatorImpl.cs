@@ -179,23 +179,8 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine {
 				static bool Equals(DbgDotNetAlias a, DbgDotNetAlias b) =>
 					a.Kind == b.Kind &&
 					Equals(a.CustomTypeInfo, b.CustomTypeInfo) &&
-					a.CustomTypeInfoId == b.CustomTypeInfoId &&
 					StringComparer.Ordinal.Equals(a.Name, b.Name) &&
 					StringComparer.Ordinal.Equals(a.Type, b.Type);
-
-				static bool Equals(ReadOnlyCollection<byte>? a, ReadOnlyCollection<byte>? b) {
-					if (a == b)
-						return true;
-					if (a is null || b is null)
-						return false;
-					if (a.Count != b.Count)
-						return false;
-					for (int i = 0; i < a.Count; i++) {
-						if (a[i] != b[i])
-							return false;
-					}
-					return true;
-				}
 			}
 
 			public Key CachedKey;

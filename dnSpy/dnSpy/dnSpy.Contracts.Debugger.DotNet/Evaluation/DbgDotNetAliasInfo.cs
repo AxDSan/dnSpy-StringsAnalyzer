@@ -18,7 +18,6 @@
 */
 
 using System;
-using System.Collections.ObjectModel;
 using dnSpy.Debugger.DotNet.Metadata;
 
 namespace dnSpy.Contracts.Debugger.DotNet.Evaluation {
@@ -44,12 +43,7 @@ namespace dnSpy.Contracts.Debugger.DotNet.Evaluation {
 		/// <summary>
 		/// Custom type info understood by the EE or null
 		/// </summary>
-		public readonly ReadOnlyCollection<byte>? CustomTypeInfo;
-
-		/// <summary>
-		/// Custom type info ID
-		/// </summary>
-		public readonly Guid CustomTypeInfoId;
+		public readonly DbgDotNetCustomTypeInfo? CustomTypeInfo;
 
 		/// <summary>
 		/// Constructor
@@ -57,13 +51,11 @@ namespace dnSpy.Contracts.Debugger.DotNet.Evaluation {
 		/// <param name="kind">Alias kind</param>
 		/// <param name="type">Alias type</param>
 		/// <param name="id">Alias id</param>
-		/// <param name="customTypeInfoId">Custom type info ID</param>
 		/// <param name="customTypeInfo">Custom type info understood by the EE or null</param>
-		public DbgDotNetAliasInfo(DbgDotNetAliasInfoKind kind, DmdType type, uint id, Guid customTypeInfoId, ReadOnlyCollection<byte>? customTypeInfo) {
+		public DbgDotNetAliasInfo(DbgDotNetAliasInfoKind kind, DmdType type, uint id, DbgDotNetCustomTypeInfo? customTypeInfo) {
 			Kind = kind;
 			Type = type ?? throw new ArgumentNullException(nameof(type));
 			Id = id;
-			CustomTypeInfoId = customTypeInfoId;
 			CustomTypeInfo = customTypeInfo;
 		}
 	}

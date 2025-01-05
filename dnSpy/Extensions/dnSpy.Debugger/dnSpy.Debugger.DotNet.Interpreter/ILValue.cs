@@ -654,7 +654,7 @@ namespace dnSpy.Debugger.DotNet.Interpreter {
 		/// <param name="method">Method</param>
 		public FunctionPointerILValue(DmdMethodBase method) {
 			Method = method ?? throw new ArgumentNullException(nameof(method));
-			Type = method.AppDomain.System_Void.MakePointerType();
+			Type = method.AppDomain.MakeFunctionPointerType(method.GetMethodSignature(), null);
 		}
 
 		/// <summary>
@@ -664,7 +664,7 @@ namespace dnSpy.Debugger.DotNet.Interpreter {
 		/// <param name="thisValue">This object</param>
 		public FunctionPointerILValue(DmdMethodBase method, ILValue thisValue) {
 			Method = method;
-			Type = method.AppDomain.System_Void.MakePointerType();
+			Type = method.AppDomain.MakeFunctionPointerType(method.GetMethodSignature(), null);
 			VirtualThisObject = thisValue;
 		}
 
@@ -1027,6 +1027,29 @@ namespace dnSpy.Debugger.DotNet.Interpreter {
 			var d = data;
 			for (int i = 0; i < size2; i++)
 				d[i + o] = value;
+			return true;
+		}
+
+		/// <summary>
+		/// Copies memory to this value or returns false if it's not supported.
+		/// </summary>
+		/// <param name="source">Source value</param>
+		/// <param name="size">Size of data</param>
+		/// <returns></returns>
+		public override bool CopyMemory(ILValue source, long size) {
+			if (offset + size < offset || (ulong)(offset + size) > (ulong)data.Length)
+				return false;
+			if (source is not NativeMemoryILValue sourceMem)
+				return false;
+			if (sourceMem.offset + size < sourceMem.offset || (ulong)(sourceMem.offset + size) > (ulong)sourceMem.data.Length)
+				return false;
+			int size2 = (int)size;
+			int dstOffset = (int)offset;
+			var dstData = data;
+			int srcOffset = (int)sourceMem.offset;
+			var srcData = sourceMem.data;
+			for (int i = 0; i < size2; i++)
+				dstData[i + dstOffset] = srcData[i + srcOffset];
 			return true;
 		}
 

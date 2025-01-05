@@ -3,7 +3,7 @@ using dnSpy.Contracts.Extension;
 
 // Each extension should export one class implementing IExtension
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	[ExportExtension]
 	sealed class TheExtension : IExtension {
 		public IEnumerable<string> MergedResourceDictionaries {
@@ -13,7 +13,7 @@ namespace Example2.Extension {
 		}
 
 		public ExtensionInfo ExtensionInfo => new ExtensionInfo {
-			ShortDescription = "Example2 extension",
+			ShortDescription = "Strings Analyzer",
 		};
 
 		public void OnEvent(ExtensionEvent @event, object? obj) {

@@ -25,7 +25,7 @@ using dnSpy.BamlDecompiler.Baml;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class DefAttributeTypeHandler : IHandler, IDeferHandler {
+	sealed class DefAttributeTypeHandler : IHandler, IDeferHandler {
 		public BamlRecordType Type => BamlRecordType.DefAttributeKeyType;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

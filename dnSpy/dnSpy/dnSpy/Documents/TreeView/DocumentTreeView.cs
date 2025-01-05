@@ -24,6 +24,7 @@ using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using dnlib.DotNet;
@@ -741,6 +742,8 @@ namespace dnSpy.Documents.TreeView {
 				return;
 			filenames = GetFiles(filenames);
 
+			ResolveWindowsShortcutFiles(filenames);
+
 			var origFilenames = filenames;
 			var documents = DocumentService.GetDocuments();
 			var toDoc = new Dictionary<string, IDsDocument>(StringComparer.OrdinalIgnoreCase);
@@ -752,37 +755,10 @@ namespace dnSpy.Documents.TreeView {
 				if (File.Exists(filename) && toDoc.TryGetValue(filename, out var doc))
 					doc.IsAutoLoaded = false;
 			}
-			filenames = filenames.Where(a => File.Exists(a) && !toDoc.ContainsKey(a)).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(a => Path.GetFileNameWithoutExtension(a), StringComparer.CurrentCultureIgnoreCase).ToArray();
+			filenames = filenames.Where(a => File.Exists(a) && !toDoc.ContainsKey(a)).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(Path.GetFileNameWithoutExtension, StringComparer.CurrentCultureIgnoreCase).ToArray();
 			TreeNodeData? newSelectedNode = null;
 
-#if HAS_COMREFERENCE
-			IWshRuntimeLibrary.WshShell? ws = null;
-			try {
-				ws = new IWshRuntimeLibrary.WshShell();
-			}
-			catch {
-				ws = null;
-			}
-#endif
-
 			for (int i = 0, j = 0; i < filenames.Length; i++) {
-#if HAS_COMREFERENCE
-				// Resolve shortcuts
-				if (ws is not null) {
-					try {
-						// The method seems to only accept files with a lnk extension. If it has no such
-						// extension, it's not a shortcut and we won't get a slow thrown exception.
-						if (filenames[i].EndsWith(".lnk", StringComparison.OrdinalIgnoreCase)) {
-							var sc = (IWshRuntimeLibrary.IWshShortcut)ws.CreateShortcut(filenames[i]);
-							filenames[i] = sc.TargetPath;
-						}
-					}
-					catch {
-						ws = null;
-					}
-				}
-#endif
-
 				var document = DocumentService.TryCreateOnly(DsDocumentInfo.CreateDocument(filenames[i]));
 				if (document is null)
 					continue;
@@ -821,7 +797,7 @@ namespace dnSpy.Documents.TreeView {
 				MsgBox.Instance.Show(dnSpy_Resources.AssemblyExplorer_AllFilesFilteredOut);
 
 			if (newSelectedNode is null) {
-				var filename = origFilenames.FirstOrDefault(a => File.Exists(a));
+				var filename = origFilenames.FirstOrDefault(File.Exists);
 				if (filename is not null) {
 					var key = new FilenameKey(filename);
 					var document = DocumentService.GetDocuments().FirstOrDefault(a => key.Equals(a.Key));
@@ -830,6 +806,42 @@ namespace dnSpy.Documents.TreeView {
 			}
 			if (newSelectedNode is not null)
 				TreeView.SelectItems(new[] { newSelectedNode });
+		}
+
+		static void ResolveWindowsShortcutFiles(string[] filenames) {
+			const string WshShellClassGUID = "72C24DD5-D70A-438B-8A42-98424B88AFB8";
+
+			IWshRuntimeLibrary.WshShell? ws;
+			try {
+				var typeFromClsid = Marshal.GetTypeFromCLSID(new Guid(WshShellClassGUID));
+				if (typeFromClsid is null)
+					return;
+				ws = (IWshRuntimeLibrary.WshShell?)Activator.CreateInstance(typeFromClsid);
+			}
+			catch {
+				return;
+			}
+
+			if (ws is null)
+				return;
+
+			for (var i = 0; i < filenames.Length; i++) {
+				// The method seems to only accept files with a lnk extension. If it has no such
+				// extension, it's not a shortcut and we won't get a slow thrown exception.
+				if (!filenames[i].EndsWith(".lnk", StringComparison.OrdinalIgnoreCase))
+					continue;
+				// Check if the file exists. If it doesn't we won't get a slow thrown exception.
+				if (!File.Exists(filenames[i]))
+					continue;
+				try {
+					var sc = (IWshRuntimeLibrary.IWshShortcut?)ws.CreateShortcut(filenames[i]);
+					if (sc is not null)
+						filenames[i] = sc.TargetPath;
+				}
+				catch {
+					break;
+				}
+			}
 		}
 
 		static string[] GetFiles(string[] filenames) {

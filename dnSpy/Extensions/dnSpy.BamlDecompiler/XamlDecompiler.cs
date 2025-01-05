@@ -30,8 +30,8 @@ using dnSpy.BamlDecompiler.Rewrite;
 using dnSpy.Contracts.Decompiler;
 
 namespace dnSpy.BamlDecompiler {
-	internal class XamlDecompiler {
-		static readonly IRewritePass[] rewritePasses = new IRewritePass[] {
+	static class XamlDecompiler {
+		static readonly IRewritePass[] rewritePasses = {
 			new XClassRewritePass(),
 			new MarkupExtensionRewritePass(),
 			new AttributeRewritePass(),
@@ -39,7 +39,7 @@ namespace dnSpy.BamlDecompiler {
 			new DocumentRewritePass(),
 		};
 
-		public XDocument Decompile(ModuleDef module, BamlDocument document, CancellationToken token, BamlDecompilerOptions bamlDecompilerOptions, List<string> assemblyReferences) {
+		public static XDocument Decompile(ModuleDef module, BamlDocument document, CancellationToken token, BamlDecompilerOptions bamlDecompilerOptions, List<string> assemblyReferences) {
 			var ctx = XamlContext.Construct(module, document, token, bamlDecompilerOptions);
 
 			var handler = HandlerMap.LookupHandler(ctx.RootNode.Type);
@@ -53,8 +53,7 @@ namespace dnSpy.BamlDecompiler {
 				pass.Run(ctx, xaml);
 			}
 
-			if (assemblyReferences is not null)
-				assemblyReferences.AddRange(ctx.Baml.AssemblyIdMap.Select(a => a.Value.AssemblyFullName));
+			assemblyReferences?.AddRange(ctx.Baml.AssemblyIdMap.Select(a => a.Value.AssemblyFullName));
 
 			return xaml;
 		}

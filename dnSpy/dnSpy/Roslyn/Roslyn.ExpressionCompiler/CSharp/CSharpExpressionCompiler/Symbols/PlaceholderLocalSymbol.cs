@@ -93,7 +93,7 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
 
         internal override SyntaxToken IdentifierToken
         {
-            get { throw ExceptionUtilities.Unreachable; }
+            get { throw ExceptionUtilities.Unreachable(); }
         }
 
         public override TypeWithAnnotations TypeWithAnnotations
@@ -102,6 +102,11 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
         }
 
         internal override bool IsPinned
+        {
+            get { return false; }
+        }
+
+        internal override bool IsKnownToReferToTempIfReferenceType
         {
             get { return false; }
         }
@@ -142,13 +147,13 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
         {
             // Placeholders should be rewritten (as method calls)
             // rather than copied as locals to the target method.
-            throw ExceptionUtilities.Unreachable;
+            throw ExceptionUtilities.Unreachable();
         }
 
         /// <summary>
         /// Rewrite the local reference as a call to a synthesized method.
         /// </summary>
-        internal abstract BoundExpression RewriteLocal(CSharpCompilation compilation, EENamedTypeSymbol container, SyntaxNode syntax, DiagnosticBag diagnostics);
+        internal abstract BoundExpression RewriteLocal(CSharpCompilation compilation, SyntaxNode syntax, DiagnosticBag diagnostics);
 
         internal static BoundExpression ConvertToLocalType(CSharpCompilation compilation, BoundExpression expr, TypeSymbol type, DiagnosticBag diagnostics)
         {

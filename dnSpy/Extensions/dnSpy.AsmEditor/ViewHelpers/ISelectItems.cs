@@ -20,7 +20,7 @@
 using System.Collections.Generic;
 
 namespace dnSpy.AsmEditor.ViewHelpers {
-	interface ISelectItems<T> {
+	interface ISelectItems<in T> {
 		/// <summary>
 		/// Select the items
 		/// </summary>

@@ -48,7 +48,7 @@ namespace dndbg.Engine {
 		}
 	}
 
-	struct EvalResult {
+	readonly struct EvalResult {
 		public bool NormalResult => !WasException && !WasCustomNotification && !WasCancelled;
 		public bool WasException { get; }
 		public bool WasCustomNotification { get; }
@@ -117,7 +117,13 @@ namespace dndbg.Engine {
 			eval = new CorEval(ce);
 		}
 
-		public CorValue CreateNull() => eval.CreateValue(CorElementType.Class) ?? throw new InvalidOperationException();
+		public CorValue? TryCreateNull() => eval.CreateValue(CorElementType.Class);
+
+		public CorValue CreateNull() => TryCreateNull() ?? throw new InvalidOperationException();
+
+		public CorValue? TryCreateNull(CorType type) => eval.CreateValueForType(type);
+
+		public CorValue CreateNull(CorType type) => TryCreateNull(type) ?? throw new InvalidOperationException();
 
 		public CorValue? Box(CorValue value, CorType? valueType = null) {
 			var et = valueType ?? value?.ExactType;
@@ -187,7 +193,7 @@ namespace dndbg.Engine {
 			}
 		}
 
-		struct ThreadInfos {
+		readonly struct ThreadInfos {
 			readonly CorThread thread;
 			readonly List<ThreadInfo> list;
 			readonly bool suspendOtherThreads;

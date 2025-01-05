@@ -166,7 +166,7 @@
     <value>是(_Y)</value>
   </data>
   <data name="CantConvertInputToType" xml:space="preserve">
-    <value>无法转换输入为所需类型：{0}</value>
+    <value>无法将输入的内容转换为所需类型: {0}</value>
   </data>
   <data name="CloseAllTabGroupsButThisCommand" xml:space="preserve">
     <value>关闭除当前外的所有标签组</value>
@@ -190,7 +190,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="CopyMDTokenCommand" xml:space="preserve">
-    <value>复制 MD 标记(_C)</value>
+    <value>复制元数据标记(_C)</value>
   </data>
   <data name="CouldNotStartBrowser" xml:space="preserve">
     <value>无法启动浏览器</value>
@@ -217,7 +217,7 @@
     <value>&lt;空&gt;</value>
   </data>
   <data name="ExceptionMessage" xml:space="preserve">
-    <value>发生意外：</value>
+    <value>发生异常: </value>
   </data>
   <data name="ExitAppCommand" xml:space="preserve">
     <value>退出(_X)</value>
@@ -226,7 +226,7 @@
     <value>Alt+F4</value>
   </data>
   <data name="ExplorerOpenWithDnSpy" xml:space="preserve">
-    <value>用 dnSpy 打开</value>
+    <value>使用 dnSpy 打开</value>
   </data>
   <data name="FindCommand" xml:space="preserve">
     <value>查找(_F)</value>
@@ -256,7 +256,7 @@
     <value>输入行号</value>
   </data>
   <data name="GoToLine_InvalidLine" xml:space="preserve">
-    <value>行无效：{0}</value>
+    <value>行无效: {0}</value>
   </data>
   <data name="GoToLine_Label" xml:space="preserve">
     <value>行 [, 列] (_L)</value>
@@ -271,22 +271,22 @@
     <value>双击</value>
   </data>
   <data name="GoToTokenCommand" xml:space="preserve">
-    <value>转到MD Token (_D)...</value>
+    <value>转到元数据标记(_D)...</value>
   </data>
   <data name="GoToTokenKey" xml:space="preserve">
     <value>Ctrl+D</value>
   </data>
   <data name="GoToToken_CouldNotResolve" xml:space="preserve">
-    <value>无法解析程序引用标记：0x{0:X8}</value>
+    <value>无法解析程序引用标记: 0x{0:X8}</value>
   </data>
   <data name="GoToToken_InvalidToken" xml:space="preserve">
-    <value>元数据标记无效：0x{0:X8}</value>
+    <value>元数据标记无效: 0x{0:X8}</value>
   </data>
   <data name="GoToToken_Label" xml:space="preserve">
     <value>元数据标记(_M)</value>
   </data>
   <data name="GoToToken_Title" xml:space="preserve">
-    <value>转到 MD标记</value>
+    <value>转到元数据标记</value>
   </data>
   <data name="HideAllToolWindowsCommand" xml:space="preserve">
     <value>隐藏所有选项卡(_I)</value>
@@ -301,7 +301,7 @@
     <value>文本输入无效</value>
   </data>
   <data name="LoadingDnSpyPleaseWait" xml:space="preserve">
-    <value>dnSpy正在加载，请稍候...</value>
+    <value>dnSpy 正在加载，请稍候...</value>
   </data>
   <data name="Menu_Edit" xml:space="preserve">
     <value>编辑(_E)</value>
@@ -370,7 +370,7 @@
     <value>前进</value>
   </data>
   <data name="NewDataIsNotAnImage" xml:space="preserve">
-    <value>新数据不是映像。</value>
+    <value>新的数据不是图像格式。</value>
   </data>
   <data name="NewHorizontalTabGroupCommand" xml:space="preserve">
     <value>新建水平标签组(_Z)</value>
@@ -391,22 +391,22 @@
     <value>打开所在文件夹(_O)</value>
   </data>
   <data name="OpenGACCommand" xml:space="preserve">
-    <value>从GAC打开(_G)...</value>
+    <value>从 GAC 打开(_G)...</value>
   </data>
   <data name="OpenGAC_CreatedBy_Label" xml:space="preserve">
-    <value>被创建于:</value>
+    <value>创建者: </value>
   </data>
   <data name="OpenGAC_FileVersion_Label" xml:space="preserve">
-    <value>文件版本:</value>
+    <value>文件版本: </value>
   </data>
   <data name="OpenGAC_Name_Column" xml:space="preserve">
     <value>名称</value>
   </data>
   <data name="OpenGAC_Name_Label" xml:space="preserve">
-    <value>名称:</value>
+    <value>名称: </value>
   </data>
   <data name="OpenGAC_Path_Label" xml:space="preserve">
-    <value>路径:</value>
+    <value>路径: </value>
   </data>
   <data name="OpenGAC_ShowDupes_CheckBox" xml:space="preserve">
     <value>显示重复</value>
@@ -415,13 +415,13 @@
     <value>正在显示 {0:n0} /{1:n0} 文件</value>
   </data>
   <data name="OpenGAC_Title" xml:space="preserve">
-    <value>从GAC中打开</value>
+    <value>从 GAC 中打开</value>
   </data>
   <data name="OpenGAC_Version_Column" xml:space="preserve">
     <value>版本</value>
   </data>
   <data name="OpenGAC_Version_Label" xml:space="preserve">
-    <value>版本:</value>
+    <value>版本: </value>
   </data>
   <data name="OpenInNewTabCommand" xml:space="preserve">
     <value>在新标签页中打开(_T)</value>
@@ -439,7 +439,7 @@
     <value>Ctrl+O</value>
   </data>
   <data name="OpenListCommand" xml:space="preserve">
-    <value>打开列表(_I)...</value>
+    <value>打开文件列表(_I)...</value>
   </data>
   <data name="OpenList_AskForName" xml:space="preserve">
     <value>名称</value>
@@ -448,7 +448,7 @@
     <value>文件</value>
   </data>
   <data name="OpenList_MissingName" xml:space="preserve">
-    <value>缺失名称</value>
+    <value>缺少名称</value>
   </data>
   <data name="OpenList_Name_Column" xml:space="preserve">
     <value>名称</value>
@@ -469,7 +469,7 @@
     <value>搜索(_S)</value>
   </data>
   <data name="OpenList_Title" xml:space="preserve">
-    <value>打开列表</value>
+    <value>打开文件列表</value>
   </data>
   <data name="OpenToolBarToolTip" xml:space="preserve">
     <value>打开</value>
@@ -499,7 +499,7 @@
     <value>保存</value>
   </data>
   <data name="SearchAbortedMessage" xml:space="preserve">
-    <value>搜索中止，找到超过 {0:n0} 个结果。</value>
+    <value>搜索中止，已找到超过 {0:n0} 个结果。</value>
   </data>
   <data name="SearchAssembliesCommand" xml:space="preserve">
     <value>搜索程序集(_S)</value>
@@ -511,13 +511,13 @@
     <value>搜索中…</value>
   </data>
   <data name="SearchMsdnCommand" xml:space="preserve">
-    <value>搜索 MSDN (_M)</value>
+    <value>在 MSDN 中搜索(_M)</value>
   </data>
   <data name="SearchWindow_Options" xml:space="preserve">
     <value>选项</value>
   </data>
   <data name="SearchWindow_SearchFor" xml:space="preserve">
-    <value>搜索：</value>
+    <value>搜索: </value>
   </data>
   <data name="ShowCodeCommand" xml:space="preserve">
     <value>代码(_C)</value>
@@ -532,7 +532,7 @@
     <value>语法高亮</value>
   </data>
   <data name="TabsDlg_Activate_Button" xml:space="preserve">
-    <value>活动(_A)</value>
+    <value>激活(_A)</value>
   </data>
   <data name="TabsDlg_CloseWindow_Button" xml:space="preserve">
     <value>关闭窗口(_C)</value>
@@ -610,7 +610,7 @@
     <value>类</value>
   </data>
   <data name="SearchWindow_DecompileResources" xml:space="preserve">
-    <value>反编译资源 (如XAML)</value>
+    <value>反编译资源 (如 XAML)</value>
   </data>
   <data name="SearchWindow_Delegate" xml:space="preserve">
     <value>委托</value>
@@ -736,10 +736,10 @@
     <value>语言</value>
   </data>
   <data name="Language_OperatingSystemLanguage" xml:space="preserve">
-    <value>系统</value>
+    <value>使用系统默认语言</value>
   </data>
   <data name="LanguageSwitchMessage" xml:space="preserve">
-    <value>重新启动 dnSpy 后，语言更改才会生效。</value>
+    <value>当重新启动 dnSpy 后，语言更改才会生效。</value>
   </data>
   <data name="ShortCutKeyCtrlShiftO" xml:space="preserve">
     <value>Ctrl+Shift+O</value>
@@ -748,7 +748,7 @@
     <value>程序集排序(_T)</value>
   </data>
   <data name="AskReadSettings" xml:space="preserve">
-    <value>您要加载保存的设置？</value>
+    <value>是否加载应用程序的设置？</value>
   </data>
   <data name="ExportToProjectCommand" xml:space="preserve">
     <value>导出到工程(_J)...</value>
@@ -757,22 +757,22 @@
     <value>导出到工程</value>
   </data>
   <data name="Error_FileAlreadyExists" xml:space="preserve">
-    <value>目标文件夹内已存在有相同名称的文件。</value>
+    <value>目标文件夹中已存在具有相同名称的文件。</value>
   </data>
   <data name="Error_MissingDestinationFolder" xml:space="preserve">
-    <value>目标文件夹缺失。</value>
+    <value>目标文件夹不能为空！</value>
   </data>
   <data name="ExportToProject_Button_Export" xml:space="preserve">
     <value>导出(_E)</value>
   </data>
   <data name="ExportToProject_CreateResX" xml:space="preserve">
-    <value>创建 .resx文件(_X)</value>
+    <value>创建 .resx 文件(_X)</value>
   </data>
   <data name="ExportToProject_DecompileXaml" xml:space="preserve">
-    <value>将BAML反编译为XAML (_B)</value>
+    <value>将 BAML 反编译为 XAML(_B)</value>
   </data>
   <data name="ExportToProject_DestinationFolder" xml:space="preserve">
-    <value>文件夹(_F)</value>
+    <value>目标文件夹(_F)</value>
   </data>
   <data name="ExportToProject_ExportFileMessage" xml:space="preserve">
     <value>即将反编译一个文件。若要反编译多个文件，请选中多个程序集。</value>
@@ -784,7 +784,7 @@
     <value>语言(_L)</value>
   </data>
   <data name="ExportToProject_OpenProjectInVisualStudio" xml:space="preserve">
-    <value>在Visual Studio中打开项目(_O)</value>
+    <value>在 Visual Studio 中打开项目(_O)</value>
   </data>
   <data name="ExportToProject_ProjectVersion" xml:space="preserve">
     <value>版本(_V)</value>
@@ -802,7 +802,7 @@
     <value>关闭(_C)</value>
   </data>
   <data name="ErrorExceptionOccurred" xml:space="preserve">
-    <value>发生意外
+    <value>发生异常: 
 
 {0}</value>
   </data>
@@ -831,10 +831,10 @@
     <value>dnSpy is licensed under GPLv3.</value>
   </data>
   <data name="AboutScreen_LoadedFiles" xml:space="preserve">
-    <value>已加载的文件：</value>
+    <value>已加载的文件: </value>
   </data>
   <data name="SearchWindow_SearchFrameworkAssemblies" xml:space="preserve">
-    <value>在框架程序集内搜索</value>
+    <value>从运行时库中搜索</value>
   </data>
   <data name="SearchWindow_Where_AllFiles" xml:space="preserve">
     <value>所有文件</value>
@@ -861,7 +861,7 @@
     <value>新建(_N)</value>
   </data>
   <data name="ExportToProject_ProjectGuid" xml:space="preserve">
-    <value>项目GUID (_P)</value>
+    <value>项目 GUID (_P)</value>
   </data>
   <data name="ShortCutKeyCtrlShiftP" xml:space="preserve">
     <value>Ctrl+Shift+P</value>
@@ -876,7 +876,7 @@
     <value>全部清除</value>
   </data>
   <data name="Output_ShowOutputFrom" xml:space="preserve">
-    <value>显示输出来源(_S):</value>
+    <value>显示输出来源(_S): </value>
   </data>
   <data name="Output_WordWrap_ToolTip" xml:space="preserve">
     <value>切换自动换行</value>
@@ -927,7 +927,7 @@
     <value>最小化</value>
   </data>
   <data name="Window_Restore" xml:space="preserve">
-    <value>向下还原</value>
+    <value>还原</value>
   </data>
   <data name="BackgroundImageOptDlgTab" xml:space="preserve">
     <value>背景图片</value>
@@ -942,10 +942,10 @@
     <value>主文本查看器</value>
   </data>
   <data name="BgImgDisplayName_Logger" xml:space="preserve">
-    <value>Log窗口</value>
+    <value>输出窗口</value>
   </data>
   <data name="BgImgDisplayName_REPL" xml:space="preserve">
-    <value>REPL 窗口</value>
+    <value>C# 交互窗口</value>
   </data>
   <data name="BgImgSettings_Direction" xml:space="preserve">
     <value>方向</value>
@@ -954,7 +954,7 @@
     <value>水平偏移</value>
   </data>
   <data name="BgImgSettings_Images" xml:space="preserve">
-    <value>添加图片或图片文件夹路径，每行一个：</value>
+    <value>添加图片或图片文件夹路径，每行一个: </value>
   </data>
   <data name="BgImgSettings_Interval" xml:space="preserve">
     <value>切换间隔</value>
@@ -1062,7 +1062,7 @@
     <value>使用正则表达式</value>
   </data>
   <data name="Search_ToggleReplaceModeToolTip" xml:space="preserve">
-    <value>切换查找模式/替换模式</value>
+    <value>在查找模式和替换模式之间切换</value>
   </data>
   <data name="Search_CloseToolTip" xml:space="preserve">
     <value>关闭</value>
@@ -1086,16 +1086,16 @@
     <value>环境</value>
   </data>
   <data name="GeneralSettings" xml:space="preserve">
-    <value>通用设置</value>
+    <value>常规</value>
   </data>
   <data name="GeneralSettings_Theme" xml:space="preserve">
     <value>主题</value>
   </data>
   <data name="IntegrateWithWindowsExplorer" xml:space="preserve">
-    <value>与 Windows 资源管理器整合</value>
+    <value>与 Windows 资源管理器集成</value>
   </data>
   <data name="AssemblyExplorerSettings_Order" xml:space="preserve">
-    <value>顺序（重启程序生效）</value>
+    <value>类成员排序 (重启程序生效)</value>
   </data>
   <data name="AssemblyExplorerSettings_SingleClickExpandNodes" xml:space="preserve">
     <value>单击展开节点</value>
@@ -1113,7 +1113,7 @@
     <value>制表符</value>
   </data>
   <data name="TextEditorConvertTabsToSpaces" xml:space="preserve">
-    <value>将Tab转换为空格(_P)</value>
+    <value>将制表符转换为空格(_P)</value>
   </data>
   <data name="TextEditorLineNumbers" xml:space="preserve">
     <value>行号(_L)</value>
@@ -1128,7 +1128,7 @@
     <value>缩进大小(_I)</value>
   </data>
   <data name="TextEditorTabSize" xml:space="preserve">
-    <value>_Tab宽度</value>
+    <value>制表符大小(_T)</value>
   </data>
   <data name="TextViewerSettings" xml:space="preserve">
     <value>文本查看器</value>
@@ -1200,10 +1200,10 @@
     <value>显示时间戳</value>
   </data>
   <data name="ReplSettings" xml:space="preserve">
-    <value>REPL</value>
+    <value>C# 交互窗口</value>
   </data>
   <data name="AssemblyExplorerSettings_Filter" xml:space="preserve">
-    <value>拖放项目筛选器</value>
+    <value>文件拖放筛选 (仅在拖放多个文件时生效)</value>
   </data>
   <data name="DocumentFilterType_All" xml:space="preserve">
     <value>全部</value>
@@ -1212,10 +1212,10 @@
     <value>所有支持的文件</value>
   </data>
   <data name="DocumentFilterType_DotNetOnly" xml:space="preserve">
-    <value>只显示.NET文件</value>
+    <value>只允许 .NET 文件</value>
   </data>
   <data name="AssemblyExplorer_AllFilesFilteredOut" xml:space="preserve">
-    <value>所有文件已被都筛选掉。可以在程序集资源管理器选项中更改筛选器。</value>
+    <value>所有文件已被都筛选掉。可前往程序集资源管理器选项中更改筛选项。</value>
   </data>
   <data name="BlockStructureLineKind_DashedLines" xml:space="preserve">
     <value>虚线</value>
@@ -1227,13 +1227,13 @@
     <value>Ctrl+Shift+K</value>
   </data>
   <data name="BgImgDisplayName_HexEditor" xml:space="preserve">
-    <value>HEX 编辑器</value>
+    <value>十六进制编辑器</value>
   </data>
   <data name="HexEditorGroup_Default" xml:space="preserve">
     <value>默认</value>
   </data>
   <data name="HexEditorSettings" xml:space="preserve">
-    <value>HEX 编辑器</value>
+    <value>十六进制编辑器</value>
   </data>
   <data name="HexEditorEncoding" xml:space="preserve">
     <value>编码</value>
@@ -1248,10 +1248,10 @@
     <value>偏移　　</value>
   </data>
   <data name="HexEditorOffsetLowerCaseHex" xml:space="preserve">
-    <value>小写字母十六进制 （偏移量）</value>
+    <value>小写字母十六进制 (偏移量)</value>
   </data>
   <data name="HexEditorValuesLowerCaseHex" xml:space="preserve">
-    <value>小写字母十六进制 （值）</value>
+    <value>小写字母十六进制 (值)</value>
   </data>
   <data name="BlockStructureLineKind_None" xml:space="preserve">
     <value>无</value>
@@ -1281,7 +1281,7 @@
     <value>值必须在 {0} 和 {1} 之间</value>
   </data>
   <data name="AnErrorOccurred" xml:space="preserve">
-    <value>发生错误：
+    <value>发生错误: 
 
 {0}</value>
   </data>
@@ -1325,7 +1325,7 @@
     <value>复制 Visual Basic 数组</value>
   </data>
   <data name="FillSelectionCommand" xml:space="preserve">
-    <value>用字节填充选择...</value>
+    <value>用字节填充选定区域...</value>
   </data>
   <data name="FillSelection_Label" xml:space="preserve">
     <value>字节(_B)</value>
@@ -1361,7 +1361,7 @@
     <value>8 字节(_8)</value>
   </data>
   <data name="HexEditor_BytesPerLine_FitToWidth" xml:space="preserve">
-    <value>适合宽度(_F)</value>
+    <value>自适应(_F)</value>
   </data>
   <data name="LocalHexSettings_BaseOffset" xml:space="preserve">
     <value>基础偏移量(_B)</value>
@@ -1379,7 +1379,7 @@
     <value>偏移位大小(_T)</value>
   </data>
   <data name="LocalHexSettings_ShowASCII" xml:space="preserve">
-    <value>显示ASCII (_W)</value>
+    <value>显示 ASCII(_W)</value>
   </data>
   <data name="LocalHexSettings_ShowOffset" xml:space="preserve">
     <value>显示偏移(_H)</value>
@@ -1391,7 +1391,7 @@
     <value>起始偏移量(_S)</value>
   </data>
   <data name="LocalHexSettings_Title" xml:space="preserve">
-    <value>本地十六进制编辑器设置</value>
+    <value>当前页面设置</value>
   </data>
   <data name="LocalHexSettings_UseRelOffsets" xml:space="preserve">
     <value>使用相对偏移量(_R)</value>
@@ -1406,7 +1406,7 @@
     <value>粘贴(_P)</value>
   </data>
   <data name="PasteDotNetMetaDataBlobCommand" xml:space="preserve">
-    <value>粘贴(#Blob 数据)</value>
+    <value>粘贴 (#Blob 数据)</value>
   </data>
   <data name="PasteSpecialCommand" xml:space="preserve">
     <value>粘贴指定</value>
@@ -1536,7 +1536,7 @@
     <value>复制文件偏移</value>
   </data>
   <data name="CopyRVACommand" xml:space="preserve">
-    <value>复制RVA</value>
+    <value>复制相对虚拟地址</value>
   </data>
   <data name="CopyValueCommand" xml:space="preserve">
     <value>复制值</value>
@@ -1554,13 +1554,13 @@
     <value>Ctrl+Shift+V</value>
   </data>
   <data name="GoToAbsolutePosition" xml:space="preserve">
-    <value>位置</value>
+    <value>相对位置</value>
   </data>
   <data name="GoToCurrentPosition" xml:space="preserve">
     <value>当前位置</value>
   </data>
   <data name="GoToFilePosition" xml:space="preserve">
-    <value>文件</value>
+    <value>文件位置</value>
   </data>
   <data name="ShortCutKeyCtrl1" xml:space="preserve">
     <value>Ctrl+1</value>
@@ -1689,7 +1689,7 @@
     <value>书签</value>
   </data>
   <data name="BookmarksOptDlgTab" xml:space="preserve">
-    <value>书签</value>
+    <value>书签窗口</value>
   </data>
   <data name="BookmarksSettings_SyntaxHighlight" xml:space="preserve">
     <value>语法高亮</value>
@@ -1710,7 +1710,7 @@
     <value>名称</value>
   </data>
   <data name="Bookmarks_NoMatch" xml:space="preserve">
-    <value>没有能匹配搜索过滤器的书签。</value>
+    <value>未找到与搜索条件相匹配的书签。</value>
   </data>
   <data name="Bookmarks_Search" xml:space="preserve">
     <value>搜索</value>
@@ -1722,7 +1722,7 @@
     <value>书签窗口(_B)</value>
   </data>
   <data name="Bookmarks_ExportMatchingBookmarks_ToolTip" xml:space="preserve">
-    <value>导出当前的搜索条件匹配的所有书签</value>
+    <value>导出与当前搜索条件匹配的所有书签</value>
   </data>
   <data name="Bookmarks_GoToLocation_ToolTip" xml:space="preserve">
     <value>将插入符号移动到选定的书签。</value>
@@ -1764,10 +1764,10 @@
     <value>在当前行上添加或移除书签。</value>
   </data>
   <data name="Bookmarks_ToggleMatchingBookmarks_ToolTip" xml:space="preserve">
-    <value>启用或禁用与当前的搜索条件匹配的所有书签</value>
+    <value>启用或禁用与当前搜索条件匹配的所有书签</value>
   </data>
   <data name="BookmarkDefaultName" xml:space="preserve">
-    <value>书签{0}</value>
+    <value>书签 {0}</value>
   </data>
   <data name="RenameCommand" xml:space="preserve">
     <value>重命名</value>
@@ -1902,7 +1902,7 @@
     <value>反汇编器</value>
   </data>
   <data name="CodeStyleDlgTabTitle" xml:space="preserve">
-    <value>代码风格</value>
+    <value>代码样式</value>
   </data>
   <data name="DisassemblySettings_AddLabels" xml:space="preserve">
     <value>添加标签</value>
@@ -1911,13 +1911,13 @@
     <value>如有必要，在十六进制数前加 '0'</value>
   </data>
   <data name="DisassemblySettings_AlwaysShowMemorySize" xml:space="preserve">
-    <value>总是显示内存操作数的大小</value>
+    <value>始终显示内存操作数的大小</value>
   </data>
   <data name="DisassemblySettings_AlwaysShowScale" xml:space="preserve">
-    <value>总是显示标量的值</value>
+    <value>始终显示标量的值</value>
   </data>
   <data name="DisassemblySettings_AlwaysShowSegmentRegister" xml:space="preserve">
-    <value>总是显示段寄存器</value>
+    <value>始终显示段寄存器</value>
   </data>
   <data name="DisassemblySettings_DigitSeparator" xml:space="preserve">
     <value>数字分隔符</value>
@@ -1944,10 +1944,10 @@
     <value>在索引寄存器之前显示比例</value>
   </data>
   <data name="DisassemblySettings_BranchLeadingZeroes" xml:space="preserve">
-    <value>添加前导0(分支)</value>
+    <value>添加前导 0 (分支)</value>
   </data>
   <data name="DisassemblySettings_LeadingZeroes" xml:space="preserve">
-    <value>添加前导0</value>
+    <value>添加前导 0</value>
   </data>
   <data name="DisassemblySettings_ShowBranchSize" xml:space="preserve">
     <value>显示分支大小</value>
@@ -2010,13 +2010,13 @@
     <value>裸寄存器</value>
   </data>
   <data name="DisassemblySettings_ShowMnemonicSizeSuffix" xml:space="preserve">
-    <value>始终显示助记符大小后缀</value>
+    <value>显示助记符大小后缀</value>
   </data>
   <data name="DisassemblySettings_SpaceAfterMemoryOperandComma" xml:space="preserve">
     <value>内存操作数逗号后的空格</value>
   </data>
   <data name="DisassemblySettings_UseHexNumbers" xml:space="preserve">
-    <value>十六进制数</value>
+    <value>以十六进制显示数字</value>
   </data>
   <data name="Disassembly_TabTitle" xml:space="preserve">
     <value>反汇编</value>
@@ -2034,7 +2034,7 @@
     <value>显示符号地址</value>
   </data>
   <data name="Decompile_Timestamp" xml:space="preserve">
-    <value>时间戳:</value>
+    <value>时间戳: </value>
   </data>
   <data name="UnknownValue" xml:space="preserve">
     <value>&lt;未知&gt;</value>
@@ -2058,13 +2058,13 @@
     <value>类型</value>
   </data>
   <data name="NumberBaseFormatString" xml:space="preserve">
-    <value>基数 {0}:</value>
+    <value>基数 {0}: </value>
   </data>
   <data name="RawValue" xml:space="preserve">
-    <value>原始:</value>
+    <value>原始值: </value>
   </data>
   <data name="RecentFilesCommand" xml:space="preserve">
-    <value>最近的文件(_F)</value>
+    <value>最近打开过的文件(_F)</value>
   </data>
   <data name="ToolTip_Instruction" xml:space="preserve">
     <value>指令</value>

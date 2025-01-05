@@ -39,7 +39,7 @@ namespace dnSpy.Debugger.DotNet.Mono.Dialogs.AttachToProcess {
 		static readonly ushort[] multicastPorts = new ushort[] { 34997, 54997, 57997, 58997 };
 		static readonly TimeSpan maxWaitTime = TimeSpan.FromMilliseconds(2000);
 
-		struct PlayerId : IEquatable<PlayerId> {
+		readonly struct PlayerId : IEquatable<PlayerId> {
 			readonly string ip;
 			readonly ushort port;
 

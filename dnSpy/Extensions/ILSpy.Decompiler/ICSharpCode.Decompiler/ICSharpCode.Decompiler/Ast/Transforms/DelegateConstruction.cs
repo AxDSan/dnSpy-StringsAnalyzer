@@ -240,7 +240,7 @@ namespace ICSharpCode.Decompiler.Ast.Transforms {
 				throw;
 			}
 			catch (Exception ex) {
-				AstBuilder.CreateBadMethod(subContext, method, ex, out body, out builder);
+				AstBuilder.CreateBadMethod(subContext, method, ex, stringBuilder, out body, out builder);
 			}
 			TransformationPipeline.RunTransformationsUntil(body, v => v is DelegateConstruction, subContext);
 			body.AcceptVisitor(this, null);

@@ -25,7 +25,7 @@ using dnlib.DotNet;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler {
-	internal class XmlnsScope : List<NamespaceMap> {
+	sealed class XmlnsScope : List<NamespaceMap> {
 		public BamlElement Element { get; }
 		public XmlnsScope PreviousScope { get; }
 
@@ -46,8 +46,8 @@ namespace dnSpy.BamlDecompiler {
 		}
 	}
 
-	internal class XmlnsDictionary {
-		Dictionary<string, NamespaceMap> piMappings = new Dictionary<string, NamespaceMap>();
+	sealed class XmlnsDictionary {
+		readonly Dictionary<string, NamespaceMap> piMappings = new Dictionary<string, NamespaceMap>();
 
 		public XmlnsDictionary() => CurrentScope = null;
 

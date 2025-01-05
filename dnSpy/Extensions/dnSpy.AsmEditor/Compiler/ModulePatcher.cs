@@ -23,7 +23,7 @@ using dnSpy.AsmEditor.Compiler.MDEditor;
 using dnSpy.Contracts.ETW;
 
 namespace dnSpy.AsmEditor.Compiler {
-	struct ModulePatcher {
+	readonly struct ModulePatcher {
 		readonly RawModuleBytes moduleData;
 		readonly bool isFileLayout;
 		readonly IAssembly tempAssembly;

@@ -33,6 +33,7 @@ namespace dnSpy.AsmEditor.DnlibDialogs {
 		ThisCall		= CallingConvention.ThisCall,
 		FastCall		= CallingConvention.FastCall,
 		VarArg			= CallingConvention.VarArg,
+		Unmanaged		= CallingConvention.Unmanaged,
 		NativeVarArg	= CallingConvention.NativeVarArg,
 	}
 
@@ -89,23 +90,23 @@ namespace dnSpy.AsmEditor.DnlibDialogs {
 		CallingConvention callingConvention;
 
 		public bool IsGeneric {
-			get => GetFlags(dnlib.DotNet.CallingConvention.Generic);
-			set => SetFlags(dnlib.DotNet.CallingConvention.Generic, value);
+			get => GetFlags(CallingConvention.Generic);
+			set => SetFlags(CallingConvention.Generic, value);
 		}
 
 		public bool HasThis {
-			get => GetFlags(dnlib.DotNet.CallingConvention.HasThis);
-			set => SetFlags(dnlib.DotNet.CallingConvention.HasThis, value);
+			get => GetFlags(CallingConvention.HasThis);
+			set => SetFlags(CallingConvention.HasThis, value);
 		}
 
 		public bool ExplicitThis {
-			get => GetFlags(dnlib.DotNet.CallingConvention.ExplicitThis);
-			set => SetFlags(dnlib.DotNet.CallingConvention.ExplicitThis, value);
+			get => GetFlags(CallingConvention.ExplicitThis);
+			set => SetFlags(CallingConvention.ExplicitThis, value);
 		}
 
-		bool GetFlags(dnlib.DotNet.CallingConvention flag) => (CallingConvention & flag) != 0;
+		bool GetFlags(CallingConvention flag) => (CallingConvention & flag) != 0;
 
-		void SetFlags(dnlib.DotNet.CallingConvention flag, bool value) {
+		void SetFlags(CallingConvention flag, bool value) {
 			if (value)
 				CallingConvention |= flag;
 			else
@@ -165,17 +166,12 @@ namespace dnSpy.AsmEditor.DnlibDialogs {
 			MethodCallingConv = new EnumListVM(methodCallingConvList, (a, b) => {
 				if (!IsMethodSig)
 					throw new InvalidOperationException();
-				CallingConvention = (CallingConvention & ~dnlib.DotNet.CallingConvention.Mask) |
-					(dnlib.DotNet.CallingConvention)(MethodCallingConv)MethodCallingConv!.SelectedItem!;
+				CallingConvention = (CallingConvention & ~CallingConvention.Mask) | (CallingConvention)(MethodCallingConv)MethodCallingConv!.SelectedItem!;
 			});
-			if (!CanHaveSentinel) {
-				MethodCallingConv.Items.RemoveAt(MethodCallingConv.GetIndex(DnlibDialogs.MethodCallingConv.VarArg));
-				MethodCallingConv.Items.RemoveAt(MethodCallingConv.GetIndex(DnlibDialogs.MethodCallingConv.NativeVarArg));
-			}
 			if (IsMethodSig)
 				MethodCallingConv.SelectedItem = DnlibDialogs.MethodCallingConv.Default;
 			else
-				CallingConvention = (CallingConvention & ~dnlib.DotNet.CallingConvention.Mask) | dnlib.DotNet.CallingConvention.Property;
+				CallingConvention = (CallingConvention & ~CallingConvention.Mask) | CallingConvention.Property;
 			ReturnType = options.TypeSigCreatorOptions.OwnerModule.CorLibTypes.Void;
 		}
 
@@ -199,6 +195,10 @@ namespace dnSpy.AsmEditor.DnlibDialogs {
 			}
 			else {
 				CallingConvention = sig.CallingConvention;
+				if (IsMethodSig)
+					MethodCallingConv.SelectedItem = (MethodCallingConv)(CallingConvention & CallingConvention.Mask);
+				else
+					CallingConvention = (CallingConvention & ~CallingConvention.Mask) | CallingConvention.Property;
 				ReturnType = sig.RetType;
 				ParametersCreateTypeSigArray.TypeSigCollection.Clear();
 				ParametersCreateTypeSigArray.TypeSigCollection.AddRange(sig.Params);

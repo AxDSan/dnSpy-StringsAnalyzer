@@ -10,7 +10,7 @@ using dnSpy.Contracts.Settings;
 // This file adds custom document tab content when the user clicks on our new AssemblyChildNode tree node.
 // This node is created by TreeNodeDataProvider.cs.
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	[ExportDocumentTabContentFactory]
 	sealed class AssemblyChildNodeTabContentFactory : IDocumentTabContentFactory {
 		// Called to create a new IFileTabContent. If it's our new tree node, create a new IFileTabContent for it

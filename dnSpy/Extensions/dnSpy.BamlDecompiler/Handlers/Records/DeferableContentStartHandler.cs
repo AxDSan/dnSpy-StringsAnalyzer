@@ -24,7 +24,7 @@ using System.Diagnostics;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class DeferableContentStartHandler : IHandler {
+	sealed  class DeferableContentStartHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.DeferableContentStart;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

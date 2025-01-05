@@ -376,13 +376,9 @@ namespace dnSpy.Decompiler.MSBuild {
 		}
 
 		List<ProjectFile>? TryCreateResourceFiles(ModuleDef module, ResourceNameCreator resourceNameCreator, EmbeddedResource er) {
-			ResourceElementSet set;
-			try {
-				set = ResourceReader.Read(module, er.CreateReader());
-			}
-			catch {
+			var set = TryCreateResourceElementSet(module, er);
+			if (set is null)
 				return null;
-			}
 			if (IsXamlResource(module, er.Name, set))
 				return CreateXamlResourceFiles(module, resourceNameCreator, set).ToList();
 			if (Options.CreateResX) {
@@ -439,7 +435,7 @@ namespace dnSpy.Decompiler.MSBuild {
 			if (!Options.CreateResX)
 				throw new InvalidOperationException();
 
-			return new ResXProjectFile(module, filename, typeFullName, er) {
+			return new ResXProjectFile(module, filename, typeFullName, set) {
 				IsSatelliteFile = isSatellite,
 			};
 		}

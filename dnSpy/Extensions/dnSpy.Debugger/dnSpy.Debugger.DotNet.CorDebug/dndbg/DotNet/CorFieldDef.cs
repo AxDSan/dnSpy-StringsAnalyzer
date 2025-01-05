@@ -92,6 +92,22 @@ namespace dndbg.DotNet {
 
 		protected override MarshalType? GetMarshalType_NoLock() => readerModule.ReadMarshalType(this, GenericParamContext.Create(ownerType));
 
+		protected override ImplMap? GetImplMap_NoLock() {
+			var mdi = readerModule.MetaDataImport;
+			uint token = OriginalToken.Raw;
+
+			var name = MDAPI.GetPinvokeMapName(mdi, token);
+			if (name is null)
+				return null;
+			if (!MDAPI.GetPinvokeMapProps(mdi, token, out var attrs, out uint moduleToken))
+				return null;
+			var mr = readerModule.ResolveToken(moduleToken) as ModuleRef;
+			if (mr is null)
+				return null;
+
+			return readerModule.UpdateRowId(new ImplMapUser(mr, name, attrs));
+		}
+
 		protected override RVA GetRVA_NoLock() {
 			GetFieldRVA_NoLock(out var rva2);
 			return rva2;

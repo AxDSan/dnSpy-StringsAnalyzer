@@ -563,6 +563,30 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 			}
 		}
 
+		internal DbgDotNetValue CreateInstance2(DmdConstructorInfo ctor, ILValue[] arguments) {
+			DbgDotNetValueResult res;
+			DbgDotNetArrayDimensionInfo[] dimensionInfos;
+			switch (ctor.SpecialMethodKind) {
+			case DmdSpecialMethodKind.Array_Constructor1:
+				dimensionInfos = new DbgDotNetArrayDimensionInfo[arguments.Length];
+				for (int i = 0; i < dimensionInfos.Length; i++)
+					dimensionInfos[i] = new DbgDotNetArrayDimensionInfo(0, (uint)ReadInt32(arguments[i]));
+				res = runtime.CreateArray(evalInfo, ctor.ReflectedType!.GetElementType()!, dimensionInfos);
+				return RecordValue(res);
+
+			case DmdSpecialMethodKind.Array_Constructor2:
+				dimensionInfos = new DbgDotNetArrayDimensionInfo[arguments.Length / 2];
+				for (int i = 0; i < dimensionInfos.Length; i++)
+					dimensionInfos[i] = new DbgDotNetArrayDimensionInfo(ReadInt32(arguments[i * 2]), (uint)ReadInt32(arguments[i * 2 + 1]));
+				res = runtime.CreateArray(evalInfo, ctor.ReflectedType!.GetElementType()!, dimensionInfos);
+				return RecordValue(res);
+
+			default:
+				res = CreateInstanceCore(ctor, arguments);
+				return RecordValue(res);
+			}
+		}
+
 		DbgDotNetValueResult CreateInstanceCore(DmdConstructorInfo ctor, ILValue[] arguments) {
 			if (ctor.IsStatic)
 				return DbgDotNetValueResult.CreateError(PredefinedEvaluationErrorMessages.InternalDebuggerError);
@@ -603,6 +627,21 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		}
 
 		public override bool CallStaticIndirect(DmdMethodSignature methodSig, ILValue methodAddress, ILValue[] arguments, out ILValue? returnValue) {
+			if (methodAddress is FunctionPointerILValue fnPtrValue) {
+				var targetMethod = fnPtrValue.Method;
+
+				if (!methodSig.Equals(fnPtrValue.Method.GetMethodSignature())) {
+					returnValue = null;
+					return false;
+				}
+
+				if (!targetMethod.IsStatic || fnPtrValue.IsVirtual && !fnPtrValue.VirtualThisObject!.IsNull) {
+					returnValue = null;
+					return false;
+				}
+
+				return CallStatic(targetMethod, arguments, out returnValue);
+			}
 			returnValue = null;
 			return false;//TODO:
 		}

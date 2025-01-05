@@ -24,7 +24,7 @@ using System.Xml.Linq;
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class ConstructorParametersStartHandler : IHandler {
+	sealed class ConstructorParametersStartHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.ConstructorParametersStart;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {

@@ -127,22 +127,22 @@
     <value>检查算术溢出/下溢</value>
   </data>
   <data name="CompilerSettings_EmbedVBRuntime" xml:space="preserve">
-    <value>嵌入的 Visual Basic runtime</value>
+    <value>始终嵌入 Visual Basic 运行时</value>
   </data>
   <data name="CompilerSettings_Optimize" xml:space="preserve">
     <value>优化代码</value>
   </data>
   <data name="CompilerSettings_OptionCompareBinary" xml:space="preserve">
-    <value>选项 比较：二进制</value>
+    <value>Option Compare Binary</value>
   </data>
   <data name="CompilerSettings_OptionExplicit" xml:space="preserve">
-    <value>选项 显式</value>
+    <value>Option Explicit</value>
   </data>
   <data name="CompilerSettings_OptionInfer" xml:space="preserve">
-    <value>选项 推断</value>
+    <value>Option Infer</value>
   </data>
   <data name="CompilerSettings_OptionStrict" xml:space="preserve">
-    <value>选项 严格</value>
+    <value>Option Strict</value>
   </data>
   <data name="CompilerSettings_PreprocessorSymbols" xml:space="preserve">
     <value>条件编译符号</value>
@@ -154,7 +154,7 @@
     <value>常量</value>
   </data>
   <data name="DebuggerExpressionHasNoValue" xml:space="preserve">
-    <value>表达式已计算，但是没有值</value>
+    <value>已对表达式进行求值操作，但是没有值</value>
   </data>
   <data name="DebuggerVarsWindow_CSharp_StaticMembers" xml:space="preserve">
     <value>静态成员</value>
@@ -169,7 +169,7 @@
     <value>展开动态视图将获得该对象的动态成员</value>
   </data>
   <data name="DebuggerVarsWindow_ExpandResultsViewMessage" xml:space="preserve">
-    <value>展开“结果”视图将枚举IEnumerable</value>
+    <value>展开结果视图将枚举 IEnumerable</value>
   </data>
   <data name="DebuggerVarsWindow_InstanceMembers" xml:space="preserve">
     <value>实例成员</value>

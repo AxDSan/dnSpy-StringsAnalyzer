@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.Utilities;
 // Adds an underline to Assembly Explorer nodes: Assembly / Method
 // Adds light green background in the middle of all text
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	static class TreeViewNodeColorizerClassifications {
 		public const string UnderlineClassificationType = "Example2.Extension.UnderlineClassificationType";
 		public const string LightgreenBackgroundClassificationType = "Example2.Extension.LightgreenBackgroundClassificationType";

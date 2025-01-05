@@ -25,7 +25,7 @@ using System.Xml.Linq;
 using dnlib.DotNet;
 
 namespace dnSpy.BamlDecompiler.Xaml {
-	internal class XamlProperty {
+	sealed class XamlProperty {
 		public XamlType DeclaringType { get; }
 		public string PropertyName { get; }
 

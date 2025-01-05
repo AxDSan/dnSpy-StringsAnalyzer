@@ -64,7 +64,8 @@ namespace ICSharpCode.NRefactory.CSharp.Resolver {
 		}
 
 		#region TypePair (for caching)
-		struct TypePair : IEquatable<TypePair>
+
+		readonly struct TypePair : IEquatable<TypePair>
 		{
 			public readonly IType FromType;
 			public readonly IType ToType;

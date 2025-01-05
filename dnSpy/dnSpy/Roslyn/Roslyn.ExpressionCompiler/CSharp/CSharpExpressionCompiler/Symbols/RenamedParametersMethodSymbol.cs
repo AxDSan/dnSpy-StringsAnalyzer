@@ -41,7 +41,7 @@ namespace Microsoft.CodeAnalysis.CSharp.ExpressionEvaluator
         }
 
         private ParameterSymbol MakeParameterSymbol(int ordinal, string name, ParameterSymbol sourceParameter) =>
-            SynthesizedParameterSymbol.Create(this, sourceParameter.TypeWithAnnotations, ordinal, sourceParameter.RefKind, name, sourceParameter.EffectiveScope, sourceParameter.RefCustomModifiers);
+            SynthesizedParameterSymbol.Create(this, sourceParameter.TypeWithAnnotations, ordinal, sourceParameter.RefKind, name, sourceParameter.EffectiveScope, refCustomModifiers: sourceParameter.RefCustomModifiers);
 
         public override MethodSymbol UnderlyingMethod => _originalMethod;
 

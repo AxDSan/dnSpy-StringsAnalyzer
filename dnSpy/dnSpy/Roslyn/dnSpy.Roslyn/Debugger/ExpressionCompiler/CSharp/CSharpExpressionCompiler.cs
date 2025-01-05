@@ -84,16 +84,17 @@ namespace dnSpy.Roslyn.Debugger.ExpressionCompiler.CSharp {
 			GetCompilationState<CSharpEvalContextState>(evalInfo, references, out var langDebugInfo, out var method, out var methodToken, out var localVarSigTok, out var state, out var metadataBlocks, out var methodVersion);
 
 			var getMethodDebugInfo = CreateGetMethodDebugInfo(state, langDebugInfo);
-			var evalCtx = EvaluationContext.CreateMethodContext(metadataBlocks, getMethodDebugInfo, method.Module.Mvid ?? Guid.Empty, methodToken, methodVersion, langDebugInfo.ILOffset, localVarSigTok);
-			state.MetadataContext = new CSharpMetadataContext(evalCtx.Compilation, evalCtx);
 
 			if ((options & DbgEvaluationOptions.RawLocals) == 0) {
+				var evalCtx = EvaluationContext.CreateMethodContext(metadataBlocks, getMethodDebugInfo, method.Module.Mvid ?? Guid.Empty, methodToken, methodVersion, langDebugInfo.ILOffset, localVarSigTok);
+				state.MetadataContext = new CSharpMetadataContext(evalCtx.Compilation, evalCtx);
+
 				var asmBytes = evalCtx.CompileGetLocals(false, ImmutableArray<Alias>.Empty, out var localsInfo, out var typeName, out var errorMessage);
 				var res = CreateCompilationResult(state, asmBytes, typeName, localsInfo, errorMessage);
 				if (!res.IsError)
 					return res;
 			}
-			return CompileGetLocals(state, method);
+			return CompileGetLocals(state, method, getMethodDebugInfo);
 		}
 
 		public override DbgDotNetCompilationResult CompileExpression(DbgEvaluationInfo evalInfo, DbgModuleReference[] references, DbgDotNetAlias[] aliases, string expression, DbgEvaluationOptions options) {
@@ -117,28 +118,30 @@ namespace dnSpy.Roslyn.Debugger.ExpressionCompiler.CSharp {
 			else if (errorMessage is not null)
 				name = CreateErrorName(expression);
 			else
-				name = GetExpressionText(state.MetadataContext.EvaluationContext!, state.MetadataContext.Compilation, expression, cancellationToken);
+				name = GetExpressionText(state.MetadataContext.EvaluationContext!, state.MetadataContext.Compilation, expression, (options & DbgEvaluationOptions.Expression) == 0, cancellationToken);
 			return CreateCompilationResult(expression, compileResult, resultProperties, errorMessage, name);
 		}
 
-		DbgDotNetText GetExpressionText(EvaluationContext evaluationContext, CSharpCompilation compilation, string expression, CancellationToken cancellationToken) {
+		DbgDotNetText GetExpressionText(EvaluationContext evaluationContext, CSharpCompilation compilation, string expression, bool isStatement, CancellationToken cancellationToken) {
 			if (TryGetAliasInfo(expression, out var aliasInfo))
 				return CreateText(aliasInfo.Kind, expression);
-			var (exprSource, exprOffset) = CreateExpressionSource(evaluationContext, expression);
+			var (exprSource, exprOffset) = CreateExpressionSource(evaluationContext, expression, isStatement);
 			return GetExpressionText(LanguageNames.CSharp, csharpCompilationOptions, csharpParseOptions, expression, exprSource, exprOffset, compilation.References, cancellationToken);
 		}
 		static readonly CSharpCompilationOptions csharpCompilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
 		static readonly CSharpParseOptions csharpParseOptions = new CSharpParseOptions(LanguageVersion.Latest);
 
-		(string exprSource, int exprOffset) CreateExpressionSource(EvaluationContext evaluationContext, string expression) {
+		(string exprSource, int exprOffset) CreateExpressionSource(EvaluationContext evaluationContext, string expression, bool isStatement) {
 			var sb = ObjectCache.AllocStringBuilder();
 
 			evaluationContext.WriteImports(sb);
-			sb.Append(@"static class __C__L__A__S__S__ {");
-			sb.Append(@"static void __M__E__T__H__O__D__(");
+			sb.Append("static class __C__L__A__S__S__{");
+			sb.Append("static void __M__E__T__H__O__D__(");
 			evaluationContext.WriteParameters(sb);
-			sb.Append(") {");
+			sb.Append("){");
 			evaluationContext.WriteLocals(sb);
+			if (!isStatement)
+				sb.Append("var __L_O_C_A_L__=");
 			int exprOffset = sb.Length;
 			sb.Append(expression);
 			sb.Append(';');
@@ -151,7 +154,8 @@ namespace dnSpy.Roslyn.Debugger.ExpressionCompiler.CSharp {
 
 		public override DbgDotNetCompilationResult CompileTypeExpression(DbgEvaluationInfo evalInfo, DmdType type, DbgModuleReference[] references, DbgDotNetAlias[] aliases, string expression, DbgEvaluationOptions options) {
 			GetTypeCompilationState<CSharpEvalContextState>(evalInfo, references, out var state, out var metadataBlocks);
-			var evalCtx = EvaluationContext.CreateTypeContext(state.MetadataContext.Compilation, type.Module.ModuleVersionId, type.MetadataToken);
+			var compilation = metadataBlocks.ToCompilation(moduleVersionId: default, MakeAssemblyReferencesKind.AllAssemblies);
+			var evalCtx = EvaluationContext.CreateTypeContext(compilation, type.Module.ModuleVersionId, type.MetadataToken);
 			return CompileExpressionCore(aliases, expression, options, state, evalCtx, evalInfo.CancellationToken);
 		}
 

@@ -113,8 +113,7 @@ namespace dndbg.Engine {
 		}
 
 		public CorFunction(ICorDebugFunction func, CorModule? module = null)
-			: base(func) {
-		}
+			: base(func) => this.module = module;
 
 		public MethodAttributes GetAttributes() {
 			MDAPI.GetMethodAttributes(Module?.GetMetaDataInterface<IMetaDataImport>(), Token, out var attributes, out var implAttributes);

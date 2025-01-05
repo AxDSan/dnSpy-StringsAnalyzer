@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DbgAsm_Args" xml:space="preserve">
-    <value>参数(_R)</value>
+    <value>调试参数(_R)</value>
   </data>
   <data name="DbgAsm_BreakAt" xml:space="preserve">
     <value>中断于(_B)</value>
   </data>
   <data name="DbgAsm_Host" xml:space="preserve">
-    <value>宿主(_H)</value>
+    <value>宿主程序(_H)</value>
   </data>
   <data name="DbgAsm_HostArgs" xml:space="preserve">
-    <value>宿主参数(_G)</value>
+    <value>程序参数(_G)</value>
   </data>
   <data name="DbgAsm_WorkingDir" xml:space="preserve">
     <value>工作目录(_W)</value>
@@ -142,7 +142,7 @@
     <value>入口点</value>
   </data>
   <data name="Error_CouldNotFindDotNetCoreHost" xml:space="preserve">
-    <value>无法找到.NET Core宿主 '{0}'</value>
+    <value>无法找到 .NET Core 宿主程序 '{0}'</value>
   </data>
   <data name="Error_CouldNotStartDebugger" xml:space="preserve">
     <value>无法启动调试器。{0}</value>
@@ -150,10 +150,10 @@
   <data name="Error_CouldNotStartDebuggerCheckAccessToFile" xml:space="preserve">
     <value>无法启动调试器。请确保您有权限访问文件 '{0}'
 
-错误：{1}</value>
+错误: {1}</value>
   </data>
   <data name="Error_CouldNotStartDebuggerRequireAdminPrivLvl" xml:space="preserve">
-    <value>无法启动调试器。调试的程序需要管理员权限。请以管理员权限重启 dnSpy 并再试。</value>
+    <value>无法启动调试器。因为调试的目标程序需要管理员权限，请以管理员的身份运行 dnSpy 并重试。</value>
   </data>
   <data name="Error_FileDoesNotExist" xml:space="preserve">
     <value>文件不存在</value>
@@ -192,13 +192,13 @@
     <value>WaitSleepJoin</value>
   </data>
   <data name="UseDnSpy64ExeToDebug32" xml:space="preserve">
-    <value>请改用32位dnspy 来调试32位应用程序。</value>
+    <value>请改用 32 位的 dnSpy 来调试 32 位应用程序。</value>
   </data>
   <data name="UseDnSpyExeToDebug64" xml:space="preserve">
-    <value>请改用64位dnspy 来调试64位应用程序。</value>
+    <value>请改用 64 位的 dnSpy 来调试 64 位应用程序。</value>
   </data>
   <data name="ExceptionMessageIsNull" xml:space="preserve">
-    <value>"&lt; 没有异常消息 &gt;"</value>
+    <value>"&lt;没有异常消息&gt;"</value>
   </data>
   <data name="Error_CouldNotStartDebugger2" xml:space="preserve">
     <value>无法启动调试器。
@@ -206,16 +206,16 @@
 错误：{0}</value>
   </data>
   <data name="Error_CouldNotAttachToProcess" xml:space="preserve">
-    <value>不能附加到进程{0}</value>
+    <value>无法附加到目标进程 {0}</value>
   </data>
   <data name="Error_ProcessIsAlreadyBeingDebugged" xml:space="preserve">
-    <value>其它程序正在调试进程{0}</value>
+    <value>目标进程正在被其它程序调试 {0}</value>
   </data>
   <data name="StackFrame_NativeFrame" xml:space="preserve">
     <value>本机帧 {0}</value>
   </data>
   <data name="StackFrame_AppdomainTransition" xml:space="preserve">
-    <value>程序域转换</value>
+    <value>AppDomain 转换</value>
   </data>
   <data name="StackFrame_ClassInit" xml:space="preserve">
     <value>类初始化</value>
@@ -260,7 +260,7 @@
     <value>无法设置下一条语句。</value>
   </data>
   <data name="Error_CouldNotBreakProcess" xml:space="preserve">
-    <value>无法中断进程。错误：0x{0:X8}</value>
+    <value>无法中断进程。错误: 0x{0:X8}</value>
   </data>
   <data name="InternalDebuggerError" xml:space="preserve">
     <value>内部调试器错误</value>
@@ -269,10 +269,10 @@
     <value>CLR 调试器发生错误。请终止调试的进程并再试。
 
 HR: 0x{0:X8}
-错误：0x{1:X8}</value>
+错误: 0x{1:X8}</value>
   </data>
   <data name="DbgAsm_UseHostExecutable" xml:space="preserve">
-    <value>使用host可执行文件</value>
+    <value>使用宿主可执行文件</value>
   </data>
   <data name="DbgAsm_Executable" xml:space="preserve">
     <value>可执行程序(_X)</value>

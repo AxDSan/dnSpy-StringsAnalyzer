@@ -405,9 +405,9 @@ namespace dnSpy.AsmEditor.Module {
 			if (ep is MethodDef method) {
 				var declType = method.DeclaringType;
 				if (declType is not null)
-					s = $"{method.Name} ({declType.FullName})";
+					s = $"{IdentifierEscaper.Escape(method.Name)} ({IdentifierEscaper.Escape(declType.FullName)})";
 				else
-					s = method.Name;
+					s = IdentifierEscaper.Escape(method.Name);
 			}
 			else {
 				//TODO: Support EP in other module

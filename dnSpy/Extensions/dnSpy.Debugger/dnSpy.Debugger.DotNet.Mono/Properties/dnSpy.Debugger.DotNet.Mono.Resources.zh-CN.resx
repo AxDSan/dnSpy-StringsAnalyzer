@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DbgAsm_Args" xml:space="preserve">
-    <value>参数(_R)</value>
+    <value>调试参数(_R)</value>
   </data>
   <data name="DbgAsm_Assembly" xml:space="preserve">
     <value>程序集(_A)</value>
@@ -133,7 +133,7 @@
     <value>连接</value>
   </data>
   <data name="DbgAsm_IP_Address" xml:space="preserve">
-    <value>IP地址</value>
+    <value>IP 地址</value>
   </data>
   <data name="DbgAsm_WorkingDir" xml:space="preserve">
     <value>工作目录(_W)</value>
@@ -196,7 +196,7 @@
     <value>WaitSleepJoin</value>
   </data>
   <data name="ExceptionMessageIsNull" xml:space="preserve">
-    <value>"&lt; 没有异常消息 &gt;"</value>
+    <value>"&lt;没有异常消息&gt;"</value>
   </data>
   <data name="StackFrame_FunctionEvaluation" xml:space="preserve">
     <value>函数求值</value>
@@ -205,10 +205,10 @@
     <value>本机转换</value>
   </data>
   <data name="Error_RuntimeDoesNotSupportCallingGenericMethods" xml:space="preserve">
-    <value>此运行时不支持调用泛型方法</value>
+    <value>目标运行时不支持调用泛型方法</value>
   </data>
   <data name="Error_CanNotWriteToThisArgument" xml:space="preserve">
-    <value>不能写入到“this”</value>
+    <value>不能写入到 "this"</value>
   </data>
   <data name="Error_CannotAccessMemberRuntimeLimitations" xml:space="preserve">
     <value>由于运行时限制，无法访问成员</value>
@@ -220,7 +220,7 @@
     <value>进程已暂停，等待调试器</value>
   </data>
   <data name="Error_RuntimeDoesNotSupportSettingNewStatement" xml:space="preserve">
-    <value>运行环境不支持设置新语句</value>
+    <value>目标运行时不支持设置新语句</value>
   </data>
   <data name="AttachToProcessXCommand" xml:space="preserve">
     <value>附加到进程 ({0})...</value>
@@ -229,7 +229,7 @@
     <value>编辑器</value>
   </data>
   <data name="ConnectToUnity_UseAttachToUnityProcessDlgBoxMessage" xml:space="preserve">
-    <value>使用 "附加到进程(Unity)" 对话框来附加到调试版本</value>
+    <value>使用 "附加到进程 (Unity)" 对话框来附加到调试版本</value>
   </data>
   <data name="CanNotSetABreakpointWhenProcessIsPaused" xml:space="preserve">
     <value>进程暂停时无法设置断点。</value>
@@ -241,12 +241,12 @@
     <value>确保您已经修补了游戏的 mono.dll 文件</value>
   </data>
   <data name="DbgAsm_ConnectionTimeoutInSeconds" xml:space="preserve">
-    <value>超时（秒）(_T)</value>
+    <value>超时 (秒)(_T)</value>
   </data>
   <data name="AttachToUnityProcess_DebugBuildsOnlyMessage" xml:space="preserve">
-    <value>仅可用于Debug编译的Unity进程</value>
+    <value>仅可用于在 Debug 模式下编译的 Unity 进程</value>
   </data>
   <data name="DebuggingUnityGamesText" xml:space="preserve">
-    <value>调试 Unity 游戏</value>
+    <value>调试 Unity 游戏 (Wiki)</value>
   </data>
 </root>

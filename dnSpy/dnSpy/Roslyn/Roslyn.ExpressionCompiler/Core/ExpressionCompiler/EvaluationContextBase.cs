@@ -83,9 +83,9 @@ namespace Microsoft.CodeAnalysis.ExpressionEvaluator
             DiagnosticFormatter formatter,
             CultureInfo? preferredUICulture)
         {
-            return (error is SimpleMessageDiagnostic simpleMessage) ?
-                simpleMessage.GetMessage() :
-                formatter.Format(error, preferredUICulture ?? CultureInfo.CurrentUICulture);
+            return (error is SimpleMessageDiagnostic simpleMessage)
+                ? simpleMessage.GetMessage()
+                : formatter.Format(error, preferredUICulture ?? CultureInfo.CurrentUICulture);
         }
 
         protected static string? GetErrorAndFree(DiagnosticBag diagnostics)

@@ -149,9 +149,12 @@ namespace dndbg.Engine {
 				if (a is null)
 					return null;
 				uint[] dims = new uint[Rank];
+				int hr;
 				fixed (uint* p = &dims[0]) {
-					int hr = a.GetDimensions((uint)dims.Length, new IntPtr(p));
+					hr = a.GetDimensions((uint)dims.Length, new IntPtr(p));
 				}
+				if (hr < 0)
+					return null;
 				return dims;
 			}
 		}
@@ -172,9 +175,12 @@ namespace dndbg.Engine {
 				if (a is null)
 					return null;
 				uint[] indicies = new uint[Rank];
+				int hr;
 				fixed (uint* p = &indicies[0]) {
-					int hr = a.GetBaseIndicies((uint)indicies.Length, new IntPtr(p));
+					hr = a.GetBaseIndicies((uint)indicies.Length, new IntPtr(p));
 				}
+				if (hr < 0)
+					return null;
 				return indicies;
 			}
 		}

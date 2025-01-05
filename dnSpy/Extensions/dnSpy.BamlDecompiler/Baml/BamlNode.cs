@@ -26,7 +26,7 @@ using System.Diagnostics;
 using System.Threading;
 
 namespace dnSpy.BamlDecompiler.Baml {
-	internal abstract class BamlNode {
+	abstract class BamlNode {
 		public BamlBlockNode Parent { get; set; }
 		public abstract BamlRecordType Type { get; }
 		public object Annotation { get; set; }
@@ -66,7 +66,7 @@ namespace dnSpy.BamlDecompiler.Baml {
 			return false;
 		}
 
-		public static bool IsMatch(BamlRecord header, BamlRecord footer) {
+		public static bool IsMatchHeaderAndFooter(BamlRecord header, BamlRecord footer) {
 			switch (header.Type) {
 				case BamlRecordType.ConstructorParametersStart:
 					return footer.Type == BamlRecordType.ConstructorParametersEnd;
@@ -125,8 +125,8 @@ namespace dnSpy.BamlDecompiler.Baml {
 					if (current is null)
 						throw new Exception("Unexpected footer.");
 
-					while (!IsMatch(current.Header, document[i])) {
-						// End record can be omited (sometimes).
+					while (!IsMatchHeaderAndFooter(current.Header, document[i])) {
+						// End record can be omitted (sometimes).
 						if (stack.Count > 0)
 							current = stack.Pop();
 					}
@@ -142,16 +142,15 @@ namespace dnSpy.BamlDecompiler.Baml {
 		}
 	}
 
-	internal class BamlRecordNode : BamlNode {
-		BamlRecord record;
+	sealed class BamlRecordNode : BamlNode {
+		public override BamlRecord Record { get; }
 
-		public override BamlRecord Record => record;
 		public override BamlRecordType Type => Record.Type;
 
-		public BamlRecordNode(BamlRecord record) => this.record = record;
+		public BamlRecordNode(BamlRecord record) => Record = record;
 	}
 
-	internal class BamlBlockNode : BamlNode {
+	sealed class BamlBlockNode : BamlNode {
 		public BamlRecord Header { get; set; }
 		public IList<BamlNode> Children { get; }
 		public BamlRecord Footer { get; set; }

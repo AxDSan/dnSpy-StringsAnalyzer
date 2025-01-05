@@ -10,7 +10,7 @@
     <IsDotNet>false</IsDotNet>
     <IsSelfContainedDotNet>false</IsSelfContainedDotNet>
     <IsDotNetFramework Condition=" $(TargetFramework.StartsWith(net4)) ">true</IsDotNetFramework>
-    <IsDotNet Condition=" !$(TargetFramework.StartsWith(net4)) ">false</IsDotNet>
+    <IsDotNet Condition=" !$(TargetFramework.StartsWith(net4)) ">true</IsDotNet>
     <IsSelfContainedDotNet Condition=" '$(IsDotNet)' == 'true' ">true</IsSelfContainedDotNet>
     <Features>strict;nullablePublicOnly</Features>
     <LangVersion>latest</LangVersion>
@@ -40,22 +40,15 @@
     <IcedVersion>1.18.0</IcedVersion>
     <MSBuildNuGetVersion>17.1.0</MSBuildNuGetVersion>
     <MSDiagRuntimeVersion>1.1.142101</MSDiagRuntimeVersion>
-    <MSVSCompositionVersion>17.2.41</MSVSCompositionVersion>
+    <MSVSCompositionVersion>17.4.16</MSVSCompositionVersion>
     <MSVSIntellisenseVersion>15.5.27130</MSVSIntellisenseVersion>
     <MSVSTextVersion>15.5.27130</MSVSTextVersion>
-    <NewtonsoftJsonVersion>13.0.2</NewtonsoftJsonVersion>
+    <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
     <OokiiDialogsWpfVersion>5.0.1</OokiiDialogsWpfVersion>
-    <RoslynVersion>4.4.0</RoslynVersion>
+    <RoslynVersion>4.5.0</RoslynVersion>
     <SCCompositionVersion>6.0.0</SCCompositionVersion>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Build\ConvertToNetstandardReferences\ConvertToNetstandardReferences.tasks" Condition=" '$(IsDotNet)' == 'true' " />
-
-  <!-- .NET 5.0 SDK doesn't currently support COMReference: https://github.com/dnSpy/dnSpy/issues/1053 -->
-  <PropertyGroup>
-    <HasCOMReference>false</HasCOMReference>
-    <HasCOMReference Condition=" '$(MSBuildRuntimeType)' != 'Core' ">true</HasCOMReference>
-    <DefineConstants Condition=" '$(HasCOMReference)' == 'true' ">$(DefineConstants);HAS_COMREFERENCE</DefineConstants>
-  </PropertyGroup>
 
 </Project>

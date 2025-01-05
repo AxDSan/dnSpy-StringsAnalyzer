@@ -1,14 +1,14 @@
 ﻿// Copyright (c) 2011 AlphaSierraPapa for the SharpDevelop Team
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this
 // software and associated documentation files (the "Software"), to deal in the Software
 // without restriction, including without limitation the rights to use, copy, modify, merge,
 // publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
 // to whom the Software is furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in all copies or
 // substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 // INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
 // PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
@@ -26,7 +26,7 @@ namespace ICSharpCode.Decompiler.ILAst {
 	/// This aborts the analysis and makes the whole transform fail.
 	/// </summary>
 	class SymbolicAnalysisFailedException : Exception {}
-	
+
 	enum SymbolicValueType
 	{
 		/// <summary>
@@ -63,12 +63,12 @@ namespace ICSharpCode.Decompiler.ILAst {
 		StateIsNotInRange,
 	}
 
-	struct SymbolicValue
+	readonly struct SymbolicValue
 	{
 		public readonly int Constant;
 		public readonly int Constant2;
 		public readonly SymbolicValueType Type;
-		
+
 		public SymbolicValue(SymbolicValueType type, int constant = 0)
 		{
 			this.Type = type;
@@ -101,30 +101,30 @@ namespace ICSharpCode.Decompiler.ILAst {
 			return $"[SymbolicValue {Type}: {Constant}]";
 		}
 	}
-	
+
 	class SymbolicEvaluationContext
 	{
 		readonly FieldDef stateField;
 		readonly List<ILVariable> stateVariables = new List<ILVariable>();
 
 		public List<ILVariable> StateVariables => stateVariables;
-		
+
 		public SymbolicEvaluationContext(FieldDef stateField)
 		{
 			this.stateField = stateField;
 		}
-		
+
 		public void AddStateVariable(ILVariable v)
 		{
 			if (!stateVariables.Contains(v))
 				stateVariables.Add(v);
 		}
-		
+
 		SymbolicValue Failed()
 		{
 			return new SymbolicValue(SymbolicValueType.Unknown);
 		}
-		
+
 		public SymbolicValue Eval(ILExpression expr)
 		{
 			SymbolicValue left, right;

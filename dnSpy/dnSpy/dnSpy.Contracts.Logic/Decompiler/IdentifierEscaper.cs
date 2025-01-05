@@ -120,9 +120,12 @@ namespace dnSpy.Contracts.Decompiler {
 			switch (char.GetUnicodeCategory(c)) {
 			case UnicodeCategory.UppercaseLetter:
 			case UnicodeCategory.LowercaseLetter:
-			case UnicodeCategory.OtherLetter:
 			case UnicodeCategory.DecimalDigitNumber:
 				return true;
+
+			case UnicodeCategory.OtherLetter:
+				// Don't allow Hangul Filler characters
+				return c != 0x115F && c != 0x1160 && c != 0x3164 && c != 0xFFA0;
 
 			case UnicodeCategory.TitlecaseLetter:
 			case UnicodeCategory.ModifierLetter:

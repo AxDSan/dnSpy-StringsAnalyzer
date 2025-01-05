@@ -15,7 +15,7 @@ using Microsoft.VisualStudio.Utilities;
 // All 3 letter words use a white foreground and a red background
 // All 4 letter words use the Error color (default: no background, red foreground color)
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	// Define our classification types. A classification type is converted to a color
 	static class Constants {
 		// Use unique names

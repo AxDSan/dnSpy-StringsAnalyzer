@@ -20,7 +20,7 @@
 using System.Text;
 
 namespace dnSpy.Decompiler.ILSpy.Core.XmlDoc {
-	struct SubString {
+	readonly struct SubString {
 		public readonly string String;
 		public readonly int Index;
 		public readonly int Length;

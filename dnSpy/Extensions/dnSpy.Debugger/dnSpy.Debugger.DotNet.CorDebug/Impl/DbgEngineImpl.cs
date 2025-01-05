@@ -249,7 +249,6 @@ namespace dnSpy.Debugger.DotNet.CorDebug.Impl {
 		internal void RaiseModulesRefreshed(DbgModule module) => dbgModuleMemoryRefreshedNotifier.RaiseModulesRefreshed(new[] { module });
 
 		internal DmdDynamicModuleHelperImpl GetDynamicModuleHelper(DnModule dnModule) {
-			Debug.Assert(dnModule.IsDynamic);
 			lock (lockObj) {
 				if (!toDynamicModuleHelper.TryGetValue(dnModule.CorModule, out var helper))
 					toDynamicModuleHelper.Add(dnModule.CorModule, helper = new DmdDynamicModuleHelperImpl(this));
@@ -272,12 +271,13 @@ namespace dnSpy.Debugger.DotNet.CorDebug.Impl {
 				token = MDAPI.GetTypeDefEnclosingType(mdi, token);
 			}
 
-			list.Reverse();
-
 			if (list.Count == 0)
 				return null;
 			if (list.Count == 1)
 				return list[0];
+
+			list.Reverse();
+
 			var sb = new StringBuilder();
 			for (int i = 0; i < list.Count; i++) {
 				if (i > 0)

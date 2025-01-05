@@ -113,14 +113,46 @@ namespace dnSpy.Debugger.DotNet.CorDebug.Impl {
 			return () => {
 				var rawMd = engine.RawMetadataService.Create(runtime, imageLayout == DbgImageLayout.File, dnModule.Address, (int)dnModule.Size);
 				try {
-					closedListenerCollection.Closed += (s, e) => rawMd.Release();
-					return new DmdLazyMetadataBytesPtr(rawMd.Address, (uint)rawMd.Size, rawMd.IsFileLayout);
+					if (IsValidNETImage(rawMd.Address, (uint)rawMd.Size, rawMd.IsFileLayout)) {
+						closedListenerCollection.Closed += (s, e) => rawMd.Release();
+						return new DmdLazyMetadataBytesPtr(rawMd.Address, (uint)rawMd.Size, rawMd.IsFileLayout);
+					}
+
+					var comMetadata = dnModule.CorModule.GetMetaDataInterface<IMetaDataImport2>();
+					if (comMetadata is null) {
+						closedListenerCollection.Closed += (s, e) => rawMd.Release();
+						return new DmdLazyMetadataBytesPtr(rawMd.Address, (uint)rawMd.Size, rawMd.IsFileLayout);
+					}
+
+					rawMd.Release();
+					return new DmdLazyMetadataBytesCom(comMetadata, engine.GetDynamicModuleHelper(dnModule), engine.DmdDispatcher);
 				}
 				catch {
 					rawMd.Release();
 					throw;
 				}
 			};
+		}
+
+		static bool IsValidNETImage(IntPtr address, uint size, bool isFileLayout) {
+			if (address == IntPtr.Zero || size == 0)
+				return false;
+			try {
+				using (var peImage = new PEImage(address, size, isFileLayout ? ImageLayout.File : ImageLayout.Memory, true)) {
+					var dotNetDir = peImage.ImageNTHeaders.OptionalHeader.DataDirectories[14];
+					if (dotNetDir.VirtualAddress == 0)
+						return false;
+					var cor20HeaderReader = peImage.CreateReader(dotNetDir.VirtualAddress, 0x48);
+					var cor20Header = new ImageCor20Header(ref cor20HeaderReader, false);
+					if (cor20Header.CB < 0x48 || cor20Header.Metadata.VirtualAddress == 0)
+						return false;
+					var mdHeaderReader = peImage.CreateReader(cor20Header.Metadata.VirtualAddress);
+					return mdHeaderReader.ReadUInt32() == 0x424A5342;
+				}
+			}
+			catch {
+				return false;
+			}
 		}
 
 		static DbgImageLayout CalculateImageLayout(DnModule dnModule) {

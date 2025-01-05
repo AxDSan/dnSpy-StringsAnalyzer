@@ -36,6 +36,8 @@ namespace dnSpy.Text.Operations {
 		public TextExtent GetExtentOfWord(SnapshotPoint currentPosition) {
 			if (currentPosition.Snapshot?.TextBuffer != textBuffer)
 				throw new ArgumentException();
+			if (currentPosition == currentPosition.GetContainingLine().End)
+				return new TextExtent(new SnapshotSpan(currentPosition, 0), false);
 			var span = WordParser.GetWordSpan(currentPosition, out var kind);
 			return new TextExtent(span, kind != WordParser.WordKind.Whitespace);
 		}
@@ -43,25 +45,25 @@ namespace dnSpy.Text.Operations {
 		public SnapshotSpan GetSpanOfEnclosing(SnapshotSpan activeSpan) {
 			if (activeSpan.Snapshot?.TextBuffer != textBuffer)
 				throw new ArgumentException();
-			throw new NotImplementedException();//TODO:
+			return WordParser.GetSpanOfEnclosing(activeSpan);
 		}
 
 		public SnapshotSpan GetSpanOfFirstChild(SnapshotSpan activeSpan) {
 			if (activeSpan.Snapshot?.TextBuffer != textBuffer)
 				throw new ArgumentException();
-			throw new NotImplementedException();//TODO:
+			return WordParser.GetSpanOfFirstChild(activeSpan);
 		}
 
 		public SnapshotSpan GetSpanOfNextSibling(SnapshotSpan activeSpan) {
 			if (activeSpan.Snapshot?.TextBuffer != textBuffer)
 				throw new ArgumentException();
-			throw new NotImplementedException();//TODO:
+			return WordParser.GetSpanOfNextSibling(activeSpan);
 		}
 
 		public SnapshotSpan GetSpanOfPreviousSibling(SnapshotSpan activeSpan) {
 			if (activeSpan.Snapshot?.TextBuffer != textBuffer)
 				throw new ArgumentException();
-			throw new NotImplementedException();//TODO:
+			return WordParser.GetSpanOfPreviousSibling(activeSpan);
 		}
 	}
 }

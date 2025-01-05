@@ -26,7 +26,7 @@ using dnSpy.BamlDecompiler.Baml;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class PropertyWithStaticResourceIdHandler : IHandler {
+	sealed class PropertyWithStaticResourceIdHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.PropertyWithStaticResourceId;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {
@@ -39,7 +39,7 @@ namespace dnSpy.BamlDecompiler.Handlers {
 			doc.Xaml.Element.AddAnnotation(elemAttr);
 			parent.Xaml.Element.Add(doc.Xaml.Element);
 
-			BamlNode found = node;
+			var found = node;
 			XamlResourceKey key;
 			do {
 				key = XamlResourceKey.FindKeyInAncestors(found.Parent, out found);

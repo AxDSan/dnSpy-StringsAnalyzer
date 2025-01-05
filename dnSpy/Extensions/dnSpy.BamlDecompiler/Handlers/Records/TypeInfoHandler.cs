@@ -23,13 +23,13 @@
 using dnSpy.BamlDecompiler.Baml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class TypeInfoHandler : IHandler {
+	sealed class TypeInfoHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.TypeInfo;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) => null;
 	}
 
-	internal class TypeSerializerInfoHandler : IHandler {
+	sealed class TypeSerializerInfoHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.TypeSerializerInfo;
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) => null;

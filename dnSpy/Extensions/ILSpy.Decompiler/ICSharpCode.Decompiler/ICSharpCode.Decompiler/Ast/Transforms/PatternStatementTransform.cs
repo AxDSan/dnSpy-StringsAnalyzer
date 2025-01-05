@@ -765,7 +765,7 @@ namespace ICSharpCode.Decompiler.Ast.Transforms {
 				if (composedType.ArraySpecifiers.Count <= 1)
 					elemType = composedType.BaseType;
 				else
-					elemType = AstBuilder.ConvertType((type as ArraySigBase).Next, stringBuilder);
+					elemType = AstBuilder.ConvertType((type as ArraySigBase)?.Next, stringBuilder);
 			}
 			else if (arrayType is PrimitiveType) {
 				var primType = (PrimitiveType)arrayType;
@@ -1575,7 +1575,7 @@ namespace ICSharpCode.Decompiler.Ast.Transforms {
 					dd.Body.HiddenStart = NRefactoryExtensions.CreateHidden(dd.Body.HiddenStart, methodDef.Body.HiddenStart);
 					dd.Body.HiddenEnd = NRefactoryExtensions.CreateHidden(dd.Body.HiddenEnd, methodDef.Body.HiddenEnd, tc.FinallyBlock);
 				}
-				dd.NameToken = Identifier.Create(AstBuilder.CleanName(context.CurrentType.Name)).WithAnnotation(context.CurrentType);
+				dd.NameToken = Identifier.Create(NRefactory.TypeSystem.ReflectionHelper.SplitTypeParameterCountFromReflectionName(context.CurrentType.Name)).WithAnnotation(context.CurrentType);
 				methodDef.ReplaceWith(dd);
 				foreach (var child in methodDef.Children.Reverse().ToArray()) {
 					var cmt = child as Comment;

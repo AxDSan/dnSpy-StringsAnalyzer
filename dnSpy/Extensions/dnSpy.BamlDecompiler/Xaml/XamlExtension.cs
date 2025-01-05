@@ -20,12 +20,13 @@
 	THE SOFTWARE.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Linq;
 
 namespace dnSpy.BamlDecompiler.Xaml {
-	internal class XamlExtension {
+	sealed class XamlExtension {
 		public XamlType ExtensionType { get; }
 		public object[] Initializer { get; set; }
 		public IDictionary<string, object> NamedArguments { get; }
@@ -36,10 +37,10 @@ namespace dnSpy.BamlDecompiler.Xaml {
 		}
 
 		static void WriteObject(StringBuilder sb, XamlContext ctx, XElement ctxElement, object value) {
-			if (value is XamlExtension)
-				sb.Append(((XamlExtension)value).ToString(ctx, ctxElement));
+			if (value is XamlExtension extension)
+				sb.Append(extension.ToString(ctx, ctxElement));
 			else
-				sb.Append(value.ToString());
+				sb.Append(value);
 		}
 
 		public string ToString(XamlContext ctx, XElement ctxElement) {
@@ -47,7 +48,7 @@ namespace dnSpy.BamlDecompiler.Xaml {
 			sb.Append('{');
 
 			var typeName = ctx.ToString(ctxElement, ExtensionType);
-			if (typeName.EndsWith("Extension"))
+			if (typeName.EndsWith("Extension", StringComparison.Ordinal))
 				sb.Append(typeName.Substring(0, typeName.Length - 9));
 			else
 				sb.Append(typeName);

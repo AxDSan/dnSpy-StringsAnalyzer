@@ -24,7 +24,7 @@ namespace dnSpy.Contracts.Debugger.DotNet.Evaluation {
 	/// <summary>
 	/// Extra custom type info provided by the expression compiler and used by language formatters
 	/// </summary>
-	public sealed class DbgDotNetCustomTypeInfo {
+	public sealed class DbgDotNetCustomTypeInfo : IEquatable<DbgDotNetCustomTypeInfo> {
 		/// <summary>
 		/// Gets the custom type info ID
 		/// </summary>
@@ -44,5 +44,34 @@ namespace dnSpy.Contracts.Debugger.DotNet.Evaluation {
 			CustomTypeInfoId = customTypeInfoId;
 			CustomTypeInfo = customTypeInfo ?? throw new ArgumentNullException(nameof(customTypeInfo));
 		}
+
+		/// <inheritdoc />
+		public override bool Equals(object? obj) {
+			if (obj is not DbgDotNetCustomTypeInfo other)
+				return false;
+			return Equals(other);
+		}
+
+		/// <inheritdoc />
+		public bool Equals(DbgDotNetCustomTypeInfo? other) {
+			if (ReferenceEquals(null, other))
+				return false;
+			if (ReferenceEquals(this, other))
+				return true;
+			if (CustomTypeInfoId != other.CustomTypeInfoId)
+				return false;
+			if (CustomTypeInfo == other.CustomTypeInfo)
+				return true;
+			if (CustomTypeInfo.Count != other.CustomTypeInfo.Count)
+				return false;
+			for (int i = 0; i < CustomTypeInfo.Count; i++) {
+				if (CustomTypeInfo[i] != other.CustomTypeInfo[i])
+					return false;
+			}
+			return true;
+		}
+
+		/// <inheritdoc />
+		public override int GetHashCode() => CustomTypeInfoId.GetHashCode() * 397 ^ CustomTypeInfo.GetHashCode();
 	}
 }

@@ -1,7 +1,7 @@
 using dnSpy.Contracts.Documents.Tabs.DocViewer.ToolTips;
 using dnSpy.Contracts.Text;
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	// This reference is added to the "decompiled" code by ModuleChildNode.Decompile()
 	sealed class StringInfoReference {
 		public string Message { get; }

@@ -76,7 +76,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine {
 				default:
 					throw new InvalidOperationException();
 				}
-				res[w] = new DbgDotNetAlias(dnAliasKind, alias.Type.AssemblyQualifiedName ?? string.Empty, aliasName, alias.CustomTypeInfoId, alias.CustomTypeInfo);
+				res[w] = new DbgDotNetAlias(dnAliasKind, alias.Type.AssemblyQualifiedName ?? string.Empty, aliasName, alias.CustomTypeInfo);
 				typeReferences[w] = alias.Type;
 				w++;
 			}
@@ -85,7 +85,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine {
 				var value = objectId.GetValue(evalInfo);
 				var dnValue = (DbgDotNetValue)value.InternalValue;
 				evalInfo.Context.Language.Formatter.FormatObjectIdName(evalInfo.Context, output, objectId.Id);
-				res[w] = new DbgDotNetAlias(DbgDotNetAliasKind.ObjectId, dnValue.Type.AssemblyQualifiedName ?? string.Empty, sb.ToString(), Guid.Empty, null);
+				res[w] = new DbgDotNetAlias(DbgDotNetAliasKind.ObjectId, dnValue.Type.AssemblyQualifiedName ?? string.Empty, sb.ToString(), null);
 				typeReferences[w] = dnValue.Type;
 				w++;
 				value.Close();

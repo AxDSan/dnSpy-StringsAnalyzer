@@ -1854,7 +1854,10 @@ namespace ICSharpCode.NRefactory.CSharp {
 			StartNode(blockStatement);
 			CodeBracesRangeFlags flags;
 			MethodDebugInfoBuilder builder = null;
-			if (blockStatement.Parent is AnonymousMethodExpression || blockStatement.Parent is LambdaExpression) {
+			if (blockStatement.Parent is AnonymousMethodExpression anonymousMethodExpression) {
+				flags = anonymousMethodExpression.Parent is CatchClause ? CodeBracesRangeFlags.FilterBraces : CodeBracesRangeFlags.AnonymousMethodBraces;
+				builder = blockStatement.Parent.Annotation<MethodDebugInfoBuilder>();
+			} else if (blockStatement.Parent is LambdaExpression) {
 				flags = CodeBracesRangeFlags.AnonymousMethodBraces;
 				builder = blockStatement.Parent.Annotation<MethodDebugInfoBuilder>();
 			} else if (blockStatement.Parent is ConstructorDeclaration) {

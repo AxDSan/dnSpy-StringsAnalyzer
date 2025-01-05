@@ -58,7 +58,7 @@ namespace dndbg.Engine {
 			if (ad2 is null)
 				return null;
 			int hr = ad2.GetArrayOrPointerType(CorElementType.Ptr, 0, type.RawObject, out var res);
-			return res is null ? null : new CorType(res);
+			return hr < 0 || res is null ? null : new CorType(res);
 		}
 
 		public CorType? GetByRef(CorType type) {
@@ -66,7 +66,7 @@ namespace dndbg.Engine {
 			if (ad2 is null)
 				return null;
 			int hr = ad2.GetArrayOrPointerType(CorElementType.ByRef, 0, type.RawObject, out var res);
-			return res is null ? null : new CorType(res);
+			return hr < 0 || res is null ? null : new CorType(res);
 		}
 
 		public CorType? GetSZArray(CorType type) {
@@ -74,7 +74,7 @@ namespace dndbg.Engine {
 			if (ad2 is null)
 				return null;
 			int hr = ad2.GetArrayOrPointerType(CorElementType.SZArray, 1, type.RawObject, out var res);
-			return res is null ? null : new CorType(res);
+			return hr < 0 || res is null ? null : new CorType(res);
 		}
 
 		public CorType? GetArray(CorType type, uint rank) {
@@ -82,7 +82,7 @@ namespace dndbg.Engine {
 			if (ad2 is null)
 				return null;
 			int hr = ad2.GetArrayOrPointerType(CorElementType.Array, rank, type.RawObject, out var res);
-			return res is null ? null : new CorType(res);
+			return hr < 0 || res is null ? null : new CorType(res);
 		}
 
 		public CorType? GetFnPtr(CorType[] args) {
@@ -90,7 +90,7 @@ namespace dndbg.Engine {
 			if (ad2 is null)
 				return null;
 			int hr = ad2.GetFunctionPointerType(args.Length, args.ToCorDebugArray(), out var res);
-			return res is null ? null : new CorType(res);
+			return hr < 0 || res is null ? null : new CorType(res);
 		}
 
 		public bool Equals(CorAppDomain? other) => other is not null && RawObject == other.RawObject;

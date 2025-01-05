@@ -96,10 +96,10 @@ namespace dnSpy.Decompiler.ILSpy.Core.IL {
 			disOpts.ShowPdbInfo = langSettings.Settings.ShowPdbInfo;
 			disOpts.MaxStringLength = langSettings.Settings.MaxStringLength;
 			disOpts.HexadecimalNumbers = langSettings.Settings.HexadecimalNumbers;
-			return new ReflectionDisassembler(output, detectControlStructure, disOpts);
+			return new ReflectionDisassembler(output, detectControlStructure, disOpts, sb);
 		}
 
-		static IEnumerable<string> GetXmlDocComments(IMemberRef mr, StringBuilder sb) {
+		internal static IEnumerable<string> GetXmlDocComments(IMemberRef? mr, StringBuilder sb) {
 			if (mr is null || mr.Module is null)
 				yield break;
 			var xmldoc = XmlDocLoader.LoadDocumentation(mr.Module);

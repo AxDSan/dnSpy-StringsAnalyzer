@@ -23,7 +23,7 @@
 using dnlib.DotNet;
 
 namespace dnSpy.BamlDecompiler.Xaml {
-	internal class NamespaceMap {
+	sealed class NamespaceMap {
 		public string XmlnsPrefix { get; set; }
 		public IAssembly Assembly { get; set; }
 		public string XMLNamespace { get; set; }

@@ -22,7 +22,7 @@ using System.Diagnostics;
 using dnSpy.Contracts.Decompiler;
 
 namespace dnSpy.Debugger.DotNet.Disassembly {
-	struct ILSourceStatementProvider {
+	readonly struct ILSourceStatementProvider {
 		readonly string text;
 		readonly MethodDebugInfo debugInfo;
 

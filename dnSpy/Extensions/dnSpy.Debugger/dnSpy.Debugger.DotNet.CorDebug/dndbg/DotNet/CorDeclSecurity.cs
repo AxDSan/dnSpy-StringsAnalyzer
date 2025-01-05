@@ -46,11 +46,7 @@ namespace dndbg.DotNet {
 			readerModule.InitCustomAttributes(this, ref customAttributes, new GenericParamContext());
 
 		protected override void InitializeSecurityAttributes() {
-			var mdi = readerModule.MetaDataImport;
-			uint token = OriginalToken.Raw;
-			var data = MDAPI.GetPermissionSetBlob(mdi, token) ?? Array.Empty<byte>();
-			var gpContext = new GenericParamContext();
-			var tmp = DeclSecurityReader.Read(readerModule, data, gpContext);
+			var tmp = DeclSecurityReader.Read(readerModule, GetBlob(), new GenericParamContext());
 			Interlocked.CompareExchange(ref securityAttributes, tmp, null!);
 		}
 

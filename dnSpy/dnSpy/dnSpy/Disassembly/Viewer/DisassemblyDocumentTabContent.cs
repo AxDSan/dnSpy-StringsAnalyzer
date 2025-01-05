@@ -106,22 +106,22 @@ namespace dnSpy.Disassembly.Viewer {
 
 					case ')':
 						opening = '(';
-						flags = CodeBracesRangeFlags.BraceKind_Parentheses;
+						flags = CodeBracesRangeFlags.Parentheses;
 						break;
 
 					case '}':
 						opening = '{';
-						flags = CodeBracesRangeFlags.BraceKind_CurlyBraces;
+						flags = CodeBracesRangeFlags.CurlyBraces;
 						break;
 
 					case ']':
 						opening = '[';
-						flags = CodeBracesRangeFlags.BraceKind_SquareBrackets;
+						flags = CodeBracesRangeFlags.SquareBrackets;
 						break;
 
 					case '>':
 						opening = '<';
-						flags = CodeBracesRangeFlags.BraceKind_AngleBrackets;
+						flags = CodeBracesRangeFlags.AngleBrackets;
 						break;
 					}
 					if (bracesStack.Count > 0 && bracesStack.Peek().brace == opening) {

@@ -47,13 +47,13 @@ namespace dnSpy.Contracts.Utilities {
 					throw new ArgumentException();
 			}
 #endif
+			IsReferencePath = isRef;
 			var allPaths = paths.Select(a => a.Path).ToArray();
 			Array.Sort(allPaths, SortPaths);
 			Paths = allPaths;
 			Bitness = firstPath.Bitness;
 			Version = firstPath.Version;
 			SystemVersion = new Version(firstPath.Version.Major, firstPath.Version.Minor, firstPath.Version.Patch, 0);
-			IsReferencePath = isRef;
 
 			foreach (var p in Paths) {
 				if (StringComparer.OrdinalIgnoreCase.Equals(Path.GetFileName(Path.GetDirectoryName(p)), IsReferencePath ? DotNetAppRefDir : DotNetAppDir)) {

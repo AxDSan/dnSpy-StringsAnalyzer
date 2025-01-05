@@ -118,7 +118,8 @@ namespace dnSpy.Debugger.DotNet.Metadata.Internal {
 			try {
 				var peImage = new PEImage(address, (uint)size, isFileLayout ? ImageLayout.File : ImageLayout.Memory, true);
 				var dotNetDir = peImage.ImageNTHeaders.OptionalHeader.DataDirectories[14];
-				if (dotNetDir.VirtualAddress != 0 && dotNetDir.Size >= 0x48) {
+				// Mono doesn't check that the Size field is >= 0x48
+				if (dotNetDir.VirtualAddress != 0 /*&& dotNetDir.Size >= 0x48*/) {
 					var cor20Reader = peImage.CreateReader(dotNetDir.VirtualAddress, 0x48);
 					var cor20 = new ImageCor20Header(ref cor20Reader, true);
 					var mdStart = (long)peImage.ToFileOffset(cor20.Metadata.VirtualAddress);

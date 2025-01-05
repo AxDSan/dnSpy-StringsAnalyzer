@@ -26,7 +26,7 @@ using System.IO;
 using System.Text;
 
 namespace dnSpy.BamlDecompiler.Xaml {
-	class XamlPathDeserializer {
+	static class XamlPathDeserializer {
 		enum PathOpCodes {
 			BeginFigure,
 			LineTo,

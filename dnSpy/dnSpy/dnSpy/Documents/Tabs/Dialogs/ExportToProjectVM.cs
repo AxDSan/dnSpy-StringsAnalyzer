@@ -174,7 +174,7 @@ namespace dnSpy.Documents.Tabs.Dialogs {
 		public bool CanDecompileBaml => UnpackResources && canDecompileBaml;
 		readonly bool canDecompileBaml;
 
-		public bool CanCreateResX => UnpackResources && TheState == State.Editing && false;// See ProjectModuleOptions.CreateResX
+		public bool CanCreateResX => UnpackResources && TheState == State.Editing;
 
 		public string? FilesToExportMessage {
 			get => filesToExportMessage;

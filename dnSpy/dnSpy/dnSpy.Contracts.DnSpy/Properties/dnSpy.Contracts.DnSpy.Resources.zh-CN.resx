@@ -121,7 +121,7 @@
     <value>所有文件</value>
   </data>
   <data name="AnErrorOccurred" xml:space="preserve">
-    <value>发生错误：
+    <value>发生错误: 
 
 {0}</value>
   </data>
@@ -132,7 +132,7 @@
     <value>无法转换 '{0}'</value>
   </data>
   <data name="CouldNotConvertFromString" xml:space="preserve">
-    <value>无法从一个字符串: {0} 转换它</value>
+    <value>无法将字符串: {0} 转换为目标对象</value>
   </data>
   <data name="CouldNotDeserializeData" xml:space="preserve">
     <value>无法反序列化数据: {0}</value>
@@ -141,7 +141,7 @@
     <value>.NET 可执行文件</value>
   </data>
   <data name="Files_DotNetNetModules" xml:space="preserve">
-    <value>.NET 网络模块</value>
+    <value>.NET NetModules</value>
   </data>
   <data name="Files_Executables" xml:space="preserve">
     <value>可执行文件</value>
@@ -159,10 +159,10 @@
     <value>GUID 无效</value>
   </data>
   <data name="NewDataNotImageList" xml:space="preserve">
-    <value>新数据非映像列表。</value>
+    <value>新的数据不是一个 ImageList。</value>
   </data>
   <data name="NoTypeConverter" xml:space="preserve">
-    <value>{0} 没有 TypeConverter 且无法从字符串转换。</value>
+    <value>{0} 不具有 TypeConverter 且无法从字符串转换。</value>
   </data>
   <data name="NumberOfBytes" xml:space="preserve">
     <value>{0} 字节</value>
@@ -183,10 +183,10 @@
     <value>搜索列: {0}</value>
   </data>
   <data name="Search_SearchColumnInvertMatchHelpText" xml:space="preserve">
-    <value>使用 “{0}” 反转匹配，例如 {1}</value>
+    <value>使用 "{0}" 反转匹配，例如 {1}</value>
   </data>
   <data name="ValueMustBeType" xml:space="preserve">
     <value>值必须为类型 {0}。
-错误：{1}</value>
+错误: {1}</value>
   </data>
 </root>

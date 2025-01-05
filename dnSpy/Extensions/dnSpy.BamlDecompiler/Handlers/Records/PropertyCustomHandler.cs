@@ -30,7 +30,7 @@ using dnSpy.BamlDecompiler.Baml;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler.Handlers {
-	internal class PropertyCustomHandler : IHandler {
+	sealed class PropertyCustomHandler : IHandler {
 		public BamlRecordType Type => BamlRecordType.PropertyCustom;
 
 		enum IntegerCollectionType : byte {
@@ -41,11 +41,11 @@ namespace dnSpy.BamlDecompiler.Handlers {
 			I4
 		}
 
-		string Deserialize(XamlContext ctx, XElement elem, KnownTypes ser, byte[] value) {
+		string Deserialize(XamlContext ctx, XElement elem, KnownTypes ser, bool isValueTypeId, byte[] value) {
 			using (BinaryReader reader = new BinaryReader(new MemoryStream(value))) {
 				switch (ser) {
 					case KnownTypes.DependencyPropertyConverter: {
-						if (value.Length == 2) {
+						if (value.Length == 2 || !isValueTypeId) {
 							var property = ctx.ResolveProperty(reader.ReadUInt16());
 							return ctx.ToString(elem, property.ToXName(ctx, elem, NeedsFullName(property, elem)));
 						}
@@ -152,13 +152,13 @@ namespace dnSpy.BamlDecompiler.Handlers {
 
 		public BamlElement Translate(XamlContext ctx, BamlNode node, BamlElement parent) {
 			var record = (PropertyCustomRecord)((BamlRecordNode)node).Record;
-			var serTypeId = ((short)record.SerializerTypeId & 0xfff);
-			bool valueType = ((short)record.SerializerTypeId & 0x4000) == 0x4000;
+			var serTypeId = record.SerializerTypeId;
+			bool valueType = record.IsValueTypeId;
 
 			var elemType = parent.Xaml.Element.Annotation<XamlType>();
 			var xamlProp = ctx.ResolveProperty(record.AttributeId);
 
-			string value = Deserialize(ctx, parent.Xaml, (KnownTypes)serTypeId, record.Data);
+			string value = Deserialize(ctx, parent.Xaml, (KnownTypes)serTypeId, valueType, record.Data);
 			var attr = new XAttribute(xamlProp.ToXName(ctx, parent.Xaml, xamlProp.IsAttachedTo(elemType)), value);
 			parent.Xaml.Element.Add(attr);
 

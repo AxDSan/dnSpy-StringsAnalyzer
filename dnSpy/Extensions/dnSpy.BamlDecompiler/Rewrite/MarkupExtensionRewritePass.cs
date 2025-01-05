@@ -27,7 +27,7 @@ using dnlib.DotNet;
 using dnSpy.BamlDecompiler.Xaml;
 
 namespace dnSpy.BamlDecompiler.Rewrite {
-	internal class MarkupExtensionRewritePass : IRewritePass {
+	sealed class MarkupExtensionRewritePass : IRewritePass {
 		XName key;
 		XName ctor;
 
@@ -126,12 +126,11 @@ namespace dnSpy.BamlDecompiler.Rewrite {
 		}
 
 		object InlineObject(XamlContext ctx, XNode obj) {
-			if (obj is XText)
-				return ((XText)obj).Value;
-			else if (obj is XElement)
-				return InlineExtension(ctx, (XElement)obj);
-			else
-				return null;
+			if (obj is XText text)
+				return text.Value;
+			if (obj is XElement element)
+				return InlineExtension(ctx, element);
+			return null;
 		}
 
 		object[] InlineCtor(XamlContext ctx, XElement ctor) {
@@ -158,8 +157,7 @@ namespace dnSpy.BamlDecompiler.Rewrite {
 				ext.NamedArguments[attr.Name.LocalName] = attr.Value;
 
 			foreach (var child in ctxElement.Nodes()) {
-				var elem = child as XElement;
-				if (elem is null)
+				if (child is not XElement elem)
 					return null;
 
 				if (elem.Name == ctor) {

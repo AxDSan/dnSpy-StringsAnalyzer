@@ -415,14 +415,11 @@ namespace ICSharpCode.Decompiler.ILAst {
 						var methodSig = expr.Operand as MethodSig;
 						var parameters = methodSig?.GetParametersWithoutSentinel();
 						if (forceInferChildren && parameters != null) {
-							for (int i = 0; i < expr.Arguments.Count; i++) {
-								if (i == 0 && methodSig.HasThis) {
-									// no-op, hidden this calli is a mistery to me
-								} else {
-									int pi = methodSig.HasThis ? i - 1 : i;
-									if (pi < parameters.Count)
-										InferTypeForExpression(expr.Arguments[i], parameters[pi]);
-								}
+							if (parameters.Count + 1 == expr.Arguments.Count) {
+								for (var i = 0; i < parameters.Count; i++)
+									InferTypeForExpression(expr.Arguments[i], parameters[i]);
+
+								InferTypeForExpression(expr.Arguments[expr.Arguments.Count - 1], typeSystem.IntPtr);
 							}
 						}
 

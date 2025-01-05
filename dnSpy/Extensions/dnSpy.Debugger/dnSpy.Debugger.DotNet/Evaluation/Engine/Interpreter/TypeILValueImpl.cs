@@ -69,6 +69,25 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 
 		public override bool Call(bool isCallvirt, DmdMethodBase method, ILValue[] arguments, out ILValue? returnValue) =>
 			runtime.CallInstance(ObjValue, isCallvirt, method, arguments, out returnValue);
+
+		public override bool CallIndirect(DmdMethodSignature methodSig, ILValue methodAddress, ILValue[] arguments, out ILValue? returnValue) {
+			if (methodAddress is FunctionPointerILValue fnPtrValue) {
+				var targetMethod = fnPtrValue.Method;
+
+				if (!methodSig.Equals(targetMethod.GetMethodSignature())) {
+					returnValue = null;
+					return false;
+				}
+
+				if (fnPtrValue.IsVirtual && runtime.Equals(this, fnPtrValue.VirtualThisObject!) != true) {
+					returnValue = null;
+					return false;
+				}
+
+				return runtime.CallInstance(ObjValue, fnPtrValue.IsVirtual, targetMethod, arguments, out returnValue);
+			}
+			return base.CallIndirect(methodSig, methodAddress, arguments, out returnValue);
+		}
 	}
 
 	sealed class ConstantStringILValueImpl : TypeILValueImpl {

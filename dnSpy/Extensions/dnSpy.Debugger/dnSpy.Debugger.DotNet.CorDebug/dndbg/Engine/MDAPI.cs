@@ -383,6 +383,8 @@ namespace dndbg.Engine {
 
 			uint ownerToken;
 			int hr = mdi.GetInterfaceImplProps(token, new IntPtr(&ownerToken), IntPtr.Zero);
+			if (hr < 0)
+				return 0;
 			var ownerMdToken = new MDToken(ownerToken);
 			return ownerMdToken.Table == Table.TypeDef ? ownerMdToken.Rid : 0;
 		}

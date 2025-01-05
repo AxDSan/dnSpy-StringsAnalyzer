@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Error1" xml:space="preserve">
-    <value>错误：{0}</value>
+    <value>错误: {0}</value>
   </data>
   <data name="FileOrDirDoesNotExist" xml:space="preserve">
     <value>文件/目录 '{0}' 不存在</value>
   </data>
   <data name="InvalidOption" xml:space="preserve">
-    <value>选项无效：{0}</value>
+    <value>选项无效: {0}</value>
   </data>
   <data name="InvalidSolutionName" xml:space="preserve">
     <value>.sln 名称 ({0}) 必须相对于工程目录</value>
@@ -133,43 +133,43 @@
     <value>元数据标记无效</value>
   </data>
   <data name="InvalidVSVersion" xml:space="preserve">
-    <value>无效的 Visual Studio 版本：{0}</value>
+    <value>无效的 Visual Studio 版本: {0}</value>
   </data>
   <data name="LanguageDoesNotExist" xml:space="preserve">
     <value>语言 '{0}' 不存在</value>
   </data>
   <data name="Languages" xml:space="preserve">
-    <value>语言：</value>
+    <value>语言: </value>
   </data>
   <data name="LanguageXDoesNotExist" xml:space="preserve">
     <value>语言 {0} 不存在</value>
   </data>
   <data name="MissingAsmSearchPath" xml:space="preserve">
-    <value>缺失程序集搜索路径</value>
+    <value>未指定程序集搜索路径</value>
   </data>
   <data name="MissingDotNetFilename" xml:space="preserve">
-    <value>缺失 .NET 文件名</value>
+    <value>未指定 .NET 文件名</value>
   </data>
   <data name="MissingLanguageName" xml:space="preserve">
-    <value>缺失语言名</value>
+    <value>未指定语言名称</value>
   </data>
   <data name="MissingMDToken" xml:space="preserve">
-    <value>缺失元数据标记</value>
+    <value>未指定元数据标记</value>
   </data>
   <data name="MissingNumberOfThreads" xml:space="preserve">
-    <value>缺失线程数</value>
+    <value>未指定线程数</value>
   </data>
   <data name="MissingOptions" xml:space="preserve">
     <value>未指定选项</value>
   </data>
   <data name="MissingOutputDir" xml:space="preserve">
-    <value>缺失输出目录</value>
+    <value>未指定输出目录</value>
   </data>
   <data name="MissingSolutionName" xml:space="preserve">
-    <value>缺失 .sln 名称</value>
+    <value>未指定 .sln 名称</value>
   </data>
   <data name="MissingVSVersion" xml:space="preserve">
-    <value>缺失 Visual Studio 版本</value>
+    <value>未指定 Visual Studio 版本</value>
   </data>
   <data name="NoLanguagesFound" xml:space="preserve">
     <value>未找到语言。请确保语言 DLL 文件存在于本程序所在文件夹内。</value>
@@ -181,7 +181,7 @@
     <value>当使用 --md 时仅可以反编译一个文件</value>
   </data>
   <data name="MissingUserGacPath" xml:space="preserve">
-    <value>缺失用户 GAC（全局程序集缓存）路径</value>
+    <value>未指定用户 GAC（全局程序集缓存）路径</value>
   </data>
   <data name="InvalidMemberToDecompile" xml:space="preserve">
     <value>仅可以反编译类型，方法，字段，事件和属性</value>
@@ -193,10 +193,10 @@
     <value>无法解析 GAC 程序集 '{0}'</value>
   </data>
   <data name="MissingGacFile" xml:space="preserve">
-    <value>缺失 GAC 程序集名称</value>
+    <value>未指定 GAC 程序集名称</value>
   </data>
   <data name="MissingTypeName" xml:space="preserve">
-    <value>缺失类型的完整名称</value>
+    <value>未指定类型的完整名称</value>
   </data>
   <data name="LanguageXDoesNotSupportProjects" xml:space="preserve">
     <value>语言 {0} 不支持创建中的工程文件</value>
@@ -208,7 +208,7 @@
     <value>所有布尔选项可以使用 'no-' 或 'dont-' 显示。如 --dont-sort-members</value>
   </data>
   <data name="MissingOptionArgument" xml:space="preserve">
-    <value>缺失选项参数</value>
+    <value>未指定选项参数</value>
   </data>
   <data name="InvalidGuid" xml:space="preserve">
     <value>GUID 无效</value>
@@ -217,52 +217,52 @@
     <value>程序集</value>
   </data>
   <data name="CmdLineDescription_AsmPath" xml:space="preserve">
-    <value>程序集搜索路径。路径可以用 '{0}' 分隔。亦可使用多个--asm-path来指定多个路径。</value>
+    <value>程序集搜索路径。路径可以用 '{0}' 分隔。亦可使用多个 --asm-path 来指定多个路径。</value>
   </data>
   <data name="CmdLineDescription_GACFile" xml:space="preserve">
-    <value>反编译 gac 中的程序集。使用完整的程序集名称来使用准确的版本。</value>
+    <value>反编译 GAC 中的程序集。可使用完整的程序集名称来确定要使用的程序集版本。</value>
   </data>
   <data name="CmdLineDescription_Language" xml:space="preserve">
-    <value>设置语言，默认是 C#。可以使用 Guid。</value>
+    <value>设置语言，默认为 C#。可使用 Guid。</value>
   </data>
   <data name="CmdLineDescription_MDToken" xml:space="preserve">
     <value>反编译元数据标记 N 的成员到输出窗口</value>
   </data>
   <data name="CmdLineDescription_NoBAML" xml:space="preserve">
-    <value>不将BAML反编译为XAML</value>
+    <value>不要将 BAML 反编译为 XAML</value>
   </data>
   <data name="CmdLineDescription_NoGAC" xml:space="preserve">
-    <value>不从GAC中搜寻程序集。与 --no-stdlib 参数搭配使用</value>
+    <value>不要从 GAC 中搜寻程序集。可与 --no-stdlib 参数搭配使用</value>
   </data>
   <data name="CmdLineDescription_NoResources" xml:space="preserve">
     <value>不要解包资源文件</value>
   </data>
   <data name="CmdLineDescription_NoResX" xml:space="preserve">
-    <value>不要创建.resx 文件</value>
+    <value>不要创建 .resx 资源文件</value>
   </data>
   <data name="CmdLineDescription_NoSLN" xml:space="preserve">
-    <value>不要创建.sln 文件</value>
+    <value>不要创建 .sln 解决方案文件</value>
   </data>
   <data name="CmdLineDescription_NoStdLib" xml:space="preserve">
-    <value>不要让项目引用 mscorlib库</value>
+    <value>不要引用 mscorlib 库</value>
   </data>
   <data name="CmdLineDescription_NumberOfThreads" xml:space="preserve">
     <value>工作线程的数目。默认每个CPU核心使用一个线程。</value>
   </data>
   <data name="CmdLineDescription_OutputDirectory" xml:space="preserve">
-    <value>输出目录：</value>
+    <value>输出目录: </value>
   </data>
   <data name="CmdLineDescription_ProjectGUID" xml:space="preserve">
-    <value>项目 guid</value>
+    <value>项目的 GUID</value>
   </data>
   <data name="CmdLineDescription_RecursiveSearch" xml:space="preserve">
-    <value>递归搜索.NET 文件来反编译</value>
+    <value>递归搜索 .NET 文件来反编译</value>
   </data>
   <data name="CmdLineDescription_SlnName" xml:space="preserve">
     <value>.sln 解决方案文件的名称</value>
   </data>
   <data name="CmdLineDescription_Type1" xml:space="preserve">
-    <value>反编译指定名称的类型到标准输出流。指定名称的格式为[命名空间.名称] 或 [名称]，不区分大小写</value>
+    <value>反编译指定名称的类型到标准输出流。指定名称的格式为 [命名空间.名称]  或 [名称]，不区分大小写</value>
   </data>
   <data name="CmdLineDescription_Type2" xml:space="preserve">
     <value>与 -t 相同</value>
@@ -280,28 +280,28 @@
     <value>名称</value>
   </data>
   <data name="CmdLineOutputDir" xml:space="preserve">
-    <value>退出路径</value>
+    <value>输出目录</value>
   </data>
   <data name="CmdLinePath" xml:space="preserve">
     <value>路径</value>
   </data>
   <data name="ExampleDescription1" xml:space="preserve">
-    <value>反编译目录中所有.NET文件并保存到C:\out\path</value>
+    <value>反编译目录中所有 .NET 文件并保存到 C:\out\path</value>
   </data>
   <data name="ExampleDescription2" xml:space="preserve">
-    <value>反编译以上目录及子目录中所有.NET 文件</value>
+    <value>反编译以上目录及子目录中所有 .NET  文件</value>
   </data>
   <data name="ExampleDescription3" xml:space="preserve">
-    <value>反编译目录中所有.NET的dll文件并保存到C:\out\path</value>
+    <value>反编译目录中所有 .NET 的 dll 文件并保存到 C:\out\path</value>
   </data>
   <data name="ExampleDescription4" xml:space="preserve">
-    <value>反编译标记为0x06000123的成员</value>
+    <value>反编译标记为 0x06000123 的成员</value>
   </data>
   <data name="ExampleDescription5" xml:space="preserve">
     <value>从 mscorlib 反编译 System.Int32</value>
   </data>
   <data name="ExamplesHeader" xml:space="preserve">
-    <value>例如：</value>
+    <value>例如: </value>
   </data>
   <data name="UsageHeader" xml:space="preserve">
     <value>[选项] [文件或路径1] [文件或路径2] [...]</value>
@@ -310,7 +310,7 @@
     <value>不要高亮文本</value>
   </data>
   <data name="CmdLineDescription_Spaces" xml:space="preserve">
-    <value>Tab的长度（单位为空格），指定0则使用一个Tab</value>
+    <value>缩进大小 (单位为空格)，指定 0 时则使用一个制表符</value>
   </data>
   <data name="InvalidSpacesArgument" xml:space="preserve">
     <value>空格的数量必须在 {0} 和 {1} 之间</value>

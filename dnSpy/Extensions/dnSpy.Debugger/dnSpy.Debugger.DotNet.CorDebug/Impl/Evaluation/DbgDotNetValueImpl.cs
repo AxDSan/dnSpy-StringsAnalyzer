@@ -390,6 +390,10 @@ namespace dnSpy.Debugger.DotNet.CorDebug.Impl.Evaluation {
 			case CorElementType.Array:
 			case CorElementType.SZArray:
 				return GetArrayAddress(v);
+
+			case CorElementType.Class:
+				uint methodTableSize = (uint)Type.AppDomain.Runtime.PointerSize;
+				return new DbgRawAddressValue(addr + methodTableSize, size);
 			}
 
 			return new DbgRawAddressValue(addr, size);

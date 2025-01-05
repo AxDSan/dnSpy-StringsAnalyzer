@@ -25,7 +25,7 @@ namespace dnSpy.Debugger.DotNet.Evaluation.Engine.Interpreter {
 		readonly DbgDotNetValue dnValue;
 
 		public UnboxAddressILValue(DebuggerRuntimeImpl runtime, DbgDotNetValue dnValue)
-			: base(runtime, dnValue.Type) {
+			: base(runtime, dnValue.Type, true) {
 			this.dnValue = dnValue;
 		}
 

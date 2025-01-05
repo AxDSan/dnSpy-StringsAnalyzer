@@ -11,7 +11,7 @@ using dnSpy.Contracts.Text;
 // Adds a new IDsDocument that can be loaded into the document treeview. It gets its own DsDocumentNode.
 // Open a .txt/.xml/.cs/.vb (see supportedExtensions) file to trigger this code.
 
-namespace Example2.Extension {
+namespace StringsAnalyzer.Extension {
 	// All root nodes in the document treeview contain a IDsDocument instance. They don't need to be
 	// .NET files or even PE files, they can be any file or even non-file (eg. in-memory data).
 	sealed class MyDsDocument : DsDocument {
