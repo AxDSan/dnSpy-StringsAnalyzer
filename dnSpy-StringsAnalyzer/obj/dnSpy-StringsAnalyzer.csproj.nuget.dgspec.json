@@ -59,12 +59,12 @@
               "version": "[15.3.23, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\PROGRA~1\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.2.23157.25\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Contracts.DnSpy\\dnSpy.Contracts.DnSpy.csproj": {
-      "version": "6.3.0",
+      "version": "6.5.1",
       "restore": {
         "projectUniqueName": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Contracts.DnSpy\\dnSpy.Contracts.DnSpy.csproj",
         "projectName": "dnSpy.Contracts.DnSpy",
@@ -79,15 +79,15 @@
         ],
         "originalTargetFrameworks": [
           "net48",
-          "net6.0-windows"
+          "net8.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
             "projectReferences": {
               "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Contracts.Logic\\dnSpy.Contracts.Logic.csproj": {
                 "projectPath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Contracts.Logic\\dnSpy.Contracts.Logic.csproj"
@@ -113,8 +113,8 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
           "dependencies": {
             "Microsoft.VisualStudio.Language.Intellisense": {
               "target": "Package",
@@ -130,7 +130,7 @@
             },
             "System.ComponentModel.Composition": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -152,7 +152,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\PROGRA~1\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.2.23157.25\\RuntimeIdentifierGraph.json"
         },
         "net48": {
           "targetAlias": "net48",
@@ -171,15 +171,15 @@
             },
             "System.ComponentModel.Composition": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[8.0.0, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\PROGRA~1\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.2.23157.25\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Contracts.Logic\\dnSpy.Contracts.Logic.csproj": {
-      "version": "6.3.0",
+      "version": "6.5.1",
       "restore": {
         "projectUniqueName": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy\\dnSpy\\dnSpy.Contracts.Logic\\dnSpy.Contracts.Logic.csproj",
         "projectName": "dnSpy.Contracts.Logic",
@@ -194,15 +194,15 @@
         ],
         "originalTargetFrameworks": [
           "net48",
-          "net6.0-windows"
+          "net8.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
             "projectReferences": {}
           },
           "net48": {
@@ -220,12 +220,16 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
           "dependencies": {
+            "NuGet.Configuration": {
+              "target": "Package",
+              "version": "[6.10.0, )"
+            },
             "dnlib": {
               "target": "Package",
-              "version": "[3.6.0, )"
+              "version": "[4.4.0, )"
             }
           },
           "imports": [
@@ -239,20 +243,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.14, 6.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.14, 6.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.14, 6.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -263,9 +253,13 @@
         "net48": {
           "targetAlias": "net48",
           "dependencies": {
+            "NuGet.Configuration": {
+              "target": "Package",
+              "version": "[6.10.0, )"
+            },
             "dnlib": {
               "target": "Package",
-              "version": "[3.6.0, )"
+              "version": "[4.4.0, )"
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.2.23157.25\\RuntimeIdentifierGraph.json"
@@ -288,15 +282,15 @@
         ],
         "originalTargetFrameworks": [
           "net48",
-          "net6.0-windows"
+          "net8.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
             "projectReferences": {}
           },
           "net48": {
@@ -314,8 +308,8 @@
         }
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
           "imports": [
             "net461",
             "net462",
@@ -327,20 +321,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.14, 6.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.14, 6.0.14]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.14, 6.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

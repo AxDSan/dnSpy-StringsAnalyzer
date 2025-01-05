@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4+M9W6yxpvSsOEO2FlGAzkwb9lUh5KoJHn+lTGyxPAy4GTS3xF/TND1gnr2IyqP6L0ITLbBqxTJdu7iBBA+zhA==",
+  "dgSpecHash": "vhaTKtgvtiVmMH+l/35Q4M6C1krfc4Nn2Cdx/P6PDLdHjir/4X+S/H5Gy03RGynJfVALZn64NZlAEu1rIDr/Ng==",
   "success": true,
   "projectFilePath": "C:\\Users\\0x90\\Documents\\GitHub\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer\\dnSpy-StringsAnalyzer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\0x90\\.nuget\\packages\\dnlib\\3.6.0\\dnlib.3.6.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\dnlib\\4.4.0\\dnlib.4.4.0.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.coreutility\\15.5.27130\\microsoft.visualstudio.coreutility.15.5.27130.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.language.intellisense\\15.5.27130\\microsoft.visualstudio.language.intellisense.15.5.27130.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.text.data\\15.5.27130\\microsoft.visualstudio.text.data.15.5.27130.nupkg.sha512",
@@ -13,8 +13,11 @@
     "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.text.ui.wpf\\15.5.27130\\microsoft.visualstudio.text.ui.wpf.15.5.27130.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.threading\\15.3.23\\microsoft.visualstudio.threading.15.3.23.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\microsoft.visualstudio.validation\\15.3.15\\microsoft.visualstudio.validation.15.3.15.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\nuget.common\\6.10.0\\nuget.common.6.10.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\nuget.configuration\\6.10.0\\nuget.configuration.6.10.0.nupkg.sha512",
+    "C:\\Users\\0x90\\.nuget\\packages\\nuget.frameworks\\6.10.0\\nuget.frameworks.6.10.0.nupkg.sha512",
     "C:\\Users\\0x90\\.nuget\\packages\\ookii.dialogs.wpf\\5.0.1\\ookii.dialogs.wpf.5.0.1.nupkg.sha512",
-    "C:\\Users\\0x90\\.nuget\\packages\\system.componentmodel.composition\\6.0.0\\system.componentmodel.composition.6.0.0.nupkg.sha512"
+    "C:\\Users\\0x90\\.nuget\\packages\\system.componentmodel.composition\\8.0.0\\system.componentmodel.composition.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
