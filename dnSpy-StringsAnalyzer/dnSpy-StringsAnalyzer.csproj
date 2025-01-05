@@ -16,7 +16,7 @@
 
   <!-- Output paths -->
   <PropertyGroup>
-    <OutputPath>\bin\Output</OutputPath>
+    <OutputPath>.\bin\Output</OutputPath>
     <IntermediateOutputPath>obj\Debug\net48</IntermediateOutputPath>
   </PropertyGroup>
 
