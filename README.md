@@ -3,7 +3,7 @@ Plugin for DnSpy - Analyze assemblies and display strings.
 ---
 ![dnSpy Strings Analyzer - Plugin in Action](https://i.imgur.com/tP6JNXu.gif)
 ---
-
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y7189H2F)
 The StringsAnalyzer plugin is a powerful tool for analyzing string literals in .NET assemblies within dnSpy. It provides a comprehensive view of all string values along with their metadata and locations within the assembly.
 
 ## Features
