@@ -4,7 +4,7 @@ Plugin for DnSpy - Analyze assemblies and display strings.
 ![dnSpy Strings Analyzer - Plugin in Action](https://i.imgur.com/tP6JNXu.gif)
 ---
 
-If you think this plugin has helped you in some way or another, and you are feeling gratious, please support me by clicking the button below "Support me on Ko-Fi"
+If you think this plugin has helped you in some way or another, and you are feeling grateful, please support me by clicking the button below "Support me on Ko-Fi"
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y7189H2F)
 ---
