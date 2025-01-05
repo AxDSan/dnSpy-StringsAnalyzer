@@ -14,7 +14,35 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          fetch-depth: 0
           submodules: recursive
+
+      - name: Determine Version
+        id: version
+        run: |
+          $LatestTag = $(git describe --tags --abbrev=0 2>$null)
+          if ($LastExitCode -ne 0) { $LatestTag = "v0.0.0" }
+          $TagVersion = $LatestTag.TrimStart('v')
+          $Parts = $TagVersion.Split('.')
+          
+          # Analizar commits desde el último tag
+          $Commits = $(git log $LatestTag..HEAD --pretty=format:"%s")
+          $HasBreakingChange = $Commits | Where-Object { $_ -match "^BREAKING CHANGE:" }
+          $HasFeature = $Commits | Where-Object { $_ -match "^feat:" }
+          $HasFix = $Commits | Where-Object { $_ -match "^fix:" }
+          
+          if ($HasBreakingChange) {
+            $NewVersion = "$([int]$Parts[0] + 1).0.0"
+          } elseif ($HasFeature) {
+            $NewVersion = "$($Parts[0]).$([int]$Parts[1] + 1).0"
+          } elseif ($HasFix) {
+            $NewVersion = "$($Parts[0]).$($Parts[1]).$([int]$Parts[2] + 1)"
+          } else {
+            $NewVersion = "$($Parts[0]).$($Parts[1]).$([int]$Parts[2] + 1)"
+          }
+          
+          echo "new_version=$NewVersion" >> $env:GITHUB_OUTPUT
+          echo "New version will be: v$NewVersion"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
